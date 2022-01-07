@@ -25,6 +25,8 @@ all: \
   .gitmodules
 	test -r dependencies/CASE/README.md \
 	  || (git submodule init dependencies/CASE && git submodule update dependencies/CASE)
-	test -r dependencies/UCO/README.md \
-	  || (git submodule init dependencies/UCO && git submodule update dependencies/UCO)
+	# Initialize CASE submodules.
+	$(MAKE) \
+	  --directory dependencies/CASE \
+	  .git_submodule_init.done.log
 	touch $@
