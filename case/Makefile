@@ -40,6 +40,11 @@ case.ttl: \
   $(top_srcdir)/dependencies/CASE/ontology/master/case.ttl
 	cp $< $@
 
+clean:
+	@rm -f \
+	  *.rdf \
+	  *.ttl
+
 investigation.rdf: \
   $(top_srcdir)/dependencies/CASE/ontology/investigation/investigation.ttl \
   $(RDF_TOOLKT_JAR)

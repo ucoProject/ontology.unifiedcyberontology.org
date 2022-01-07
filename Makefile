@@ -38,3 +38,16 @@ all-case: \
   .git_submodule_init.done.log
 	$(MAKE) \
 	  --directory case
+
+clean:
+	@$(MAKE) \
+	  --directory case \
+	  clean
+	@rm -f .*.done.log
+	@test ! -r dependencies/CASE/README.md \
+	  || $(MAKE) \
+	    --directory dependencies/CASE \
+	    clean
+	@# Revert status of test files, to avoid CASE submodule irrelevantly reporting as dirty.
+	@cd dependencies/CASE \
+	  && git checkout -- tests/examples
