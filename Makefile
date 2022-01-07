@@ -49,11 +49,13 @@ all: \
 	    wheel
 	source venv/bin/activate \
 	  && pip install \
-	    dependencies/Ontospy
+	    --editable \
+	    dependencies/Ontospy[FULL]
 	touch $@
 
 all-case: \
-  .venv.done.log
+  .venv.done.log \
+  dependencies/CASE/tests/case_monolithic.ttl
 	$(MAKE) \
 	  --directory case
 
@@ -69,3 +71,14 @@ clean:
 	@# Revert status of test files, to avoid CASE submodule irrelevantly reporting as dirty.
 	@cd dependencies/CASE \
 	  && git checkout -- tests/examples
+
+dependencies/CASE/tests/case_monolithic.ttl: \
+  .git_submodule_init.done.log
+	$(MAKE) \
+	  --directory dependencies/CASE/tests \
+	  case_monolithic.ttl
+	# Clean up superfluous artifact.  TODO - This step can be removed after the 0.3.0 release of the referenced tool.
+	rm -rf dependencies/CASE/dependencies/UCO/dependencies/CASE-Utility-SHACL-Inheritance-Review/build
+	# Guarantee file is built and timestamp is up to date.
+	test -r $@
+	touch $@

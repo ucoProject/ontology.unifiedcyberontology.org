@@ -18,12 +18,27 @@ top_srcdir := $(shell cd .. ; pwd)
 RDF_TOOLKT_JAR := $(top_srcdir)/dependencies/CASE/lib/rdf-toolkit.jar
 
 all: \
+  .documentation.done.log \
   case.rdf \
   case.ttl \
   investigation.rdf \
   investigation.ttl \
   vocabulary.rdf \
   vocabulary.ttl
+
+.documentation.done.log: \
+  $(top_srcdir)/.venv.done.log \
+  $(top_srcdir)/dependencies/CASE/tests/case_monolithic.ttl
+	rm -rf documentation
+	mkdir documentation
+	source $(top_srcdir)/venv/bin/activate \
+	  && ontospy gendocs \
+	    --outputpath $$PWD/documentation \
+	    --theme united \
+	    --title case-0.5.0-docs \
+	    --type 2 \
+	    $(top_srcdir)/dependencies/CASE/tests/case_monolithic.ttl
+	touch $@
 
 case.rdf: \
   $(top_srcdir)/dependencies/CASE/ontology/master/case.ttl \
@@ -43,7 +58,10 @@ case.ttl: \
 clean:
 	@rm -f \
 	  *.rdf \
-	  *.ttl
+	  *.ttl \
+	  .*.done.log
+	@rm -rf \
+	  documentation
 
 investigation.rdf: \
   $(top_srcdir)/dependencies/CASE/ontology/investigation/investigation.ttl \
