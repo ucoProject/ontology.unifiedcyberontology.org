@@ -32,10 +32,28 @@ all: \
 	  --directory dependencies/CASE \
 	  .git_submodule_init.done.log \
 	  .lib.done.log
+	test -r dependencies/Ontospy/README.md \
+	  || (git submodule init dependencies/Ontospy && git submodule update dependencies/Ontospy)
+	touch $@
+
+.venv.done.log: \
+  .git_submodule_init.done.log
+	rm -rf venv
+	python3 -m venv \
+	  venv
+	source venv/bin/activate \
+	  && pip install \
+	    --upgrade \
+	    pip \
+	    setuptools \
+	    wheel
+	source venv/bin/activate \
+	  && pip install \
+	    dependencies/Ontospy
 	touch $@
 
 all-case: \
-  .git_submodule_init.done.log
+  .venv.done.log
 	$(MAKE) \
 	  --directory case
 
