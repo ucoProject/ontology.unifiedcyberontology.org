@@ -13,9 +13,11 @@
 
 SHELL := /bin/bash
 
-# TODO
 all: \
-  .git_submodule_init.done.log
+  all-case
+
+.PHONY: \
+  all-case
 
 # This target checks for a file's existence to confirm that the submodule
 # has been checked out at least once.  To simplify development work, a
@@ -25,8 +27,14 @@ all: \
   .gitmodules
 	test -r dependencies/CASE/README.md \
 	  || (git submodule init dependencies/CASE && git submodule update dependencies/CASE)
-	# Initialize CASE submodules.
+	# Initialize CASE submodules and retrieve rdf-toolkit.
 	$(MAKE) \
 	  --directory dependencies/CASE \
-	  .git_submodule_init.done.log
+	  .git_submodule_init.done.log \
+	  .lib.done.log
 	touch $@
+
+all-case: \
+  .git_submodule_init.done.log
+	$(MAKE) \
+	  --directory case
