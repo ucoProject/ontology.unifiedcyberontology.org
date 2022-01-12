@@ -51,12 +51,17 @@ def main():
         select_query_object = rdflib.plugins.sparql.prepareQuery(query, initNs=nsdict)
         for (row_no, row) in enumerate(graph.query(select_query_object)):
             tally = row_no + 1
-            iri_parts = row[0].toPython().split('/')
+            concept_iri = row[0].toPython()
+
+            # determine URL path (file path, relative to service root within file system)
+            # the split-point is the string in common to CASE's and UCO's IRIs.
+            url_path = concept_iri.split("ontology.org/")[1] + ".html"
+
+            iri_parts = concept_iri.split('/')
 
             # format gendoc -> symlink (src, dst) combos.. check if a version is specified
             src = f"../docs{f'/{args.version}' if args.version else ''}/{prefix}-{iri_parts[-2]}{iri_parts[-1]}.html"
-            dst = f"case{f'/{args.version}' if args.version else ''}/{iri_parts[-2]}/{iri_parts[-1]}.html"
-            symlinks[src] = dst
+            symlinks[src] = url_path
 
         if tally == 0:
             raise ValueError("Failed to return any results.") 
