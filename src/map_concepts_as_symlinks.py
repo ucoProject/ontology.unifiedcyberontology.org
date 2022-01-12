@@ -60,7 +60,7 @@ def main():
             # determine path to symlink target (gendocs HTML file), relative to basename of URL path
             # check if a version is specified
             iri_parts = concept_iri.split('/')
-            gendocs_target = f"../documentation{f'/{args.version}' if args.version else ''}/{prefix}-{iri_parts[-2]}{iri_parts[-1]}.html"
+            gendocs_target = f"../documentation{f'/{args.version}' if args.version else ''}/{prefix}-{iri_parts[-2]}{iri_parts[-1].lower()}.html"
 
             # format gendoc -> symlink (src, dst) combos
             symlinks[gendocs_target] = url_path
