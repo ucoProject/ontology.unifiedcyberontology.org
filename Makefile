@@ -47,6 +47,10 @@ all: \
 	    pip \
 	    setuptools \
 	    wheel
+	# TODO - Ontospy does not currently handle Django >= 4.
+	source venv/bin/activate \
+	  && pip install \
+	    django==3.2.9
 	source venv/bin/activate \
 	  && pip install \
 	    --editable \
