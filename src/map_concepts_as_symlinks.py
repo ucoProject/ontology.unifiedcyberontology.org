@@ -51,11 +51,11 @@ def main():
         select_query_object = rdflib.plugins.sparql.prepareQuery(query, initNs=nsdict)
         for (row_no, row) in enumerate(graph.query(select_query_object)):
             tally = row_no + 1
-            uri_parts = row[0].toPython().split('/')
+            iri_parts = row[0].toPython().split('/')
 
             # format gendoc -> symlink (src, dst) combos.. check if a version is specified
-            src = f"../docs{f'/{args.version}' if args.version else ''}/{prefix}-{uri_parts[-2]}{uri_parts[-1]}.html"
-            dst = f"case{f'/{args.version}' if args.version else ''}/{uri_parts[-2]}/{uri_parts[-1]}.html"
+            src = f"../docs{f'/{args.version}' if args.version else ''}/{prefix}-{iri_parts[-2]}{iri_parts[-1]}.html"
+            dst = f"case{f'/{args.version}' if args.version else ''}/{iri_parts[-2]}/{iri_parts[-1]}.html"
             symlinks[src] = dst
 
         if tally == 0:
