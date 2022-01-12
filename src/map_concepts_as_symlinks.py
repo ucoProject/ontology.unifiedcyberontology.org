@@ -6,8 +6,8 @@
 # ©2021 The MITRE Corporation. All Rights Reserved.
 
 import argparse
-import rdflib
 import os
+
 import rdflib.plugins.sparql
 
 def debug_printlinks(symlinks):
