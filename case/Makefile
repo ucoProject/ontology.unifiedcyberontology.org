@@ -18,13 +18,16 @@ top_srcdir := $(shell cd .. ; pwd)
 RDF_TOOLKT_JAR := $(top_srcdir)/dependencies/CASE/lib/rdf-toolkit.jar
 
 all: \
-  .documentation.done.log \
+  .symlinking.done.log \
   case.rdf \
   case.ttl \
   investigation.rdf \
   investigation.ttl \
   vocabulary.rdf \
   vocabulary.ttl
+
+.PHONY: \
+  clean-symlinking
 
 .documentation.done.log: \
   $(top_srcdir)/.venv.done.log \
@@ -38,6 +41,24 @@ all: \
 	    --title case-0.5.0-docs \
 	    --type 2 \
 	    $(top_srcdir)/dependencies/CASE/tests/case_monolithic.ttl
+	touch $@
+
+# NOTE: In CASE, this script is only called on the investigation.ttl
+# file, because:
+# * gendocs does not build documentation for datatypes, and
+# * UCO concepts will not require symlinks to be constructed for the
+#   benefit of .htaccess redirects.  UCO IRIs will not visit CASE's
+#   server, and links within the gendocs HTML files are already
+#   relatively-pathed to the gendocs HTML file name pattern.
+.symlinking.done.log: \
+  .documentation.done.log
+	source $(top_srcdir)/venv/bin/activate \
+	  && python3 $(top_srcdir)/src/map_concepts_as_symlinks.py \
+	    $(top_srcdir)/dependencies/CASE/ontology/investigation/investigation.ttl
+	# Spot-check one concept's link.
+	test -r documentation/class-investigationInvestigativeAction.html
+	test -L investigation/InvestigativeAction.html
+	test -r investigation/InvestigativeAction.html
 	touch $@
 
 case.rdf: \
@@ -55,13 +76,23 @@ case.ttl: \
   $(top_srcdir)/dependencies/CASE/ontology/master/case.ttl
 	cp $< $@
 
-clean:
+clean: \
+  clean-symlinking
 	@rm -f \
 	  *.rdf \
 	  *.ttl \
 	  .*.done.log
 	@rm -rf \
 	  documentation
+
+clean-symlinking:
+	@rm -f \
+	  .symlinking.done.log
+	@find \
+	  . \
+	  -name '*.html' \
+	  -type l \
+	  -exec rm '{}' \;
 
 investigation.rdf: \
   $(top_srcdir)/dependencies/CASE/ontology/investigation/investigation.ttl \
