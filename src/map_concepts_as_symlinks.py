@@ -6,6 +6,7 @@
 # ©2021 The MITRE Corporation. All Rights Reserved.
 
 import argparse
+import logging
 import os
 
 import rdflib.plugins.sparql
@@ -14,7 +15,7 @@ def debug_printlinks(symlinks):
     """Outputs the contents of the symlinks dict, for debugging only."""
 
     for src, dst in symlinks.items():
-        print(repr(src) + " -> " + repr(dst))
+        logging.debug(repr(src) + " -> " + repr(dst))
 
 def create_symlinks(symlinks):
     """Create symlinks based on generated gendoc -> web path."""
@@ -27,8 +28,11 @@ def main():
     # parse arguments for ontology file & version we are preparing links for
     parser = argparse.ArgumentParser()
     parser.add_argument('inTtl', type=str, help='ttl file to build sym-links off of')
+    parser.add_argument('--debug', action="store_true")
     parser.add_argument('--version', type=str, help='verson of the ontology (optional, example: 0.4.0)', required=False)
     args = parser.parse_args()
+
+    logging.basicConfig(level=logging.DEBUG if args.debug else logging.INFO)
 
     # allow query on ontology file
     graph = rdflib.Graph()
