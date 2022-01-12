@@ -17,12 +17,30 @@ def debug_printlinks(symlinks):
     for src, dst in symlinks.items():
         logging.debug(repr(src) + " -> " + repr(dst))
 
-def create_symlinks(symlinks):
+def create_symlinks(top_srcdir, symlinks):
     """Create symlinks based on generated gendoc -> web path."""
+
+    _pre_cwd = os.getcwd()
+    logging.debug("_pre_cwd = %r.", _pre_cwd)
+    os.chdir(top_srcdir)
+    logging.debug("os.getcwd() = %r.", os.getcwd())
 
     # TODO: research if more flags need to be specified for the symlink() func, what if we lack perms etc?
     for src, dst in symlinks.items():
-        os.symlink(src, dst)
+        namespace_dir = os.path.dirname(dst)
+        concept_file_basename = os.path.basename(dst)
+        os.makedirs(namespace_dir, exist_ok=True)
+        os.chdir(namespace_dir)
+        logging.debug("os.getcwd() = %r.", os.getcwd())
+        if not os.path.isfile(src):
+            logging.error("os.getcwd() = %r.", os.getcwd())
+            raise FileNotFoundError(src)
+        os.symlink(src, concept_file_basename)
+        os.chdir(top_srcdir)
+
+    # end method with resetting cwd
+    os.chdir(_pre_cwd)
+    logging.debug("os.getcwd() = %r.", os.getcwd())
 
 def main():
     # parse arguments for ontology file & version we are preparing links for
@@ -72,8 +90,9 @@ def main():
         if tally == 0:
             raise ValueError("Failed to return any results.") 
 
+    top_srcdir = os.path.dirname(os.path.dirname(__file__))
     debug_printlinks(symlinks)
-    # create_symlinks(symlinks)
+    create_symlinks(top_srcdir, symlinks)
 
 if __name__ == "__main__":
     main()
