@@ -57,11 +57,13 @@ def main():
             # the split-point is the string in common to CASE's and UCO's IRIs.
             url_path = concept_iri.split("ontology.org/")[1] + ".html"
 
+            # determine path to symlink target (gendocs HTML file), relative to basename of URL path
+            # check if a version is specified
             iri_parts = concept_iri.split('/')
+            gendocs_target = f"../docs{f'/{args.version}' if args.version else ''}/{prefix}-{iri_parts[-2]}{iri_parts[-1]}.html"
 
-            # format gendoc -> symlink (src, dst) combos.. check if a version is specified
-            src = f"../docs{f'/{args.version}' if args.version else ''}/{prefix}-{iri_parts[-2]}{iri_parts[-1]}.html"
-            symlinks[src] = url_path
+            # format gendoc -> symlink (src, dst) combos
+            symlinks[gendocs_target] = url_path
 
         if tally == 0:
             raise ValueError("Failed to return any results.") 
