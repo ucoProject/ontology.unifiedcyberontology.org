@@ -17,7 +17,9 @@ all: \
   all-case
 
 .PHONY: \
-  all-case
+  all-case \
+  check-service
+
 
 # This target checks for a file's existence to confirm that the submodule
 # has been checked out at least once.  To simplify development work, a
@@ -62,6 +64,20 @@ all-case: \
   dependencies/CASE/tests/case_monolithic.ttl
 	$(MAKE) \
 	  --directory case
+
+check-service:
+	wget \
+	  --header 'Accept: text/turtle' \
+	  -o _$@ \
+	  http://localhost/case/investigation
+	diff _$@ case/investigation.ttl
+	rm _$@
+	wget \
+	  --header 'Accept: application/rdf+xml' \
+	  -o _$@ \
+	  http://localhost/case/investigation
+	diff _$@ case/investigation.rdf
+	rm _$@
 
 clean:
 	@$(MAKE) \
