@@ -68,13 +68,13 @@ all-case: \
 check-service:
 	wget \
 	  --header 'Accept: text/turtle' \
-	  -o _$@ \
+	  --output-document _$@ \
 	  http://localhost/case/investigation
 	diff _$@ case/investigation.ttl
 	rm _$@
 	wget \
 	  --header 'Accept: application/rdf+xml' \
-	  -o _$@ \
+	  --output-document _$@ \
 	  http://localhost/case/investigation
 	diff _$@ case/investigation.rdf
 	rm _$@
