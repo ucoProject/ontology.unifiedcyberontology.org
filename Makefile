@@ -67,6 +67,16 @@ all-case: \
 
 check-service:
 	wget \
+	  --output-document _$@ \
+	  http://localhost/case/investigation.ttl
+	diff _$@ case/investigation.ttl
+	rm _$@
+	wget \
+	  --output-document _$@ \
+	  http://localhost/case/investigation.rdf
+	diff _$@ case/investigation.rdf
+	rm _$@
+	wget \
 	  --header 'Accept: text/turtle' \
 	  --output-document _$@ \
 	  http://localhost/case/investigation
