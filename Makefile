@@ -17,7 +17,9 @@ all: \
   all-case
 
 .PHONY: \
-  all-case
+  all-case \
+  check-service
+
 
 # This target checks for a file's existence to confirm that the submodule
 # has been checked out at least once.  To simplify development work, a
@@ -62,6 +64,88 @@ all-case: \
   dependencies/CASE/tests/case_monolithic.ttl
 	$(MAKE) \
 	  --directory case
+
+# Test matrix:
+# Concept broad type: ontology, class, or property
+# "Accept" header: none specified, Turtle requested, or RDF requested
+check-service:
+	## Ontologies
+	wget \
+	  --output-document _$@ \
+	  http://localhost/case/vocabulary.ttl
+	diff _$@ case/vocabulary.ttl
+	rm _$@
+	wget \
+	  --output-document _$@ \
+	  http://localhost/case/vocabulary.rdf
+	diff _$@ case/vocabulary.rdf
+	rm _$@
+	wget \
+	  --header 'Accept: text/turtle' \
+	  --output-document _$@ \
+	  http://localhost/case/vocabulary
+	diff _$@ case/vocabulary.ttl
+	rm _$@
+	wget \
+	  --header 'Accept: application/rdf+xml' \
+	  --output-document _$@ \
+	  http://localhost/case/vocabulary
+	diff _$@ case/vocabulary.rdf
+	rm _$@
+	## Classes
+	wget \
+	  --output-document _$@ \
+	  http://localhost/case/investigation/ProvenanceRecord
+	# NOTE - no comparison test done, default behavior just needs to not return a server error.
+	rm _$@
+	wget \
+	  --header 'Accept: text/html' \
+	  --output-document _$@ \
+	  http://localhost/case/investigation/ProvenanceRecord
+	diff _$@ case/investigation/ProvenanceRecord.html
+	rm _$@
+#	#TODO - Turtle breakout needs to be written.
+#	wget \
+#	  --header 'Accept: text/turtle' \
+#	  --output-document _$@ \
+#	  http://localhost/case/investigation/ProvenanceRecord
+#	diff _$@ case/investigation/ProvenanceRecord.ttl
+#	rm _$@
+#	#TODO - Turtle RDF-XML breakout needs to be written.
+#	wget \
+#	  --header 'Accept: application/rdf+xml' \
+#	  --output-document _$@ \
+#	  http://localhost/case/investigation/ProvenanceRecord
+#	diff _$@ case/investigation/ProvenanceRecord.rdf
+#	rm _$@
+	## Properties
+	wget \
+	  --output-document _$@ \
+	  http://localhost/case/investigation/exhibitNumber
+	# NOTE - no comparison test done, default behavior just needs to not return a server error.
+	rm _$@
+	wget \
+	  --header 'Accept: text/html' \
+	  --output-document _$@ \
+	  http://localhost/case/investigation/exhibitNumber
+	diff _$@ case/investigation/exhibitNumber.html
+	rm _$@
+#	#TODO - Turtle breakout needs to be written.
+#	wget \
+#	  --header 'Accept: text/turtle' \
+#	  --output-document _$@ \
+#	  http://localhost/case/investigation/exhibitNumber
+#	diff _$@ case/investigation/exhibitNumber.ttl
+#	rm _$@
+#	#TODO - Turtle RDF-XML breakout needs to be written.
+#	wget \
+#	  --header 'Accept: application/rdf+xml' \
+#	  --output-document _$@ \
+#	  http://localhost/case/investigation/exhibitNumber
+#	diff _$@ case/investigation/exhibitNumber.rdf
+#	rm _$@
+	@echo >&2
+	@echo "INFO:Makefile:Service tests pass!" >&2
 
 clean:
 	@$(MAKE) \
