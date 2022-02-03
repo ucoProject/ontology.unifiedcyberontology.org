@@ -1,0 +1,39 @@
+# Turn off MultiViews
+Options +FollowSymLinks -MultiViews
+
+# Directives to ensure that *.rdf and *.ttl files serve properly per context type
+AddType application/rdf+xml .rdf
+Addtype text/turtle .ttl
+
+# Rewrite engine setup
+RewriteEngine On
+RewriteBase /
+
+# Rewrite rule 3.1: to serve Turtle content is requested
+RewriteCond %{REQUEST_URI} !\.ttl [NC]
+RewriteCond %{HTTP_ACCEPT} text/turtle
+RewriteRule ^case/(.*)$ case/$1.ttl [L,R=303]
+
+# Rewrite rule 3.2: to serve RDF content is requested
+RewriteCond %{REQUEST_URI} !\.rdf [NC]
+RewriteCond %{HTTP_ACCEPT} application/rdf\+xml
+RewriteRule ^case/(.*)$ case/$1.rdf [L,R=303]
+
+# Rewrite rule: to server HTML of some case sub-dir
+RewriteCond %{REQUEST_URI} !\.html [NC]
+RewriteCond %{HTTP_ACCEPT} text/html [OR]
+RewriteCond %{HTTP_ACCEPT} application/xhtml\+xml [OR]
+RewriteRule ^case/(.*)/(.*)$ case/$1/$2.html [L,R=303]
+
+# Rewrite rule: server based on user-agent
+RewriteCond %{REQUEST_URI} !\.html [NC]
+RewriteCond %{HTTP_ACCEPT} text/html [OR]
+RewriteCond %{HTTP_ACCEPT} application/xhtml\+xml [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Mozilla/.*
+RewriteRule ^case/(.*)/(.*) case/$1/$2.html [L,R=303]
+
+# Rewrite rule: server based on user-agent
+RewriteCond %{REQUEST_URI} !\.rdf [NC]
+RewriteCond %{HTTP_ACCEPT} application/rdf\+xml
+RewriteCond %{HTTP_USER_AGENT} ^(.*)/(.*)$
+RewriteRule ^case/(.*)/(.*) case/$1/$2.rdf [L,R=303]
