@@ -9,6 +9,16 @@ Addtype text/turtle .ttl
 RewriteEngine On
 RewriteBase /
 
+# Deny access to a variety of directories/files
+RewriteRule ^docs/*.*$ - [R=403]
+RewriteRule ^ontology/*.*$ - [R=403]
+RewriteRule ^src/*.*$ - [R=403]
+RewriteRule ^venv/*.*$ - [R=403]
+RewriteRule ^.git/*.*$ - [R=403]
+RewriteRule ^.gitmodules$ - [R=403]
+RewriteRule ^.gitignore$ - [R=403]
+RewriteRule ^Makefile$ - [R=403]
+
 # Rewrite rule 3.1: to serve Turtle content is requested
 RewriteCond %{REQUEST_URI} !\.ttl [NC]
 RewriteCond %{HTTP_ACCEPT} text/turtle
