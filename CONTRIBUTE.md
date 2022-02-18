@@ -43,7 +43,7 @@ $ sudo service apache2 restart
 We can confirm that *mod_rewrite* is running:
 
 ```bash
-$ sudo apache2ctl -M | grep mod_rewrite
+$ sudo apache2ctl -M | grep rewrite
 ```
 
 
