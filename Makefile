@@ -150,6 +150,13 @@ check-service:
 	  http://localhost/case/documentation/
 	diff _$@ case/documentation/index.html
 	rm _$@
+	# Confirm HTML index for non-umbrella namespaces are redirected to umbrella documentation index.
+	wget \
+	  --header 'Accept: text/html' \
+	  --output-document _$@ \
+	  http://localhost/case/investigation/
+	diff _$@ case/documentation/index.html
+	rm _$@
 	@echo >&2
 	@echo "INFO:Makefile:Service tests pass!" >&2
 
