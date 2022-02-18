@@ -31,7 +31,7 @@ Once Apache2 is installed, we are going to want to enable *mod_rewrite* and disa
 
 ```bash
 # enable mod_rewrite, without manually editing /etc/apache/apache2.conf
-$ sudo a2enmod mod_rewrite
+$ sudo a2enmod rewrite
 # disable the default website
 $ sudo a2dissite 000-default.conf
 # finally, restart the apache service
