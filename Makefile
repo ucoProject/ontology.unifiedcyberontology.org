@@ -144,6 +144,12 @@ check-service:
 #	  http://localhost/case/investigation/exhibitNumber
 #	diff _$@ case/investigation/exhibitNumber.rdf
 #	rm _$@
+	# Confirm documentation index is reachable.
+	wget \
+	  --output-document _$@ \
+	  http://localhost/case/documentation/
+	diff _$@ case/documentation/index.html
+	rm _$@
 	@echo >&2
 	@echo "INFO:Makefile:Service tests pass!" >&2
 
