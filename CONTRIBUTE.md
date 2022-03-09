@@ -79,6 +79,8 @@ Inside this file, we can include the following configuration:
 </VirtualHost>
 ```
 
+(If you use an alternate mechanism to a text editor to move the configuration file into place, after it is moved the file ownership should be `root:root`.)
+
 This configuration will define a `ServerName`, which is the domain name that the server will listen for and the `DocumentRoot`, which is the path to the files. You will also need to modify the path in the `<Directory></Directory>` directive to enable the proper **.htaccess** settings needed for *mod_rewrite*.
 
 
