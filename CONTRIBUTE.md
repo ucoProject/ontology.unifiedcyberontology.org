@@ -44,7 +44,7 @@ $ sudo service apache2 restart
 We can confirm that *mod_rewrite* is running:
 
 ```bash
-$ sudo apache2ctl -M | grep rewrite
+$ apache2ctl -M | grep rewrite
 ```
 The command should provide output, otherwise *mod_rewrite* is not running on the system.
 
