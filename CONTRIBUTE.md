@@ -1,6 +1,6 @@
 ## Ontodocs Auto-Deployment
 
-Previously, documentation for new releases of *CASE* would have to be manually built using gendocs/ontodocs. With this repository, building the documentation and deploying it on the web will be a more automated process, and allow for local documentation to be built for necessary cases.
+Previously, documentation for new releases of *CASE* would have to be manually built using gendocs/ontodocs, in order to deploy documentation via the [CASE website](https://caseontology.org/). With this repository, building the documentation and deploying it on the web will be a more automated process, and allow for local documentation to be built for necessary cases.
 
 
 
