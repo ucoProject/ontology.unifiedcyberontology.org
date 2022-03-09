@@ -5,7 +5,7 @@ Previously, documentation for new releases of *CASE* would have to be manually b
 
 
 #### Deployment
-For the deployment of the documentation, we are going to advise you clone this repository to `/srv/http/case-docs/public/`, if you clone it to another directory, ensure that any commands which tell you to alter the permissions to the mentioned directory or configuration files that use it are updated.
+For the deployment of the documentation, we assume this repository is cloned to a Linux server, becoming the directory `/srv/http/case-docs/public/`.  If you clone it to another directory, ensure that any commands which tell you to alter the permissions to the mentioned directory or configuration files that use it are updated.
 
 
 ###### Configuration
