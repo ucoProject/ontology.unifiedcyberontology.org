@@ -13,6 +13,10 @@
 
 SHELL := /bin/bash
 
+# Use HOST_PREFIX to test the deployment at the specified host.
+# Syntax note - there is no trailing slash.
+HOST_PREFIX ?= http://localhost
+
 all: \
   all-case
 
@@ -72,76 +76,76 @@ check-service:
 	## Ontologies
 	wget \
 	  --output-document _$@ \
-	  http://localhost/case/vocabulary.ttl
+	  $(HOST_PREFIX)/case/vocabulary.ttl
 	diff _$@ case/vocabulary.ttl
 	rm _$@
 	wget \
 	  --output-document _$@ \
-	  http://localhost/case/vocabulary.rdf
+	  $(HOST_PREFIX)/case/vocabulary.rdf
 	diff _$@ case/vocabulary.rdf
 	rm _$@
 	wget \
 	  --header 'Accept: text/turtle' \
 	  --output-document _$@ \
-	  http://localhost/case/vocabulary
+	  $(HOST_PREFIX)/case/vocabulary
 	diff _$@ case/vocabulary.ttl
 	rm _$@
 	wget \
 	  --header 'Accept: application/rdf+xml' \
 	  --output-document _$@ \
-	  http://localhost/case/vocabulary
+	  $(HOST_PREFIX)/case/vocabulary
 	diff _$@ case/vocabulary.rdf
 	rm _$@
 	## Classes
 	wget \
 	  --output-document _$@ \
-	  http://localhost/case/investigation/ProvenanceRecord
+	  $(HOST_PREFIX)/case/investigation/ProvenanceRecord
 	# NOTE - no comparison test done, default behavior just needs to not return a server error.
 	rm _$@
 	wget \
 	  --header 'Accept: text/html' \
 	  --output-document _$@ \
-	  http://localhost/case/investigation/ProvenanceRecord
+	  $(HOST_PREFIX)/case/investigation/ProvenanceRecord
 	diff _$@ case/investigation/ProvenanceRecord.html
 	rm _$@
 #	#TODO - Turtle breakout needs to be written.
 #	wget \
 #	  --header 'Accept: text/turtle' \
 #	  --output-document _$@ \
-#	  http://localhost/case/investigation/ProvenanceRecord
+#	  $(HOST_PREFIX)/case/investigation/ProvenanceRecord
 #	diff _$@ case/investigation/ProvenanceRecord.ttl
 #	rm _$@
 #	#TODO - Turtle RDF-XML breakout needs to be written.
 #	wget \
 #	  --header 'Accept: application/rdf+xml' \
 #	  --output-document _$@ \
-#	  http://localhost/case/investigation/ProvenanceRecord
+#	  $(HOST_PREFIX)/case/investigation/ProvenanceRecord
 #	diff _$@ case/investigation/ProvenanceRecord.rdf
 #	rm _$@
 	## Properties
 	wget \
 	  --output-document _$@ \
-	  http://localhost/case/investigation/exhibitNumber
+	  $(HOST_PREFIX)/case/investigation/exhibitNumber
 	# NOTE - no comparison test done, default behavior just needs to not return a server error.
 	rm _$@
 	wget \
 	  --header 'Accept: text/html' \
 	  --output-document _$@ \
-	  http://localhost/case/investigation/exhibitNumber
+	  $(HOST_PREFIX)/case/investigation/exhibitNumber
 	diff _$@ case/investigation/exhibitNumber.html
 	rm _$@
 #	#TODO - Turtle breakout needs to be written.
 #	wget \
 #	  --header 'Accept: text/turtle' \
 #	  --output-document _$@ \
-#	  http://localhost/case/investigation/exhibitNumber
+#	  $(HOST_PREFIX)/case/investigation/exhibitNumber
 #	diff _$@ case/investigation/exhibitNumber.ttl
 #	rm _$@
 #	#TODO - Turtle RDF-XML breakout needs to be written.
 #	wget \
 #	  --header 'Accept: application/rdf+xml' \
 #	  --output-document _$@ \
-#	  http://localhost/case/investigation/exhibitNumber
+#	  $(HOST_PREFIX)/case/investigation/exhibitNumber
 #	diff _$@ case/investigation/exhibitNumber.rdf
 #	rm _$@
 	@echo >&2

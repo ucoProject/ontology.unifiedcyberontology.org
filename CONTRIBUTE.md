@@ -131,8 +131,20 @@ $ journalctl # or check -u apache2
 
 #### Testing
 
-To test the deployment, run the **Makefile** to ensure expected URL behaviors and content types. If you have set the VirtualHost on apache as anything besides 'localhost', you will want to alter the URL specified in this script.
+To test the deployment, run the **Makefile** to ensure expected URL behaviors and content types.
 
 ```bash
 $ make check-service
+```
+
+If you have set the VirtualHost on apache as anything besides `localhost`, you will want to supply this prefix with the `HOST_PREFIX` parameter.  For example, to test the production service, run:
+
+```bash
+$ make HOST_PREFIX=https://ontology.caseontology.org check-service
+```
+
+As another example, if you have a local deployment at `https://documentation.intranet.example.org/`, run:
+
+```bash
+$ make HOST_PREFIX=https://documentation.intranet.example.org check-service
 ```
