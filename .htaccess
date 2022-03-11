@@ -19,6 +19,10 @@ RewriteRule ^.gitmodules$ - [R=403]
 RewriteRule ^.gitignore$ - [R=403]
 RewriteRule ^Makefile$ - [R=403]
 
+# Catch all with a trailing slash.. send to the index of documentation
+RewriteCond %{REQUEST_URI} !\.html [NC]
+RewriteRule ^(.+)/$ %{DOCUMENT_ROOT}/case/documentation/index.html [L,R=303]
+
 # Rewrite rule 3.1: to serve Turtle content is requested
 RewriteCond %{REQUEST_URI} !\.ttl [NC]
 RewriteCond %{HTTP_ACCEPT} text/turtle

@@ -151,14 +151,14 @@ check-service:
 	# Confirm documentation index is reachable.
 	wget \
 	  --output-document _$@ \
-	  http://localhost/case/documentation/
+	  $(HOST_PREFIX)/case/documentation/
 	diff _$@ case/documentation/index.html
 	rm _$@
 	# Confirm HTML index for non-umbrella namespaces are redirected to umbrella documentation index.
 	wget \
 	  --header 'Accept: text/html' \
 	  --output-document _$@ \
-	  http://localhost/case/investigation/
+	  $(HOST_PREFIX)/case/investigation/
 	diff _$@ case/documentation/index.html
 	rm _$@
 	@echo >&2
