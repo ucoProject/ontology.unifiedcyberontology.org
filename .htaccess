@@ -3,7 +3,7 @@ Options +FollowSymLinks -MultiViews
 
 # Directives to ensure that *.rdf and *.ttl files serve properly per context type
 AddType application/rdf+xml .rdf
-Addtype text/turtle .ttl
+AddType text/turtle .ttl
 
 # Rewrite engine setup
 RewriteEngine On
@@ -19,6 +19,9 @@ RewriteRule ^.gitmodules$ - [R=403]
 RewriteRule ^.gitignore$ - [R=403]
 RewriteRule ^Makefile$ - [R=403]
 
+# Redirect all assets that hit static
+RewriteRule ^static/(.*)$ case/documentation/static/$1 [R=303,nc,L]
+
 # Catch all with a trailing slash.. send to the index of documentation
 RewriteCond %{REQUEST_URI} !\.html [NC]
 RewriteRule ^(.+)/$ %{DOCUMENT_ROOT}/case/documentation/index.html [L,R=303]
@@ -33,21 +36,26 @@ RewriteCond %{REQUEST_URI} !\.rdf [NC]
 RewriteCond %{HTTP_ACCEPT} application/rdf\+xml
 RewriteRule ^case/(.*)$ case/$1.rdf [L,R=303]
 
-# Rewrite rule: to server HTML of some case sub-dir
+# Rewrite rule: to serve HTML of some case sub-dir
+RewriteCond %{REQUEST_URI} !^/case/documentation/static/ [NC]
 RewriteCond %{REQUEST_URI} !\.html [NC]
 RewriteCond %{HTTP_ACCEPT} text/html [OR]
 RewriteCond %{HTTP_ACCEPT} application/xhtml\+xml [OR]
 RewriteRule ^case/(.*)/(.*)$ case/$1/$2.html [L,R=303]
 
-# Rewrite rule: server based on user-agent
+# Rewrite rule: serve based on user-agent
+RewriteCond %{REQUEST_URI} !^/case/documentation/static/ [NC]
 RewriteCond %{REQUEST_URI} !\.html [NC]
 RewriteCond %{HTTP_ACCEPT} text/html [OR]
 RewriteCond %{HTTP_ACCEPT} application/xhtml\+xml [OR]
 RewriteCond %{HTTP_USER_AGENT} ^Mozilla/.*
-RewriteRule ^case/(.*)/(.*) case/$1/$2.html [L,R=303]
+RewriteRule ^case/(.*)/(.*)$ case/$1/$2.html [L,R=303]
 
-# Rewrite rule: server based on user-agent
+# Rewrite rule: serve based on user-agent
 RewriteCond %{REQUEST_URI} !\.rdf [NC]
 RewriteCond %{HTTP_ACCEPT} application/rdf\+xml
 RewriteCond %{HTTP_USER_AGENT} ^(.*)/(.*)$
-RewriteRule ^case/(.*)/(.*) case/$1/$2.rdf [L,R=303]
+RewriteRule ^case/(.*)/(.*)$ case/$1/$2.rdf [L,R=303]
+
+# What if they just tried reaching the base website?
+RewriteRule ^/?$ %{DOCUMENT_ROOT}/case/documentation/index.html [L,R=303]
