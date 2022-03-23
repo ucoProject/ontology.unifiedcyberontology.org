@@ -2,12 +2,6 @@
 
 ## Description
 
-<!-- Required. Please replace the text in this section with a
-     summary of the work this repository represents, or intends
-     to. Sub-sections describing file contents can/should be
-     removed, or replaced with a file format or folder hierarchy
-     description. -->
-
 This repository provides automatic building and deployment of documentation resources
 for the CASE ontology ([caseontology.org](https://caseontology.org)). Using this repository will allow an operator to pull the latest release, build [gendocs](https://github.com/lambdamusic/Ontospy) output, and serve the content via a Linux machine using [Apache2](https://httpd.apache.org). 
 
