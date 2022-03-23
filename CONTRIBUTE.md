@@ -128,6 +128,23 @@ $ sudo tail -f /var/log/apache/error.log
 $ journalctl # or check -u apache2
 ```
 
+**symlinks** - This repository relies on soft-links to translate some paths from IRI format to generated-documentation format.  Under some conditions, these soft-links can be cloned and appear to be regular files, containing only a relative path.  This is detected by running the `make check-service` prescribed below.
+
+The issue is likely due to the repository being cloned with `core.symlinks` set to `false`.  To correct the issue, run the following from within your cloned directory.
+
+```bash
+# First, confirm whether core.symlinks is returning "false".
+git config core.symlinks
+# If so, proceed with setting to "true".
+git config core.symlinks true
+# A git status now will report that file types changed.
+git status
+# git-checkout will restore the file types to their tracked versions.
+git checkout -- .
+# git-status should now report no revisions.
+git status
+```
+
 
 #### Testing
 
