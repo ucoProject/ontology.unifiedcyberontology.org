@@ -9,6 +9,10 @@ AddType text/turtle .ttl
 RewriteEngine On
 RewriteBase /
 
+# Upgrade all connections to https
+RewriteCond %{HTTPS} off 
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301]
+
 # Deny access to a variety of directories/files
 RewriteRule ^docs/*.*$ - [R=403]
 RewriteRule ^ontology/*.*$ - [R=403]
