@@ -25,10 +25,11 @@ RewriteRule ^Makefile$ - [R=403]
 
 # Redirect all assets that hit static
 RewriteRule ^static/(.*)$ case/documentation/static/$1 [R=303,nc,L]
-RewriteRule ^case/investigation/static/(.*)$ case/documentation/static/$1 [R=303]
 
 # Catch any non-rewritten investigations that aren't RESTful
-RewriteRule ^case/investigation/(.*)-(.*)$ case/documentation/$1-$2 [R=303]
+# ... a temp solution for when apache fails to follow symlinks
+RewriteRule ^case/investigation/static/(.*)$ case/documentation/static/$1 [R=303]
+RewriteRule ^case/(?!documentation/)([a-z0-9_-]+)?/(.*)-(.*)$ case/documentation/$2-$3 [R=303]
 
 # Catch all with a trailing slash.. send to the index of documentation
 RewriteCond %{REQUEST_URI} !\.html [NC]
