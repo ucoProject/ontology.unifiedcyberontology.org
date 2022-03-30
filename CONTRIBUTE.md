@@ -1,11 +1,11 @@
 ## Ontodocs Auto-Deployment
 
-Previously, documentation for new releases of *CASE* would have to be manually built using gendocs/ontodocs, in order to deploy documentation via the [CASE website](https://caseontology.org/). With this repository, building the documentation and deploying it on the web will be a more automated process, and allow for local documentation to be built for necessary cases.
+Previously, documentation for new releases of *CASE*/*UCO* would have to be manually built using gendocs/ontodocs, in order to deploy documentation via the project websites ([CASE](https://caseontology.org/)/[UCO](https://unifiedcyberontology.org)). With this repository, building the documentation and deploying it on the web will be a more automated process, and allow for local documentation to be built for necessary cases.
 
 
 
 #### Deployment
-For the deployment of the documentation, we assume this repository is cloned to a Linux server, becoming the directory `/srv/http/case-docs/public/`.  If you clone it to another directory, ensure that any commands which tell you to alter the permissions to the mentioned directory or configuration files that use it are updated.
+For the deployment of the documentation, we assume this repository is cloned to a Linux server, becoming the directory `/srv/http/uco-docs/public/`.  If you clone it to another directory, ensure that any commands which tell you to alter the permissions to the mentioned directory or configuration files that use it are updated.
 
 
 ###### Configuration

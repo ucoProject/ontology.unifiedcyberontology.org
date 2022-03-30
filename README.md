@@ -4,7 +4,7 @@
 ## Description
 
 This repository provides automatic building and deployment of documentation resources
-for the CASE ontology ([caseontology.org](https://caseontology.org)). Using this repository will allow an operator to pull the latest release, build [gendocs](https://github.com/lambdamusic/Ontospy) output, and serve the content via a Linux machine using [Apache2](https://httpd.apache.org). 
+for the UCO ontology ([unifiedcyberontology.org](https://unifiedcyberontology.org)). Using this repository will allow an operator to pull the latest release, build [gendocs](https://github.com/lambdamusic/Ontospy) output, and serve the content via a Linux machine using [Apache2](https://httpd.apache.org). 
 
 
 ## Contributions
