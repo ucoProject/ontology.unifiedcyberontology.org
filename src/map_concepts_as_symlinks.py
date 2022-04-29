@@ -35,7 +35,10 @@ def create_symlinks(top_srcdir, symlinks):
         if not os.path.isfile(src):
             logging.error("os.getcwd() = %r.", os.getcwd())
             raise FileNotFoundError(src)
-        os.symlink(src, concept_file_basename)
+        try:
+            os.symlink(src, concept_file_basename)
+        except Exception as e:
+            print(f'there was an error {e}')
         os.chdir(top_srcdir)
 
     # end method with resetting cwd
