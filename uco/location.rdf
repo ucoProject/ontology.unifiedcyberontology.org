@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rdf:RDF
+	xmlns:core="https://ontology.unifiedcyberontology.org/uco/core/"
+	xmlns:location="https://ontology.unifiedcyberontology.org/uco/location/"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:sh="http://www.w3.org/ns/shacl#"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+	
+	<owl:Ontology rdf:about="https://ontology.unifiedcyberontology.org/uco/location">
+		<rdfs:label xml:lang="en">uco-location</rdfs:label>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/core"/>
+	</owl:Ontology>
+	
+	<rdf:Description rdf:about="&location;GPSCoordinatesFacet">
+		<rdf:type rdf:resource="&owl;Class"/>
+		<rdf:type rdf:resource="&sh;NodeShape"/>
+		<rdfs:subClassOf rdf:resource="&core;Facet"/>
+		<rdfs:label xml:lang="en">GPSCoordinatesFacet</rdfs:label>
+		<rdfs:comment xml:lang="en">A GPS coordinates facet is a grouping of characteristics unique to the expression of quantified dilution of precision (DOP) for an asserted set of geolocation coordinates typically associated with satellite navigation such as the Global Positioning System (GPS).</rdfs:comment>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;decimal"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&location;hdop"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;decimal"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&location;pdop"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;decimal"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&location;tdop"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;decimal"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&location;vdop"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:targetClass rdf:resource="&location;GPSCoordinatesFacet"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="&location;LatLongCoordinatesFacet">
+		<rdf:type rdf:resource="&owl;Class"/>
+		<rdf:type rdf:resource="&sh;NodeShape"/>
+		<rdfs:subClassOf rdf:resource="&core;Facet"/>
+		<rdfs:label xml:lang="en">LatLongCoordinatesFacet</rdfs:label>
+		<rdfs:comment xml:lang="en">A lat long coordinates facet is a grouping of characteristics unique to the expression of a geolocation as the intersection of specific latitude, longitude, and altitude values.</rdfs:comment>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;decimal"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&location;altitude"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;decimal"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&location;latitude"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;decimal"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&location;longitude"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:targetClass rdf:resource="&location;LatLongCoordinatesFacet"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="&location;Location">
+		<rdf:type rdf:resource="&owl;Class"/>
+		<rdf:type rdf:resource="&sh;NodeShape"/>
+		<rdfs:subClassOf rdf:resource="&core;UcoObject"/>
+		<rdfs:label xml:lang="en">Location</rdfs:label>
+		<rdfs:comment xml:lang="en">A location is a geospatial place, site, or position.</rdfs:comment>
+		<sh:targetClass rdf:resource="&location;Location"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="&location;SimpleAddressFacet">
+		<rdf:type rdf:resource="&owl;Class"/>
+		<rdf:type rdf:resource="&sh;NodeShape"/>
+		<rdfs:subClassOf rdf:resource="&core;Facet"/>
+		<rdfs:label xml:lang="en">SimpleAddressFacet</rdfs:label>
+		<rdfs:comment xml:lang="en">A simple address facet is a grouping of characteristics unique to a geolocation expressed as an administrative address.</rdfs:comment>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;string"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&location;addressType"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;string"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&location;country"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;string"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&location;locality"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;string"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&location;postalCode"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;string"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&location;region"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;string"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&location;street"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:targetClass rdf:resource="&location;SimpleAddressFacet"/>
+	</rdf:Description>
+	
+	<owl:DatatypeProperty rdf:about="&location;addressType">
+		<rdfs:label xml:lang="en">addressType</rdfs:label>
+		<rdfs:comment xml:lang="en">The type of the address, for instance home or work.</rdfs:comment>
+		<rdfs:range rdf:resource="&xsd;string"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&location;altitude">
+		<rdfs:label xml:lang="en">altitude</rdfs:label>
+		<rdfs:comment xml:lang="en">The altitude coordinate of a geolocation.</rdfs:comment>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&location;country">
+		<rdfs:label xml:lang="en">country</rdfs:label>
+		<rdfs:comment xml:lang="en">The name of the geolocation country.</rdfs:comment>
+		<rdfs:range rdf:resource="&xsd;string"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&location;hdop">
+		<rdfs:label xml:lang="en">hdop</rdfs:label>
+		<rdfs:comment xml:lang="en">The horizontal dilution of precision of the GPS location.</rdfs:comment>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&location;latitude">
+		<rdfs:label xml:lang="en">latitude</rdfs:label>
+		<rdfs:comment xml:lang="en">The latitude coordinate of a geolocation.</rdfs:comment>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&location;locality">
+		<rdfs:label xml:lang="en">locality</rdfs:label>
+		<rdfs:comment xml:lang="en">The name of the geolocation locality (e.g., city).</rdfs:comment>
+		<rdfs:range rdf:resource="&xsd;string"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&location;longitude">
+		<rdfs:label xml:lang="en">longitude</rdfs:label>
+		<rdfs:comment xml:lang="en">The longitude coordinate of a geolocation.</rdfs:comment>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&location;pdop">
+		<rdfs:label xml:lang="en">pdop</rdfs:label>
+		<rdfs:comment xml:lang="en">The positional (3D) dilution of precision of the GPS location.</rdfs:comment>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&location;postalCode">
+		<rdfs:label xml:lang="en">postalCode</rdfs:label>
+		<rdfs:comment xml:lang="en">The zip-code.</rdfs:comment>
+		<rdfs:range rdf:resource="&xsd;string"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&location;region">
+		<rdfs:label xml:lang="en">region</rdfs:label>
+		<rdfs:comment xml:lang="en">The name of the geolocation region (e.g., state).</rdfs:comment>
+		<rdfs:range rdf:resource="&xsd;string"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&location;street">
+		<rdfs:label xml:lang="en">street</rdfs:label>
+		<rdfs:comment xml:lang="en">The name of the street.</rdfs:comment>
+		<rdfs:range rdf:resource="&xsd;string"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&location;tdop">
+		<rdfs:label xml:lang="en">tdop</rdfs:label>
+		<rdfs:comment xml:lang="en">The temporal dilution of precision of the GPS location.</rdfs:comment>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&location;vdop">
+		<rdfs:label xml:lang="en">vdop</rdfs:label>
+		<rdfs:comment xml:lang="en">The vertical dilution of precision of the GPS location.</rdfs:comment>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+	</owl:DatatypeProperty>
+
+</rdf:RDF>

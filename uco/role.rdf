@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rdf:RDF
+	xmlns:core="https://ontology.unifiedcyberontology.org/uco/core/"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:role="https://ontology.unifiedcyberontology.org/uco/role/"
+	xmlns:sh="http://www.w3.org/ns/shacl#"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+	
+	<owl:Ontology rdf:about="https://ontology.unifiedcyberontology.org/uco/role">
+		<rdfs:label xml:lang="en">uco-role</rdfs:label>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/core"/>
+	</owl:Ontology>
+	
+	<rdf:Description rdf:about="&role;BenevolentRole">
+		<rdf:type rdf:resource="&owl;Class"/>
+		<rdf:type rdf:resource="&sh;NodeShape"/>
+		<rdfs:subClassOf rdf:resource="&role;Role"/>
+		<rdfs:label xml:lang="en">BenevolentRole</rdfs:label>
+		<rdfs:comment xml:lang="en">A benevolent role is a role with positive and/or beneficial intent.</rdfs:comment>
+		<sh:targetClass rdf:resource="&role;BenevolentRole"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="&role;MaliciousRole">
+		<rdf:type rdf:resource="&owl;Class"/>
+		<rdf:type rdf:resource="&sh;NodeShape"/>
+		<rdfs:subClassOf rdf:resource="&role;Role"/>
+		<rdfs:label xml:lang="en">MaliciousRole</rdfs:label>
+		<rdfs:comment xml:lang="en">A malicious role is a role with malevolent intent.</rdfs:comment>
+		<sh:targetClass rdf:resource="&role;MaliciousRole"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="&role;NeutralRole">
+		<rdf:type rdf:resource="&owl;Class"/>
+		<rdf:type rdf:resource="&sh;NodeShape"/>
+		<rdfs:subClassOf rdf:resource="&role;Role"/>
+		<rdfs:label xml:lang="en">NeutralRole</rdfs:label>
+		<rdfs:comment xml:lang="en">A neutral role is a role with impartial intent.</rdfs:comment>
+		<sh:targetClass rdf:resource="&role;NeutralRole"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="&role;Role">
+		<rdf:type rdf:resource="&owl;Class"/>
+		<rdf:type rdf:resource="&sh;NodeShape"/>
+		<rdfs:subClassOf rdf:resource="&core;UcoObject"/>
+		<rdfs:label xml:lang="en">Role</rdfs:label>
+		<rdfs:comment xml:lang="en">A role is a usual or customary function based on contextual perspective.</rdfs:comment>
+		<sh:targetClass rdf:resource="&role;Role"/>
+	</rdf:Description>
+
+</rdf:RDF>
