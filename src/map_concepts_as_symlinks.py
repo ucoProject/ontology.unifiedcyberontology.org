@@ -91,7 +91,8 @@ def main():
             symlinks[gendocs_target] = url_path
 
         if tally == 0:
-            raise ValueError("Failed to return any results.") 
+            logging.error(f"Failed to return any valid results.")
+            break
 
     top_srcdir = os.path.dirname(os.path.dirname(__file__))
     debug_printlinks(symlinks)
