@@ -1,11 +1,11 @@
 ## Ontodocs Auto-Deployment
 
-Previously, documentation for new releases of *CASE* would have to be manually built using gendocs/ontodocs, in order to deploy documentation via the [CASE website](https://caseontology.org/). With this repository, building the documentation and deploying it on the web will be a more automated process, and allow for local documentation to be built for necessary cases.
+Previously, documentation for new releases of *CASE*/*UCO* would have to be manually built using gendocs/ontodocs, in order to deploy documentation via the project websites ([CASE](https://caseontology.org/)/[UCO](https://unifiedcyberontology.org)). With this repository, building the documentation and deploying it on the web will be a more automated process, and allow for local documentation to be built for necessary cases.
 
 
 
 #### Deployment
-For the deployment of the documentation, we assume this repository is cloned to a Linux server, becoming the directory `/srv/http/case-docs/public/`.  If you clone it to another directory, ensure that any commands which tell you to alter the permissions to the mentioned directory or configuration files that use it are updated.
+For the deployment of the documentation, we assume this repository is cloned to a Linux server, becoming the directory `/srv/http/uco-docs/public/`.  If you clone it to another directory, ensure that any commands which tell you to alter the permissions to the mentioned directory or configuration files that use it are updated.
 
 
 ###### Configuration
@@ -53,7 +53,7 @@ The command should provide output, otherwise *mod_rewrite* is not running on the
 Now that we have enabled *mod_rewrite*, we can create the *VirtualHost* for the documentation website:
 
 ```bash
-$ sudo vi /etc/apache2/sites-available/case-docs.conf
+$ sudo vi /etc/apache2/sites-available/uco-docs.conf
 ```
 
 Inside this file, we can include the following configuration:
@@ -88,7 +88,7 @@ This configuration will define a `ServerName`, which is the domain name that the
 Finally, enable the new website then restart apache:
 
 ```bash
-$ sudo a2ensite case-docs.conf
+$ sudo a2ensite uco-docs.conf
 $ sudo service apache2 restart
 ```
 
@@ -108,12 +108,12 @@ $ sudo vi /etc/hosts
 
 There are a variety of errors that you can face, but we are going to address the most common ones. 
 
-**403** - For 403 errors, check to ensure that the permissions are properly set on the folder and files. For this, we will use the example directory `/srv/http/case-docs/public`:
+**403** - For 403 errors, check to ensure that the permissions are properly set on the folder and files. For this, we will use the example directory `/srv/http/uco-docs/public`:
 
 ```bash
-$ sudo find /srv/http/case-docs/public -type d -exec chmod 775 {} \;
-$ sudo find /srv/http/case-docs/public -type f -exec chmod 664 {} \;
-$ sudo chown -R www-data:www-data /srv/http/case-docs/public
+$ sudo find /srv/http/uco-docs/public -type d -exec chmod 775 {} \;
+$ sudo find /srv/http/uco-docs/public -type f -exec chmod 664 {} \;
+$ sudo chown -R www-data:www-data /srv/http/uco-docs/public
 ```
 
 **404** - For 404 errors, this means that apache2 is having trouble finding the file it is trying to serve. There are a few things which can cause this:
@@ -157,7 +157,7 @@ $ make check-service
 If you have set the VirtualHost on apache as anything besides `localhost`, you will want to supply this prefix with the `HOST_PREFIX` parameter.  For example, to test the production service, run:
 
 ```bash
-$ make HOST_PREFIX=https://ontology.caseontology.org check-service
+$ make HOST_PREFIX=https://ontology.ucoontology.org check-service
 ```
 
 As another example, if you have a local deployment at `https://documentation.intranet.example.org/`, run:

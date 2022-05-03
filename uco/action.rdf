@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rdf:RDF
+	xmlns:action="https://ontology.unifiedcyberontology.org/uco/action/"
+	xmlns:core="https://ontology.unifiedcyberontology.org/uco/core/"
+	xmlns:location="https://ontology.unifiedcyberontology.org/uco/location/"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:pattern="https://ontology.unifiedcyberontology.org/uco/pattern/"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:sh="http://www.w3.org/ns/shacl#"
+	xmlns:vocabulary="https://ontology.unifiedcyberontology.org/uco/vocabulary/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+	
+	<owl:Ontology rdf:about="https://ontology.unifiedcyberontology.org/uco/action">
+		<rdfs:label xml:lang="en">uco-action</rdfs:label>
+		<rdfs:comment xml:lang="en-US">This ontology defines classes and properties for characterizing actions.</rdfs:comment>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/core"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/location"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/pattern"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/types"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/vocabulary"/>
+	</owl:Ontology>
+	
+	<rdf:Description rdf:about="&action;Action">
+		<rdf:type rdf:resource="&owl;Class"/>
+		<rdf:type rdf:resource="&sh;NodeShape"/>
+		<rdfs:subClassOf rdf:resource="&core;UcoObject"/>
+		<rdfs:label xml:lang="en">Action</rdfs:label>
+		<rdfs:comment xml:lang="en">An action is something that may be done or performed.</rdfs:comment>
+		<sh:property>
+			<rdf:Description>
+				<sh:class rdf:resource="&action;Action"/>
+				<sh:nodeKind rdf:resource="&sh;BlankNodeOrIRI"/>
+				<sh:path rdf:resource="&action;subaction"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:class rdf:resource="&core;UcoObject"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="&sh;BlankNodeOrIRI"/>
+				<sh:path rdf:resource="&action;environment"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:class rdf:resource="&core;UcoObject"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="&sh;BlankNodeOrIRI"/>
+				<sh:path rdf:resource="&action;performer"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:class rdf:resource="&core;UcoObject"/>
+				<sh:nodeKind rdf:resource="&sh;BlankNodeOrIRI"/>
+				<sh:path rdf:resource="&action;error"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:class rdf:resource="&core;UcoObject"/>
+				<sh:nodeKind rdf:resource="&sh;BlankNodeOrIRI"/>
+				<sh:path rdf:resource="&action;instrument"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:class rdf:resource="&core;UcoObject"/>
+				<sh:nodeKind rdf:resource="&sh;BlankNodeOrIRI"/>
+				<sh:path rdf:resource="&action;object"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:class rdf:resource="&core;UcoObject"/>
+				<sh:nodeKind rdf:resource="&sh;BlankNodeOrIRI"/>
+				<sh:path rdf:resource="&action;participant"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:class rdf:resource="&core;UcoObject"/>
+				<sh:nodeKind rdf:resource="&sh;BlankNodeOrIRI"/>
+				<sh:path rdf:resource="&action;result"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:class rdf:resource="&location;Location"/>
+				<sh:nodeKind rdf:resource="&sh;BlankNodeOrIRI"/>
+				<sh:path rdf:resource="&action;location"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;dateTime"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&action;endTime"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;dateTime"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&action;startTime"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;nonNegativeInteger"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&action;actionCount"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&vocabulary;ActionStatusTypeVocab"/>
+				<sh:message>Value is outside the default vocabulary ActionStatusTypeVocab.</sh:message>
+				<sh:path rdf:resource="&action;actionStatus"/>
+				<sh:severity rdf:resource="&sh;Info"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:or rdf:parseType="Collection">
+					<rdf:Description>
+						<sh:datatype rdf:resource="&vocabulary;ActionStatusTypeVocab"/>
+					</rdf:Description>
+					<rdf:Description>
+						<sh:datatype rdf:resource="&xsd;string"/>
+					</rdf:Description>
+				</sh:or>
+				<sh:path rdf:resource="&action;actionStatus"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:message>Value is not member of the vocabulary ActionStatusTypeVocab.</sh:message>
+				<sh:or rdf:parseType="Collection">
+					<rdf:Description>
+						<sh:datatype rdf:resource="&vocabulary;ActionStatusTypeVocab"/>
+						<sh:in rdf:resource="&vocabulary;ActionStatusTypeVocab-members"/>
+					</rdf:Description>
+					<rdf:Description>
+						<sh:datatype rdf:resource="&xsd;string"/>
+					</rdf:Description>
+				</sh:or>
+				<sh:path rdf:resource="&action;actionStatus"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:targetClass rdf:resource="&action;Action"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="&action;ActionArgumentFacet">
+		<rdf:type rdf:resource="&owl;Class"/>
+		<rdf:type rdf:resource="&sh;NodeShape"/>
+		<rdfs:subClassOf rdf:resource="&core;Facet"/>
+		<rdfs:label xml:lang="en">ActionArgumentFacet</rdfs:label>
+		<rdfs:comment xml:lang="en">An action argument facet is a grouping of characteristics unique to a single parameter of an action.</rdfs:comment>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;string"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:minCount rdf:datatype="&xsd;integer">1</sh:minCount>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&action;argumentName"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;string"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:minCount rdf:datatype="&xsd;integer">1</sh:minCount>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&action;value"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:targetClass rdf:resource="&action;ActionArgumentFacet"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="&action;ActionEstimationFacet">
+		<rdf:type rdf:resource="&owl;Class"/>
+		<rdf:type rdf:resource="&sh;NodeShape"/>
+		<rdfs:subClassOf rdf:resource="&core;Facet"/>
+		<rdfs:label xml:lang="en">ActionEstimationFacet</rdfs:label>
+		<rdfs:comment xml:lang="en">An action estimation facet is a grouping of characteristics unique to decision-focused approximation aspects for an action that may potentially be performed.</rdfs:comment>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;string"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&action;estimatedCost"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;string"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&action;estimatedEfficacy"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;string"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&action;estimatedImpact"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;string"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&action;objective"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:targetClass rdf:resource="&action;ActionEstimationFacet"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="&action;ActionFrequencyFacet">
+		<rdf:type rdf:resource="&owl;Class"/>
+		<rdf:type rdf:resource="&sh;NodeShape"/>
+		<rdfs:subClassOf rdf:resource="&core;Facet"/>
+		<rdfs:label xml:lang="en">ActionFrequencyFacet</rdfs:label>
+		<rdfs:comment xml:lang="en">An action frequency facet is a grouping of characteristics unique to the frequency of occurrence for an action.</rdfs:comment>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;decimal"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:minCount rdf:datatype="&xsd;integer">1</sh:minCount>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&action;rate"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;string"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:minCount rdf:datatype="&xsd;integer">1</sh:minCount>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&action;scale"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;string"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:minCount rdf:datatype="&xsd;integer">1</sh:minCount>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&action;units"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&vocabulary;TrendVocab"/>
+				<sh:message>Value is outside the default vocabulary TrendVocab.</sh:message>
+				<sh:path rdf:resource="&action;trend"/>
+				<sh:severity rdf:resource="&sh;Info"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:minCount rdf:datatype="&xsd;integer">1</sh:minCount>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:or rdf:parseType="Collection">
+					<rdf:Description>
+						<sh:datatype rdf:resource="&vocabulary;TrendVocab"/>
+					</rdf:Description>
+					<rdf:Description>
+						<sh:datatype rdf:resource="&xsd;string"/>
+					</rdf:Description>
+				</sh:or>
+				<sh:path rdf:resource="&action;trend"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:message>Value is not member of the vocabulary TrendVocab.</sh:message>
+				<sh:or rdf:parseType="Collection">
+					<rdf:Description>
+						<sh:datatype rdf:resource="&vocabulary;TrendVocab"/>
+						<sh:in rdf:resource="&vocabulary;TrendVocab-members"/>
+					</rdf:Description>
+					<rdf:Description>
+						<sh:datatype rdf:resource="&xsd;string"/>
+					</rdf:Description>
+				</sh:or>
+				<sh:path rdf:resource="&action;trend"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:targetClass rdf:resource="&action;ActionFrequencyFacet"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="&action;ActionLifecycle">
+		<rdf:type rdf:resource="&owl;Class"/>
+		<rdf:type rdf:resource="&sh;NodeShape"/>
+		<rdfs:subClassOf rdf:resource="&action;Action"/>
+		<rdfs:label xml:lang="en">ActionLifecycle</rdfs:label>
+		<rdfs:comment xml:lang="en">An action lifecycle is an action pattern consisting of an ordered set of multiple actions or subordinate action lifecycles.</rdfs:comment>
+		<sh:property>
+			<rdf:Description>
+				<sh:class rdf:resource="&action;ArrayOfAction"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:minCount rdf:datatype="&xsd;integer">1</sh:minCount>
+				<sh:nodeKind rdf:resource="&sh;BlankNodeOrIRI"/>
+				<sh:path rdf:resource="&action;phase"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:class rdf:resource="&core;UcoObject"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">0</sh:maxCount>
+				<sh:nodeKind rdf:resource="&sh;BlankNodeOrIRI"/>
+				<sh:path rdf:resource="&action;error"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;dateTime"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">0</sh:maxCount>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&action;endTime"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;dateTime"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">0</sh:maxCount>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&action;startTime"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;nonNegativeInteger"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">0</sh:maxCount>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&action;actionCount"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&vocabulary;ActionStatusTypeVocab"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">0</sh:maxCount>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&action;actionStatus"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:targetClass rdf:resource="&action;ActionLifecycle"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="&action;ActionPattern">
+		<rdf:type rdf:resource="&owl;Class"/>
+		<rdf:type rdf:resource="&sh;NodeShape"/>
+		<rdfs:subClassOf rdf:resource="&action;Action"/>
+		<rdfs:subClassOf rdf:resource="&pattern;Pattern"/>
+		<rdfs:label xml:lang="en">ActionPattern</rdfs:label>
+		<rdfs:comment xml:lang="en">An action pattern is a grouping of characteristics unique to a combination of actions forming a consistent or characteristic arrangement.</rdfs:comment>
+		<sh:targetClass rdf:resource="&action;ActionPattern"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="&action;ArrayOfAction">
+		<rdf:type rdf:resource="&owl;Class"/>
+		<rdf:type rdf:resource="&sh;NodeShape"/>
+		<rdfs:label xml:lang="en">ArrayOfAction</rdfs:label>
+		<rdfs:comment xml:lang="en">An array of action is an ordered list of references to things that may be done or performed.</rdfs:comment>
+		<sh:property>
+			<rdf:Description>
+				<sh:class rdf:resource="&action;Action"/>
+				<sh:minCount rdf:datatype="&xsd;integer">1</sh:minCount>
+				<sh:nodeKind rdf:resource="&sh;BlankNodeOrIRI"/>
+				<sh:path rdf:resource="&action;action"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:targetClass rdf:resource="&action;ArrayOfAction"/>
+	</rdf:Description>
+	
+	<owl:ObjectProperty rdf:about="&action;action">
+		<rdfs:label xml:lang="en">action</rdfs:label>
+		<rdfs:comment xml:lang="en">A characterization of a single action.</rdfs:comment>
+		<rdfs:range rdf:resource="&action;Action"/>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&action;actionCount">
+		<rdfs:label xml:lang="en">actionCount</rdfs:label>
+		<rdfs:comment xml:lang="en">The number of times that the action was performed.</rdfs:comment>
+		<rdfs:range rdf:resource="&xsd;nonNegativeInteger"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&action;actionStatus">
+		<rdfs:label xml:lang="en">actionStatus</rdfs:label>
+		<rdfs:comment xml:lang="en">The current state of the action.</rdfs:comment>
+		<rdfs:range>
+			<rdfs:Datatype>
+				<owl:unionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&vocabulary;ActionStatusTypeVocab">
+					</rdf:Description>
+					<rdf:Description rdf:about="&xsd;string">
+					</rdf:Description>
+				</owl:unionOf>
+			</rdfs:Datatype>
+		</rdfs:range>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&action;argumentName">
+		<rdfs:label xml:lang="en">argumentName</rdfs:label>
+		<rdfs:comment xml:lang="en">The identifying label of an argument.</rdfs:comment>
+		<rdfs:range rdf:resource="&xsd;string"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&action;endTime">
+		<rdfs:label xml:lang="en">endTime</rdfs:label>
+		<rdfs:comment xml:lang="en">The time at which performance of the action ended.</rdfs:comment>
+		<rdfs:range rdf:resource="&xsd;dateTime"/>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="&action;environment">
+		<rdfs:label xml:lang="en">environment</rdfs:label>
+		<rdfs:comment xml:lang="en">The environment wherein an action occurs.</rdfs:comment>
+		<rdfs:range rdf:resource="&core;UcoObject"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&action;error">
+		<rdfs:label xml:lang="en">error</rdfs:label>
+		<rdfs:comment xml:lang="en">A characterization of the differences between the expected and the actual performance of the action.</rdfs:comment>
+		<rdfs:range rdf:resource="&core;UcoObject"/>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&action;estimatedCost">
+		<rdfs:label xml:lang="en">estimatedCost</rdfs:label>
+		<rdfs:comment xml:lang="en">An estimation of the cost if the action is performed.</rdfs:comment>
+		<rdfs:range rdf:resource="&xsd;string"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&action;estimatedEfficacy">
+		<rdfs:label xml:lang="en">estimatedEfficacy</rdfs:label>
+		<rdfs:comment xml:lang="en">An estimation of the effectiveness of the action at achieving its objective if the action is performed.</rdfs:comment>
+		<rdfs:range rdf:resource="&xsd;string"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&action;estimatedImpact">
+		<rdfs:label xml:lang="en">estimatedImpact</rdfs:label>
+		<rdfs:comment xml:lang="en">An estimation of the impact if the action is performed.</rdfs:comment>
+		<rdfs:range rdf:resource="&xsd;string"/>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="&action;instrument">
+		<rdfs:label xml:lang="en">instrument</rdfs:label>
+		<rdfs:comment xml:lang="en">The things used to perform an action.</rdfs:comment>
+		<rdfs:range rdf:resource="&core;UcoObject"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&action;location">
+		<rdfs:label xml:lang="en">location</rdfs:label>
+		<rdfs:comment xml:lang="en">The locations where an action occurs.</rdfs:comment>
+		<rdfs:range rdf:resource="&location;Location"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&action;object">
+		<rdfs:label xml:lang="en">object</rdfs:label>
+		<rdfs:comment xml:lang="en">The things that the action is performed on/against.</rdfs:comment>
+		<rdfs:range rdf:resource="&core;UcoObject"/>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&action;objective">
+		<rdfs:label xml:lang="en">objective</rdfs:label>
+		<rdfs:comment xml:lang="en">The intended purpose for performing the action.</rdfs:comment>
+		<rdfs:range rdf:resource="&xsd;string"/>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="&action;participant">
+		<rdfs:label xml:lang="en">participant</rdfs:label>
+		<rdfs:comment xml:lang="en">The supporting (non-primary) performers of an action.</rdfs:comment>
+		<rdfs:range rdf:resource="&core;UcoObject"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&action;performer">
+		<rdfs:label xml:lang="en">performer</rdfs:label>
+		<rdfs:comment xml:lang="en">The primary performer of an action.</rdfs:comment>
+		<rdfs:range rdf:resource="&core;UcoObject"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&action;phase">
+		<rdfs:subPropertyOf rdf:resource="&action;subaction"/>
+		<rdfs:label xml:lang="en">phase</rdfs:label>
+		<rdfs:comment xml:lang="en">The ordered set of actions or sub action-lifecycles that represent the action lifecycle.</rdfs:comment>
+		<rdfs:range rdf:resource="&action;ArrayOfAction"/>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&action;rate">
+		<rdfs:label xml:lang="en">rate</rdfs:label>
+		<rdfs:comment xml:lang="en">The frequency rate for the occurence of an action.</rdfs:comment>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="&action;result">
+		<rdfs:label xml:lang="en">result</rdfs:label>
+		<rdfs:comment xml:lang="en">The things resulting from performing an action.</rdfs:comment>
+		<rdfs:range rdf:resource="&core;UcoObject"/>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&action;scale">
+		<rdfs:label xml:lang="en">scale</rdfs:label>
+		<rdfs:comment xml:lang="en">The time scale utilized for the frequency rate count for the occurence of an action.</rdfs:comment>
+		<rdfs:range rdf:resource="&xsd;string"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&action;startTime">
+		<rdfs:label xml:lang="en">startTime</rdfs:label>
+		<rdfs:comment xml:lang="en">The time at which performance of the action began.</rdfs:comment>
+		<rdfs:range rdf:resource="&xsd;dateTime"/>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="&action;subaction">
+		<rdfs:label xml:lang="en">subaction</rdfs:label>
+		<rdfs:comment xml:lang="en">References to other actions that make up part of a larger more complex action.</rdfs:comment>
+		<rdfs:range rdf:resource="&action;Action"/>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&action;trend">
+		<rdfs:label xml:lang="en">trend</rdfs:label>
+		<rdfs:comment xml:lang="en">A characterization of the frequency trend for the occurence of an action.</rdfs:comment>
+		<rdfs:range>
+			<rdfs:Datatype>
+				<owl:unionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="&vocabulary;TrendVocab">
+					</rdf:Description>
+					<rdf:Description rdf:about="&xsd;string">
+					</rdf:Description>
+				</owl:unionOf>
+			</rdfs:Datatype>
+		</rdfs:range>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&action;units">
+		<rdfs:label xml:lang="en">units</rdfs:label>
+		<rdfs:comment xml:lang="en">The units of measure utilized for the frequency rate count for the occurence of an action.</rdfs:comment>
+		<rdfs:range rdf:resource="&xsd;string"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&action;value">
+		<rdfs:label xml:lang="en">value</rdfs:label>
+		<rdfs:comment xml:lang="en">The value of an action parameter.</rdfs:comment>
+		<rdfs:range rdf:resource="&xsd;string"/>
+	</owl:DatatypeProperty>
+
+</rdf:RDF>

@@ -18,10 +18,10 @@ SHELL := /bin/bash
 HOST_PREFIX ?= http://localhost
 
 all: \
-  all-case
+  all-uco
 
 .PHONY: \
-  all-case \
+  all-uco \
   check-service
 
 
@@ -31,11 +31,11 @@ all: \
 # submodule-update doesn't reset a development pointer.
 .git_submodule_init.done.log: \
   .gitmodules
-	test -r dependencies/CASE/README.md \
-	  || (git submodule init dependencies/CASE && git submodule update dependencies/CASE)
-	# Initialize CASE submodules and retrieve rdf-toolkit.
+	test -r dependencies/UCO/README.md \
+	  || (git submodule init dependencies/UCO && git submodule update dependencies/UCO)
+	# Initialize UCO submodules and retrieve rdf-toolkit.
 	$(MAKE) \
-	  --directory dependencies/CASE \
+	  --directory dependencies/UCO \
 	  .git_submodule_init.done.log \
 	  .lib.done.log
 	test -r dependencies/Ontospy/README.md \
@@ -63,11 +63,11 @@ all: \
 	    dependencies/Ontospy[FULL]
 	touch $@
 
-all-case: \
+all-uco: \
   .venv.done.log \
-  dependencies/CASE/tests/case_monolithic.ttl
+  dependencies/UCO/tests/uco_monolithic.ttl
 	$(MAKE) \
-	  --directory case
+	  --directory uco
 
 # Test matrix:
 # Concept broad type: ontology, class, or property
@@ -76,114 +76,114 @@ check-service:
 	## Ontologies
 	wget \
 	  --output-document _$@ \
-	  $(HOST_PREFIX)/case/vocabulary.ttl
-	diff _$@ case/vocabulary.ttl
+	  $(HOST_PREFIX)/uco/vocabulary.ttl
+	diff _$@ uco/vocabulary.ttl
 	rm _$@
 	wget \
 	  --output-document _$@ \
-	  $(HOST_PREFIX)/case/vocabulary.rdf
-	diff _$@ case/vocabulary.rdf
+	  $(HOST_PREFIX)/uco/vocabulary.rdf
+	diff _$@ uco/vocabulary.rdf
 	rm _$@
 	wget \
 	  --header 'Accept: text/turtle' \
 	  --output-document _$@ \
-	  $(HOST_PREFIX)/case/vocabulary
-	diff _$@ case/vocabulary.ttl
+	  $(HOST_PREFIX)/uco/vocabulary
+	diff _$@ uco/vocabulary.ttl
 	rm _$@
 	wget \
 	  --header 'Accept: application/rdf+xml' \
 	  --output-document _$@ \
-	  $(HOST_PREFIX)/case/vocabulary
-	diff _$@ case/vocabulary.rdf
+	  $(HOST_PREFIX)/uco/vocabulary
+	diff _$@ uco/vocabulary.rdf
 	rm _$@
 	## Classes
 	wget \
 	  --output-document _$@ \
-	  $(HOST_PREFIX)/case/investigation/ProvenanceRecord
+	  $(HOST_PREFIX)/uco/investigation/ProvenanceRecord
 	# NOTE - no comparison test done, default behavior just needs to not return a server error.
 	rm _$@
 	wget \
 	  --header 'Accept: text/html' \
 	  --output-document _$@ \
-	  $(HOST_PREFIX)/case/investigation/ProvenanceRecord
-	diff _$@ case/investigation/ProvenanceRecord.html
+	  $(HOST_PREFIX)/uco/investigation/ProvenanceRecord
+	diff _$@ uco/investigation/ProvenanceRecord.html
 	rm _$@
 #	#TODO - Turtle breakout needs to be written.
 #	wget \
 #	  --header 'Accept: text/turtle' \
 #	  --output-document _$@ \
-#	  $(HOST_PREFIX)/case/investigation/ProvenanceRecord
-#	diff _$@ case/investigation/ProvenanceRecord.ttl
+#	  $(HOST_PREFIX)/uco/investigation/ProvenanceRecord
+#	diff _$@ uco/investigation/ProvenanceRecord.ttl
 #	rm _$@
 #	#TODO - Turtle RDF-XML breakout needs to be written.
 #	wget \
 #	  --header 'Accept: application/rdf+xml' \
 #	  --output-document _$@ \
-#	  $(HOST_PREFIX)/case/investigation/ProvenanceRecord
-#	diff _$@ case/investigation/ProvenanceRecord.rdf
+#	  $(HOST_PREFIX)/uco/investigation/ProvenanceRecord
+#	diff _$@ uco/investigation/ProvenanceRecord.rdf
 #	rm _$@
 	## Properties
 	wget \
 	  --output-document _$@ \
-	  $(HOST_PREFIX)/case/investigation/exhibitNumber
+	  $(HOST_PREFIX)/uco/investigation/exhibitNumber
 	# NOTE - no comparison test done, default behavior just needs to not return a server error.
 	rm _$@
 	wget \
 	  --header 'Accept: text/html' \
 	  --output-document _$@ \
-	  $(HOST_PREFIX)/case/investigation/exhibitNumber
-	diff _$@ case/investigation/exhibitNumber.html
+	  $(HOST_PREFIX)/uco/investigation/exhibitNumber
+	diff _$@ uco/investigation/exhibitNumber.html
 	rm _$@
 #	#TODO - Turtle breakout needs to be written.
 #	wget \
 #	  --header 'Accept: text/turtle' \
 #	  --output-document _$@ \
-#	  $(HOST_PREFIX)/case/investigation/exhibitNumber
-#	diff _$@ case/investigation/exhibitNumber.ttl
+#	  $(HOST_PREFIX)/uco/investigation/exhibitNumber
+#	diff _$@ uco/investigation/exhibitNumber.ttl
 #	rm _$@
 #	#TODO - Turtle RDF-XML breakout needs to be written.
 #	wget \
 #	  --header 'Accept: application/rdf+xml' \
 #	  --output-document _$@ \
-#	  $(HOST_PREFIX)/case/investigation/exhibitNumber
-#	diff _$@ case/investigation/exhibitNumber.rdf
+#	  $(HOST_PREFIX)/uco/investigation/exhibitNumber
+#	diff _$@ uco/investigation/exhibitNumber.rdf
 #	rm _$@
 	# Confirm documentation index is reachable.
 	wget \
 	  --output-document _$@ \
-	  $(HOST_PREFIX)/case/documentation/
-	diff _$@ case/documentation/index.html
+	  $(HOST_PREFIX)/uco/documentation/
+	diff _$@ uco/documentation/index.html
 	rm _$@
 	# Confirm HTML index for non-umbrella namespaces are redirected to umbrella documentation index.
 	wget \
 	  --header 'Accept: text/html' \
 	  --output-document _$@ \
-	  $(HOST_PREFIX)/case/investigation/
-	diff _$@ case/documentation/index.html
+	  $(HOST_PREFIX)/uco/investigation/
+	diff _$@ uco/documentation/index.html
 	rm _$@
 	@echo >&2
 	@echo "INFO:Makefile:Service tests pass!" >&2
 
 clean:
 	@$(MAKE) \
-	  --directory case \
+	  --directory uco \
 	  clean
 	@rm -f .*.done.log
-	@test ! -r dependencies/CASE/README.md \
+	@test ! -r dependencies/UCO/README.md \
 	  || $(MAKE) \
-	    --directory dependencies/CASE \
+	    --directory dependencies/UCO \
 	    clean
-	@# Revert status of test files, to avoid CASE submodule irrelevantly reporting as dirty.
-	@cd dependencies/CASE \
+	@# Revert status of test files, to avoid UCO submodule irrelevantly reporting as dirty.
+	@cd dependencies/UCO \
 	  && git checkout -- tests/examples
 
-dependencies/CASE/tests/case_monolithic.ttl: \
+dependencies/UCO/tests/uco_monolithic.ttl: \
   .git_submodule_init.done.log
 	$(MAKE) \
-	  --directory dependencies/CASE/tests \
-	  case_monolithic.ttl
+	  --directory dependencies/UCO/tests \
+	  uco_monolithic.ttl
 	# Clean up superfluous artifact.  TODO - This step can be removed after the 0.3.0 release of the referenced tool.
-	rm -rf dependencies/CASE/dependencies/UCO/dependencies/CASE-Utility-SHACL-Inheritance-Review/build
+	rm -rf dependencies/UCO/dependencies/UCO/dependencies/CASE-Utility-SHACL-Inheritance-Review/build
 	# Guarantee file is built and timestamp is up to date.
 	test -r $@
 	touch $@

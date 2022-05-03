@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rdf:RDF
+	xmlns:core="https://ontology.unifiedcyberontology.org/uco/core/"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:sh="http://www.w3.org/ns/shacl#"
+	xmlns:types="https://ontology.unifiedcyberontology.org/uco/types/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+	
+	<owl:Ontology rdf:about="https://ontology.unifiedcyberontology.org/uco/uco">
+		<rdfs:label xml:lang="en">uco-master</rdfs:label>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/action"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/core"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/location"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/marking"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/observable"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/pattern"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/role"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/time"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/types"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/victim"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/vocabulary"/>
+		<owl:versionInfo>0.8.0</owl:versionInfo>
+	</owl:Ontology>
+	
+	<rdf:Description rdf:about="&core;id">
+		<rdfs:range rdf:resource="&types;Identifier"/>
+	</rdf:Description>
+
+</rdf:RDF>

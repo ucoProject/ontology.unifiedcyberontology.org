@@ -1,0 +1,601 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rdf:RDF
+	xmlns:core="https://ontology.unifiedcyberontology.org/uco/core/"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:sh="http://www.w3.org/ns/shacl#"
+	xmlns:types="https://ontology.unifiedcyberontology.org/uco/types/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+	
+	<owl:Ontology rdf:about="https://ontology.unifiedcyberontology.org/uco/core">
+		<rdfs:label xml:lang="en">uco-core</rdfs:label>
+		<rdfs:comment xml:lang="en">This ontology defines classes and properties that are shared across the various UCO ontologies.  At a high-level, the UCO core ontology provides base classes, relationship-oriented classes, content-aggregation classes, and shared classes.</rdfs:comment>
+	</owl:Ontology>
+	
+	<rdf:Description rdf:about="&core;Annotation">
+		<rdf:type rdf:resource="&owl;Class"/>
+		<rdf:type rdf:resource="&sh;NodeShape"/>
+		<rdfs:subClassOf rdf:resource="&core;Assertion"/>
+		<rdfs:label xml:lang="en">Annotation</rdfs:label>
+		<rdfs:comment xml:lang="en">An annotation is an assertion made in relation to one or more objects.</rdfs:comment>
+		<sh:property>
+			<rdf:Description>
+				<sh:class rdf:resource="&core;UcoObject"/>
+				<sh:minCount rdf:datatype="&xsd;integer">1</sh:minCount>
+				<sh:nodeKind rdf:resource="&sh;BlankNodeOrIRI"/>
+				<sh:path rdf:resource="&core;object"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:targetClass rdf:resource="&core;Annotation"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="&core;Assertion">
+		<rdf:type rdf:resource="&owl;Class"/>
+		<rdf:type rdf:resource="&sh;NodeShape"/>
+		<rdfs:subClassOf rdf:resource="&core;UcoObject"/>
+		<rdfs:label xml:lang="en">Assertion</rdfs:label>
+		<rdfs:comment xml:lang="en">An assertion is a statement declared to be true.</rdfs:comment>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;string"/>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&core;statement"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:targetClass rdf:resource="&core;Assertion"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="&core;AttributedName">
+		<rdf:type rdf:resource="&owl;Class"/>
+		<rdf:type rdf:resource="&sh;NodeShape"/>
+		<rdfs:subClassOf rdf:resource="&core;UcoObject"/>
+		<rdfs:label xml:lang="en">AttributedName</rdfs:label>
+		<rdfs:comment xml:lang="en">An attributed name is a name of an entity issued by some attributed naming authority.</rdfs:comment>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;string"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&core;namingAuthority"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:targetClass rdf:resource="&core;AttributedName"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="&core;Bundle">
+		<rdf:type rdf:resource="&owl;Class"/>
+		<rdf:type rdf:resource="&sh;NodeShape"/>
+		<rdfs:subClassOf rdf:resource="&core;EnclosingCompilation"/>
+		<rdfs:label xml:lang="en">Bundle</rdfs:label>
+		<rdfs:comment xml:lang="en">A bundle is a container for a grouping of UCO content with no presumption of shared context.</rdfs:comment>
+		<sh:targetClass rdf:resource="&core;Bundle"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="&core;Compilation">
+		<rdf:type rdf:resource="&owl;Class"/>
+		<rdf:type rdf:resource="&sh;NodeShape"/>
+		<rdfs:subClassOf rdf:resource="&core;UcoObject"/>
+		<rdfs:label xml:lang="en">Compilation</rdfs:label>
+		<rdfs:comment xml:lang="en">A compilation is a grouping of things.</rdfs:comment>
+		<sh:targetClass rdf:resource="&core;Compilation"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="&core;ConfidenceFacet">
+		<rdf:type rdf:resource="&owl;Class"/>
+		<rdf:type rdf:resource="&sh;NodeShape"/>
+		<rdfs:subClassOf rdf:resource="&core;Facet"/>
+		<rdfs:label xml:lang="en">ConfidenceFacet</rdfs:label>
+		<rdfs:comment xml:lang="en">A confidence is a grouping of characteristics unique to an asserted level of certainty in the accuracy of some information.</rdfs:comment>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;nonNegativeInteger"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:minCount rdf:datatype="&xsd;integer">1</sh:minCount>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&core;confidence"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:targetClass rdf:resource="&core;ConfidenceFacet"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="&core;ContextualCompilation">
+		<rdf:type rdf:resource="&owl;Class"/>
+		<rdf:type rdf:resource="&sh;NodeShape"/>
+		<rdfs:subClassOf rdf:resource="&core;Compilation"/>
+		<rdfs:label xml:lang="en">ContextualCompilation</rdfs:label>
+		<rdfs:comment xml:lang="en">A contextual compilation is a grouping of things sharing some context (e.g., a set of network connections observed on a given day, all accounts associated with a given person).</rdfs:comment>
+		<sh:property>
+			<rdf:Description>
+				<sh:class rdf:resource="&core;UcoObject"/>
+				<sh:minCount rdf:datatype="&xsd;integer">1</sh:minCount>
+				<sh:nodeKind rdf:resource="&sh;BlankNodeOrIRI"/>
+				<sh:path rdf:resource="&core;object"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:targetClass rdf:resource="&core;ContextualCompilation"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="&core;ControlledVocabulary">
+		<rdf:type rdf:resource="&owl;Class"/>
+		<rdf:type rdf:resource="&sh;NodeShape"/>
+		<rdfs:subClassOf rdf:resource="&core;UcoObject"/>
+		<rdfs:label xml:lang="en">ControlledVocabulary</rdfs:label>
+		<rdfs:comment xml:lang="en">A controlled vocabulary is an explicitly constrained set of string values.</rdfs:comment>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;anyURI"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&core;constrainingVocabularyReference"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;string"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:minCount rdf:datatype="&xsd;integer">1</sh:minCount>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&core;value"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;string"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&core;constrainingVocabularyName"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:targetClass rdf:resource="&core;ControlledVocabulary"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="&core;EnclosingCompilation">
+		<rdf:type rdf:resource="&owl;Class"/>
+		<rdf:type rdf:resource="&sh;NodeShape"/>
+		<rdfs:subClassOf rdf:resource="&core;Compilation"/>
+		<rdfs:label xml:lang="en">EnclosingCompilation</rdfs:label>
+		<rdfs:comment xml:lang="en">An enclosing compilation is a container for a grouping of things.</rdfs:comment>
+		<sh:property>
+			<rdf:Description>
+				<sh:class rdf:resource="&core;UcoObject"/>
+				<sh:minCount rdf:datatype="&xsd;integer">1</sh:minCount>
+				<sh:nodeKind rdf:resource="&sh;BlankNodeOrIRI"/>
+				<sh:path rdf:resource="&core;object"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:targetClass rdf:resource="&core;EnclosingCompilation"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="&core;ExternalReference">
+		<rdf:type rdf:resource="&owl;Class"/>
+		<rdf:type rdf:resource="&sh;NodeShape"/>
+		<rdfs:label xml:lang="en">ExternalReference</rdfs:label>
+		<rdfs:comment xml:lang="en">Characteristics of a reference to a resource outside of the UCO.</rdfs:comment>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;anyURI"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&core;referenceURL"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;string"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&core;definingContext"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;string"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&core;externalIdentifier"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:targetClass rdf:resource="&core;ExternalReference"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="&core;Facet">
+		<rdf:type rdf:resource="&owl;Class"/>
+		<rdf:type rdf:resource="&sh;NodeShape"/>
+		<rdfs:label xml:lang="en">Facet</rdfs:label>
+		<rdfs:comment xml:lang="en">A facet is a grouping of characteristics unique to a particular aspect of an object.</rdfs:comment>
+		<sh:targetClass rdf:resource="&core;Facet"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="&core;Grouping">
+		<rdf:type rdf:resource="&owl;Class"/>
+		<rdf:type rdf:resource="&sh;NodeShape"/>
+		<rdfs:subClassOf rdf:resource="&core;ContextualCompilation"/>
+		<rdfs:label xml:lang="en">Grouping</rdfs:label>
+		<rdfs:comment xml:lang="en">A grouping is a compilation of referenced UCO content with a shared context.</rdfs:comment>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;string"/>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&core;context"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:targetClass rdf:resource="&core;Grouping"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="&core;IdentityAbstraction">
+		<rdf:type rdf:resource="&owl;Class"/>
+		<rdf:type rdf:resource="&sh;NodeShape"/>
+		<rdfs:subClassOf rdf:resource="&core;UcoObject"/>
+		<rdfs:label xml:lang="en">IdentityAbstraction</rdfs:label>
+		<rdfs:comment xml:lang="en">An identity abstraction is a grouping of identifying characteristics unique to an individual or organization. This class is an ontological structural abstraction for this concept. Implementations of this concept should utilize the identity:Identity class.</rdfs:comment>
+		<sh:targetClass rdf:resource="&core;IdentityAbstraction"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="&core;Item">
+		<rdf:type rdf:resource="&owl;Class"/>
+		<rdf:type rdf:resource="&sh;NodeShape"/>
+		<rdfs:subClassOf rdf:resource="&core;UcoObject"/>
+		<rdfs:label xml:lang="en">Item</rdfs:label>
+		<rdfs:comment xml:lang="en">An item is a distinct article or unit.</rdfs:comment>
+		<sh:targetClass rdf:resource="&core;Item"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="&core;MarkingDefinitionAbstraction">
+		<rdf:type rdf:resource="&owl;Class"/>
+		<rdf:type rdf:resource="&sh;NodeShape"/>
+		<rdfs:subClassOf rdf:resource="&core;UcoObject"/>
+		<rdfs:label xml:lang="en">MarkingDefinitionAbstraction</rdfs:label>
+		<rdfs:comment xml:lang="en">A marking definition abstraction is a grouping of characteristics unique to the expression of a specific data marking conveying restrictions, permissions, and other guidance for how marked data can be used and shared. This class is an ontological structural abstraction for this concept. Implementations of this concept should utilize the marking:MarkingDefinition class.</rdfs:comment>
+		<sh:targetClass rdf:resource="&core;MarkingDefinitionAbstraction"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="&core;ModusOperandi">
+		<rdf:type rdf:resource="&owl;Class"/>
+		<rdf:type rdf:resource="&sh;NodeShape"/>
+		<rdfs:subClassOf rdf:resource="&core;UcoObject"/>
+		<rdfs:label xml:lang="en">ModusOperandi</rdfs:label>
+		<rdfs:comment xml:lang="en">A modus operandi is a particular method of operation (how a particular entity behaves or the resources they use).</rdfs:comment>
+		<sh:targetClass rdf:resource="&core;ModusOperandi"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="&core;Relationship">
+		<rdf:type rdf:resource="&owl;Class"/>
+		<rdf:type rdf:resource="&sh;NodeShape"/>
+		<rdfs:subClassOf rdf:resource="&core;UcoObject"/>
+		<rdfs:label xml:lang="en">Relationship</rdfs:label>
+		<rdfs:comment xml:lang="en">A relationship is a grouping of characteristics unique to an assertion that one or more objects are related to another object in some way.</rdfs:comment>
+		<sh:property>
+			<rdf:Description>
+				<sh:class rdf:resource="&core;UcoObject"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:minCount rdf:datatype="&xsd;integer">1</sh:minCount>
+				<sh:nodeKind rdf:resource="&sh;BlankNodeOrIRI"/>
+				<sh:path rdf:resource="&core;target"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:class rdf:resource="&core;UcoObject"/>
+				<sh:minCount rdf:datatype="&xsd;integer">1</sh:minCount>
+				<sh:nodeKind rdf:resource="&sh;BlankNodeOrIRI"/>
+				<sh:path rdf:resource="&core;source"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;boolean"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:minCount rdf:datatype="&xsd;integer">1</sh:minCount>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&core;isDirectional"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;dateTime"/>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&core;endTime"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;dateTime"/>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&core;startTime"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;string"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&core;kindOfRelationship"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:targetClass rdf:resource="&core;Relationship"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="&core;UcoObject">
+		<rdf:type rdf:resource="&owl;Class"/>
+		<rdf:type rdf:resource="&sh;NodeShape"/>
+		<rdfs:label xml:lang="en">UcoObject</rdfs:label>
+		<rdfs:comment xml:lang="en">A UCO object is a representation of a fundamental concept either directly inherent to the cyber domain or indirectly related to the cyber domain and necessary for contextually characterizing cyber domain concepts and relationships. Within the Unified Cyber Ontology (UCO) structure this is the base class acting as a consistent, unifying and interoperable foundation for all explicit and inter-relatable content objects.</rdfs:comment>
+		<sh:property>
+			<rdf:Description>
+				<sh:class rdf:resource="&core;ExternalReference"/>
+				<sh:minCount rdf:datatype="&xsd;integer">0</sh:minCount>
+				<sh:nodeKind rdf:resource="&sh;BlankNodeOrIRI"/>
+				<sh:path rdf:resource="&core;externalReference"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:class rdf:resource="&core;Facet"/>
+				<sh:nodeKind rdf:resource="&sh;BlankNodeOrIRI"/>
+				<sh:path rdf:resource="&core;hasFacet"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:class rdf:resource="&core;IdentityAbstraction"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="&sh;BlankNodeOrIRI"/>
+				<sh:path rdf:resource="&core;createdBy"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:class rdf:resource="&core;MarkingDefinitionAbstraction"/>
+				<sh:nodeKind rdf:resource="&sh;BlankNodeOrIRI"/>
+				<sh:path rdf:resource="&core;objectMarking"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;dateTime"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&core;objectCreatedTime"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;dateTime"/>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&core;modifiedTime"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;string"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&core;name"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;string"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&core;specVersion"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;string"/>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&core;description"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;string"/>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&core;tag"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&xsd;string"/>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&core;type"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="&types;Identifier"/>
+				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:path rdf:resource="&core;id"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:targetClass rdf:resource="&core;UcoObject"/>
+	</rdf:Description>
+	
+	<owl:DatatypeProperty rdf:about="&core;confidence">
+		<rdfs:label xml:lang="en">confidence</rdfs:label>
+		<rdfs:comment xml:lang="en">An asserted level of certainty in the accuracy of some information.</rdfs:comment>
+		<rdfs:range>
+			<rdfs:Datatype>
+				<owl:onDatatype rdf:resource="&xsd;nonNegativeInteger"/>
+				<owl:withRestrictions rdf:parseType="Collection">
+					<rdf:Description>
+						<xsd:maxInclusive rdf:datatype="&xsd;nonNegativeInteger">100</xsd:maxInclusive>
+					</rdf:Description>
+				</owl:withRestrictions>
+			</rdfs:Datatype>
+		</rdfs:range>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&core;constrainingVocabularyName">
+		<rdfs:label xml:lang="en">constrainingVocabularyName</rdfs:label>
+		<rdfs:comment xml:lang="en">The name of an explicitly constrained set of string values.</rdfs:comment>
+		<rdfs:range rdf:resource="&xsd;string"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&core;constrainingVocabularyReference">
+		<rdfs:label xml:lang="en">constrainingVocabularyReference</rdfs:label>
+		<rdfs:comment xml:lang="en">A reference to a specification for an explicitly constrained set of string values. The specification may be unstructured (e.g., web page listing string values) or structured (e.g. RDF/OWL enumeration).</rdfs:comment>
+		<rdfs:range rdf:resource="&xsd;anyURI"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&core;context">
+		<rdfs:label xml:lang="en">context</rdfs:label>
+		<rdfs:comment xml:lang="en">A description of particular contextual affinity.</rdfs:comment>
+		<rdfs:range rdf:resource="&xsd;string"/>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="&core;createdBy">
+		<rdfs:label xml:lang="en">createdBy</rdfs:label>
+		<rdfs:comment xml:lang="en">The identity that created a characterization of a concept.</rdfs:comment>
+		<rdfs:range rdf:resource="&core;IdentityAbstraction"/>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&core;definingContext">
+		<rdfs:label xml:lang="en">definingContext</rdfs:label>
+		<rdfs:comment xml:lang="en">A description of the context relevant to the definition of a particular external reference identifier.</rdfs:comment>
+		<rdfs:range rdf:resource="&xsd;string"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&core;description">
+		<rdfs:label xml:lang="en">description</rdfs:label>
+		<rdfs:comment xml:lang="en">A description of a particular concept characterization.</rdfs:comment>
+		<rdfs:range rdf:resource="&xsd;string"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&core;endTime">
+		<rdfs:label xml:lang="en">endTime</rdfs:label>
+		<rdfs:comment xml:lang="en">The ending time of a time range.</rdfs:comment>
+		<rdfs:range rdf:resource="&xsd;dateTime"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&core;externalIdentifier">
+		<rdfs:label xml:lang="en">externalIdentifier</rdfs:label>
+		<rdfs:comment xml:lang="en">An identifier for some information defined external to the UCO context.</rdfs:comment>
+		<rdfs:range rdf:resource="&xsd;string"/>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="&core;externalReference">
+		<rdfs:label xml:lang="en-US">External Reference</rdfs:label>
+		<rdfs:comment xml:lang="en-US">Specifies a reference to a resource outside of the UCO.</rdfs:comment>
+		<rdfs:range rdf:resource="&core;ExternalReference"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="&core;hasFacet">
+		<rdfs:label xml:lang="en">hasFacet</rdfs:label>
+		<rdfs:comment xml:lang="en">Further sets of properties characterizing a concept based on the particular context of the class and of the particular instance of the concept being characterized.</rdfs:comment>
+		<rdfs:range rdf:resource="&core;Facet"/>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&core;id">
+		<rdfs:label xml:lang="en">id</rdfs:label>
+		<rdfs:comment xml:lang="en">A globally unique identifier for a characterization of a concept.</rdfs:comment>
+		<rdfs:range rdf:resource="&types;Identifier"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&core;isDirectional">
+		<rdfs:label xml:lang="en">isDirectional</rdfs:label>
+		<rdfs:comment xml:lang="en">A specification whether or not a relationship assertion is limited to the context FROM a source object(s) TO a target object.</rdfs:comment>
+		<rdfs:range rdf:resource="&xsd;boolean"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&core;kindOfRelationship">
+		<rdfs:label xml:lang="en">kindOfRelationship</rdfs:label>
+		<rdfs:comment xml:lang="en">A characterization of the nature of a relationship between objects.</rdfs:comment>
+		<rdfs:range rdf:resource="&xsd;string"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&core;modifiedTime">
+		<rdfs:label xml:lang="en">modifiedTime</rdfs:label>
+		<rdfs:comment xml:lang="en-us">Specifies the time that this particular version of the object was modified. The object creator can use the time it deems most appropriate as the time this version of the object was modified. The value of the modified property for a given object version MUST be later than or equal to the value of the created property. Object creators MUST update the modified property when creating a new version of an object. The modified timestamp MUST be precise to the nearest millisecond (exactly three digits after the decimal place in seconds).</rdfs:comment>
+		<rdfs:range rdf:resource="&xsd;dateTime"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&core;name">
+		<rdfs:label xml:lang="en">name</rdfs:label>
+		<rdfs:comment xml:lang="en">The name of a particular concept characterization.</rdfs:comment>
+		<rdfs:range rdf:resource="&xsd;string"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&core;namingAuthority">
+		<rdfs:label xml:lang="en">namingAuthority</rdfs:label>
+		<rdfs:comment xml:lang="en">Specifies the naming authority that issued the name of the entity.</rdfs:comment>
+		<rdfs:range rdf:resource="&xsd;string"/>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="&core;object">
+		<rdfs:label xml:lang="en">object</rdfs:label>
+		<rdfs:comment xml:lang="en">Specifies one or more UcoObjects.</rdfs:comment>
+		<rdfs:range rdf:resource="&core;UcoObject"/>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&core;objectCreatedTime">
+		<rdfs:label xml:lang="en">objectCreatedTime</rdfs:label>
+		<rdfs:comment xml:lang="en">The time at which a characterization of a concept is created. This time pertains to the time of creating the record object, and is not an intrinsic characteristic of the concept.</rdfs:comment>
+		<rdfs:range rdf:resource="&xsd;dateTime"/>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="&core;objectMarking">
+		<rdfs:label xml:lang="en">objectMarking</rdfs:label>
+		<rdfs:comment xml:lang="en">Marking definitions to be applied to a particular concept characterization in its entirety.</rdfs:comment>
+		<rdfs:range rdf:resource="&core;MarkingDefinitionAbstraction"/>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&core;referenceURL">
+		<rdfs:label xml:lang="en">referenceURL</rdfs:label>
+		<rdfs:comment xml:lang="en">A URL for some information defined external to the UCO context.</rdfs:comment>
+		<rdfs:range rdf:resource="&xsd;anyURI"/>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="&core;source">
+		<rdfs:label xml:lang="en">source</rdfs:label>
+		<rdfs:comment xml:lang="en">The originating node of a specified relationship.</rdfs:comment>
+		<rdfs:range rdf:resource="&core;UcoObject"/>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&core;specVersion">
+		<rdfs:label xml:lang="en">specVersion</rdfs:label>
+		<rdfs:comment xml:lang="en">The version of UCO ontology or subontology specification used to characterize a concept.</rdfs:comment>
+		<rdfs:range rdf:resource="&xsd;string"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&core;startTime">
+		<rdfs:label xml:lang="en">startTime</rdfs:label>
+		<rdfs:comment xml:lang="en">The initial time of a time range.</rdfs:comment>
+		<rdfs:range rdf:resource="&xsd;dateTime"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&core;statement">
+		<rdfs:label xml:lang="en">statement</rdfs:label>
+		<rdfs:comment xml:lang="en">A textual statement of an assertion.</rdfs:comment>
+		<rdfs:range rdf:resource="&xsd;string"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&core;tag">
+		<rdfs:label xml:lang="en">tag</rdfs:label>
+		<rdfs:comment xml:lang="en">A generic tag/label.</rdfs:comment>
+		<rdfs:range rdf:resource="&xsd;string"/>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="&core;target">
+		<rdfs:label xml:lang="en">target</rdfs:label>
+		<rdfs:comment xml:lang="en">The terminating node of a specified relationship.</rdfs:comment>
+		<rdfs:range rdf:resource="&core;UcoObject"/>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&core;type">
+		<rdfs:label xml:lang="en">type</rdfs:label>
+		<rdfs:comment xml:lang="en">The explicitly-defined type of characterization of a concept.</rdfs:comment>
+		<rdfs:range rdf:resource="&xsd;string"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&core;value">
+		<rdfs:label xml:lang="en">value</rdfs:label>
+		<rdfs:comment xml:lang="en">A string value.</rdfs:comment>
+		<rdfs:range rdf:resource="&xsd;string"/>
+	</owl:DatatypeProperty>
+
+</rdf:RDF>
