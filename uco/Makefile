@@ -59,7 +59,7 @@ all: \
 	source $(top_srcdir)/venv/bin/activate \
 	  && ontospy gendocs \
 	    --outputpath $$PWD/documentation \
-	    --theme united \
+	    --theme darkly \
 	    --title uco-0.8.0-docs \
 	    --type 2 \
 	    $(top_srcdir)/dependencies/UCO/tests/uco_monolithic.ttl
