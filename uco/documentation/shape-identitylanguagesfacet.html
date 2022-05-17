@@ -26,7 +26,7 @@
     <!-- <link href="static/libs/bootstrap-3_3_7-dist/css/bootstrap.min.css" rel="stylesheet">  -->
     <!-- Bootswatch:  -->
     <!-- cerulean  | cyborg |  flatly |  lumen |  sandstone |   spacelab  |  yeti | cosmo |  darkly |  paper | simplex | superhero |  journal | readable  |   slate |  united -->
-    <link href="static/libs/bootswatch3_2/united/bootstrap.min.css" rel="stylesheet">
+    <link href="static/libs/bootswatch3_2/darkly/bootstrap.min.css" rel="stylesheet">
     <link href="static/custom/css/simple-sidebar.css" rel="stylesheet">
     <link href="static/custom/css/familytree.css" rel="stylesheet">
     <link href="static/custom/css/tabletree.css" rel="stylesheet">
@@ -231,6 +231,11 @@
 
 
 
+
+/* override default footer background for dark themes only */
+.footer {
+  background-color: inherit;
+}
 
 
 
@@ -2905,7 +2910,7 @@
   <footer class="footer">
     <div class="container">
     
-      <p class="text-muted">Documentation automatically generated on 3rd May 2022 with <a href="http://lambdamusic.github.io/Ontospy/">Ontospy</a> (v1.9.9.4)</p>
+      <p class="text-muted">Documentation automatically generated on 16th May 2022 with <a href="http://lambdamusic.github.io/Ontospy/">Ontospy</a> (v1.9.9.4)</p>
 
     
     </div>
@@ -2966,7 +2971,7 @@ $('#search-input-sidebar').keyup(function() {
 
     $(document).ready(function (){
       $('#sidebar-wrapper').animate({
-          scrollTop: $("#sd_1704").offset().top - 100
+          scrollTop: $("#sd_1869").offset().top - 100
       }, 100);
     });
 
