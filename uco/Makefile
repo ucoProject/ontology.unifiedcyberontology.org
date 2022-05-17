@@ -93,13 +93,19 @@ all: \
 
 action.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/action/action.ttl \
-  $(RDF_TOOLKT_JAR)
+  $(RDF_TOOLKT_JAR) \
+  namespaces.sed
 	java -jar $(RDF_TOOLKT_JAR) \
 	  --inline-blank-nodes \
 	  --source $< \
 	  --source-format turtle \
-	  --target _$@ \
+	  --target __$@ \
 	  --target-format rdf-xml
+	sed \
+	  -f namespaces.sed \
+	  __$@ \
+	  > _$@
+	rm __$@
 	mv _$@ $@
 
 action.ttl: \
@@ -135,13 +141,19 @@ clean-symlinking:
 
 core.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/core/core.ttl \
-  $(RDF_TOOLKT_JAR)
+  $(RDF_TOOLKT_JAR) \
+  namespaces.sed
 	java -jar $(RDF_TOOLKT_JAR) \
 	  --inline-blank-nodes \
 	  --source $< \
 	  --source-format turtle \
-	  --target _$@ \
+	  --target __$@ \
 	  --target-format rdf-xml
+	sed \
+	  -f namespaces.sed \
+	  __$@ \
+	  > _$@
+	rm __$@
 	mv _$@ $@
 
 core.ttl: \
@@ -150,13 +162,19 @@ core.ttl: \
 
 identity.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/identity/identity.ttl \
-  $(RDF_TOOLKT_JAR)
+  $(RDF_TOOLKT_JAR) \
+  namespaces.sed
 	java -jar $(RDF_TOOLKT_JAR) \
 	  --inline-blank-nodes \
 	  --source $< \
 	  --source-format turtle \
-	  --target _$@ \
+	  --target __$@ \
 	  --target-format rdf-xml
+	sed \
+	  -f namespaces.sed \
+	  __$@ \
+	  > _$@
+	rm __$@
 	mv _$@ $@
 
 identity.ttl: \
@@ -165,13 +183,19 @@ identity.ttl: \
 
 location.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/location/location.ttl \
-  $(RDF_TOOLKT_JAR)
+  $(RDF_TOOLKT_JAR) \
+  namespaces.sed
 	java -jar $(RDF_TOOLKT_JAR) \
 	  --inline-blank-nodes \
 	  --source $< \
 	  --source-format turtle \
-	  --target _$@ \
+	  --target __$@ \
 	  --target-format rdf-xml
+	sed \
+	  -f namespaces.sed \
+	  __$@ \
+	  > _$@
+	rm __$@
 	mv _$@ $@
 
 location.ttl: \
@@ -180,13 +204,19 @@ location.ttl: \
 
 marking.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/marking/marking.ttl \
-  $(RDF_TOOLKT_JAR)
+  $(RDF_TOOLKT_JAR) \
+  namespaces.sed
 	java -jar $(RDF_TOOLKT_JAR) \
 	  --inline-blank-nodes \
 	  --source $< \
 	  --source-format turtle \
-	  --target _$@ \
+	  --target __$@ \
 	  --target-format rdf-xml
+	sed \
+	  -f namespaces.sed \
+	  __$@ \
+	  > _$@
+	rm __$@
 	mv _$@ $@
 
 marking.ttl: \
@@ -195,13 +225,19 @@ marking.ttl: \
 
 observable.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/observable/observable.ttl \
-  $(RDF_TOOLKT_JAR)
+  $(RDF_TOOLKT_JAR) \
+  namespaces.sed
 	java -jar $(RDF_TOOLKT_JAR) \
 	  --inline-blank-nodes \
 	  --source $< \
 	  --source-format turtle \
-	  --target _$@ \
+	  --target __$@ \
 	  --target-format rdf-xml
+	sed \
+	  -f namespaces.sed \
+	  __$@ \
+	  > _$@
+	rm __$@
 	mv _$@ $@
 
 observable.ttl: \
@@ -210,13 +246,19 @@ observable.ttl: \
 
 pattern.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/pattern/pattern.ttl \
-  $(RDF_TOOLKT_JAR)
+  $(RDF_TOOLKT_JAR) \
+  namespaces.sed
 	java -jar $(RDF_TOOLKT_JAR) \
 	  --inline-blank-nodes \
 	  --source $< \
 	  --source-format turtle \
-	  --target _$@ \
+	  --target __$@ \
 	  --target-format rdf-xml
+	sed \
+	  -f namespaces.sed \
+	  __$@ \
+	  > _$@
+	rm __$@
 	mv _$@ $@
 
 pattern.ttl: \
@@ -225,13 +267,19 @@ pattern.ttl: \
 
 role.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/role/role.ttl \
-  $(RDF_TOOLKT_JAR)
+  $(RDF_TOOLKT_JAR) \
+  namespaces.sed
 	java -jar $(RDF_TOOLKT_JAR) \
 	  --inline-blank-nodes \
 	  --source $< \
 	  --source-format turtle \
-	  --target _$@ \
+	  --target __$@ \
 	  --target-format rdf-xml
+	sed \
+	  -f namespaces.sed \
+	  __$@ \
+	  > _$@
+	rm __$@
 	mv _$@ $@
 
 role.ttl: \
@@ -240,13 +288,19 @@ role.ttl: \
 
 time.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/time/time.ttl \
-  $(RDF_TOOLKT_JAR)
+  $(RDF_TOOLKT_JAR) \
+  namespaces.sed
 	java -jar $(RDF_TOOLKT_JAR) \
 	  --inline-blank-nodes \
 	  --source $< \
 	  --source-format turtle \
-	  --target _$@ \
+	  --target __$@ \
 	  --target-format rdf-xml
+	sed \
+	  -f namespaces.sed \
+	  __$@ \
+	  > _$@
+	rm __$@
 	mv _$@ $@
 
 time.ttl: \
@@ -255,13 +309,19 @@ time.ttl: \
 
 tool.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/tool/tool.ttl \
-  $(RDF_TOOLKT_JAR)
+  $(RDF_TOOLKT_JAR) \
+  namespaces.sed
 	java -jar $(RDF_TOOLKT_JAR) \
 	  --inline-blank-nodes \
 	  --source $< \
 	  --source-format turtle \
-	  --target _$@ \
+	  --target __$@ \
 	  --target-format rdf-xml
+	sed \
+	  -f namespaces.sed \
+	  __$@ \
+	  > _$@
+	rm __$@
 	mv _$@ $@
 
 tool.ttl: \
@@ -270,13 +330,19 @@ tool.ttl: \
 
 types.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/types/types.ttl \
-  $(RDF_TOOLKT_JAR)
+  $(RDF_TOOLKT_JAR) \
+  namespaces.sed
 	java -jar $(RDF_TOOLKT_JAR) \
 	  --inline-blank-nodes \
 	  --source $< \
 	  --source-format turtle \
-	  --target _$@ \
+	  --target __$@ \
 	  --target-format rdf-xml
+	sed \
+	  -f namespaces.sed \
+	  __$@ \
+	  > _$@
+	rm __$@
 	mv _$@ $@
 
 types.ttl: \
@@ -285,13 +351,19 @@ types.ttl: \
 
 uco.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/master/uco.ttl \
-  $(RDF_TOOLKT_JAR)
+  $(RDF_TOOLKT_JAR) \
+  namespaces.sed
 	java -jar $(RDF_TOOLKT_JAR) \
 	  --inline-blank-nodes \
 	  --source $< \
 	  --source-format turtle \
-	  --target _$@ \
+	  --target __$@ \
 	  --target-format rdf-xml
+	sed \
+	  -f namespaces.sed \
+	  __$@ \
+	  > _$@
+	rm __$@
 	mv _$@ $@
 
 uco.ttl: \
@@ -300,13 +372,19 @@ uco.ttl: \
 
 victim.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/victim/victim.ttl \
-  $(RDF_TOOLKT_JAR)
+  $(RDF_TOOLKT_JAR) \
+  namespaces.sed
 	java -jar $(RDF_TOOLKT_JAR) \
 	  --inline-blank-nodes \
 	  --source $< \
 	  --source-format turtle \
-	  --target _$@ \
+	  --target __$@ \
 	  --target-format rdf-xml
+	sed \
+	  -f namespaces.sed \
+	  __$@ \
+	  > _$@
+	rm __$@
 	mv _$@ $@
 
 victim.ttl: \
@@ -315,13 +393,19 @@ victim.ttl: \
 
 vocabulary.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/vocabulary/vocabulary.ttl \
-  $(RDF_TOOLKT_JAR)
+  $(RDF_TOOLKT_JAR) \
+  namespaces.sed
 	java -jar $(RDF_TOOLKT_JAR) \
 	  --inline-blank-nodes \
 	  --source $< \
 	  --source-format turtle \
-	  --target _$@ \
+	  --target __$@ \
 	  --target-format rdf-xml
+	sed \
+	  -f namespaces.sed \
+	  __$@ \
+	  > _$@
+	rm __$@
 	mv _$@ $@
 
 vocabulary.ttl: \
