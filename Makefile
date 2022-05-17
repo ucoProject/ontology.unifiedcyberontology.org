@@ -105,54 +105,54 @@ check-service:
 	## Classes
 	wget \
 	  --output-document _$@ \
-	  $(HOST_PREFIX)/uco/investigation/ProvenanceRecord
+	  $(HOST_PREFIX)/uco/core/UcoObject
 	# NOTE - no comparison test done, default behavior just needs to not return a server error.
 	rm _$@
 	wget \
 	  --header 'Accept: text/html' \
 	  --output-document _$@ \
-	  $(HOST_PREFIX)/uco/investigation/ProvenanceRecord
-	diff _$@ uco/investigation/ProvenanceRecord.html
+	  $(HOST_PREFIX)/uco/core/UcoObject
+	diff _$@ uco/core/UcoObject.html
 	rm _$@
 #	#TODO - Turtle breakout needs to be written.
 #	wget \
 #	  --header 'Accept: text/turtle' \
 #	  --output-document _$@ \
-#	  $(HOST_PREFIX)/uco/investigation/ProvenanceRecord
-#	diff _$@ uco/investigation/ProvenanceRecord.ttl
+#	  $(HOST_PREFIX)/uco/core/UcoObject
+#	diff _$@ uco/core/UcoObject.ttl
 #	rm _$@
 #	#TODO - Turtle RDF-XML breakout needs to be written.
 #	wget \
 #	  --header 'Accept: application/rdf+xml' \
 #	  --output-document _$@ \
-#	  $(HOST_PREFIX)/uco/investigation/ProvenanceRecord
-#	diff _$@ uco/investigation/ProvenanceRecord.rdf
+#	  $(HOST_PREFIX)/uco/core/UcoObject
+#	diff _$@ uco/core/UcoObject.rdf
 #	rm _$@
 	## Properties
 	wget \
 	  --output-document _$@ \
-	  $(HOST_PREFIX)/uco/investigation/exhibitNumber
+	  $(HOST_PREFIX)/uco/core/hasFacet
 	# NOTE - no comparison test done, default behavior just needs to not return a server error.
 	rm _$@
 	wget \
 	  --header 'Accept: text/html' \
 	  --output-document _$@ \
-	  $(HOST_PREFIX)/uco/investigation/exhibitNumber
-	diff _$@ uco/investigation/exhibitNumber.html
+	  $(HOST_PREFIX)/uco/core/hasFacet
+	diff _$@ uco/core/hasFacet.html
 	rm _$@
 #	#TODO - Turtle breakout needs to be written.
 #	wget \
 #	  --header 'Accept: text/turtle' \
 #	  --output-document _$@ \
-#	  $(HOST_PREFIX)/uco/investigation/exhibitNumber
-#	diff _$@ uco/investigation/exhibitNumber.ttl
+#	  $(HOST_PREFIX)/uco/core/hasFacet
+#	diff _$@ uco/core/hasFacet.ttl
 #	rm _$@
 #	#TODO - Turtle RDF-XML breakout needs to be written.
 #	wget \
 #	  --header 'Accept: application/rdf+xml' \
 #	  --output-document _$@ \
-#	  $(HOST_PREFIX)/uco/investigation/exhibitNumber
-#	diff _$@ uco/investigation/exhibitNumber.rdf
+#	  $(HOST_PREFIX)/uco/core/hasFacet
+#	diff _$@ uco/core/hasFacet.rdf
 #	rm _$@
 	# Confirm documentation index is reachable.
 	wget \
@@ -164,7 +164,7 @@ check-service:
 	wget \
 	  --header 'Accept: text/html' \
 	  --output-document _$@ \
-	  $(HOST_PREFIX)/uco/investigation/
+	  $(HOST_PREFIX)/uco/core/
 	diff _$@ uco/documentation/index.html
 	rm _$@
 	@echo >&2
