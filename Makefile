@@ -69,6 +69,12 @@ all-uco: \
 	$(MAKE) \
 	  --directory uco
 
+check: \
+  all-uco
+	$(MAKE) \
+	  --directory uco \
+	  check
+
 # Test matrix:
 # Concept broad type: ontology, class, or property
 # "Accept" header: none specified, Turtle requested, or RDF requested

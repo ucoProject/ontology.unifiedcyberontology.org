@@ -17,35 +17,38 @@ top_srcdir := $(shell cd .. ; pwd)
 
 RDF_TOOLKT_JAR := $(top_srcdir)/dependencies/UCO/lib/rdf-toolkit.jar
 
-all: \
-  .symlinking.done.log \
+rdf_files := \
   action.rdf \
-  action.ttl \
   core.rdf \
-  core.ttl \
   identity.rdf \
-  identity.ttl \
   location.rdf \
-  location.ttl \
   marking.rdf \
-  marking.ttl \
   observable.rdf \
-  observable.ttl \
   pattern.rdf \
-  pattern.ttl \
   role.rdf \
-  role.ttl \
   time.rdf \
-  time.ttl \
   tool.rdf \
-  tool.ttl \
   types.rdf \
-  types.ttl \
   uco.rdf \
-  uco.ttl \
   victim.rdf \
+  vocabulary.rdf
+
+all: \
+  $(rdf_files) \
+  .symlinking.done.log \
+  action.ttl \
+  core.ttl \
+  identity.ttl \
+  location.ttl \
+  marking.ttl \
+  observable.ttl \
+  pattern.ttl \
+  role.ttl \
+  time.ttl \
+  tool.ttl \
+  types.ttl \
+  uco.ttl \
   victim.ttl \
-  vocabulary.rdf \
   vocabulary.ttl
 
 .PHONY: \
@@ -102,6 +105,15 @@ action.rdf: \
 action.ttl: \
   $(top_srcdir)/dependencies/UCO/ontology/action/action.ttl
 	cp $< $@
+
+check: \
+  $(rdf_files)
+	# Test that generated RDF-XML is valid XML.
+	source $(top_srcdir)/venv/bin/activate \
+	  && rdfpipe \
+	    --input-format xml \
+	    --no-out \
+	    action.rdf
 
 clean: \
   clean-symlinking
