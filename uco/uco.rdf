@@ -27,8 +27,8 @@
 		<owl:versionInfo>0.8.0</owl:versionInfo>
 	</owl:Ontology>
 	
-	<rdf:Description rdf:about="&core;id">
-		<rdfs:range rdf:resource="&types;Identifier"/>
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/core/id">
+		<rdfs:range rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/Identifier"/>
 	</rdf:Description>
 
 </rdf:RDF>

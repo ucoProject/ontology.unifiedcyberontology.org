@@ -15,126 +15,126 @@
 		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/vocabulary"/>
 	</owl:Ontology>
 	
-	<rdf:Description rdf:about="&types;ControlledDictionary">
-		<rdf:type rdf:resource="&owl;Class"/>
-		<rdf:type rdf:resource="&sh;NodeShape"/>
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/types/ControlledDictionary">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
 		<rdfs:label xml:lang="en">ControlledDictionary</rdfs:label>
 		<rdfs:comment xml:lang="en">A controlled dictionary is a list of (term/key, value) pairs where each term/key exists no more than once and is constrained to an explicitly defined set of values.</rdfs:comment>
 		<sh:property>
 			<rdf:Description>
-				<sh:class rdf:resource="&types;ControlledDictionaryEntry"/>
-				<sh:minCount rdf:datatype="&xsd;integer">1</sh:minCount>
-				<sh:nodeKind rdf:resource="&sh;BlankNodeOrIRI"/>
-				<sh:path rdf:resource="&types;entry"/>
+				<sh:class rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/ControlledDictionaryEntry"/>
+				<sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#BlankNodeOrIRI"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/entry"/>
 			</rdf:Description>
 		</sh:property>
-		<sh:targetClass rdf:resource="&types;ControlledDictionary"/>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/ControlledDictionary"/>
 	</rdf:Description>
 	
-	<rdf:Description rdf:about="&types;ControlledDictionaryEntry">
-		<rdf:type rdf:resource="&owl;Class"/>
-		<rdf:type rdf:resource="&sh;NodeShape"/>
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/types/ControlledDictionaryEntry">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
 		<rdfs:label xml:lang="en">ControlledDictionaryEntry</rdfs:label>
 		<rdfs:comment xml:lang="en">A controlled dictionary entry is a single (term/key, value) pair where the term/key is constrained to an explicitly defined set of values.</rdfs:comment>
 		<sh:property>
 			<rdf:Description>
-				<sh:datatype rdf:resource="&xsd;string"/>
-				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
-				<sh:minCount rdf:datatype="&xsd;integer">1</sh:minCount>
-				<sh:nodeKind rdf:resource="&sh;Literal"/>
-				<sh:path rdf:resource="&types;key"/>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/key"/>
 			</rdf:Description>
 		</sh:property>
 		<sh:property>
 			<rdf:Description>
-				<sh:datatype rdf:resource="&xsd;string"/>
-				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
-				<sh:minCount rdf:datatype="&xsd;integer">1</sh:minCount>
-				<sh:nodeKind rdf:resource="&sh;Literal"/>
-				<sh:path rdf:resource="&types;value"/>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/value"/>
 			</rdf:Description>
 		</sh:property>
-		<sh:targetClass rdf:resource="&types;ControlledDictionaryEntry"/>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/ControlledDictionaryEntry"/>
 	</rdf:Description>
 	
-	<rdf:Description rdf:about="&types;Dictionary">
-		<rdf:type rdf:resource="&owl;Class"/>
-		<rdf:type rdf:resource="&sh;NodeShape"/>
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/types/Dictionary">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
 		<rdfs:label xml:lang="en">Dictionary</rdfs:label>
 		<rdfs:comment xml:lang="en">A dictionary is list of (term/key, value) pairs with each term/key existing no more than once.</rdfs:comment>
 		<sh:property>
 			<rdf:Description>
-				<sh:class rdf:resource="&types;DictionaryEntry"/>
-				<sh:minCount rdf:datatype="&xsd;integer">1</sh:minCount>
-				<sh:nodeKind rdf:resource="&sh;BlankNodeOrIRI"/>
-				<sh:path rdf:resource="&types;entry"/>
+				<sh:class rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/DictionaryEntry"/>
+				<sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#BlankNodeOrIRI"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/entry"/>
 			</rdf:Description>
 		</sh:property>
-		<sh:targetClass rdf:resource="&types;Dictionary"/>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/Dictionary"/>
 	</rdf:Description>
 	
-	<rdf:Description rdf:about="&types;DictionaryEntry">
-		<rdf:type rdf:resource="&owl;Class"/>
-		<rdf:type rdf:resource="&sh;NodeShape"/>
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/types/DictionaryEntry">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
 		<rdfs:label xml:lang="en">DictionaryEntry</rdfs:label>
 		<rdfs:comment xml:lang="en">A dictionary entry is a single (term/key, value) pair.</rdfs:comment>
 		<sh:property>
 			<rdf:Description>
-				<sh:datatype rdf:resource="&xsd;string"/>
-				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
-				<sh:minCount rdf:datatype="&xsd;integer">1</sh:minCount>
-				<sh:nodeKind rdf:resource="&sh;Literal"/>
-				<sh:path rdf:resource="&types;key"/>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/key"/>
 			</rdf:Description>
 		</sh:property>
 		<sh:property>
 			<rdf:Description>
-				<sh:datatype rdf:resource="&xsd;string"/>
-				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
-				<sh:minCount rdf:datatype="&xsd;integer">1</sh:minCount>
-				<sh:nodeKind rdf:resource="&sh;Literal"/>
-				<sh:path rdf:resource="&types;value"/>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/value"/>
 			</rdf:Description>
 		</sh:property>
-		<sh:targetClass rdf:resource="&types;DictionaryEntry"/>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/DictionaryEntry"/>
 	</rdf:Description>
 	
-	<rdf:Description rdf:about="&types;Hash">
-		<rdf:type rdf:resource="&owl;Class"/>
-		<rdf:type rdf:resource="&sh;NodeShape"/>
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/types/Hash">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
 		<rdfs:label xml:lang="en">Hash</rdfs:label>
 		<rdfs:comment xml:lang="en">A hash is a grouping of characteristics unique to the result of applying a mathematical algorithm that maps data of arbitrary size to a bit string (the &apos;hash&apos;) and is a one-way function, that is, a function which is practically infeasible to invert. This is commonly used for integrity checking of data. [based on https://en.wikipedia.org/wiki/Cryptographic_hash_function]</rdfs:comment>
 		<sh:property>
 			<rdf:Description>
-				<sh:datatype rdf:resource="&xsd;hexBinary"/>
-				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
-				<sh:minCount rdf:datatype="&xsd;integer">1</sh:minCount>
-				<sh:nodeKind rdf:resource="&sh;Literal"/>
-				<sh:path rdf:resource="&types;hashValue"/>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#hexBinary"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/hashValue"/>
 			</rdf:Description>
 		</sh:property>
 		<sh:property>
 			<rdf:Description>
-				<sh:datatype rdf:resource="&vocabulary;HashNameVocab"/>
+				<sh:datatype rdf:resource="https://ontology.unifiedcyberontology.org/uco/vocabulary/HashNameVocab"/>
 				<sh:message>Value is outside the default vocabulary HashNameVocab.</sh:message>
-				<sh:path rdf:resource="&types;hashMethod"/>
-				<sh:severity rdf:resource="&sh;Info"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/hashMethod"/>
+				<sh:severity rdf:resource="http://www.w3.org/ns/shacl#Info"/>
 			</rdf:Description>
 		</sh:property>
 		<sh:property>
 			<rdf:Description>
-				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
-				<sh:minCount rdf:datatype="&xsd;integer">1</sh:minCount>
-				<sh:nodeKind rdf:resource="&sh;Literal"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
 				<sh:or rdf:parseType="Collection">
 					<rdf:Description>
-						<sh:datatype rdf:resource="&vocabulary;HashNameVocab"/>
+						<sh:datatype rdf:resource="https://ontology.unifiedcyberontology.org/uco/vocabulary/HashNameVocab"/>
 					</rdf:Description>
 					<rdf:Description>
-						<sh:datatype rdf:resource="&xsd;string"/>
+						<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
 					</rdf:Description>
 				</sh:or>
-				<sh:path rdf:resource="&types;hashMethod"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/hashMethod"/>
 			</rdf:Description>
 		</sh:property>
 		<sh:property>
@@ -142,77 +142,77 @@
 				<sh:message>Value is not member of the vocabulary HashNameVocab.</sh:message>
 				<sh:or rdf:parseType="Collection">
 					<rdf:Description>
-						<sh:datatype rdf:resource="&vocabulary;HashNameVocab"/>
-						<sh:in rdf:resource="&vocabulary;HashNameVocab-members"/>
+						<sh:datatype rdf:resource="https://ontology.unifiedcyberontology.org/uco/vocabulary/HashNameVocab"/>
+						<sh:in rdf:resource="https://ontology.unifiedcyberontology.org/uco/vocabulary/HashNameVocab-members"/>
 					</rdf:Description>
 					<rdf:Description>
-						<sh:datatype rdf:resource="&xsd;string"/>
+						<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
 					</rdf:Description>
 				</sh:or>
-				<sh:path rdf:resource="&types;hashMethod"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/hashMethod"/>
 			</rdf:Description>
 		</sh:property>
-		<sh:targetClass rdf:resource="&types;Hash"/>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/Hash"/>
 	</rdf:Description>
 	
-	<rdfs:Datatype rdf:about="&types;Identifier">
+	<rdfs:Datatype rdf:about="https://ontology.unifiedcyberontology.org/uco/types/Identifier">
 		<rdfs:comment xml:lang="en">An identifier is a string conformant to the specified UUID-based format for UCO object identifiers.</rdfs:comment>
 	</rdfs:Datatype>
 	
-	<rdfs:Datatype rdf:about="&types;NativeFormatString">
+	<rdfs:Datatype rdf:about="https://ontology.unifiedcyberontology.org/uco/types/NativeFormatString">
 		<rdfs:comment xml:lang="en">Specifies data in its native format of some external language. The data may be encoded in Base64 per [RFC4648]. Data encoded in Base64 must be denoted as such using the encoded property.</rdfs:comment>
 	</rdfs:Datatype>
 	
-	<rdfs:Datatype rdf:about="&types;StructuredText">
+	<rdfs:Datatype rdf:about="https://ontology.unifiedcyberontology.org/uco/types/StructuredText">
 		<rdfs:comment xml:lang="en">Expresses string-based data in some information structuring format (e.g., HTML5).</rdfs:comment>
 	</rdfs:Datatype>
 	
-	<owl:ObjectProperty rdf:about="&types;entry">
+	<owl:ObjectProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/types/entry">
 		<rdfs:label xml:lang="en">entry</rdfs:label>
 		<rdfs:comment xml:lang="en">A dictionary entry.</rdfs:comment>
 		<rdfs:range>
 			<rdfs:Datatype>
 				<owl:unionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&types;ControlledDictionaryEntry">
+					<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/types/ControlledDictionaryEntry">
 					</rdf:Description>
-					<rdf:Description rdf:about="&types;DictionaryEntry">
+					<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/types/DictionaryEntry">
 					</rdf:Description>
 				</owl:unionOf>
 			</rdfs:Datatype>
 		</rdfs:range>
 	</owl:ObjectProperty>
 	
-	<owl:DatatypeProperty rdf:about="&types;hashMethod">
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/types/hashMethod">
 		<rdfs:label xml:lang="en">hashMethod</rdfs:label>
 		<rdfs:comment xml:lang="en">A particular cryptographic hashing method (e.g., MD5).</rdfs:comment>
 		<rdfs:range>
 			<rdfs:Datatype>
 				<owl:unionOf rdf:parseType="Collection">
-					<rdf:Description rdf:about="&vocabulary;HashNameVocab">
+					<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/vocabulary/HashNameVocab">
 					</rdf:Description>
-					<rdf:Description rdf:about="&xsd;string">
+					<rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#string">
 					</rdf:Description>
 				</owl:unionOf>
 			</rdfs:Datatype>
 		</rdfs:range>
 	</owl:DatatypeProperty>
 	
-	<owl:DatatypeProperty rdf:about="&types;hashValue">
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/types/hashValue">
 		<rdfs:label xml:lang="en">hashValue</rdfs:label>
 		<rdfs:comment xml:lang="en">A cryptographic hash value.</rdfs:comment>
-		<rdfs:range rdf:resource="&xsd;hexBinary"/>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#hexBinary"/>
 	</owl:DatatypeProperty>
 	
-	<owl:DatatypeProperty rdf:about="&types;key">
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/types/key">
 		<rdfs:label xml:lang="en">key</rdfs:label>
 		<rdfs:comment xml:lang="en">A key property of a single dictionary entry.</rdfs:comment>
-		<rdfs:range rdf:resource="&xsd;string"/>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
 	</owl:DatatypeProperty>
 	
-	<owl:DatatypeProperty rdf:about="&types;value">
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/types/value">
 		<rdfs:label xml:lang="en">value</rdfs:label>
 		<rdfs:comment xml:lang="en">A specific property value.</rdfs:comment>
-		<rdfs:range rdf:resource="&xsd;string"/>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
 	</owl:DatatypeProperty>
 
 </rdf:RDF>

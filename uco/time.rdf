@@ -12,13 +12,13 @@
 		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/core"/>
 	</owl:Ontology>
 	
-	<rdfs:Datatype rdf:about="&time;Time">
+	<rdfs:Datatype rdf:about="https://ontology.unifiedcyberontology.org/uco/time/Time">
 	</rdfs:Datatype>
 	
-	<rdfs:Datatype rdf:about="&time;TimeRange">
+	<rdfs:Datatype rdf:about="https://ontology.unifiedcyberontology.org/uco/time/TimeRange">
 	</rdfs:Datatype>
 	
-	<rdfs:Datatype rdf:about="&time;Timestamp">
+	<rdfs:Datatype rdf:about="https://ontology.unifiedcyberontology.org/uco/time/Timestamp">
 	</rdfs:Datatype>
 
 </rdf:RDF>

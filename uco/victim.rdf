@@ -15,22 +15,22 @@
 		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/role"/>
 	</owl:Ontology>
 	
-	<rdf:Description rdf:about="&victim;Victim">
-		<rdf:type rdf:resource="&owl;Class"/>
-		<rdf:type rdf:resource="&sh;NodeShape"/>
-		<rdfs:subClassOf rdf:resource="&role;NeutralRole"/>
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/victim/Victim">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/role/NeutralRole"/>
 		<rdfs:label xml:lang="en">Victim</rdfs:label>
 		<rdfs:comment xml:lang="en">A victim is a role played by a person or organization that is/was the target of some malicious action.</rdfs:comment>
-		<sh:targetClass rdf:resource="&victim;Victim"/>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/victim/Victim"/>
 	</rdf:Description>
 	
-	<rdf:Description rdf:about="&victim;VictimTargeting">
-		<rdf:type rdf:resource="&owl;Class"/>
-		<rdf:type rdf:resource="&sh;NodeShape"/>
-		<rdfs:subClassOf rdf:resource="&victim;Victim"/>
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/victim/VictimTargeting">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/victim/Victim"/>
 		<rdfs:label xml:lang="en">VictimTargeting</rdfs:label>
 		<rdfs:comment xml:lang="en">A victim targeting is a grouping of characteristics unique to people or organizations that are the target of some malicious activity.</rdfs:comment>
-		<sh:targetClass rdf:resource="&victim;VictimTargeting"/>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/victim/VictimTargeting"/>
 	</rdf:Description>
 
 </rdf:RDF>

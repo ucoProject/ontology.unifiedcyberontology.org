@@ -15,592 +15,592 @@
 		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/core"/>
 	</owl:Ontology>
 	
-	<rdf:Description rdf:about="&tool;AnalyticTool">
-		<rdf:type rdf:resource="&owl;Class"/>
-		<rdf:type rdf:resource="&sh;NodeShape"/>
-		<rdfs:subClassOf rdf:resource="&tool;Tool"/>
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/AnalyticTool">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/Tool"/>
 		<rdfs:label xml:lang="en">AnalyticTool</rdfs:label>
 		<rdfs:comment xml:lang="en">An analytic tool is an artifact of hardware and/or software utilized to accomplish a task or purpose of explanation, interpretation or logical reasoning.</rdfs:comment>
-		<sh:targetClass rdf:resource="&tool;AnalyticTool"/>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/AnalyticTool"/>
 	</rdf:Description>
 	
-	<rdf:Description rdf:about="&tool;BuildConfigurationType">
-		<rdf:type rdf:resource="&owl;Class"/>
-		<rdf:type rdf:resource="&sh;NodeShape"/>
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/BuildConfigurationType">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
 		<rdfs:label xml:lang="en">BuildConfigurationType</rdfs:label>
 		<rdfs:comment xml:lang="en">A build configuration type is a characterization of how a particular version of software can or should be built.</rdfs:comment>
 		<sh:property>
 			<rdf:Description>
-				<sh:class rdf:resource="&tool;ConfigurationSettingType"/>
-				<sh:nodeKind rdf:resource="&sh;BlankNodeOrIRI"/>
-				<sh:path rdf:resource="&tool;configurationSettings"/>
+				<sh:class rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/ConfigurationSettingType"/>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#BlankNodeOrIRI"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/configurationSettings"/>
 			</rdf:Description>
 		</sh:property>
 		<sh:property>
 			<rdf:Description>
-				<sh:datatype rdf:resource="&xsd;string"/>
-				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
-				<sh:nodeKind rdf:resource="&sh;Literal"/>
-				<sh:path rdf:resource="&tool;configurationSettingDescription"/>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/configurationSettingDescription"/>
 			</rdf:Description>
 		</sh:property>
-		<sh:targetClass rdf:resource="&tool;BuildConfigurationType"/>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/BuildConfigurationType"/>
 	</rdf:Description>
 	
-	<rdf:Description rdf:about="&tool;BuildFacet">
-		<rdf:type rdf:resource="&owl;Class"/>
-		<rdf:type rdf:resource="&sh;NodeShape"/>
-		<rdfs:subClassOf rdf:resource="&core;Facet"/>
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/BuildFacet">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/core/Facet"/>
 		<rdfs:label xml:lang="en">BuildFacet</rdfs:label>
 		<rdfs:comment xml:lang="en">A build facet is a grouping of characteristics unique to a particular version of a software.</rdfs:comment>
 		<sh:property>
 			<rdf:Description>
-				<sh:class rdf:resource="&tool;BuildInformationType"/>
-				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
-				<sh:nodeKind rdf:resource="&sh;BlankNodeOrIRI"/>
-				<sh:path rdf:resource="&tool;buildInformation"/>
+				<sh:class rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/BuildInformationType"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#BlankNodeOrIRI"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/buildInformation"/>
 			</rdf:Description>
 		</sh:property>
-		<sh:targetClass rdf:resource="&tool;BuildFacet"/>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/BuildFacet"/>
 	</rdf:Description>
 	
-	<rdf:Description rdf:about="&tool;BuildInformationType">
-		<rdf:type rdf:resource="&owl;Class"/>
-		<rdf:type rdf:resource="&sh;NodeShape"/>
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/BuildInformationType">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
 		<rdfs:label xml:lang="en">BuildInformationType</rdfs:label>
 		<rdfs:comment xml:lang="en">A build information type is a grouping of characteristics that describe how a particular version of software was converted from source code to executable code.</rdfs:comment>
 		<sh:property>
 			<rdf:Description>
-				<sh:class rdf:resource="&tool;BuildConfigurationType"/>
-				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
-				<sh:nodeKind rdf:resource="&sh;BlankNodeOrIRI"/>
-				<sh:path rdf:resource="&tool;buildConfiguration"/>
+				<sh:class rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/BuildConfigurationType"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#BlankNodeOrIRI"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/buildConfiguration"/>
 			</rdf:Description>
 		</sh:property>
 		<sh:property>
 			<rdf:Description>
-				<sh:class rdf:resource="&tool;BuildUtilityType"/>
-				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
-				<sh:nodeKind rdf:resource="&sh;BlankNodeOrIRI"/>
-				<sh:path rdf:resource="&tool;buildUtility"/>
+				<sh:class rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/BuildUtilityType"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#BlankNodeOrIRI"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/buildUtility"/>
 			</rdf:Description>
 		</sh:property>
 		<sh:property>
 			<rdf:Description>
-				<sh:class rdf:resource="&tool;CompilerType"/>
-				<sh:nodeKind rdf:resource="&sh;BlankNodeOrIRI"/>
-				<sh:path rdf:resource="&tool;compilers"/>
+				<sh:class rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/CompilerType"/>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#BlankNodeOrIRI"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/compilers"/>
 			</rdf:Description>
 		</sh:property>
 		<sh:property>
 			<rdf:Description>
-				<sh:class rdf:resource="&tool;LibraryType"/>
-				<sh:nodeKind rdf:resource="&sh;BlankNodeOrIRI"/>
-				<sh:path rdf:resource="&tool;libraries"/>
+				<sh:class rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/LibraryType"/>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#BlankNodeOrIRI"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/libraries"/>
 			</rdf:Description>
 		</sh:property>
 		<sh:property>
 			<rdf:Description>
-				<sh:datatype rdf:resource="&xsd;dateTime"/>
-				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
-				<sh:nodeKind rdf:resource="&sh;Literal"/>
-				<sh:path rdf:resource="&tool;compilationDate"/>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/compilationDate"/>
 			</rdf:Description>
 		</sh:property>
 		<sh:property>
 			<rdf:Description>
-				<sh:datatype rdf:resource="&xsd;string"/>
-				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
-				<sh:nodeKind rdf:resource="&sh;Literal"/>
-				<sh:path rdf:resource="&tool;buildID"/>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/buildID"/>
 			</rdf:Description>
 		</sh:property>
 		<sh:property>
 			<rdf:Description>
-				<sh:datatype rdf:resource="&xsd;string"/>
-				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
-				<sh:nodeKind rdf:resource="&sh;Literal"/>
-				<sh:path rdf:resource="&tool;buildLabel"/>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/buildLabel"/>
 			</rdf:Description>
 		</sh:property>
 		<sh:property>
 			<rdf:Description>
-				<sh:datatype rdf:resource="&xsd;string"/>
-				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
-				<sh:nodeKind rdf:resource="&sh;Literal"/>
-				<sh:path rdf:resource="&tool;buildOutputLog"/>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/buildOutputLog"/>
 			</rdf:Description>
 		</sh:property>
 		<sh:property>
 			<rdf:Description>
-				<sh:datatype rdf:resource="&xsd;string"/>
-				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
-				<sh:nodeKind rdf:resource="&sh;Literal"/>
-				<sh:path rdf:resource="&tool;buildProject"/>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/buildProject"/>
 			</rdf:Description>
 		</sh:property>
 		<sh:property>
 			<rdf:Description>
-				<sh:datatype rdf:resource="&xsd;string"/>
-				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
-				<sh:nodeKind rdf:resource="&sh;Literal"/>
-				<sh:path rdf:resource="&tool;buildScript"/>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/buildScript"/>
 			</rdf:Description>
 		</sh:property>
 		<sh:property>
 			<rdf:Description>
-				<sh:datatype rdf:resource="&xsd;string"/>
-				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
-				<sh:nodeKind rdf:resource="&sh;Literal"/>
-				<sh:path rdf:resource="&tool;buildVersion"/>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/buildVersion"/>
 			</rdf:Description>
 		</sh:property>
-		<sh:targetClass rdf:resource="&tool;BuildInformationType"/>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/BuildInformationType"/>
 	</rdf:Description>
 	
-	<rdf:Description rdf:about="&tool;BuildUtilityType">
-		<rdf:type rdf:resource="&owl;Class"/>
-		<rdf:type rdf:resource="&sh;NodeShape"/>
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/BuildUtilityType">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
 		<rdfs:label xml:lang="en">BuildUtilityType</rdfs:label>
 		<rdfs:comment xml:lang="en">A build utility type characterizes the tool used to convert from source code to executable code for a particular version of software.</rdfs:comment>
 		<sh:property>
 			<rdf:Description>
-				<sh:datatype rdf:resource="&xsd;string"/>
-				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
-				<sh:minCount rdf:datatype="&xsd;integer">1</sh:minCount>
-				<sh:nodeKind rdf:resource="&sh;Literal"/>
-				<sh:path rdf:resource="&tool;buildUtilityName"/>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/buildUtilityName"/>
 			</rdf:Description>
 		</sh:property>
 		<sh:property>
 			<rdf:Description>
-				<sh:datatype rdf:resource="&xsd;string"/>
-				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
-				<sh:nodeKind rdf:resource="&sh;Literal"/>
-				<sh:path rdf:resource="&tool;cpeid"/>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/cpeid"/>
 			</rdf:Description>
 		</sh:property>
 		<sh:property>
 			<rdf:Description>
-				<sh:datatype rdf:resource="&xsd;string"/>
-				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
-				<sh:nodeKind rdf:resource="&sh;Literal"/>
-				<sh:path rdf:resource="&tool;swid"/>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/swid"/>
 			</rdf:Description>
 		</sh:property>
-		<sh:targetClass rdf:resource="&tool;BuildUtilityType"/>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/BuildUtilityType"/>
 	</rdf:Description>
 	
-	<rdf:Description rdf:about="&tool;CompilerType">
-		<rdf:type rdf:resource="&owl;Class"/>
-		<rdf:type rdf:resource="&sh;NodeShape"/>
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/CompilerType">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
 		<rdfs:label xml:lang="en">CompilerType</rdfs:label>
 		<rdfs:comment xml:lang="en">A compiler type is a grouping of characteristics unique to a specific program that translates computer code written in one programming language (the source language) into another language (the target language). Typically a program that translates source code from a high-level programming language to a lower-level language (e.g., assembly language, object code, or machine code) to create an executable program. [based on https://en.wikipedia.org/wiki/Compiler]</rdfs:comment>
 		<sh:property>
 			<rdf:Description>
-				<sh:datatype rdf:resource="&xsd;string"/>
-				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
-				<sh:nodeKind rdf:resource="&sh;Literal"/>
-				<sh:path rdf:resource="&tool;compilerInformalDescription"/>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/compilerInformalDescription"/>
 			</rdf:Description>
 		</sh:property>
 		<sh:property>
 			<rdf:Description>
-				<sh:datatype rdf:resource="&xsd;string"/>
-				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
-				<sh:nodeKind rdf:resource="&sh;Literal"/>
-				<sh:path rdf:resource="&tool;cpeid"/>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/cpeid"/>
 			</rdf:Description>
 		</sh:property>
 		<sh:property>
 			<rdf:Description>
-				<sh:datatype rdf:resource="&xsd;string"/>
-				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
-				<sh:nodeKind rdf:resource="&sh;Literal"/>
-				<sh:path rdf:resource="&tool;swid"/>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/swid"/>
 			</rdf:Description>
 		</sh:property>
-		<sh:targetClass rdf:resource="&tool;CompilerType"/>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/CompilerType"/>
 	</rdf:Description>
 	
-	<rdf:Description rdf:about="&tool;ConfigurationSettingType">
-		<rdf:type rdf:resource="&owl;Class"/>
-		<rdf:type rdf:resource="&sh;NodeShape"/>
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/ConfigurationSettingType">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
 		<rdfs:label xml:lang="en">ConfigurationSettingType</rdfs:label>
 		<rdfs:comment xml:lang="en">A configuration setting type is a grouping of characteristics unique to a particular parameter or initial setting for the use of a tool, application, or other cyber object.</rdfs:comment>
 		<sh:property>
 			<rdf:Description>
-				<sh:datatype rdf:resource="&xsd;string"/>
-				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
-				<sh:minCount rdf:datatype="&xsd;integer">1</sh:minCount>
-				<sh:nodeKind rdf:resource="&sh;Literal"/>
-				<sh:path rdf:resource="&tool;itemName"/>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/itemName"/>
 			</rdf:Description>
 		</sh:property>
 		<sh:property>
 			<rdf:Description>
-				<sh:datatype rdf:resource="&xsd;string"/>
-				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
-				<sh:minCount rdf:datatype="&xsd;integer">1</sh:minCount>
-				<sh:nodeKind rdf:resource="&sh;Literal"/>
-				<sh:path rdf:resource="&tool;itemValue"/>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/itemValue"/>
 			</rdf:Description>
 		</sh:property>
 		<sh:property>
 			<rdf:Description>
-				<sh:datatype rdf:resource="&xsd;string"/>
-				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
-				<sh:nodeKind rdf:resource="&sh;Literal"/>
-				<sh:path rdf:resource="&tool;itemDescription"/>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/itemDescription"/>
 			</rdf:Description>
 		</sh:property>
 		<sh:property>
 			<rdf:Description>
-				<sh:datatype rdf:resource="&xsd;string"/>
-				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
-				<sh:nodeKind rdf:resource="&sh;Literal"/>
-				<sh:path rdf:resource="&tool;itemType"/>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/itemType"/>
 			</rdf:Description>
 		</sh:property>
-		<sh:targetClass rdf:resource="&tool;ConfigurationSettingType"/>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/ConfigurationSettingType"/>
 	</rdf:Description>
 	
-	<rdf:Description rdf:about="&tool;DefensiveTool">
-		<rdf:type rdf:resource="&owl;Class"/>
-		<rdf:type rdf:resource="&sh;NodeShape"/>
-		<rdfs:subClassOf rdf:resource="&tool;Tool"/>
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/DefensiveTool">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/Tool"/>
 		<rdfs:label xml:lang="en">DefensiveTool</rdfs:label>
 		<rdfs:comment xml:lang="en">A defensive tool is an artifact of hardware and/or software utilized to accomplish a task or purpose of guarding.</rdfs:comment>
-		<sh:targetClass rdf:resource="&tool;DefensiveTool"/>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/DefensiveTool"/>
 	</rdf:Description>
 	
-	<rdf:Description rdf:about="&tool;DependencyType">
-		<rdf:type rdf:resource="&owl;Class"/>
-		<rdf:type rdf:resource="&sh;NodeShape"/>
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/DependencyType">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
 		<rdfs:label xml:lang="en">DependencyType</rdfs:label>
 		<rdfs:comment xml:lang="en">A dependency type is a grouping of characteristics unique to something that a tool or other software relies on to function as intended.</rdfs:comment>
 		<sh:property>
 			<rdf:Description>
-				<sh:datatype rdf:resource="&xsd;string"/>
-				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
-				<sh:minCount rdf:datatype="&xsd;integer">1</sh:minCount>
-				<sh:nodeKind rdf:resource="&sh;Literal"/>
-				<sh:path rdf:resource="&tool;dependencyDescription"/>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/dependencyDescription"/>
 			</rdf:Description>
 		</sh:property>
 		<sh:property>
 			<rdf:Description>
-				<sh:datatype rdf:resource="&xsd;string"/>
-				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
-				<sh:nodeKind rdf:resource="&sh;Literal"/>
-				<sh:path rdf:resource="&tool;dependencyType"/>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/dependencyType"/>
 			</rdf:Description>
 		</sh:property>
-		<sh:targetClass rdf:resource="&tool;DependencyType"/>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/DependencyType"/>
 	</rdf:Description>
 	
-	<rdf:Description rdf:about="&tool;LibraryType">
-		<rdf:type rdf:resource="&owl;Class"/>
-		<rdf:type rdf:resource="&sh;NodeShape"/>
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/LibraryType">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
 		<rdfs:label xml:lang="en">LibraryType</rdfs:label>
 		<rdfs:comment xml:lang="en">A library type is a grouping of characteristics unique to a collection of resources incorporated into the build of a software.</rdfs:comment>
 		<sh:property>
 			<rdf:Description>
-				<sh:datatype rdf:resource="&xsd;string"/>
-				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
-				<sh:minCount rdf:datatype="&xsd;integer">1</sh:minCount>
-				<sh:nodeKind rdf:resource="&sh;Literal"/>
-				<sh:path rdf:resource="&tool;libraryName"/>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/libraryName"/>
 			</rdf:Description>
 		</sh:property>
 		<sh:property>
 			<rdf:Description>
-				<sh:datatype rdf:resource="&xsd;string"/>
-				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
-				<sh:minCount rdf:datatype="&xsd;integer">1</sh:minCount>
-				<sh:nodeKind rdf:resource="&sh;Literal"/>
-				<sh:path rdf:resource="&tool;libraryVersion"/>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/libraryVersion"/>
 			</rdf:Description>
 		</sh:property>
-		<sh:targetClass rdf:resource="&tool;LibraryType"/>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/LibraryType"/>
 	</rdf:Description>
 	
-	<rdf:Description rdf:about="&tool;MaliciousTool">
-		<rdf:type rdf:resource="&owl;Class"/>
-		<rdf:type rdf:resource="&sh;NodeShape"/>
-		<rdfs:subClassOf rdf:resource="&tool;Tool"/>
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/MaliciousTool">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/Tool"/>
 		<rdfs:label xml:lang="en">MaliciousTool</rdfs:label>
 		<rdfs:comment xml:lang="en">A malicious tool is an artifact of hardware and/or software utilized to accomplish a malevolent task or purpose.</rdfs:comment>
-		<sh:targetClass rdf:resource="&tool;MaliciousTool"/>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/MaliciousTool"/>
 	</rdf:Description>
 	
-	<rdf:Description rdf:about="&tool;Tool">
-		<rdf:type rdf:resource="&owl;Class"/>
-		<rdf:type rdf:resource="&sh;NodeShape"/>
-		<rdfs:subClassOf rdf:resource="&core;UcoObject"/>
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/Tool">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/core/UcoObject"/>
 		<rdfs:label xml:lang="en">Tool</rdfs:label>
 		<rdfs:comment xml:lang="en">A tool is an element of hardware and/or software utilized to carry out a particular function.</rdfs:comment>
 		<sh:property>
 			<rdf:Description>
-				<sh:class rdf:resource="&identity;Identity"/>
-				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
-				<sh:nodeKind rdf:resource="&sh;BlankNodeOrIRI"/>
-				<sh:path rdf:resource="&tool;creator"/>
+				<sh:class rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/Identity"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#BlankNodeOrIRI"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/creator"/>
 			</rdf:Description>
 		</sh:property>
 		<sh:property>
 			<rdf:Description>
-				<sh:datatype rdf:resource="&xsd;anyURI"/>
-				<sh:nodeKind rdf:resource="&sh;Literal"/>
-				<sh:path rdf:resource="&tool;references"/>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/references"/>
 			</rdf:Description>
 		</sh:property>
 		<sh:property>
 			<rdf:Description>
-				<sh:datatype rdf:resource="&xsd;string"/>
-				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
-				<sh:nodeKind rdf:resource="&sh;Literal"/>
-				<sh:path rdf:resource="&tool;servicePack"/>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/servicePack"/>
 			</rdf:Description>
 		</sh:property>
 		<sh:property>
 			<rdf:Description>
-				<sh:datatype rdf:resource="&xsd;string"/>
-				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
-				<sh:nodeKind rdf:resource="&sh;Literal"/>
-				<sh:path rdf:resource="&tool;toolType"/>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/toolType"/>
 			</rdf:Description>
 		</sh:property>
 		<sh:property>
 			<rdf:Description>
-				<sh:datatype rdf:resource="&xsd;string"/>
-				<sh:maxCount rdf:datatype="&xsd;integer">1</sh:maxCount>
-				<sh:nodeKind rdf:resource="&sh;Literal"/>
-				<sh:path rdf:resource="&tool;version"/>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/version"/>
 			</rdf:Description>
 		</sh:property>
-		<sh:targetClass rdf:resource="&tool;Tool"/>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/Tool"/>
 	</rdf:Description>
 	
-	<rdf:Description rdf:about="&tool;ToolConfigurationTypeFacet">
-		<rdf:type rdf:resource="&owl;Class"/>
-		<rdf:type rdf:resource="&sh;NodeShape"/>
-		<rdfs:subClassOf rdf:resource="&core;Facet"/>
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/ToolConfigurationTypeFacet">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/core/Facet"/>
 		<rdfs:label xml:lang="en">ToolConfigurationTypeFacet</rdfs:label>
 		<rdfs:comment xml:lang="en">A tool configuration type facet is a grouping of characteristics unique to the instantial settings and setup of a tool.</rdfs:comment>
 		<sh:property>
 			<rdf:Description>
-				<sh:class rdf:resource="&tool;DependencyType"/>
-				<sh:nodeKind rdf:resource="&sh;BlankNodeOrIRI"/>
-				<sh:path rdf:resource="&tool;dependencies"/>
+				<sh:class rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/DependencyType"/>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#BlankNodeOrIRI"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/dependencies"/>
 			</rdf:Description>
 		</sh:property>
 		<sh:property>
 			<rdf:Description>
-				<sh:datatype rdf:resource="&xsd;string"/>
-				<sh:nodeKind rdf:resource="&sh;Literal"/>
-				<sh:path rdf:resource="&tool;usageContextAssumptions"/>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/usageContextAssumptions"/>
 			</rdf:Description>
 		</sh:property>
-		<sh:targetClass rdf:resource="&tool;ToolConfigurationTypeFacet"/>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/ToolConfigurationTypeFacet"/>
 	</rdf:Description>
 	
-	<owl:ObjectProperty rdf:about="&tool;buildConfiguration">
+	<owl:ObjectProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/buildConfiguration">
 		<rdfs:label xml:lang="en">buildConfiguration</rdfs:label>
 		<rdfs:comment xml:lang="en">How the build utility was configured for a particular build of a particular software.</rdfs:comment>
-		<rdfs:range rdf:resource="&tool;BuildConfigurationType"/>
+		<rdfs:range rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/BuildConfigurationType"/>
 	</owl:ObjectProperty>
 	
-	<owl:DatatypeProperty rdf:about="&tool;buildID">
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/buildID">
 		<rdfs:label xml:lang="en">buildID</rdfs:label>
 		<rdfs:comment xml:lang="en">An externally defined unique identifier for a particular build of a software.</rdfs:comment>
-		<rdfs:range rdf:resource="&xsd;string"/>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
 	</owl:DatatypeProperty>
 	
-	<owl:ObjectProperty rdf:about="&tool;buildInformation">
+	<owl:ObjectProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/buildInformation">
 		<rdfs:label xml:lang="en">buildInformation</rdfs:label>
 		<rdfs:comment xml:lang="en">Describes how a particular tool was built.</rdfs:comment>
-		<rdfs:range rdf:resource="&tool;BuildInformationType"/>
+		<rdfs:range rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/BuildInformationType"/>
 	</owl:ObjectProperty>
 	
-	<owl:DatatypeProperty rdf:about="&tool;buildLabel">
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/buildLabel">
 		<rdfs:label xml:lang="en">buildLabel</rdfs:label>
 		<rdfs:comment xml:lang="en">Relevant label for a particular build of a particular software.</rdfs:comment>
-		<rdfs:range rdf:resource="&xsd;string"/>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
 	</owl:DatatypeProperty>
 	
-	<owl:DatatypeProperty rdf:about="&tool;buildOutputLog">
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/buildOutputLog">
 		<rdfs:label xml:lang="en">buildOutputLog</rdfs:label>
 		<rdfs:comment xml:lang="en">The output log of the build process for a software.</rdfs:comment>
-		<rdfs:range rdf:resource="&xsd;string"/>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
 	</owl:DatatypeProperty>
 	
-	<owl:DatatypeProperty rdf:about="&tool;buildProject">
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/buildProject">
 		<rdfs:label xml:lang="en">buildProject</rdfs:label>
 		<rdfs:comment xml:lang="en">The project name of a build of a software.</rdfs:comment>
-		<rdfs:range rdf:resource="&xsd;string"/>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
 	</owl:DatatypeProperty>
 	
-	<owl:DatatypeProperty rdf:about="&tool;buildScript">
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/buildScript">
 		<rdfs:label xml:lang="en">buildScript</rdfs:label>
 		<rdfs:comment xml:lang="en">The actual build script for a particular build of a particular software.</rdfs:comment>
-		<rdfs:range rdf:resource="&xsd;string"/>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
 	</owl:DatatypeProperty>
 	
-	<owl:ObjectProperty rdf:about="&tool;buildUtility">
+	<owl:ObjectProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/buildUtility">
 		<rdfs:label xml:lang="en">buildUtility</rdfs:label>
 		<rdfs:comment xml:lang="en">Identifies the utility used to build a software.</rdfs:comment>
-		<rdfs:range rdf:resource="&tool;BuildUtilityType"/>
+		<rdfs:range rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/BuildUtilityType"/>
 	</owl:ObjectProperty>
 	
-	<owl:DatatypeProperty rdf:about="&tool;buildUtilityName">
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/buildUtilityName">
 		<rdfs:label xml:lang="en">buildUtilityName</rdfs:label>
 		<rdfs:comment xml:lang="en">The informally defined name of the utility used to build a particular software.</rdfs:comment>
-		<rdfs:range rdf:resource="&xsd;string"/>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
 	</owl:DatatypeProperty>
 	
-	<owl:DatatypeProperty rdf:about="&tool;buildVersion">
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/buildVersion">
 		<rdfs:label xml:lang="en">buildVersion</rdfs:label>
 		<rdfs:comment xml:lang="en">The appropriate version descriptor of a particular build of a particular software.</rdfs:comment>
-		<rdfs:range rdf:resource="&xsd;string"/>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
 	</owl:DatatypeProperty>
 	
-	<owl:DatatypeProperty rdf:about="&tool;compilationDate">
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/compilationDate">
 		<rdfs:label xml:lang="en">compilationDate</rdfs:label>
 		<rdfs:comment xml:lang="en">The compilation date for the build of a software.</rdfs:comment>
-		<rdfs:range rdf:resource="&xsd;dateTime"/>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
 	</owl:DatatypeProperty>
 	
-	<owl:DatatypeProperty rdf:about="&tool;compilerInformalDescription">
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/compilerInformalDescription">
 		<rdfs:label xml:lang="en">compilerInformalDescription</rdfs:label>
 		<rdfs:comment xml:lang="en">An informal description of a compiler.</rdfs:comment>
-		<rdfs:range rdf:resource="&xsd;string"/>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
 	</owl:DatatypeProperty>
 	
-	<owl:ObjectProperty rdf:about="&tool;compilers">
+	<owl:ObjectProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/compilers">
 		<rdfs:label xml:lang="en">compilers</rdfs:label>
 		<rdfs:comment xml:lang="en">The compilers utilized during a particular build of a particular software.</rdfs:comment>
-		<rdfs:range rdf:resource="&tool;CompilerType"/>
+		<rdfs:range rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/CompilerType"/>
 	</owl:ObjectProperty>
 	
-	<owl:DatatypeProperty rdf:about="&tool;configurationSettingDescription">
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/configurationSettingDescription">
 		<rdfs:label xml:lang="en">configurationSettingDescription</rdfs:label>
 		<rdfs:comment xml:lang="en">Description of the configuration settings for a particular build of a particular software.</rdfs:comment>
-		<rdfs:range rdf:resource="&xsd;string"/>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
 	</owl:DatatypeProperty>
 	
-	<owl:ObjectProperty rdf:about="&tool;configurationSettings">
+	<owl:ObjectProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/configurationSettings">
 		<rdfs:label xml:lang="en">configurationSettings</rdfs:label>
 		<rdfs:comment xml:lang="en">The configuration settings for a particular build of a particular software.</rdfs:comment>
-		<rdfs:range rdf:resource="&tool;ConfigurationSettingType"/>
+		<rdfs:range rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/ConfigurationSettingType"/>
 	</owl:ObjectProperty>
 	
-	<owl:DatatypeProperty rdf:about="&tool;cpeid">
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/cpeid">
 		<rdfs:label xml:lang="en">cpeid</rdfs:label>
 		<rdfs:comment xml:lang="en">Specifies the Common Platform Enumeration identifier for the software.</rdfs:comment>
-		<rdfs:range rdf:resource="&xsd;string"/>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
 	</owl:DatatypeProperty>
 	
-	<owl:ObjectProperty rdf:about="&tool;creator">
+	<owl:ObjectProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/creator">
 		<rdfs:label xml:lang="en">creator</rdfs:label>
 		<rdfs:comment xml:lang="en">The creator organization for a particular tool.</rdfs:comment>
-		<rdfs:range rdf:resource="&identity;Identity"/>
+		<rdfs:range rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/Identity"/>
 	</owl:ObjectProperty>
 	
-	<owl:ObjectProperty rdf:about="&tool;dependencies">
+	<owl:ObjectProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/dependencies">
 		<rdfs:label xml:lang="en">dependencies</rdfs:label>
 		<rdfs:comment xml:lang="en">The relevant dependencies for a tool.</rdfs:comment>
-		<rdfs:range rdf:resource="&tool;DependencyType"/>
+		<rdfs:range rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/DependencyType"/>
 	</owl:ObjectProperty>
 	
-	<owl:DatatypeProperty rdf:about="&tool;dependencyDescription">
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/dependencyDescription">
 		<rdfs:label xml:lang="en">dependencyDescription</rdfs:label>
 		<rdfs:comment xml:lang="en">A description of a tool dependency.</rdfs:comment>
-		<rdfs:range rdf:resource="&xsd;string"/>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
 	</owl:DatatypeProperty>
 	
-	<owl:DatatypeProperty rdf:about="&tool;dependencyType">
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/dependencyType">
 		<rdfs:label xml:lang="en">dependencyType</rdfs:label>
 		<rdfs:comment xml:lang="en">The type of a tool dependency.</rdfs:comment>
-		<rdfs:range rdf:resource="&xsd;string"/>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
 	</owl:DatatypeProperty>
 	
-	<owl:DatatypeProperty rdf:about="&tool;itemDescription">
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/itemDescription">
 		<rdfs:label xml:lang="en">itemDescription</rdfs:label>
 		<rdfs:comment xml:lang="en">A description of a configuration item.</rdfs:comment>
-		<rdfs:range rdf:resource="&xsd;string"/>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
 	</owl:DatatypeProperty>
 	
-	<owl:DatatypeProperty rdf:about="&tool;itemName">
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/itemName">
 		<rdfs:label xml:lang="en">itemName</rdfs:label>
 		<rdfs:comment xml:lang="en">The name of a configuration item.</rdfs:comment>
-		<rdfs:range rdf:resource="&xsd;string"/>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
 	</owl:DatatypeProperty>
 	
-	<owl:DatatypeProperty rdf:about="&tool;itemType">
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/itemType">
 		<rdfs:label xml:lang="en">itemType</rdfs:label>
 		<rdfs:comment xml:lang="en">The type of a configuration item.</rdfs:comment>
-		<rdfs:range rdf:resource="&xsd;string"/>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
 	</owl:DatatypeProperty>
 	
-	<owl:DatatypeProperty rdf:about="&tool;itemValue">
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/itemValue">
 		<rdfs:label xml:lang="en">itemValue</rdfs:label>
 		<rdfs:comment xml:lang="en">The value of a configuration setting instance.</rdfs:comment>
-		<rdfs:range rdf:resource="&xsd;string"/>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
 	</owl:DatatypeProperty>
 	
-	<owl:ObjectProperty rdf:about="&tool;libraries">
+	<owl:ObjectProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/libraries">
 		<rdfs:label xml:lang="en">libraries</rdfs:label>
 		<rdfs:comment xml:lang="en">The libraries incorporated into a particular build of a software.</rdfs:comment>
-		<rdfs:range rdf:resource="&tool;LibraryType"/>
+		<rdfs:range rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/LibraryType"/>
 	</owl:ObjectProperty>
 	
-	<owl:DatatypeProperty rdf:about="&tool;libraryName">
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/libraryName">
 		<rdfs:label xml:lang="en">libraryName</rdfs:label>
 		<rdfs:comment xml:lang="en">The name of the library.</rdfs:comment>
-		<rdfs:range rdf:resource="&xsd;string"/>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
 	</owl:DatatypeProperty>
 	
-	<owl:DatatypeProperty rdf:about="&tool;libraryVersion">
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/libraryVersion">
 		<rdfs:label xml:lang="en">libraryVersion</rdfs:label>
 		<rdfs:comment xml:lang="en">The version of the library.</rdfs:comment>
-		<rdfs:range rdf:resource="&xsd;string"/>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
 	</owl:DatatypeProperty>
 	
-	<owl:DatatypeProperty rdf:about="&tool;references">
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/references">
 		<rdfs:label xml:lang="en">references</rdfs:label>
 		<rdfs:comment xml:lang="en">References to information describing a particular tool.</rdfs:comment>
-		<rdfs:range rdf:resource="&xsd;anyURI"/>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
 	</owl:DatatypeProperty>
 	
-	<owl:DatatypeProperty rdf:about="&tool;servicePack">
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/servicePack">
 		<rdfs:label xml:lang="en">servicePack</rdfs:label>
 		<rdfs:comment xml:lang="en">An appropriate service pack descriptor for a particular tool.</rdfs:comment>
-		<rdfs:range rdf:resource="&xsd;string"/>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
 	</owl:DatatypeProperty>
 	
-	<owl:DatatypeProperty rdf:about="&tool;swid">
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/swid">
 		<rdfs:label xml:lang="en">swid</rdfs:label>
 		<rdfs:comment xml:lang="en">Specifies the SWID tag for the software.</rdfs:comment>
-		<rdfs:range rdf:resource="&xsd;string"/>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
 	</owl:DatatypeProperty>
 	
-	<owl:DatatypeProperty rdf:about="&tool;toolType">
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/toolType">
 		<rdfs:label xml:lang="en">toolType</rdfs:label>
 		<rdfs:comment xml:lang="en">The type of tool.</rdfs:comment>
-		<rdfs:range rdf:resource="&xsd;string"/>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
 	</owl:DatatypeProperty>
 	
-	<owl:DatatypeProperty rdf:about="&tool;usageContextAssumptions">
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/usageContextAssumptions">
 		<rdfs:label xml:lang="en">usageContextAssumptions</rdfs:label>
 		<rdfs:comment xml:lang="en">dDescriptions of the various relevant usage context assumptions for this tool .</rdfs:comment>
-		<rdfs:range rdf:resource="&xsd;string"/>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
 	</owl:DatatypeProperty>
 	
-	<owl:DatatypeProperty rdf:about="&tool;version">
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/version">
 		<rdfs:label xml:lang="en">version</rdfs:label>
 		<rdfs:comment xml:lang="en">An appropriate version descriptor of a particular tool.</rdfs:comment>
-		<rdfs:range rdf:resource="&xsd;string"/>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
 	</owl:DatatypeProperty>
 
 </rdf:RDF>
