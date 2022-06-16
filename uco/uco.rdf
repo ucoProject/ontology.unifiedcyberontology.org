@@ -24,7 +24,7 @@
 		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/types"/>
 		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/victim"/>
 		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/vocabulary"/>
-		<owl:versionInfo>0.8.0</owl:versionInfo>
+		<owl:versionInfo>0.9.0</owl:versionInfo>
 	</owl:Ontology>
 	
 	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/core/id">

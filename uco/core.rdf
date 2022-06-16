@@ -322,6 +322,7 @@
 		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
 		<rdfs:label xml:lang="en">UcoObject</rdfs:label>
 		<rdfs:comment xml:lang="en">A UCO object is a representation of a fundamental concept either directly inherent to the cyber domain or indirectly related to the cyber domain and necessary for contextually characterizing cyber domain concepts and relationships. Within the Unified Cyber Ontology (UCO) structure this is the base class acting as a consistent, unifying and interoperable foundation for all explicit and inter-relatable content objects.</rdfs:comment>
+		<owl:disjointWith rdf:resource="https://ontology.unifiedcyberontology.org/uco/core/Facet"/>
 		<sh:property>
 			<rdf:Description>
 				<sh:class rdf:resource="https://ontology.unifiedcyberontology.org/uco/core/ExternalReference"/>
