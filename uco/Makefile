@@ -63,7 +63,7 @@ all: \
 	  && ontospy gendocs \
 	    --outputpath $$PWD/documentation \
 	    --theme darkly \
-	    --title uco-0.8.0-docs \
+	    --title uco-0.9.0-docs \
 	    --type 2 \
 	    $(top_srcdir)/dependencies/UCO/tests/uco_monolithic.ttl
 	touch $@
