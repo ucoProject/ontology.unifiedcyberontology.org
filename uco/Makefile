@@ -92,7 +92,7 @@ all: \
 	.vocabulary.symlinking.done.log
 
 action.rdf: \
-  $(top_srcdir)/dependencies/UCO/ontology/action/action.ttl \
+  $(top_srcdir)/dependencies/UCO/ontology/uco/action/action.ttl \
   $(RDF_TOOLKT_JAR) \
   namespaces.sed
 	java -jar $(RDF_TOOLKT_JAR) \
@@ -109,7 +109,7 @@ action.rdf: \
 	mv _$@ $@
 
 action.ttl: \
-  $(top_srcdir)/dependencies/UCO/ontology/action/action.ttl
+  $(top_srcdir)/dependencies/UCO/ontology/uco/action/action.ttl
 	cp $< $@
 
 check: \
@@ -140,7 +140,7 @@ clean-symlinking:
 	  -exec rm '{}' \;
 
 core.rdf: \
-  $(top_srcdir)/dependencies/UCO/ontology/core/core.ttl \
+  $(top_srcdir)/dependencies/UCO/ontology/uco/core/core.ttl \
   $(RDF_TOOLKT_JAR) \
   namespaces.sed
 	java -jar $(RDF_TOOLKT_JAR) \
@@ -157,11 +157,11 @@ core.rdf: \
 	mv _$@ $@
 
 core.ttl: \
-  $(top_srcdir)/dependencies/UCO/ontology/core/core.ttl
+  $(top_srcdir)/dependencies/UCO/ontology/uco/core/core.ttl
 	cp $< $@
 
 identity.rdf: \
-  $(top_srcdir)/dependencies/UCO/ontology/identity/identity.ttl \
+  $(top_srcdir)/dependencies/UCO/ontology/uco/identity/identity.ttl \
   $(RDF_TOOLKT_JAR) \
   namespaces.sed
 	java -jar $(RDF_TOOLKT_JAR) \
@@ -178,11 +178,11 @@ identity.rdf: \
 	mv _$@ $@
 
 identity.ttl: \
-  $(top_srcdir)/dependencies/UCO/ontology/identity/identity.ttl
+  $(top_srcdir)/dependencies/UCO/ontology/uco/identity/identity.ttl
 	cp $< $@
 
 location.rdf: \
-  $(top_srcdir)/dependencies/UCO/ontology/location/location.ttl \
+  $(top_srcdir)/dependencies/UCO/ontology/uco/location/location.ttl \
   $(RDF_TOOLKT_JAR) \
   namespaces.sed
 	java -jar $(RDF_TOOLKT_JAR) \
@@ -199,11 +199,11 @@ location.rdf: \
 	mv _$@ $@
 
 location.ttl: \
-  $(top_srcdir)/dependencies/UCO/ontology/location/location.ttl
+  $(top_srcdir)/dependencies/UCO/ontology/uco/location/location.ttl
 	cp $< $@
 
 marking.rdf: \
-  $(top_srcdir)/dependencies/UCO/ontology/marking/marking.ttl \
+  $(top_srcdir)/dependencies/UCO/ontology/uco/marking/marking.ttl \
   $(RDF_TOOLKT_JAR) \
   namespaces.sed
 	java -jar $(RDF_TOOLKT_JAR) \
@@ -220,11 +220,11 @@ marking.rdf: \
 	mv _$@ $@
 
 marking.ttl: \
-  $(top_srcdir)/dependencies/UCO/ontology/marking/marking.ttl
+  $(top_srcdir)/dependencies/UCO/ontology/uco/marking/marking.ttl
 	cp $< $@
 
 observable.rdf: \
-  $(top_srcdir)/dependencies/UCO/ontology/observable/observable.ttl \
+  $(top_srcdir)/dependencies/UCO/ontology/uco/observable/observable.ttl \
   $(RDF_TOOLKT_JAR) \
   namespaces.sed
 	java -jar $(RDF_TOOLKT_JAR) \
@@ -241,11 +241,11 @@ observable.rdf: \
 	mv _$@ $@
 
 observable.ttl: \
-  $(top_srcdir)/dependencies/UCO/ontology/observable/observable.ttl
+  $(top_srcdir)/dependencies/UCO/ontology/uco/observable/observable.ttl
 	cp $< $@
 
 pattern.rdf: \
-  $(top_srcdir)/dependencies/UCO/ontology/pattern/pattern.ttl \
+  $(top_srcdir)/dependencies/UCO/ontology/uco/pattern/pattern.ttl \
   $(RDF_TOOLKT_JAR) \
   namespaces.sed
 	java -jar $(RDF_TOOLKT_JAR) \
@@ -262,11 +262,11 @@ pattern.rdf: \
 	mv _$@ $@
 
 pattern.ttl: \
-  $(top_srcdir)/dependencies/UCO/ontology/pattern/pattern.ttl
+  $(top_srcdir)/dependencies/UCO/ontology/uco/pattern/pattern.ttl
 	cp $< $@
 
 role.rdf: \
-  $(top_srcdir)/dependencies/UCO/ontology/role/role.ttl \
+  $(top_srcdir)/dependencies/UCO/ontology/uco/role/role.ttl \
   $(RDF_TOOLKT_JAR) \
   namespaces.sed
 	java -jar $(RDF_TOOLKT_JAR) \
@@ -283,11 +283,11 @@ role.rdf: \
 	mv _$@ $@
 
 role.ttl: \
-  $(top_srcdir)/dependencies/UCO/ontology/role/role.ttl
+  $(top_srcdir)/dependencies/UCO/ontology/uco/role/role.ttl
 	cp $< $@
 
 time.rdf: \
-  $(top_srcdir)/dependencies/UCO/ontology/time/time.ttl \
+  $(top_srcdir)/dependencies/UCO/ontology/uco/time/time.ttl \
   $(RDF_TOOLKT_JAR) \
   namespaces.sed
 	java -jar $(RDF_TOOLKT_JAR) \
@@ -304,11 +304,11 @@ time.rdf: \
 	mv _$@ $@
 
 time.ttl: \
-  $(top_srcdir)/dependencies/UCO/ontology/time/time.ttl
+  $(top_srcdir)/dependencies/UCO/ontology/uco/time/time.ttl
 	cp $< $@
 
 tool.rdf: \
-  $(top_srcdir)/dependencies/UCO/ontology/tool/tool.ttl \
+  $(top_srcdir)/dependencies/UCO/ontology/uco/tool/tool.ttl \
   $(RDF_TOOLKT_JAR) \
   namespaces.sed
 	java -jar $(RDF_TOOLKT_JAR) \
@@ -325,11 +325,11 @@ tool.rdf: \
 	mv _$@ $@
 
 tool.ttl: \
-  $(top_srcdir)/dependencies/UCO/ontology/tool/tool.ttl
+  $(top_srcdir)/dependencies/UCO/ontology/uco/tool/tool.ttl
 	cp $< $@
 
 types.rdf: \
-  $(top_srcdir)/dependencies/UCO/ontology/types/types.ttl \
+  $(top_srcdir)/dependencies/UCO/ontology/uco/types/types.ttl \
   $(RDF_TOOLKT_JAR) \
   namespaces.sed
 	java -jar $(RDF_TOOLKT_JAR) \
@@ -346,11 +346,11 @@ types.rdf: \
 	mv _$@ $@
 
 types.ttl: \
-  $(top_srcdir)/dependencies/UCO/ontology/types/types.ttl
+  $(top_srcdir)/dependencies/UCO/ontology/uco/types/types.ttl
 	cp $< $@
 
 uco.rdf: \
-  $(top_srcdir)/dependencies/UCO/ontology/master/uco.ttl \
+  $(top_srcdir)/dependencies/UCO/ontology/uco/master/uco.ttl \
   $(RDF_TOOLKT_JAR) \
   namespaces.sed
 	java -jar $(RDF_TOOLKT_JAR) \
@@ -367,11 +367,11 @@ uco.rdf: \
 	mv _$@ $@
 
 uco.ttl: \
-  $(top_srcdir)/dependencies/UCO/ontology/master/uco.ttl
+  $(top_srcdir)/dependencies/UCO/ontology/uco/master/uco.ttl
 	cp $< $@
 
 victim.rdf: \
-  $(top_srcdir)/dependencies/UCO/ontology/victim/victim.ttl \
+  $(top_srcdir)/dependencies/UCO/ontology/uco/victim/victim.ttl \
   $(RDF_TOOLKT_JAR) \
   namespaces.sed
 	java -jar $(RDF_TOOLKT_JAR) \
@@ -388,11 +388,11 @@ victim.rdf: \
 	mv _$@ $@
 
 victim.ttl: \
-  $(top_srcdir)/dependencies/UCO/ontology/victim/victim.ttl
+  $(top_srcdir)/dependencies/UCO/ontology/uco/victim/victim.ttl
 	cp $< $@
 
 vocabulary.rdf: \
-  $(top_srcdir)/dependencies/UCO/ontology/vocabulary/vocabulary.ttl \
+  $(top_srcdir)/dependencies/UCO/ontology/uco/vocabulary/vocabulary.ttl \
   $(RDF_TOOLKT_JAR) \
   namespaces.sed
 	java -jar $(RDF_TOOLKT_JAR) \
@@ -409,5 +409,5 @@ vocabulary.rdf: \
 	mv _$@ $@
 
 vocabulary.ttl: \
-  $(top_srcdir)/dependencies/UCO/ontology/vocabulary/vocabulary.ttl
+  $(top_srcdir)/dependencies/UCO/ontology/uco/vocabulary/vocabulary.ttl
 	cp $< $@
