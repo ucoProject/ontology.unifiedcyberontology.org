@@ -15,6 +15,7 @@
 # be used but not defined in rdf-toolkit output.
 
 s_&action;_https://ontology.unifiedcyberontology.org/uco/action/_g
+s_&co;_http://purl.org/co/_g
 s_&core;_https://ontology.unifiedcyberontology.org/uco/core/_g
 s_&identity;_https://ontology.unifiedcyberontology.org/uco/identity/_g
 s_&location;_https://ontology.unifiedcyberontology.org/uco/location/_g
