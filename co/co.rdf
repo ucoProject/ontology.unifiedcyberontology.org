@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rdf:RDF
+	xmlns:co="http://purl.org/co/"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:sh="http://www.w3.org/ns/shacl#"
+	xmlns:uco-co="https://ontology.unifiedcyberontology.org/co/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+	
+	<owl:Ontology rdf:about="https://ontology.unifiedcyberontology.org/co">
+		<rdfs:comment xml:lang="en">This ontology defines SHACL shapes to supplement the OWL 2 DL definitions in the Collections Ontology.</rdfs:comment>
+		<owl:imports rdf:resource="http://purl.org/co"/>
+	</owl:Ontology>
+	
+	<rdf:Description rdf:about="&co;ListItem">
+		<rdfs:subClassOf rdf:resource="&co;Item"/>
+	</rdf:Description>
+	
+	<sh:NodeShape rdf:about="https://ontology.unifiedcyberontology.org/co/List-shape">
+		<sh:property>
+			<rdf:Description>
+				<sh:class rdf:resource="&co;ListItem"/>
+				<sh:path rdf:resource="&co;item"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:targetClass rdf:resource="&co;List"/>
+	</sh:NodeShape>
+	
+	<sh:NodeShape rdf:about="https://ontology.unifiedcyberontology.org/co/ListItem-shape">
+		<sh:property>
+			<rdf:Description>
+				<rdfs:comment xml:lang="en">Adapted from restriction on co:ListItem.</rdfs:comment>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:path rdf:resource="&co;index"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:targetClass rdf:resource="&co;ListItem"/>
+	</sh:NodeShape>
+	
+	<sh:PropertyShape rdf:about="https://ontology.unifiedcyberontology.org/co/firstItem-subjects-previousItem-shape">
+		<sh:description xml:lang="en">The first item in a list must not have a previous item.</sh:description>
+		<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:maxCount>
+		<sh:path rdf:parseType="Collection">
+			<rdf:Description rdf:about="&co;firstItem">
+			</rdf:Description>
+			<rdf:Description rdf:about="&co;previousItem">
+			</rdf:Description>
+		</sh:path>
+		<sh:targetSubjectsOf rdf:resource="&co;firstItem"/>
+	</sh:PropertyShape>
+	
+	<sh:PropertyShape rdf:about="https://ontology.unifiedcyberontology.org/co/firstItem-subjects-shape">
+		<sh:class rdf:resource="&co;ListItem"/>
+		<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+		<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#BlankNodeOrIRI"/>
+		<sh:path rdf:resource="&co;firstItem"/>
+		<sh:targetSubjectsOf rdf:resource="&co;firstItem"/>
+	</sh:PropertyShape>
+	
+	<sh:PropertyShape rdf:about="https://ontology.unifiedcyberontology.org/co/followedBy-subjects-shape">
+		<sh:class rdf:resource="&co;Item"/>
+		<sh:description xml:lang="en">This shape encodes in SHACL that co:followedBy has range co:Item (induced via the propertyChainAxiom on co:item and superproperty relationship with co:nextItem).</sh:description>
+		<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#BlankNodeOrIRI"/>
+		<sh:path rdf:resource="&co;followedBy"/>
+		<sh:targetSubjectsOf rdf:resource="&co;followedBy"/>
+	</sh:PropertyShape>
+	
+	<sh:PropertyShape rdf:about="https://ontology.unifiedcyberontology.org/co/index-subjects-shape">
+		<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#positiveInteger"/>
+		<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+		<sh:path rdf:resource="&co;index"/>
+		<sh:targetSubjectsOf rdf:resource="&co;index"/>
+	</sh:PropertyShape>
+	
+	<sh:PropertyShape rdf:about="https://ontology.unifiedcyberontology.org/co/item-subjects-shape">
+		<sh:class rdf:resource="&co;Item"/>
+		<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#BlankNodeOrIRI"/>
+		<sh:path rdf:resource="&co;item"/>
+		<sh:targetSubjectsOf rdf:resource="&co;item"/>
+	</sh:PropertyShape>
+	
+	<sh:NodeShape rdf:about="https://ontology.unifiedcyberontology.org/co/itemContent-subjects-shape">
+		<sh:not>
+			<sh:PropertyShape>
+				<sh:class rdf:resource="&co;Item"/>
+				<sh:description xml:lang="en">This shape encodes in SHACL that the range of co:itemContent is the complement of co:Item.</sh:description>
+				<sh:path rdf:resource="&co;itemContent"/>
+			</sh:PropertyShape>
+		</sh:not>
+		<sh:property>
+			<sh:PropertyShape>
+				<sh:description xml:lang="en">This shape encodes in SHACL that co:itemContent is an OWL FunctionalProperty (giving the sh:maxCount constraint).</sh:description>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#BlankNodeOrIRI"/>
+				<sh:path rdf:resource="&co;itemContent"/>
+			</sh:PropertyShape>
+		</sh:property>
+		<sh:targetSubjectsOf rdf:resource="&co;itemContent"/>
+	</sh:NodeShape>
+	
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/co/lastItem-subjects-shape">
+		<sh:class rdf:resource="&co;ListItem"/>
+		<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+		<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#BlankNodeOrIRI"/>
+		<sh:path rdf:resource="&co;lastItem"/>
+		<sh:targetSubjectsOf rdf:resource="&co;lastItem"/>
+	</rdf:Description>
+	
+	<sh:PropertyShape rdf:about="https://ontology.unifiedcyberontology.org/co/nextItem-subjects-shape">
+		<sh:class rdf:resource="&co;Item"/>
+		<sh:description xml:lang="en">This shape encodes in SHACL that co:nextItem is a FunctionalProperty (giving the sh:maxCount constraint), and has range co:Item (induced via the propertyChainAxiom on co:item).</sh:description>
+		<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+		<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#BlankNodeOrIRI"/>
+		<sh:path rdf:resource="&co;nextItem"/>
+		<sh:targetSubjectsOf rdf:resource="&co;nextItem"/>
+	</sh:PropertyShape>
+	
+	<sh:PropertyShape rdf:about="https://ontology.unifiedcyberontology.org/co/precededBy-subjects-shape">
+		<sh:class rdf:resource="&co;Item"/>
+		<sh:description xml:lang="en">This shape encodes in SHACL that co:precededBy has range co:Item (induced via the propertyChainAxiom on co:item and superproperty relationship with co:previousItem).</sh:description>
+		<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#BlankNodeOrIRI"/>
+		<sh:path rdf:resource="&co;precededBy"/>
+		<sh:targetSubjectsOf rdf:resource="&co;precededBy"/>
+	</sh:PropertyShape>
+	
+	<sh:PropertyShape rdf:about="https://ontology.unifiedcyberontology.org/co/previousItem-subjects-shape">
+		<sh:class rdf:resource="&co;Item"/>
+		<sh:description xml:lang="en">This shape encodes in SHACL that co:previousItem is a FunctionalProperty (giving the sh:maxCount constraint), and has range co:Item (induced via the propertyChainAxiom on co:item).</sh:description>
+		<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+		<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#BlankNodeOrIRI"/>
+		<sh:path rdf:resource="&co;previousItem"/>
+		<sh:targetSubjectsOf rdf:resource="&co;previousItem"/>
+	</sh:PropertyShape>
+	
+	<sh:PropertyShape rdf:about="https://ontology.unifiedcyberontology.org/co/size-subjects-shape">
+		<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+		<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+		<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+		<sh:path rdf:resource="&co;size"/>
+		<sh:targetSubjectsOf rdf:resource="&co;size"/>
+	</sh:PropertyShape>
+	
+	<owl:Axiom>
+		<rdfs:comment xml:lang="en">This triple is repeated from the Collections Ontology.</rdfs:comment>
+		<owl:AnnotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+		<owl:AnnotatedSource rdf:resource="&co;ListItem"/>
+		<owl:AnnotatedTarget rdf:resource="&co;Item"/>
+	</owl:Axiom>
+</rdf:RDF>
