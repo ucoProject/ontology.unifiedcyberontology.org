@@ -23,7 +23,7 @@ When a new ontology release is created, follow these steps:
 2. The version of UCO is hard-coded in `uco/Makefile` as part of titling the documentation.  Update it to the new version.
 3. Run `make clean`.
 4. Run `make`.  (`make -j` will work.)
-5. Run `git add uco`.  This will pick up all file deletions and new file creations.
+5. Run `git add co uco`.  This will pick up all file deletions and new file creations.
 6. Commit the changes.
 7. Push to Github.
 8. Run `git pull` in the deployment space.

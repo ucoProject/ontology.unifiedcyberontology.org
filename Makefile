@@ -18,11 +18,15 @@ SHELL := /bin/bash
 HOST_PREFIX ?= http://localhost
 
 all: \
+  all-co \
   all-uco
 
 .PHONY: \
+  all-co \
   all-uco \
-  check-service
+  check-co \
+  check-service \
+  check-uco
 
 
 # This target checks for a file's existence to confirm that the submodule
@@ -63,6 +67,11 @@ all: \
 	    dependencies/Ontospy[FULL]
 	touch $@
 
+all-co: \
+  .venv.done.log
+	$(MAKE) \
+	  --directory co
+
 all-uco: \
   .venv.done.log \
   dependencies/UCO/tests/uco_monolithic.ttl
@@ -70,6 +79,16 @@ all-uco: \
 	  --directory uco
 
 check: \
+  check-co \
+  check-uco
+
+check-co: \
+  all-co
+	$(MAKE) \
+	  --directory co \
+	  check
+
+check-uco: \
   all-uco
 	$(MAKE) \
 	  --directory uco \
@@ -173,6 +192,9 @@ check-service:
 clean:
 	@$(MAKE) \
 	  --directory uco \
+	  clean
+	@$(MAKE) \
+	  --directory co \
 	  clean
 	@rm -f .*.done.log
 	@test ! -r dependencies/UCO/README.md \

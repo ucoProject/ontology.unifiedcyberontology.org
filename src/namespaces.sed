@@ -31,4 +31,5 @@ s_&tool;_https://ontology.unifiedcyberontology.org/uco/tool/_g
 s_&types;_https://ontology.unifiedcyberontology.org/uco/types/_g
 s_&victim;_https://ontology.unifiedcyberontology.org/uco/victim/_g
 s_&vocabulary;_https://ontology.unifiedcyberontology.org/uco/vocabulary/_g
+s_&uco-co;_https://ontology.unifiedcyberontology.org/co/_g
 s_&xsd;_http://www.w3.org/2001/XMLSchema#_g
