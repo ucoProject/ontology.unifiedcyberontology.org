@@ -42,18 +42,29 @@ RewriteRule ^uco/(.*)$ uco/$1.ttl [L,R=303]
 
 # Rewrite rule 3.2: to serve RDF content is requested
 RewriteCond %{REQUEST_URI} !\.rdf [NC]
-RewriteCond %{HTTP_ACCEPT} application/rdf\+xml
+RewriteCond %{HTTP_ACCEPT} application/rdf\+xml 
+RewriteRule ^uco/(.*)$ uco/$1.rdf [L,R=303]
+
+# Rewrite directly to the rdf when ^uco/<target> isn't docs
+RewriteCond %{REQUEST_URI} !^/uco/documentation/static/ [NC]
+RewriteCond %{REQUEST_URI} !\.rdf [NC]
+RewriteCond %{REQUEST_URI} !\.ttl [NC]
+RewriteCond %{REQUEST_URI} !\.html [NC]
+RewriteCond %{HTTP_ACCEPT} text/html [OR]
+RewriteCond %{HTTP_ACCEPT} application/xhtml\+xml [OR]
 RewriteRule ^uco/(.*)$ uco/$1.rdf [L,R=303]
 
 # Rewrite rule: to serve HTML of some uco sub-dir
 RewriteCond %{REQUEST_URI} !^/uco/documentation/static/ [NC]
-RewriteCond %{REQUEST_URI} !\.html [NC]
+RewriteCond %{REQUEST_URI} !\.* [NC]
 RewriteCond %{HTTP_ACCEPT} text/html [OR]
 RewriteCond %{HTTP_ACCEPT} application/xhtml\+xml [OR]
 RewriteRule ^uco/(.*)/(.*)$ uco/$1/$2.html [L,R=303]
 
 # Rewrite rule: serve based on user-agent
 RewriteCond %{REQUEST_URI} !^/uco/documentation/static/ [NC]
+RewriteCond %{REQUEST_URI} !\.rdf [NC]
+RewriteCond %{REQUEST_URI} !\.ttl [NC]
 RewriteCond %{REQUEST_URI} !\.html [NC]
 RewriteCond %{HTTP_ACCEPT} text/html [OR]
 RewriteCond %{HTTP_ACCEPT} application/xhtml\+xml [OR]
