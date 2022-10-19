@@ -11,6 +11,8 @@
 #
 # We would appreciate acknowledgement if the software is used.
 
+CURRENT_RELEASE := 0.9.1
+
 SHELL := /bin/bash
 
 top_srcdir := $(shell cd .. ; pwd)
@@ -106,11 +108,13 @@ action.rdf: \
 	  __$@ \
 	  > _$@
 	rm __$@
+	cp _$@ action/$(CURRENT_RELEASE).rdf
 	mv _$@ $@
 
 action.ttl: \
   $(top_srcdir)/dependencies/UCO/ontology/action/action.ttl
 	cp $< $@
+	cp $< action/$(CURRENT_RELEASE).ttl
 
 check: \
   $(rdf_files)
@@ -154,11 +158,13 @@ core.rdf: \
 	  __$@ \
 	  > _$@
 	rm __$@
+	cp _$@ core/$(CURRENT_RELEASE).rdf
 	mv _$@ $@
 
 core.ttl: \
   $(top_srcdir)/dependencies/UCO/ontology/core/core.ttl
 	cp $< $@
+	cp $< core/$(CURRENT_RELEASE).ttl
 
 identity.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/identity/identity.ttl \
@@ -175,11 +181,13 @@ identity.rdf: \
 	  __$@ \
 	  > _$@
 	rm __$@
+	cp _$@ identity/$(CURRENT_RELEASE).rdf
 	mv _$@ $@
 
 identity.ttl: \
   $(top_srcdir)/dependencies/UCO/ontology/identity/identity.ttl
 	cp $< $@
+	cp $< identity/$(CURRENT_RELEASE).ttl
 
 location.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/location/location.ttl \
@@ -196,11 +204,13 @@ location.rdf: \
 	  __$@ \
 	  > _$@
 	rm __$@
+	cp _$@ location/$(CURRENT_RELEASE).rdf
 	mv _$@ $@
 
 location.ttl: \
   $(top_srcdir)/dependencies/UCO/ontology/location/location.ttl
 	cp $< $@
+	cp $< location/$(CURRENT_RELEASE).ttl
 
 marking.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/marking/marking.ttl \
@@ -217,11 +227,13 @@ marking.rdf: \
 	  __$@ \
 	  > _$@
 	rm __$@
+	cp _$@ marking/$(CURRENT_RELEASE).rdf
 	mv _$@ $@
 
 marking.ttl: \
   $(top_srcdir)/dependencies/UCO/ontology/marking/marking.ttl
 	cp $< $@
+	cp $< marking/$(CURRENT_RELEASE).ttl
 
 observable.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/observable/observable.ttl \
@@ -238,11 +250,13 @@ observable.rdf: \
 	  __$@ \
 	  > _$@
 	rm __$@
+	cp _$@ observable/$(CURRENT_RELEASE).rdf
 	mv _$@ $@
 
 observable.ttl: \
   $(top_srcdir)/dependencies/UCO/ontology/observable/observable.ttl
 	cp $< $@
+	cp $< observable/$(CURRENT_RELEASE).ttl
 
 pattern.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/pattern/pattern.ttl \
@@ -259,11 +273,13 @@ pattern.rdf: \
 	  __$@ \
 	  > _$@
 	rm __$@
+	cp _$@ pattern/$(CURRENT_RELEASE).rdf
 	mv _$@ $@
 
 pattern.ttl: \
   $(top_srcdir)/dependencies/UCO/ontology/pattern/pattern.ttl
 	cp $< $@
+	cp $< pattern/$(CURRENT_RELEASE).ttl
 
 role.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/role/role.ttl \
@@ -280,11 +296,13 @@ role.rdf: \
 	  __$@ \
 	  > _$@
 	rm __$@
+	cp _$@ role/$(CURRENT_RELEASE).rdf
 	mv _$@ $@
 
 role.ttl: \
   $(top_srcdir)/dependencies/UCO/ontology/role/role.ttl
 	cp $< $@
+	cp $< role/$(CURRENT_RELEASE).ttl
 
 time.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/time/time.ttl \
@@ -301,11 +319,13 @@ time.rdf: \
 	  __$@ \
 	  > _$@
 	rm __$@
+	cp _$@ time/$(CURRENT_RELEASE).rdf
 	mv _$@ $@
 
 time.ttl: \
   $(top_srcdir)/dependencies/UCO/ontology/time/time.ttl
 	cp $< $@
+	cp $< time/$(CURRENT_RELEASE).ttl
 
 tool.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/tool/tool.ttl \
@@ -322,11 +342,13 @@ tool.rdf: \
 	  __$@ \
 	  > _$@
 	rm __$@
+	cp _$@ tool/$(CURRENT_RELEASE).rdf
 	mv _$@ $@
 
 tool.ttl: \
   $(top_srcdir)/dependencies/UCO/ontology/tool/tool.ttl
 	cp $< $@
+	cp $< tool/$(CURRENT_RELEASE).ttl
 
 types.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/types/types.ttl \
@@ -343,11 +365,13 @@ types.rdf: \
 	  __$@ \
 	  > _$@
 	rm __$@
+	cp _$@ types/$(CURRENT_RELEASE).rdf
 	mv _$@ $@
 
 types.ttl: \
   $(top_srcdir)/dependencies/UCO/ontology/types/types.ttl
 	cp $< $@
+	cp $< types/$(CURRENT_RELEASE).ttl
 
 uco.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/master/uco.ttl \
@@ -364,11 +388,13 @@ uco.rdf: \
 	  __$@ \
 	  > _$@
 	rm __$@
+	cp _$@ uco/$(CURRENT_RELEASE).rdf
 	mv _$@ $@
 
 uco.ttl: \
   $(top_srcdir)/dependencies/UCO/ontology/master/uco.ttl
 	cp $< $@
+	cp $< uco/$(CURRENT_RELEASE).ttl
 
 victim.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/victim/victim.ttl \
@@ -385,11 +411,13 @@ victim.rdf: \
 	  __$@ \
 	  > _$@
 	rm __$@
+	cp _$@ victim/$(CURRENT_RELEASE).rdf
 	mv _$@ $@
 
 victim.ttl: \
   $(top_srcdir)/dependencies/UCO/ontology/victim/victim.ttl
 	cp $< $@
+	cp $< victim/$(CURRENT_RELEASE).ttl
 
 vocabulary.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/vocabulary/vocabulary.ttl \
@@ -406,8 +434,10 @@ vocabulary.rdf: \
 	  __$@ \
 	  > _$@
 	rm __$@
+	cp _$@ vocabulary/$(CURRENT_RELEASE).rdf
 	mv _$@ $@
 
 vocabulary.ttl: \
   $(top_srcdir)/dependencies/UCO/ontology/vocabulary/vocabulary.ttl
 	cp $< $@
+	cp $< vocabulary/$(CURRENT_RELEASE).ttl
