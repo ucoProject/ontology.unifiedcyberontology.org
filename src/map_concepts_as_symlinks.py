@@ -8,16 +8,17 @@
 import argparse
 import logging
 import os
+from typing import Dict
 
 import rdflib.plugins.sparql
 
-def debug_printlinks(symlinks):
+def debug_printlinks(symlinks: Dict[str, str]) -> None:
     """Outputs the contents of the symlinks dict, for debugging only."""
 
     for src, dst in symlinks.items():
         logging.debug(repr(src) + " -> " + repr(dst))
 
-def create_symlinks(top_srcdir, symlinks):
+def create_symlinks(top_srcdir: str, symlinks: Dict[str, str]) -> None:
     """Create symlinks based on generated gendoc -> web path."""
 
     _pre_cwd = os.getcwd()
@@ -45,7 +46,7 @@ def create_symlinks(top_srcdir, symlinks):
     os.chdir(_pre_cwd)
     logging.debug("os.getcwd() = %r.", os.getcwd())
 
-def main():
+def main() -> None:
     # parse arguments for ontology file we are preparing links for
     parser = argparse.ArgumentParser()
     parser.add_argument('inTtl', type=str, help='ttl file to build sym-links off of')
@@ -67,12 +68,12 @@ def main():
     queries["prop"] = "SELECT ?nConcept WHERE {{ ?nConcept a owl:DatatypeProperty . } UNION { ?nConcept a owl:ObjectProperty . }}"
 
     # hold gendoc location, assoicated to symlinked path -- dict(gendocs-path : symlink)
-    symlinks = dict()
+    symlinks: Dict[str, str] = dict()
 
     # generate paths for symlink src/dst locations
     for prefix, query in queries.items():
         tally = 0
-        select_query_object = rdflib.plugins.sparql.prepareQuery(query, initNs=nsdict)
+        select_query_object = rdflib.plugins.sparql.processor.prepareQuery(query, initNs=nsdict)
         for (row_no, row) in enumerate(graph.query(select_query_object)):
             tally = row_no + 1
             concept_iri = row[0].toPython()
