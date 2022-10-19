@@ -97,23 +97,35 @@ check-service:
 	diff _$@ uco/vocabulary.ttl
 	rm _$@
 	wget \
+	  --header 'Accept: text/turtle' \
+	  --output-document _$@ \
+	  $(HOST_PREFIX)/uco/vocabulary/0.9.1
+	diff _$@ uco/vocabulary/0.9.1.ttl
+	rm _$@
+	wget \
 	  --header 'Accept: application/rdf+xml' \
 	  --output-document _$@ \
 	  $(HOST_PREFIX)/uco/vocabulary
 	diff _$@ uco/vocabulary.rdf
 	rm _$@
-	## Classes
 	wget \
+	  --header 'Accept: application/rdf+xml' \
+	  --output-document _$@ \
+	  $(HOST_PREFIX)/uco/vocabulary/0.9.1
+	diff _$@ uco/vocabulary/0.9.1.rdf
+	rm _$@
+#	## Classes
+#	wget \
 	  --output-document _$@ \
 	  $(HOST_PREFIX)/uco/core/UcoObject
-	# NOTE - no comparison test done, default behavior just needs to not return a server error.
-	rm _$@
-	wget \
+#	# NOTE - no comparison test done, default behavior just needs to not return a server error.
+#	rm _$@
+#	wget \
 	  --header 'Accept: text/html' \
 	  --output-document _$@ \
 	  $(HOST_PREFIX)/uco/core/UcoObject
-	diff _$@ uco/core/UcoObject.html
-	rm _$@
+#	diff _$@ uco/core/UcoObject.html
+#	rm _$@
 #	#TODO - Turtle breakout needs to be written.
 #	wget \
 #	  --header 'Accept: text/turtle' \
@@ -129,17 +141,17 @@ check-service:
 #	diff _$@ uco/core/UcoObject.rdf
 #	rm _$@
 	## Properties
-	wget \
+#	wget \
 	  --output-document _$@ \
 	  $(HOST_PREFIX)/uco/core/hasFacet
 	# NOTE - no comparison test done, default behavior just needs to not return a server error.
-	rm _$@
-	wget \
+#	rm _$@
+#	wget \
 	  --header 'Accept: text/html' \
 	  --output-document _$@ \
 	  $(HOST_PREFIX)/uco/core/hasFacet
-	diff _$@ uco/core/hasFacet.html
-	rm _$@
+#	diff _$@ uco/core/hasFacet.html
+#	rm _$@
 #	#TODO - Turtle breakout needs to be written.
 #	wget \
 #	  --header 'Accept: text/turtle' \
