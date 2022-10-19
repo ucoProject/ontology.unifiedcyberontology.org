@@ -46,11 +46,10 @@ def create_symlinks(top_srcdir, symlinks):
     logging.debug("os.getcwd() = %r.", os.getcwd())
 
 def main():
-    # parse arguments for ontology file & version we are preparing links for
+    # parse arguments for ontology file we are preparing links for
     parser = argparse.ArgumentParser()
     parser.add_argument('inTtl', type=str, help='ttl file to build sym-links off of')
     parser.add_argument('--debug', action="store_true")
-    parser.add_argument('--version', type=str, help='verson of the ontology (optional, example: 0.4.0)', required=False)
     args = parser.parse_args()
 
     logging.basicConfig(level=logging.DEBUG if args.debug else logging.INFO)
@@ -83,9 +82,8 @@ def main():
             url_path = concept_iri.split("ontology.org/")[1] + ".html"
 
             # determine path to symlink target (gendocs HTML file), relative to basename of URL path
-            # check if a version is specified
             iri_parts = concept_iri.split('/')
-            gendocs_target = f"../documentation{f'/{args.version}' if args.version else ''}/{prefix}-{iri_parts[-2]}{iri_parts[-1].lower()}.html"
+            gendocs_target = f"../documentation/{prefix}-{iri_parts[-2]}{iri_parts[-1].lower()}.html"
 
             # format gendoc -> symlink (src, dst) combos
             symlinks[gendocs_target] = url_path
