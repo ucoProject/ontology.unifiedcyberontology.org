@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rdf:RDF
+	xmlns:core="https://ontology.unifiedcyberontology.org/uco/core/"
+	xmlns:identity="https://ontology.unifiedcyberontology.org/uco/identity/"
+	xmlns:location="https://ontology.unifiedcyberontology.org/uco/location/"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:sh="http://www.w3.org/ns/shacl#"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+	
+	<owl:Ontology rdf:about="https://ontology.unifiedcyberontology.org/uco/identity">
+		<rdfs:label xml:lang="en">uco-identity</rdfs:label>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/core/0.9.1"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/location/0.9.1"/>
+		<owl:ontologyIRI rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity"/>
+		<owl:versionIRI rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/0.9.1"/>
+	</owl:Ontology>
+	
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/identity/AddressFacet">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/IdentityFacet"/>
+		<rdfs:label xml:lang="en">AddressFacet</rdfs:label>
+		<rdfs:comment xml:lang="en">An address facet is a grouping of characteristics unique to an administrative identifier for a geolocation associated with a specific identity.</rdfs:comment>
+		<sh:property>
+			<rdf:Description>
+				<sh:class rdf:resource="https://ontology.unifiedcyberontology.org/uco/location/Location"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#BlankNodeOrIRI"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/address"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/AddressFacet"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/identity/AffiliationFacet">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/IdentityFacet"/>
+		<rdfs:label xml:lang="en">AffiliationFacet</rdfs:label>
+		<rdfs:comment xml:lang="en">An affiliation is a grouping of characteristics unique to the established affiliations of an entity.</rdfs:comment>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/AffiliationFacet"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/identity/BirthInformationFacet">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/IdentityFacet"/>
+		<rdfs:label xml:lang="en">BirthInformationFacet</rdfs:label>
+		<rdfs:comment xml:lang="en">Birth information is a grouping of characteristics unique to information pertaining to the birth of an entity.</rdfs:comment>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/birthdate"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/BirthInformationFacet"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/identity/CountryOfResidenceFacet">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/IdentityFacet"/>
+		<rdfs:label xml:lang="en">CountryOfResidenceFacet</rdfs:label>
+		<rdfs:comment xml:lang="en">Country of residence is a grouping of characteristics unique to information related to the country, or countries, where an entity resides.</rdfs:comment>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/CountryOfResidenceFacet"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/identity/EventsFacet">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/IdentityFacet"/>
+		<rdfs:label xml:lang="en">EventsFacet</rdfs:label>
+		<rdfs:comment xml:lang="en">Events is a grouping of characteristics unique to information related to specific relevant things that happen in the lifetime of an entity.</rdfs:comment>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/EventsFacet"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/identity/IdentifierFacet">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/IdentityFacet"/>
+		<rdfs:label xml:lang="en">IdentifierFacet</rdfs:label>
+		<rdfs:comment xml:lang="en">Identifier is a grouping of characteristics unique to information that uniquely and specifically identities an entity.</rdfs:comment>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/IdentifierFacet"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/identity/Identity">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/core/IdentityAbstraction"/>
+		<rdfs:label xml:lang="en">Identity</rdfs:label>
+		<rdfs:comment xml:lang="en">An identity is a grouping of identifying characteristics unique to an individual or organization.</rdfs:comment>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/Identity"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/identity/IdentityFacet">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/core/Facet"/>
+		<rdfs:label xml:lang="en">IdentityFacet</rdfs:label>
+		<rdfs:comment xml:lang="en">An identity facet is a grouping of characteristics unique to a particular aspect of an identity.</rdfs:comment>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/IdentityFacet"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/identity/LanguagesFacet">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/IdentityFacet"/>
+		<rdfs:label xml:lang="en">LanguagesFacet</rdfs:label>
+		<rdfs:comment xml:lang="en">Languages is a grouping of characteristics unique to specific syntactically and grammatically standardized forms of communication (human or computer) in which an entity has proficiency (comprehends, speaks, reads, or writes).</rdfs:comment>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/LanguagesFacet"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/identity/NationalityFacet">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/IdentityFacet"/>
+		<rdfs:label xml:lang="en">NationalityFacet</rdfs:label>
+		<rdfs:comment xml:lang="en">Nationality is a grouping of characteristics unique to the condition of an entity belonging to a particular nation.</rdfs:comment>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/NationalityFacet"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/identity/OccupationFacet">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/IdentityFacet"/>
+		<rdfs:label xml:lang="en">OccupationFacet</rdfs:label>
+		<rdfs:comment xml:lang="en">Occupation is a grouping of characteristics unique to the job or profession of an entity.</rdfs:comment>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/OccupationFacet"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/identity/Organization">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/Identity"/>
+		<rdfs:label xml:lang="en">Organization</rdfs:label>
+		<rdfs:comment xml:lang="en">An organization is a grouping of identifying characteristics unique to a group of people who work together in an organized way for a shared purpose. [based on https://dictionary.cambridge.org/us/dictionary/english/organization]</rdfs:comment>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/Organization"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/identity/OrganizationDetailsFacet">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/IdentityFacet"/>
+		<rdfs:label xml:lang="en">OrganizationDetailsFacet</rdfs:label>
+		<rdfs:comment xml:lang="en">Organization details is a grouping of characteristics unique to an identity representing an administrative and functional structure.</rdfs:comment>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/OrganizationDetailsFacet"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/identity/Person">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/Identity"/>
+		<rdfs:label xml:lang="en">Person</rdfs:label>
+		<rdfs:comment xml:lang="en">A person is a grouping of identifying characteristics unique to a human being regarded as an individual. [based on https://www.lexico.com/en/definition/person]</rdfs:comment>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/Person"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/identity/PersonalDetailsFacet">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/IdentityFacet"/>
+		<rdfs:label xml:lang="en">PersonalDetailsFacet</rdfs:label>
+		<rdfs:comment xml:lang="en">Personal details is a grouping of characteristics unique to an identity representing an individual person.</rdfs:comment>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/PersonalDetailsFacet"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/identity/PhysicalInfoFacet">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/IdentityFacet"/>
+		<rdfs:label xml:lang="en">PhysicalInfoFacet</rdfs:label>
+		<rdfs:comment xml:lang="en">Physical info is a grouping of characteristics unique to the outwardly observable nature of an individual person.</rdfs:comment>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/PhysicalInfoFacet"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/identity/QualificationFacet">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/IdentityFacet"/>
+		<rdfs:label xml:lang="en">QualificationFacet</rdfs:label>
+		<rdfs:comment xml:lang="en">Qualification is a grouping of characteristics unique to particular skills, capabilities or their related achievements (educational, professional, etc.) of an entity.</rdfs:comment>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/QualificationFacet"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/identity/RelatedIdentityFacet">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/IdentityFacet"/>
+		<rdfs:label xml:lang="en">RelatedIdentityFacet</rdfs:label>
+		<rdfs:comment xml:lang="en">&lt;Needs fleshed out from CIQ&gt;</rdfs:comment>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/RelatedIdentityFacet"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/identity/SimpleNameFacet">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/IdentityFacet"/>
+		<rdfs:label xml:lang="en">SimpleNameFacet</rdfs:label>
+		<rdfs:comment xml:lang="en">A simple name facet is a grouping of characteristics unique to the personal name (e.g., Dr. John Smith Jr.) held by an identity.</rdfs:comment>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/familyName"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/givenName"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/honorificPrefix"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/honorificSuffix"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/SimpleNameFacet"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/identity/VisaFacet">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/IdentityFacet"/>
+		<rdfs:label xml:lang="en">VisaFacet</rdfs:label>
+		<rdfs:comment xml:lang="en">Visa is a grouping of characteristics unique to information related to a person&apos;s ability to enter, leave, or stay for a specified period of time in a country.</rdfs:comment>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/VisaFacet"/>
+	</rdf:Description>
+	
+	<owl:ObjectProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/identity/address">
+		<rdfs:label xml:lang="en">address</rdfs:label>
+		<rdfs:comment xml:lang="en"></rdfs:comment>
+		<rdfs:range rdf:resource="https://ontology.unifiedcyberontology.org/uco/location/Location"/>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/identity/birthdate">
+		<rdfs:label xml:lang="en">birthdate</rdfs:label>
+		<rdfs:comment xml:lang="en"></rdfs:comment>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/identity/familyName">
+		<rdfs:label xml:lang="en">familyName</rdfs:label>
+		<rdfs:comment xml:lang="en"></rdfs:comment>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/identity/givenName">
+		<rdfs:label xml:lang="en">givenName</rdfs:label>
+		<rdfs:comment xml:lang="en"></rdfs:comment>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/identity/honorificPrefix">
+		<rdfs:label xml:lang="en">honorificPrefix</rdfs:label>
+		<rdfs:comment xml:lang="en"></rdfs:comment>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/identity/honorificSuffix">
+		<rdfs:label xml:lang="en">honorificSuffix</rdfs:label>
+		<rdfs:comment xml:lang="en"></rdfs:comment>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+	</owl:DatatypeProperty>
+
+</rdf:RDF>

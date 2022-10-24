@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rdf:RDF
+	xmlns:core="https://ontology.unifiedcyberontology.org/uco/core/"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:pattern="https://ontology.unifiedcyberontology.org/uco/pattern/"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:sh="http://www.w3.org/ns/shacl#"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+	
+	<owl:Ontology rdf:about="https://ontology.unifiedcyberontology.org/uco/pattern">
+		<rdfs:label xml:lang="en">uco-pattern</rdfs:label>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/core/0.9.1"/>
+		<owl:ontologyIRI rdf:resource="https://ontology.unifiedcyberontology.org/uco/pattern"/>
+		<owl:versionIRI rdf:resource="https://ontology.unifiedcyberontology.org/uco/pattern/0.9.1"/>
+	</owl:Ontology>
+	
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/pattern/LogicalPattern">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/pattern/Pattern"/>
+		<rdfs:label xml:lang="en">LogicalPattern</rdfs:label>
+		<rdfs:comment xml:lang="en">A logical pattern is a grouping of characteristics unique to an informational pattern expressed via a structured pattern expression following the rules of logic.</rdfs:comment>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="https://ontology.unifiedcyberontology.org/uco/pattern/PatternExpression"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/pattern/patternExpression"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/pattern/LogicalPattern"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/pattern/Pattern">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/core/UcoObject"/>
+		<rdfs:label xml:lang="en">Pattern</rdfs:label>
+		<rdfs:comment xml:lang="en">A pattern is a combination of properties, acts, tendencies, etc., forming a consistent or characteristic arrangement.</rdfs:comment>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/pattern/Pattern"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/pattern/PatternExpression">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:label xml:lang="en">PatternExpression</rdfs:label>
+		<rdfs:comment xml:lang="en">A pattern expression is a grouping of characteristics unique to an explicit logical expression defining a pattern (e.g., regular expression, SQL Select expression, etc.).</rdfs:comment>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/pattern/PatternExpression"/>
+	</rdf:Description>
+	
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/pattern/patternExpression">
+		<rdfs:label xml:lang="en">patternExpression</rdfs:label>
+		<rdfs:comment xml:lang="en">An explicit logical pattern expression.</rdfs:comment>
+		<rdfs:range rdf:resource="https://ontology.unifiedcyberontology.org/uco/pattern/PatternExpression"/>
+	</owl:DatatypeProperty>
+
+</rdf:RDF>

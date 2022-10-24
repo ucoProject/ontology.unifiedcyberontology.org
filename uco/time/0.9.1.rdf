@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rdf:RDF
+	xmlns:core="https://ontology.unifiedcyberontology.org/uco/core/"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:time="https://ontology.unifiedcyberontology.org/uco/time/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+	
+	<owl:Ontology rdf:about="https://ontology.unifiedcyberontology.org/uco/time">
+		<rdfs:label xml:lang="en">uco-time</rdfs:label>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/core/0.9.1"/>
+		<owl:ontologyIRI rdf:resource="https://ontology.unifiedcyberontology.org/uco/time"/>
+		<owl:versionIRI rdf:resource="https://ontology.unifiedcyberontology.org/uco/time/0.9.1"/>
+	</owl:Ontology>
+	
+	<rdfs:Datatype rdf:about="https://ontology.unifiedcyberontology.org/uco/time/Time">
+	</rdfs:Datatype>
+	
+	<rdfs:Datatype rdf:about="https://ontology.unifiedcyberontology.org/uco/time/TimeRange">
+	</rdfs:Datatype>
+	
+	<rdfs:Datatype rdf:about="https://ontology.unifiedcyberontology.org/uco/time/Timestamp">
+	</rdfs:Datatype>
+
+</rdf:RDF>

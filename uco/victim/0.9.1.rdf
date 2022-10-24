@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rdf:RDF
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:role="https://ontology.unifiedcyberontology.org/uco/role/"
+	xmlns:sh="http://www.w3.org/ns/shacl#"
+	xmlns:victim="https://ontology.unifiedcyberontology.org/uco/victim/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+	
+	<owl:Ontology rdf:about="https://ontology.unifiedcyberontology.org/uco/victim">
+		<rdfs:label xml:lang="en">uco-victim</rdfs:label>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/role/0.9.1"/>
+		<owl:ontologyIRI rdf:resource="https://ontology.unifiedcyberontology.org/uco/victim"/>
+		<owl:versionIRI rdf:resource="https://ontology.unifiedcyberontology.org/uco/victim/0.9.1"/>
+	</owl:Ontology>
+	
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/victim/Victim">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/role/NeutralRole"/>
+		<rdfs:label xml:lang="en">Victim</rdfs:label>
+		<rdfs:comment xml:lang="en">A victim is a role played by a person or organization that is/was the target of some malicious action.</rdfs:comment>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/victim/Victim"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/victim/VictimTargeting">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/victim/Victim"/>
+		<rdfs:label xml:lang="en">VictimTargeting</rdfs:label>
+		<rdfs:comment xml:lang="en">A victim targeting is a grouping of characteristics unique to people or organizations that are the target of some malicious activity.</rdfs:comment>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/victim/VictimTargeting"/>
+	</rdf:Description>
+
+</rdf:RDF>
