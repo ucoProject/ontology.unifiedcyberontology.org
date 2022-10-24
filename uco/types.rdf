@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <rdf:RDF
+	xmlns:core="https://ontology.unifiedcyberontology.org/uco/core/"
 	xmlns:owl="http://www.w3.org/2002/07/owl#"
 	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
@@ -11,8 +12,10 @@
 	
 	<owl:Ontology rdf:about="https://ontology.unifiedcyberontology.org/uco/types">
 		<rdfs:label xml:lang="en">uco-types</rdfs:label>
-		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/core"/>
-		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/vocabulary"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/core/0.9.1"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/vocabulary/0.9.1"/>
+		<owl:ontologyIRI rdf:resource="https://ontology.unifiedcyberontology.org/uco/types"/>
+		<owl:versionIRI rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/0.9.1"/>
 	</owl:Ontology>
 	
 	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/types/ControlledDictionary">

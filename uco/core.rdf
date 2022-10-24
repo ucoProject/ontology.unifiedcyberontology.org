@@ -12,6 +12,8 @@
 	<owl:Ontology rdf:about="https://ontology.unifiedcyberontology.org/uco/core">
 		<rdfs:label xml:lang="en">uco-core</rdfs:label>
 		<rdfs:comment xml:lang="en">This ontology defines classes and properties that are shared across the various UCO ontologies.  At a high-level, the UCO core ontology provides base classes, relationship-oriented classes, content-aggregation classes, and shared classes.</rdfs:comment>
+		<owl:ontologyIRI rdf:resource="https://ontology.unifiedcyberontology.org/uco/core"/>
+		<owl:versionIRI rdf:resource="https://ontology.unifiedcyberontology.org/uco/core/0.9.1"/>
 	</owl:Ontology>
 	
 	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/core/Annotation">

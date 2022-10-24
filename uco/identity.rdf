@@ -12,8 +12,10 @@
 	
 	<owl:Ontology rdf:about="https://ontology.unifiedcyberontology.org/uco/identity">
 		<rdfs:label xml:lang="en">uco-identity</rdfs:label>
-		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/core"/>
-		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/location"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/core/0.9.1"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/location/0.9.1"/>
+		<owl:ontologyIRI rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity"/>
+		<owl:versionIRI rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/0.9.1"/>
 	</owl:Ontology>
 	
 	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/identity/AddressFacet">

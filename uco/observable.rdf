@@ -16,12 +16,14 @@
 	
 	<owl:Ontology rdf:about="https://ontology.unifiedcyberontology.org/uco/observable">
 		<rdfs:label xml:lang="en">uco-observable</rdfs:label>
-		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/action"/>
-		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/core"/>
-		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity"/>
-		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/location"/>
-		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/types"/>
-		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/vocabulary"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/action/0.9.1"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/core/0.9.1"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/0.9.1"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/location/0.9.1"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/0.9.1"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/vocabulary/0.9.1"/>
+		<owl:ontologyIRI rdf:resource="https://ontology.unifiedcyberontology.org/uco/observable"/>
+		<owl:versionIRI rdf:resource="https://ontology.unifiedcyberontology.org/uco/observable/0.9.1"/>
 	</owl:Ontology>
 	
 	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/observable/API">

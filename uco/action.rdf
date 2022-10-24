@@ -9,17 +9,20 @@
 	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
 	xmlns:sh="http://www.w3.org/ns/shacl#"
+	xmlns:types="https://ontology.unifiedcyberontology.org/uco/types/"
 	xmlns:vocabulary="https://ontology.unifiedcyberontology.org/uco/vocabulary/"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
 	
 	<owl:Ontology rdf:about="https://ontology.unifiedcyberontology.org/uco/action">
 		<rdfs:label xml:lang="en">uco-action</rdfs:label>
 		<rdfs:comment xml:lang="en-US">This ontology defines classes and properties for characterizing actions.</rdfs:comment>
-		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/core"/>
-		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/location"/>
-		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/pattern"/>
-		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/types"/>
-		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/vocabulary"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/core/0.9.1"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/location/0.9.1"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/pattern/0.9.1"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/0.9.1"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/vocabulary/0.9.1"/>
+		<owl:ontologyIRI rdf:resource="https://ontology.unifiedcyberontology.org/uco/action"/>
+		<owl:versionIRI rdf:resource="https://ontology.unifiedcyberontology.org/uco/action/0.9.1"/>
 	</owl:Ontology>
 	
 	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/action/Action">

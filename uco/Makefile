@@ -319,12 +319,14 @@ time.rdf: \
 	  __$@ \
 	  > _$@
 	rm __$@
+	mkdir -p time
 	cp _$@ time/$(CURRENT_RELEASE).rdf
 	mv _$@ $@
 
 time.ttl: \
   $(top_srcdir)/dependencies/UCO/ontology/time/time.ttl
 	cp $< $@
+	mkdir -p time
 	cp $< time/$(CURRENT_RELEASE).ttl
 
 tool.rdf: \
@@ -388,12 +390,14 @@ uco.rdf: \
 	  __$@ \
 	  > _$@
 	rm __$@
+	mkdir -p uco
 	cp _$@ uco/$(CURRENT_RELEASE).rdf
 	mv _$@ $@
 
 uco.ttl: \
   $(top_srcdir)/dependencies/UCO/ontology/master/uco.ttl
 	cp $< $@
+	mkdir -p uco
 	cp $< uco/$(CURRENT_RELEASE).ttl
 
 victim.rdf: \
@@ -434,10 +438,12 @@ vocabulary.rdf: \
 	  __$@ \
 	  > _$@
 	rm __$@
+	mkdir -p vocabulary
 	cp _$@ vocabulary/$(CURRENT_RELEASE).rdf
 	mv _$@ $@
 
 vocabulary.ttl: \
   $(top_srcdir)/dependencies/UCO/ontology/vocabulary/vocabulary.ttl
 	cp $< $@
+	mkdir -p vocabulary
 	cp $< vocabulary/$(CURRENT_RELEASE).ttl

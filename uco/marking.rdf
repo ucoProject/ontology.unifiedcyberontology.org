@@ -12,7 +12,9 @@
 	<owl:Ontology rdf:about="https://ontology.unifiedcyberontology.org/uco/marking">
 		<rdfs:label xml:lang="en">uco-marking</rdfs:label>
 		<rdfs:comment xml:lang="en">Data markings represent restrictions, permissions, and other guidance for how data can be used and shared.</rdfs:comment>
-		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/core"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/core/0.9.1"/>
+		<owl:ontologyIRI rdf:resource="https://ontology.unifiedcyberontology.org/uco/marking"/>
+		<owl:versionIRI rdf:resource="https://ontology.unifiedcyberontology.org/uco/marking/0.9.1"/>
 	</owl:Ontology>
 	
 	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/marking/GranularMarking">

@@ -12,7 +12,9 @@
 	
 	<owl:Ontology rdf:about="https://ontology.unifiedcyberontology.org/uco/tool">
 		<rdfs:label xml:lang="en">uco-tool</rdfs:label>
-		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/core"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/core/0.9.1"/>
+		<owl:ontologyIRI rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool"/>
+		<owl:versionIRI rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/0.9.1"/>
 	</owl:Ontology>
 	
 	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/tool/AnalyticTool">

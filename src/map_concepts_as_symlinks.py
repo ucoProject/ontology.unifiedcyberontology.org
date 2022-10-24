@@ -71,8 +71,8 @@ def main() -> None:
     symlinks: Dict[str, str] = dict()
 
     # generate paths for symlink src/dst locations
+    tally = 0
     for prefix, query in queries.items():
-        tally = 0
         select_query_object = rdflib.plugins.sparql.processor.prepareQuery(query, initNs=nsdict)
         for (row_no, row) in enumerate(graph.query(select_query_object)):
             tally = row_no + 1
@@ -89,9 +89,8 @@ def main() -> None:
             # format gendoc -> symlink (src, dst) combos
             symlinks[gendocs_target] = url_path
 
-        if tally == 0:
-            logging.error(f"Failed to return any valid results.")
-            break
+    if tally == 0:
+        logging.warning(f"Found neither classes nor properties in input graph-file %r." % args.inTtl)
 
     top_srcdir = os.path.dirname(os.path.dirname(__file__))
     debug_printlinks(symlinks)
