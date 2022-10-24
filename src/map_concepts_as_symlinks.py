@@ -8,16 +8,17 @@
 import argparse
 import logging
 import os
+from typing import Dict
 
 import rdflib.plugins.sparql
 
-def debug_printlinks(symlinks):
+def debug_printlinks(symlinks: Dict[str, str]) -> None:
     """Outputs the contents of the symlinks dict, for debugging only."""
 
     for src, dst in symlinks.items():
         logging.debug(repr(src) + " -> " + repr(dst))
 
-def create_symlinks(top_srcdir, symlinks):
+def create_symlinks(top_srcdir: str, symlinks: Dict[str, str]) -> None:
     """Create symlinks based on generated gendoc -> web path."""
 
     _pre_cwd = os.getcwd()
@@ -45,12 +46,11 @@ def create_symlinks(top_srcdir, symlinks):
     os.chdir(_pre_cwd)
     logging.debug("os.getcwd() = %r.", os.getcwd())
 
-def main():
-    # parse arguments for ontology file & version we are preparing links for
+def main() -> None:
+    # parse arguments for ontology file we are preparing links for
     parser = argparse.ArgumentParser()
     parser.add_argument('inTtl', type=str, help='ttl file to build sym-links off of')
     parser.add_argument('--debug', action="store_true")
-    parser.add_argument('--version', type=str, help='verson of the ontology (optional, example: 0.4.0)', required=False)
     args = parser.parse_args()
 
     logging.basicConfig(level=logging.DEBUG if args.debug else logging.INFO)
@@ -68,12 +68,12 @@ def main():
     queries["prop"] = "SELECT ?nConcept WHERE {{ ?nConcept a owl:DatatypeProperty . } UNION { ?nConcept a owl:ObjectProperty . }}"
 
     # hold gendoc location, assoicated to symlinked path -- dict(gendocs-path : symlink)
-    symlinks = dict()
+    symlinks: Dict[str, str] = dict()
 
     # generate paths for symlink src/dst locations
+    tally = 0
     for prefix, query in queries.items():
-        tally = 0
-        select_query_object = rdflib.plugins.sparql.prepareQuery(query, initNs=nsdict)
+        select_query_object = rdflib.plugins.sparql.processor.prepareQuery(query, initNs=nsdict)
         for (row_no, row) in enumerate(graph.query(select_query_object)):
             tally = row_no + 1
             concept_iri = row[0].toPython()
@@ -83,16 +83,14 @@ def main():
             url_path = concept_iri.split("ontology.org/")[1] + ".html"
 
             # determine path to symlink target (gendocs HTML file), relative to basename of URL path
-            # check if a version is specified
             iri_parts = concept_iri.split('/')
-            gendocs_target = f"../documentation{f'/{args.version}' if args.version else ''}/{prefix}-{iri_parts[-2]}{iri_parts[-1].lower()}.html"
+            gendocs_target = f"../documentation/{prefix}-{iri_parts[-2]}{iri_parts[-1].lower()}.html"
 
             # format gendoc -> symlink (src, dst) combos
             symlinks[gendocs_target] = url_path
 
-        if tally == 0:
-            logging.error(f"Failed to return any valid results.")
-            break
+    if tally == 0:
+        logging.warning(f"Found neither classes nor properties in input graph-file %r." % args.inTtl)
 
     top_srcdir = os.path.dirname(os.path.dirname(__file__))
     debug_printlinks(symlinks)
