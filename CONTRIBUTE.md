@@ -183,7 +183,7 @@ $ make check-service
 If you have set the VirtualHost on apache as anything besides `localhost`, you will want to supply this prefix with the `HOST_PREFIX` parameter.  For example, to test the production service, run:
 
 ```bash
-$ make HOST_PREFIX=https://ontology.ucoontology.org check-service
+$ make HOST_PREFIX=https://ontology.unifiedcyberontology.org check-service
 ```
 
 As another example, if you have a local deployment at `https://documentation.intranet.example.org/`, run:
