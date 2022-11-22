@@ -16,7 +16,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="static/libs/img/favicon.ico">
+    <link rel="icon" href="static/custom/favicon.ico">
 
 	
 		<title>Ontospy > uco-0.9.1-docs</title>
@@ -158,24 +158,29 @@
 
 
 /*pygments css*/
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
 .highlight .hll { background-color: #ffffcc }
-.highlight  { background: #f8f8f8; }
-.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight { background: #f8f8f8; }
+.highlight .c { color: #3D7B7B; font-style: italic } /* Comment */
 .highlight .err { border: 1px solid #FF0000 } /* Error */
 .highlight .k { color: #008000; font-weight: bold } /* Keyword */
 .highlight .o { color: #666666 } /* Operator */
-.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
-.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
-.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
-.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
-.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
-.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight .ch { color: #3D7B7B; font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: #3D7B7B; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #9C6500 } /* Comment.Preproc */
+.highlight .cpf { color: #3D7B7B; font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: #3D7B7B; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #3D7B7B; font-style: italic } /* Comment.Special */
 .highlight .gd { color: #A00000 } /* Generic.Deleted */
 .highlight .ge { font-style: italic } /* Generic.Emph */
-.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gr { color: #E40000 } /* Generic.Error */
 .highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
-.highlight .gi { color: #00A000 } /* Generic.Inserted */
-.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gi { color: #008400 } /* Generic.Inserted */
+.highlight .go { color: #717171 } /* Generic.Output */
 .highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
 .highlight .gs { font-weight: bold } /* Generic.Strong */
 .highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
@@ -188,15 +193,15 @@
 .highlight .kt { color: #B00040 } /* Keyword.Type */
 .highlight .m { color: #666666 } /* Literal.Number */
 .highlight .s { color: #BA2121 } /* Literal.String */
-.highlight .na { color: #7D9029 } /* Name.Attribute */
+.highlight .na { color: #687822 } /* Name.Attribute */
 .highlight .nb { color: #008000 } /* Name.Builtin */
 .highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
 .highlight .no { color: #880000 } /* Name.Constant */
 .highlight .nd { color: #AA22FF } /* Name.Decorator */
-.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
-.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .ni { color: #717171; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #CB3F38; font-weight: bold } /* Name.Exception */
 .highlight .nf { color: #0000FF } /* Name.Function */
-.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nl { color: #767600 } /* Name.Label */
 .highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
 .highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
 .highlight .nv { color: #19177C } /* Name.Variable */
@@ -207,21 +212,25 @@
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
 .highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
 .highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
 .highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #BA2121 } /* Literal.String.Double */
-.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .se { color: #AA5D1F; font-weight: bold } /* Literal.String.Escape */
 .highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
-.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight .si { color: #A45A77; font-weight: bold } /* Literal.String.Interpol */
 .highlight .sx { color: #008000 } /* Literal.String.Other */
-.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .sr { color: #A45A77 } /* Literal.String.Regex */
 .highlight .s1 { color: #BA2121 } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
 
 /*overloading this class from pygments*/
@@ -297,7 +306,6 @@
 
   </div>
 </nav>
-
 
 
 
@@ -2607,7 +2615,6 @@
 
 
 <!-- /#sidebar-wrapper -->
-
   
 
 
@@ -2703,7 +2710,6 @@
 
 
 
-
     
 
     
@@ -2727,29 +2733,29 @@
                     
                       <ul>
                       
-                        <li><a href="class-observableapi.html" title="'API' - An API (application programming interface) is a computing interface that defines interactions between multiple software or mixed hardware-software intermediaries. It …">observable:API</a></li>
+                        <li><a href="class-observableapi.html" title="'API' - An API (application programming interface) is a computing interface that defines interactions between multiple software or mixed hardware-software intermediaries. It..">observable:API</a></li>
                       
-                        <li><a href="class-observablearpcache.html" title="'ARPCache' - An ARP cache is a collection of Address Resolution Protocol (ARP) entries (mostly dynamic) that are created when an IP …">observable:ARPCache</a></li>
+                        <li><a href="class-observablearpcache.html" title="'ARPCache' - An ARP cache is a collection of Address Resolution Protocol (ARP) entries (mostly dynamic) that are created when an IP..">observable:ARPCache</a></li>
                       
-                        <li><a href="class-observablearpcacheentry.html" title="'ARPCacheEntry' - An ARP cache entry is a single Address Resolution Protocol (ARP) response record that is created when an IP address …">observable:ARPCacheEntry</a></li>
+                        <li><a href="class-observablearpcacheentry.html" title="'ARPCacheEntry' - An ARP cache entry is a single Address Resolution Protocol (ARP) response record that is created when an IP address..">observable:ARPCacheEntry</a></li>
                       
                         <li><a href="class-observableaccount.html" title="'Account' - An account is an arrangement with an entity to enable and control the provision of some capability or service.">observable:Account</a></li>
                       
                         <li><a href="class-observableaddress.html" title="'Address' - An address is an identifier assigned to enable routing and management of information.">observable:Address</a></li>
                       
-                        <li><a href="class-observablealternatedatastream.html" title="'AlternateDataStream' - An alternate data stream is data content stored within an NTFS file that is independent of the standard content stream …">observable:AlternateDataStream</a></li>
+                        <li><a href="class-observablealternatedatastream.html" title="'AlternateDataStream' - An alternate data stream is data content stored within an NTFS file that is independent of the standard content stream..">observable:AlternateDataStream</a></li>
                       
                         <li><a href="class-observableapplication.html" title="'Application' - An application is a particular software program designed for end users.">observable:Application</a></li>
                       
                         <li><a href="class-observableaudio.html" title="'Audio' - Audio is a digital representation of sound.">observable:Audio</a></li>
                       
-                        <li><a href="class-observableautonomoussystem.html" title="'AutonomousSystem' - An autonomous system is a collection of connected Internet Protocol (IP) routing prefixes under the control of one or more …">observable:AutonomousSystem</a></li>
+                        <li><a href="class-observableautonomoussystem.html" title="'AutonomousSystem' - An autonomous system is a collection of connected Internet Protocol (IP) routing prefixes under the control of one or more..">observable:AutonomousSystem</a></li>
                       
-                        <li><a href="class-observablebotconfiguration.html" title="'BotConfiguration' - A bot configuration is a set of contextual settings for a software application that runs automated tasks (scripts) over the …">observable:BotConfiguration</a></li>
+                        <li><a href="class-observablebotconfiguration.html" title="'BotConfiguration' - A bot configuration is a set of contextual settings for a software application that runs automated tasks (scripts) over the..">observable:BotConfiguration</a></li>
                       
-                        <li><a href="class-observablebrowserbookmark.html" title="'BrowserBookmark' - A browser bookmark is a saved shortcut that directs a WWW (World Wide Web) browser software program to a particular …">observable:BrowserBookmark</a></li>
+                        <li><a href="class-observablebrowserbookmark.html" title="'BrowserBookmark' - A browser bookmark is a saved shortcut that directs a WWW (World Wide Web) browser software program to a particular..">observable:BrowserBookmark</a></li>
                       
-                        <li><a href="class-observablebrowsercookie.html" title="'BrowserCookie' - A browser cookie is a piece of of data sent from a website and stored on the user&#x27;s computer by …">observable:BrowserCookie</a></li>
+                        <li><a href="class-observablebrowsercookie.html" title="'BrowserCookie' - A browser cookie is a piece of of data sent from a website and stored on the user&#39;s computer by..">observable:BrowserCookie</a></li>
                       
                         <li><a href="class-observablecalendar.html" title="'Calendar' - A calendar is a collection of appointments, meetings, and events.">observable:Calendar</a></li>
                       
@@ -2757,9 +2763,9 @@
                       
                         <li><a href="class-observablecall.html" title="'Call' - A call is a connection as part of a realtime cyber communication between one or more parties.">observable:Call</a></li>
                       
-                        <li><a href="class-observablecode.html" title="'Code' - Code is a direct representation (source, byte or binary) of a collection of computer instructions that form software which tell …">observable:Code</a></li>
+                        <li><a href="class-observablecode.html" title="'Code' - Code is a direct representation (source, byte or binary) of a collection of computer instructions that form software which tell..">observable:Code</a></li>
                       
-                        <li><a href="class-observablecomputerspecification.html" title="'ComputerSpecification' - A computer specification is the hardware and software of a programmable electronic device that can store, retrieve, and process data. …">observable:ComputerSpecification</a></li>
+                        <li><a href="class-observablecomputerspecification.html" title="'ComputerSpecification' - A computer specification is the hardware and software of a programmable electronic device that can store, retrieve, and process data...">observable:ComputerSpecification</a></li>
                       
                         <li><a href="class-observablecontact.html" title="'Contact' - A contact is a set of identification and communication related details for a single entity.">observable:Contact</a></li>
                       
@@ -2771,31 +2777,31 @@
                       
                         <li><a href="class-observablecredential.html" title="'Credential' - A credential is a single specific login and password combination for authorization of access to a digital account or system.">observable:Credential</a></li>
                       
-                        <li><a href="class-observablecredentialdump.html" title="'CredentialDump' - A credential dump is a collection (typically forcibly extracted from a system) of specific login and password combinations for authorization …">observable:CredentialDump</a></li>
+                        <li><a href="class-observablecredentialdump.html" title="'CredentialDump' - A credential dump is a collection (typically forcibly extracted from a system) of specific login and password combinations for authorization..">observable:CredentialDump</a></li>
                       
-                        <li><a href="class-observablednscache.html" title="'DNSCache' - An DNS cache is a temporary locally stored collection of previous Domain Name System (DNS) query results (created when an …">observable:DNSCache</a></li>
+                        <li><a href="class-observablednscache.html" title="'DNSCache' - An DNS cache is a temporary locally stored collection of previous Domain Name System (DNS) query results (created when an..">observable:DNSCache</a></li>
                       
-                        <li><a href="class-observablednsrecord.html" title="'DNSRecord' - A DNS record is a single Domain Name System (DNS) artifact specifying information of a particular type (routing, authority, responsibility, …">observable:DNSRecord</a></li>
+                        <li><a href="class-observablednsrecord.html" title="'DNSRecord' - A DNS record is a single Domain Name System (DNS) artifact specifying information of a particular type (routing, authority, responsibility,..">observable:DNSRecord</a></li>
                       
-                        <li><a href="class-observabledevice.html" title="'Device' - A device is a piece of equipment or a mechanism designed to serve a special purpose or perform a special …">observable:Device</a></li>
+                        <li><a href="class-observabledevice.html" title="'Device' - A device is a piece of equipment or a mechanism designed to serve a special purpose or perform a special..">observable:Device</a></li>
                       
-                        <li><a href="class-observabledigitalsignatureinfo.html" title="'DigitalSignatureInfo' - A digital signature info is a value calculated via a mathematical scheme for demonstrating the authenticity of an electronic message …">observable:DigitalSignatureInfo</a></li>
+                        <li><a href="class-observabledigitalsignatureinfo.html" title="'DigitalSignatureInfo' - A digital signature info is a value calculated via a mathematical scheme for demonstrating the authenticity of an electronic message..">observable:DigitalSignatureInfo</a></li>
                       
-                        <li><a href="class-observabledisk.html" title="'Disk' - A disk is a storage mechanism where data is recorded by various electronic, magnetic, optical, or mechanical changes to a …">observable:Disk</a></li>
+                        <li><a href="class-observabledisk.html" title="'Disk' - A disk is a storage mechanism where data is recorded by various electronic, magnetic, optical, or mechanical changes to a..">observable:Disk</a></li>
                       
-                        <li><a href="class-observablediskpartition.html" title="'DiskPartition' - A disk partition is a particular managed region on a storage mechanism where data is recorded by various electronic, magnetic, …">observable:DiskPartition</a></li>
+                        <li><a href="class-observablediskpartition.html" title="'DiskPartition' - A disk partition is a particular managed region on a storage mechanism where data is recorded by various electronic, magnetic,..">observable:DiskPartition</a></li>
                       
-                        <li><a href="class-observabledomainname.html" title="'DomainName' - A domain name is an identification string that defines a realm of administrative autonomy, authority or control within the Internet. …">observable:DomainName</a></li>
+                        <li><a href="class-observabledomainname.html" title="'DomainName' - A domain name is an identification string that defines a realm of administrative autonomy, authority or control within the Internet...">observable:DomainName</a></li>
                       
                         <li><a href="class-observableevent.html" title="'Event' - An event is something that happens in a digital context (e.g., operating system events).">observable:Event</a></li>
                       
                         <li><a href="class-observableeventlog.html" title="'EventLog' - An event log is a recorded collection of events.">observable:EventLog</a></li>
                       
-                        <li><a href="class-observablefilesystem.html" title="'FileSystem' - A file system is the process that manages how and where data on a storage medium is stored, accessed and …">observable:FileSystem</a></li>
+                        <li><a href="class-observablefilesystem.html" title="'FileSystem' - A file system is the process that manages how and where data on a storage medium is stored, accessed and..">observable:FileSystem</a></li>
                       
                         <li><a href="class-observablefilesystemobject.html" title="'FileSystemObject' - A file system object is an informational object represented and managed within a file system.">observable:FileSystemObject</a></li>
                       
-                        <li><a href="class-observablegui.html" title="'GUI' - A GUI is a graphical user interface that allows users to interact with electronic devices through graphical icons and audio …">observable:GUI</a></li>
+                        <li><a href="class-observablegui.html" title="'GUI' - A GUI is a graphical user interface that allows users to interact with electronic devices through graphical icons and audio..">observable:GUI</a></li>
                       
                         <li><a href="class-observablegenericobservableobject.html" title="'GenericObservableObject' - A generic observable object is an article or unit within the digital domain.">observable:GenericObservableObject</a></li>
                       
@@ -2805,31 +2811,31 @@
                       
                         <li><a href="class-observablegeolocationtrack.html" title="'GeoLocationTrack' - A geolocation track is a set of contiguous geolocation entries representing a path/track taken.">observable:GeoLocationTrack</a></li>
                       
-                        <li><a href="class-observablehostname.html" title="'Hostname' - A hostname is a label that is assigned to a device connected to a computer network and that is used …">observable:Hostname</a></li>
+                        <li><a href="class-observablehostname.html" title="'Hostname' - A hostname is a label that is assigned to a device connected to a computer network and that is used..">observable:Hostname</a></li>
                       
-                        <li><a href="class-observableipnetmask.html" title="'IPNetmask' - An IP netmask is a 32-bit &quot;mask&quot; used to divide an IP address into subnets and specify the network&#x27;s available …">observable:IPNetmask</a></li>
+                        <li><a href="class-observableipnetmask.html" title="'IPNetmask' - An IP netmask is a 32-bit &#34;mask&#34; used to divide an IP address into subnets and specify the network&#39;s available..">observable:IPNetmask</a></li>
                       
                         <li><a href="class-observableimage.html" title="'Image' - An image is a complete copy of a hard disk, memory, or other digital media.">observable:Image</a></li>
                       
-                        <li><a href="class-observablelibrary.html" title="'Library' - A library is a suite of data and programming code that is used to develop software programs and applications. [based …">observable:Library</a></li>
+                        <li><a href="class-observablelibrary.html" title="'Library' - A library is a suite of data and programming code that is used to develop software programs and applications. [based..">observable:Library</a></li>
                       
-                        <li><a href="class-observablememory.html" title="'Memory' - Memory is a particular region of temporary information storage (e.g., RAM (random access memory), ROM (read only memory)) on a …">observable:Memory</a></li>
+                        <li><a href="class-observablememory.html" title="'Memory' - Memory is a particular region of temporary information storage (e.g., RAM (random access memory), ROM (read only memory)) on a..">observable:Memory</a></li>
                       
-                        <li><a href="class-observablemessage.html" title="'Message' - A message is a discrete unit of electronic communication intended by the source for consumption by some recipient or group …">observable:Message</a></li>
+                        <li><a href="class-observablemessage.html" title="'Message' - A message is a discrete unit of electronic communication intended by the source for consumption by some recipient or group..">observable:Message</a></li>
                       
                         <li><a href="class-observablemessagethread.html" title="'MessageTread' - A message thread is a running commentary of electronic messages pertaining to one topic or question.">observable:MessageThread</a></li>
                       
-                        <li><a href="class-observablemutex.html" title="'Mutex' - A mutex is a mechanism that enforces limits on access to a resource when there are many threads of execution. …">observable:Mutex</a></li>
+                        <li><a href="class-observablemutex.html" title="'Mutex' - A mutex is a mechanism that enforces limits on access to a resource when there are many threads of execution...">observable:Mutex</a></li>
                       
-                        <li><a href="class-observablenetworkconnection.html" title="'NetworkConnection' - A network connection is a connection (completed or attempted) across a digital network (a group of two or more computer …">observable:NetworkConnection</a></li>
+                        <li><a href="class-observablenetworkconnection.html" title="'NetworkConnection' - A network connection is a connection (completed or attempted) across a digital network (a group of two or more computer..">observable:NetworkConnection</a></li>
                       
-                        <li><a href="class-observablenetworkflow.html" title="'NetworkFlow' - A network flow is a sequence of data transiting one or more digital network (a group or two or more …">observable:NetworkFlow</a></li>
+                        <li><a href="class-observablenetworkflow.html" title="'NetworkFlow' - A network flow is a sequence of data transiting one or more digital network (a group or two or more..">observable:NetworkFlow</a></li>
                       
-                        <li><a href="class-observablenetworkinterface.html" title="'NetworkInterface' - A network interface is a software or hardware interface between two pieces of equipment or protocol layers in a computer …">observable:NetworkInterface</a></li>
+                        <li><a href="class-observablenetworkinterface.html" title="'NetworkInterface' - A network interface is a software or hardware interface between two pieces of equipment or protocol layers in a computer..">observable:NetworkInterface</a></li>
                       
-                        <li><a href="class-observablenetworkprotocol.html" title="'NetworkProtocol' - A network protocol is an established set of structured rules that determine how data is transmitted between different devices in …">observable:NetworkProtocol</a></li>
+                        <li><a href="class-observablenetworkprotocol.html" title="'NetworkProtocol' - A network protocol is an established set of structured rules that determine how data is transmitted between different devices in..">observable:NetworkProtocol</a></li>
                       
-                        <li><a href="class-observablenetworkroute.html" title="'NetworkRoute' - A network route is a specific path (of specific network nodes, connections and protocols) for traffic in a network or …">observable:NetworkRoute</a></li>
+                        <li><a href="class-observablenetworkroute.html" title="'NetworkRoute' - A network route is a specific path (of specific network nodes, connections and protocols) for traffic in a network or..">observable:NetworkRoute</a></li>
                       
                         <li><a href="class-observablenetworksubnet.html" title="'NetworkSubnet' - A network subnet is a logical subdivision of an IP network. [based on https://en.wikipedia.org/wiki/Subnetwork]">observable:NetworkSubnet</a></li>
                       
@@ -2837,77 +2843,77 @@
                       
                         <li><a href="class-observableonlineservice.html" title="'OnlineService' - An online service is a particular provision mechanism of information access, distribution or manipulation over the Internet.">observable:OnlineService</a></li>
                       
-                        <li><a href="class-observableoperatingsystem.html" title="'OperatingSystem' - An operating system is the software that manages computer hardware, software resources, and provides common services for computer programs. [based …">observable:OperatingSystem</a></li>
+                        <li><a href="class-observableoperatingsystem.html" title="'OperatingSystem' - An operating system is the software that manages computer hardware, software resources, and provides common services for computer programs. [based..">observable:OperatingSystem</a></li>
                       
-                        <li><a href="class-observablepaymentcard.html" title="'PaymentCard' - A payment card is a physical token that is part of a payment system issued by financial institutions, such as …">observable:PaymentCard</a></li>
+                        <li><a href="class-observablepaymentcard.html" title="'PaymentCard' - A payment card is a physical token that is part of a payment system issued by financial institutions, such as..">observable:PaymentCard</a></li>
                       
-                        <li><a href="class-observablepipe.html" title="'Pipe' - A pipe is a mechanism for one-way inter-process communication using message passing where data written by one process is buffered …">observable:Pipe</a></li>
+                        <li><a href="class-observablepipe.html" title="'Pipe' - A pipe is a mechanism for one-way inter-process communication using message passing where data written by one process is buffered..">observable:Pipe</a></li>
                       
                         <li><a href="class-observableprocess.html" title="'Process' - A process is an instance of a computer program executed on an operating system.">observable:Process</a></li>
                       
-                        <li><a href="class-observableprofile.html" title="'Profile' - A profile is an explicit digital representation of identity and characteristics of the owner of a single user account associated …">observable:Profile</a></li>
+                        <li><a href="class-observableprofile.html" title="'Profile' - A profile is an explicit digital representation of identity and characteristics of the owner of a single user account associated..">observable:Profile</a></li>
                       
                         <li><a href="class-observablesqliteblob.html" title="'SQLiteBlob' - An SQLite blob is a blob (binary large object) of data within an SQLite database. [based on https://en.wikipedia.org/wiki/SQLite]">observable:SQLiteBlob</a></li>
                       
-                        <li><a href="class-observablesemaphore.html" title="'Semaphore' - A semaphore is a variable or abstract data type used to control access to a common resource by multiple processes …">observable:Semaphore</a></li>
+                        <li><a href="class-observablesemaphore.html" title="'Semaphore' - A semaphore is a variable or abstract data type used to control access to a common resource by multiple processes..">observable:Semaphore</a></li>
                       
                         <li><a href="class-observableshoplisting.html" title="'ShopListing' - A shop listing is a listing of offered products on an online marketplace/shop.">observable:ShopListing</a></li>
                       
-                        <li><a href="class-observablesoftware.html" title="'Software' - Software is a definitely scoped instance of a collection of data or computer instructions that tell the computer how to …">observable:Software</a></li>
+                        <li><a href="class-observablesoftware.html" title="'Software' - Software is a definitely scoped instance of a collection of data or computer instructions that tell the computer how to..">observable:Software</a></li>
                       
-                        <li><a href="class-observablethread.html" title="'Thread' - A thread is the smallest sequence of programmed instructions that can be managed independently by a scheduler on a computer, …">observable:Thread</a></li>
+                        <li><a href="class-observablethread.html" title="'Thread' - A thread is the smallest sequence of programmed instructions that can be managed independently by a scheduler on a computer,..">observable:Thread</a></li>
                       
-                        <li><a href="class-observableurl.html" title="'URL' - A URL is a uniform resource locator (URL) acting as a resolvable address to a particular WWW (World Wide Web) …">observable:URL</a></li>
+                        <li><a href="class-observableurl.html" title="'URL' - A URL is a uniform resource locator (URL) acting as a resolvable address to a particular WWW (World Wide Web)..">observable:URL</a></li>
                       
                         <li><a href="class-observableurlhistory.html" title="'URLHistory' - A URL history characterizes the stored URL history for a particular web browser">observable:URLHistory</a></li>
                       
                         <li><a href="class-observableurlvisit.html" title="'URLVisit' - A URL visit characterizes the properties of a visit of a URL within a particular browser.">observable:URLVisit</a></li>
                       
-                        <li><a href="class-observableusersession.html" title="'UserSession' - A user session is a temporary and interactive information interchange between two or more communicating devices within the managed scope …">observable:UserSession</a></li>
+                        <li><a href="class-observableusersession.html" title="'UserSession' - A user session is a temporary and interactive information interchange between two or more communicating devices within the managed scope..">observable:UserSession</a></li>
                       
                         <li><a href="class-observablevolume.html" title="'Volume' - A volume is a single accessible storage area (volume) with a single file system. [based on https://en.wikipedia.org/wiki/Volume_(computing)]">observable:Volume</a></li>
                       
-                        <li><a href="class-observablewebpage.html" title="'WebPage' - A web page is a specific collection of information provided by a website and displayed to a user in a …">observable:WebPage</a></li>
+                        <li><a href="class-observablewebpage.html" title="'WebPage' - A web page is a specific collection of information provided by a website and displayed to a user in a..">observable:WebPage</a></li>
                       
                         <li><a href="class-observablewhois.html" title="'WhoIs' - WhoIs is a response record conformant to the WHOIS protocol standard (RFC 3912). [based on https://en.wikipedia.org/wiki/WHOIS]">observable:WhoIs</a></li>
                       
-                        <li><a href="class-observablewiki.html" title="'Wiki' - A wiki is an online hypertext publication collaboratively edited and managed by its own audience directly using a web browser. …">observable:Wiki</a></li>
+                        <li><a href="class-observablewiki.html" title="'Wiki' - A wiki is an online hypertext publication collaboratively edited and managed by its own audience directly using a web browser...">observable:Wiki</a></li>
                       
                         <li><a href="class-observablewikiarticle.html" title="'WikiArticle' - A wiki article is one or more pages in a wiki focused on characterizing a particular topic.">observable:WikiArticle</a></li>
                       
-                        <li><a href="class-observablewindowscomputerspecification.html" title="'WindowsComputerSpecification' - A Windows computer specification is the hardware ans software of a programmable electronic device that can store, retrieve, and process …">observable:WindowsComputerSpecification</a></li>
+                        <li><a href="class-observablewindowscomputerspecification.html" title="'WindowsComputerSpecification' - A Windows computer specification is the hardware ans software of a programmable electronic device that can store, retrieve, and process..">observable:WindowsComputerSpecification</a></li>
                       
-                        <li><a href="class-observablewindowscriticalsection.html" title="'WindowsCriticalSection' - A Windows critical section is a Windows object that provides synchronization similar to that provided by a mutex object, except …">observable:WindowsCriticalSection</a></li>
+                        <li><a href="class-observablewindowscriticalsection.html" title="'WindowsCriticalSection' - A Windows critical section is a Windows object that provides synchronization similar to that provided by a mutex object, except..">observable:WindowsCriticalSection</a></li>
                       
-                        <li><a href="class-observablewindowsevent.html" title="'WindowsEvent' - A Windows event is a notification record of an occurance of interest (system, security, application, etc.) on a Windows operating …">observable:WindowsEvent</a></li>
+                        <li><a href="class-observablewindowsevent.html" title="'WindowsEvent' - A Windows event is a notification record of an occurance of interest (system, security, application, etc.) on a Windows operating..">observable:WindowsEvent</a></li>
                       
-                        <li><a href="class-observablewindowsfilemapping.html" title="'WindowsFilemapping' - A Windows file mapping is the association of a file&#x27;s contents with a portion of the virtual address space of …">observable:WindowsFilemapping</a></li>
+                        <li><a href="class-observablewindowsfilemapping.html" title="'WindowsFilemapping' - A Windows file mapping is the association of a file&#39;s contents with a portion of the virtual address space of..">observable:WindowsFilemapping</a></li>
                       
-                        <li><a href="class-observablewindowshandle.html" title="'WindowsHandle' - A Windows handle is an abstract reference to a resource within the Windows operating system, such as a window, memory, …">observable:WindowsHandle</a></li>
+                        <li><a href="class-observablewindowshandle.html" title="'WindowsHandle' - A Windows handle is an abstract reference to a resource within the Windows operating system, such as a window, memory,..">observable:WindowsHandle</a></li>
                       
-                        <li><a href="class-observablewindowshook.html" title="'WindowsHook' - A Windows hook is a mechanism by which an application can intercept events, such as messages, mouse actions, and keystrokes …">observable:WindowsHook</a></li>
+                        <li><a href="class-observablewindowshook.html" title="'WindowsHook' - A Windows hook is a mechanism by which an application can intercept events, such as messages, mouse actions, and keystrokes..">observable:WindowsHook</a></li>
                       
-                        <li><a href="class-observablewindowsmailslot.html" title="'WindowsMailslot' - A Windows mailslot is is a pseudofile that resides in memory, and may be accessed using standard file functions. The …">observable:WindowsMailslot</a></li>
+                        <li><a href="class-observablewindowsmailslot.html" title="'WindowsMailslot' - A Windows mailslot is is a pseudofile that resides in memory, and may be accessed using standard file functions. The..">observable:WindowsMailslot</a></li>
                       
-                        <li><a href="class-observablewindowsnetworkshare.html" title="'WindowsNetworkShare' - A Windows network share is a Windows computer resource made available from one host to other hosts on a computer …">observable:WindowsNetworkShare</a></li>
+                        <li><a href="class-observablewindowsnetworkshare.html" title="'WindowsNetworkShare' - A Windows network share is a Windows computer resource made available from one host to other hosts on a computer..">observable:WindowsNetworkShare</a></li>
                       
                         <li><a href="class-observablewindowsprefetch.html" title="'WindowsPrefetch' - The Windows prefetch contains entries in a Windows prefetch file (used to speed up application startup starting with Windows XP).">observable:WindowsPrefetch</a></li>
                       
-                        <li><a href="class-observablewindowsregistryhive.html" title="'WindowsRegistryHive' - The Windows registry hive is a particular logical group of keys, subkeys, and values in a Windows registry (a hierarchical …">observable:WindowsRegistryHive</a></li>
+                        <li><a href="class-observablewindowsregistryhive.html" title="'WindowsRegistryHive' - The Windows registry hive is a particular logical group of keys, subkeys, and values in a Windows registry (a hierarchical..">observable:WindowsRegistryHive</a></li>
                       
-                        <li><a href="class-observablewindowsregistrykey.html" title="'WindowsRegistryKey' - A Windows registry key is a particular key within a Windows registry (a hierarchical database that stores low-level settings for …">observable:WindowsRegistryKey</a></li>
+                        <li><a href="class-observablewindowsregistrykey.html" title="'WindowsRegistryKey' - A Windows registry key is a particular key within a Windows registry (a hierarchical database that stores low-level settings for..">observable:WindowsRegistryKey</a></li>
                       
-                        <li><a href="class-observablewindowsservice.html" title="'WindowsService' - A Windows service is a specific Windows service (a computer program that operates in the background of a Windows operating …">observable:WindowsService</a></li>
+                        <li><a href="class-observablewindowsservice.html" title="'WindowsService' - A Windows service is a specific Windows service (a computer program that operates in the background of a Windows operating..">observable:WindowsService</a></li>
                       
-                        <li><a href="class-observablewindowssystemrestore.html" title="'WindowsSystemRestore' - A Windows system restore is a capture of a Windows computer&#x27;s state (including system files, installed applications, Windows Registry, and …">observable:WindowsSystemRestore</a></li>
+                        <li><a href="class-observablewindowssystemrestore.html" title="'WindowsSystemRestore' - A Windows system restore is a capture of a Windows computer&#39;s state (including system files, installed applications, Windows Registry, and..">observable:WindowsSystemRestore</a></li>
                       
-                        <li><a href="class-observablewindowstask.html" title="'WindowsTask' - A Windows task is a process that is scheduled to execute on a Windows operating system by the Windows Task …">observable:WindowsTask</a></li>
+                        <li><a href="class-observablewindowstask.html" title="'WindowsTask' - A Windows task is a process that is scheduled to execute on a Windows operating system by the Windows Task..">observable:WindowsTask</a></li>
                       
-                        <li><a href="class-observablewindowswaitabletime.html" title="'WindowsWaitableTime' - A Windows waitable timer is a synchronization object within the Windows operating system whose state is set to signaled when …">observable:WindowsWaitableTime</a></li>
+                        <li><a href="class-observablewindowswaitabletime.html" title="'WindowsWaitableTime' - A Windows waitable timer is a synchronization object within the Windows operating system whose state is set to signaled when..">observable:WindowsWaitableTime</a></li>
                       
                         <li><a href="class-observablex509certificate.html" title="'X509Certificate' - A X.509 certificate is a public key digital identity certificate conformant to the X.509 PKI (Public Key Infrastructure) standard.">observable:X509Certificate</a></li>
                       
-                        <li><a href="class-observablex509v3certificate.html" title="'X509V3Certificate' - An X.509 v3 certificate is a public key digital identity certificate conformant to the X.509 v3 PKI (Public Key Infrastructure) …">observable:X509V3Certificate</a></li>
+                        <li><a href="class-observablex509v3certificate.html" title="'X509V3Certificate' - An X.509 v3 certificate is a public key digital identity certificate conformant to the X.509 v3 PKI (Public Key Infrastructure)..">observable:X509V3Certificate</a></li>
                       
                       </ul>
                     
@@ -2922,29 +2928,29 @@
                     
                       <ul>
                       
-                        <li><a href="class-observableapi.html" title="'API' - An API (application programming interface) is a computing interface that defines interactions between multiple software or mixed hardware-software intermediaries. It …">observable:API</a></li>
+                        <li><a href="class-observableapi.html" title="'API' - An API (application programming interface) is a computing interface that defines interactions between multiple software or mixed hardware-software intermediaries. It..">observable:API</a></li>
                       
-                        <li><a href="class-observablearpcache.html" title="'ARPCache' - An ARP cache is a collection of Address Resolution Protocol (ARP) entries (mostly dynamic) that are created when an IP …">observable:ARPCache</a></li>
+                        <li><a href="class-observablearpcache.html" title="'ARPCache' - An ARP cache is a collection of Address Resolution Protocol (ARP) entries (mostly dynamic) that are created when an IP..">observable:ARPCache</a></li>
                       
-                        <li><a href="class-observablearpcacheentry.html" title="'ARPCacheEntry' - An ARP cache entry is a single Address Resolution Protocol (ARP) response record that is created when an IP address …">observable:ARPCacheEntry</a></li>
+                        <li><a href="class-observablearpcacheentry.html" title="'ARPCacheEntry' - An ARP cache entry is a single Address Resolution Protocol (ARP) response record that is created when an IP address..">observable:ARPCacheEntry</a></li>
                       
                         <li><a href="class-observableaccount.html" title="'Account' - An account is an arrangement with an entity to enable and control the provision of some capability or service.">observable:Account</a></li>
                       
                         <li><a href="class-observableaddress.html" title="'Address' - An address is an identifier assigned to enable routing and management of information.">observable:Address</a></li>
                       
-                        <li><a href="class-observablealternatedatastream.html" title="'AlternateDataStream' - An alternate data stream is data content stored within an NTFS file that is independent of the standard content stream …">observable:AlternateDataStream</a></li>
+                        <li><a href="class-observablealternatedatastream.html" title="'AlternateDataStream' - An alternate data stream is data content stored within an NTFS file that is independent of the standard content stream..">observable:AlternateDataStream</a></li>
                       
                         <li><a href="class-observableapplication.html" title="'Application' - An application is a particular software program designed for end users.">observable:Application</a></li>
                       
                         <li><a href="class-observableaudio.html" title="'Audio' - Audio is a digital representation of sound.">observable:Audio</a></li>
                       
-                        <li><a href="class-observableautonomoussystem.html" title="'AutonomousSystem' - An autonomous system is a collection of connected Internet Protocol (IP) routing prefixes under the control of one or more …">observable:AutonomousSystem</a></li>
+                        <li><a href="class-observableautonomoussystem.html" title="'AutonomousSystem' - An autonomous system is a collection of connected Internet Protocol (IP) routing prefixes under the control of one or more..">observable:AutonomousSystem</a></li>
                       
-                        <li><a href="class-observablebotconfiguration.html" title="'BotConfiguration' - A bot configuration is a set of contextual settings for a software application that runs automated tasks (scripts) over the …">observable:BotConfiguration</a></li>
+                        <li><a href="class-observablebotconfiguration.html" title="'BotConfiguration' - A bot configuration is a set of contextual settings for a software application that runs automated tasks (scripts) over the..">observable:BotConfiguration</a></li>
                       
-                        <li><a href="class-observablebrowserbookmark.html" title="'BrowserBookmark' - A browser bookmark is a saved shortcut that directs a WWW (World Wide Web) browser software program to a particular …">observable:BrowserBookmark</a></li>
+                        <li><a href="class-observablebrowserbookmark.html" title="'BrowserBookmark' - A browser bookmark is a saved shortcut that directs a WWW (World Wide Web) browser software program to a particular..">observable:BrowserBookmark</a></li>
                       
-                        <li><a href="class-observablebrowsercookie.html" title="'BrowserCookie' - A browser cookie is a piece of of data sent from a website and stored on the user&#x27;s computer by …">observable:BrowserCookie</a></li>
+                        <li><a href="class-observablebrowsercookie.html" title="'BrowserCookie' - A browser cookie is a piece of of data sent from a website and stored on the user&#39;s computer by..">observable:BrowserCookie</a></li>
                       
                         <li><a href="class-observablecalendar.html" title="'Calendar' - A calendar is a collection of appointments, meetings, and events.">observable:Calendar</a></li>
                       
@@ -2952,9 +2958,9 @@
                       
                         <li><a href="class-observablecall.html" title="'Call' - A call is a connection as part of a realtime cyber communication between one or more parties.">observable:Call</a></li>
                       
-                        <li><a href="class-observablecode.html" title="'Code' - Code is a direct representation (source, byte or binary) of a collection of computer instructions that form software which tell …">observable:Code</a></li>
+                        <li><a href="class-observablecode.html" title="'Code' - Code is a direct representation (source, byte or binary) of a collection of computer instructions that form software which tell..">observable:Code</a></li>
                       
-                        <li><a href="class-observablecomputerspecification.html" title="'ComputerSpecification' - A computer specification is the hardware and software of a programmable electronic device that can store, retrieve, and process data. …">observable:ComputerSpecification</a></li>
+                        <li><a href="class-observablecomputerspecification.html" title="'ComputerSpecification' - A computer specification is the hardware and software of a programmable electronic device that can store, retrieve, and process data...">observable:ComputerSpecification</a></li>
                       
                         <li><a href="class-observablecontact.html" title="'Contact' - A contact is a set of identification and communication related details for a single entity.">observable:Contact</a></li>
                       
@@ -2966,31 +2972,31 @@
                       
                         <li><a href="class-observablecredential.html" title="'Credential' - A credential is a single specific login and password combination for authorization of access to a digital account or system.">observable:Credential</a></li>
                       
-                        <li><a href="class-observablecredentialdump.html" title="'CredentialDump' - A credential dump is a collection (typically forcibly extracted from a system) of specific login and password combinations for authorization …">observable:CredentialDump</a></li>
+                        <li><a href="class-observablecredentialdump.html" title="'CredentialDump' - A credential dump is a collection (typically forcibly extracted from a system) of specific login and password combinations for authorization..">observable:CredentialDump</a></li>
                       
-                        <li><a href="class-observablednscache.html" title="'DNSCache' - An DNS cache is a temporary locally stored collection of previous Domain Name System (DNS) query results (created when an …">observable:DNSCache</a></li>
+                        <li><a href="class-observablednscache.html" title="'DNSCache' - An DNS cache is a temporary locally stored collection of previous Domain Name System (DNS) query results (created when an..">observable:DNSCache</a></li>
                       
-                        <li><a href="class-observablednsrecord.html" title="'DNSRecord' - A DNS record is a single Domain Name System (DNS) artifact specifying information of a particular type (routing, authority, responsibility, …">observable:DNSRecord</a></li>
+                        <li><a href="class-observablednsrecord.html" title="'DNSRecord' - A DNS record is a single Domain Name System (DNS) artifact specifying information of a particular type (routing, authority, responsibility,..">observable:DNSRecord</a></li>
                       
-                        <li><a href="class-observabledevice.html" title="'Device' - A device is a piece of equipment or a mechanism designed to serve a special purpose or perform a special …">observable:Device</a></li>
+                        <li><a href="class-observabledevice.html" title="'Device' - A device is a piece of equipment or a mechanism designed to serve a special purpose or perform a special..">observable:Device</a></li>
                       
-                        <li><a href="class-observabledigitalsignatureinfo.html" title="'DigitalSignatureInfo' - A digital signature info is a value calculated via a mathematical scheme for demonstrating the authenticity of an electronic message …">observable:DigitalSignatureInfo</a></li>
+                        <li><a href="class-observabledigitalsignatureinfo.html" title="'DigitalSignatureInfo' - A digital signature info is a value calculated via a mathematical scheme for demonstrating the authenticity of an electronic message..">observable:DigitalSignatureInfo</a></li>
                       
-                        <li><a href="class-observabledisk.html" title="'Disk' - A disk is a storage mechanism where data is recorded by various electronic, magnetic, optical, or mechanical changes to a …">observable:Disk</a></li>
+                        <li><a href="class-observabledisk.html" title="'Disk' - A disk is a storage mechanism where data is recorded by various electronic, magnetic, optical, or mechanical changes to a..">observable:Disk</a></li>
                       
-                        <li><a href="class-observablediskpartition.html" title="'DiskPartition' - A disk partition is a particular managed region on a storage mechanism where data is recorded by various electronic, magnetic, …">observable:DiskPartition</a></li>
+                        <li><a href="class-observablediskpartition.html" title="'DiskPartition' - A disk partition is a particular managed region on a storage mechanism where data is recorded by various electronic, magnetic,..">observable:DiskPartition</a></li>
                       
-                        <li><a href="class-observabledomainname.html" title="'DomainName' - A domain name is an identification string that defines a realm of administrative autonomy, authority or control within the Internet. …">observable:DomainName</a></li>
+                        <li><a href="class-observabledomainname.html" title="'DomainName' - A domain name is an identification string that defines a realm of administrative autonomy, authority or control within the Internet...">observable:DomainName</a></li>
                       
                         <li><a href="class-observableevent.html" title="'Event' - An event is something that happens in a digital context (e.g., operating system events).">observable:Event</a></li>
                       
                         <li><a href="class-observableeventlog.html" title="'EventLog' - An event log is a recorded collection of events.">observable:EventLog</a></li>
                       
-                        <li><a href="class-observablefilesystem.html" title="'FileSystem' - A file system is the process that manages how and where data on a storage medium is stored, accessed and …">observable:FileSystem</a></li>
+                        <li><a href="class-observablefilesystem.html" title="'FileSystem' - A file system is the process that manages how and where data on a storage medium is stored, accessed and..">observable:FileSystem</a></li>
                       
                         <li><a href="class-observablefilesystemobject.html" title="'FileSystemObject' - A file system object is an informational object represented and managed within a file system.">observable:FileSystemObject</a></li>
                       
-                        <li><a href="class-observablegui.html" title="'GUI' - A GUI is a graphical user interface that allows users to interact with electronic devices through graphical icons and audio …">observable:GUI</a></li>
+                        <li><a href="class-observablegui.html" title="'GUI' - A GUI is a graphical user interface that allows users to interact with electronic devices through graphical icons and audio..">observable:GUI</a></li>
                       
                         <li><a href="class-observablegenericobservableobject.html" title="'GenericObservableObject' - A generic observable object is an article or unit within the digital domain.">observable:GenericObservableObject</a></li>
                       
@@ -3000,31 +3006,31 @@
                       
                         <li><a href="class-observablegeolocationtrack.html" title="'GeoLocationTrack' - A geolocation track is a set of contiguous geolocation entries representing a path/track taken.">observable:GeoLocationTrack</a></li>
                       
-                        <li><a href="class-observablehostname.html" title="'Hostname' - A hostname is a label that is assigned to a device connected to a computer network and that is used …">observable:Hostname</a></li>
+                        <li><a href="class-observablehostname.html" title="'Hostname' - A hostname is a label that is assigned to a device connected to a computer network and that is used..">observable:Hostname</a></li>
                       
-                        <li><a href="class-observableipnetmask.html" title="'IPNetmask' - An IP netmask is a 32-bit &quot;mask&quot; used to divide an IP address into subnets and specify the network&#x27;s available …">observable:IPNetmask</a></li>
+                        <li><a href="class-observableipnetmask.html" title="'IPNetmask' - An IP netmask is a 32-bit &#34;mask&#34; used to divide an IP address into subnets and specify the network&#39;s available..">observable:IPNetmask</a></li>
                       
                         <li><a href="class-observableimage.html" title="'Image' - An image is a complete copy of a hard disk, memory, or other digital media.">observable:Image</a></li>
                       
-                        <li><a href="class-observablelibrary.html" title="'Library' - A library is a suite of data and programming code that is used to develop software programs and applications. [based …">observable:Library</a></li>
+                        <li><a href="class-observablelibrary.html" title="'Library' - A library is a suite of data and programming code that is used to develop software programs and applications. [based..">observable:Library</a></li>
                       
-                        <li><a href="class-observablememory.html" title="'Memory' - Memory is a particular region of temporary information storage (e.g., RAM (random access memory), ROM (read only memory)) on a …">observable:Memory</a></li>
+                        <li><a href="class-observablememory.html" title="'Memory' - Memory is a particular region of temporary information storage (e.g., RAM (random access memory), ROM (read only memory)) on a..">observable:Memory</a></li>
                       
-                        <li><a href="class-observablemessage.html" title="'Message' - A message is a discrete unit of electronic communication intended by the source for consumption by some recipient or group …">observable:Message</a></li>
+                        <li><a href="class-observablemessage.html" title="'Message' - A message is a discrete unit of electronic communication intended by the source for consumption by some recipient or group..">observable:Message</a></li>
                       
                         <li><a href="class-observablemessagethread.html" title="'MessageTread' - A message thread is a running commentary of electronic messages pertaining to one topic or question.">observable:MessageThread</a></li>
                       
-                        <li><a href="class-observablemutex.html" title="'Mutex' - A mutex is a mechanism that enforces limits on access to a resource when there are many threads of execution. …">observable:Mutex</a></li>
+                        <li><a href="class-observablemutex.html" title="'Mutex' - A mutex is a mechanism that enforces limits on access to a resource when there are many threads of execution...">observable:Mutex</a></li>
                       
-                        <li><a href="class-observablenetworkconnection.html" title="'NetworkConnection' - A network connection is a connection (completed or attempted) across a digital network (a group of two or more computer …">observable:NetworkConnection</a></li>
+                        <li><a href="class-observablenetworkconnection.html" title="'NetworkConnection' - A network connection is a connection (completed or attempted) across a digital network (a group of two or more computer..">observable:NetworkConnection</a></li>
                       
-                        <li><a href="class-observablenetworkflow.html" title="'NetworkFlow' - A network flow is a sequence of data transiting one or more digital network (a group or two or more …">observable:NetworkFlow</a></li>
+                        <li><a href="class-observablenetworkflow.html" title="'NetworkFlow' - A network flow is a sequence of data transiting one or more digital network (a group or two or more..">observable:NetworkFlow</a></li>
                       
-                        <li><a href="class-observablenetworkinterface.html" title="'NetworkInterface' - A network interface is a software or hardware interface between two pieces of equipment or protocol layers in a computer …">observable:NetworkInterface</a></li>
+                        <li><a href="class-observablenetworkinterface.html" title="'NetworkInterface' - A network interface is a software or hardware interface between two pieces of equipment or protocol layers in a computer..">observable:NetworkInterface</a></li>
                       
-                        <li><a href="class-observablenetworkprotocol.html" title="'NetworkProtocol' - A network protocol is an established set of structured rules that determine how data is transmitted between different devices in …">observable:NetworkProtocol</a></li>
+                        <li><a href="class-observablenetworkprotocol.html" title="'NetworkProtocol' - A network protocol is an established set of structured rules that determine how data is transmitted between different devices in..">observable:NetworkProtocol</a></li>
                       
-                        <li><a href="class-observablenetworkroute.html" title="'NetworkRoute' - A network route is a specific path (of specific network nodes, connections and protocols) for traffic in a network or …">observable:NetworkRoute</a></li>
+                        <li><a href="class-observablenetworkroute.html" title="'NetworkRoute' - A network route is a specific path (of specific network nodes, connections and protocols) for traffic in a network or..">observable:NetworkRoute</a></li>
                       
                         <li><a href="class-observablenetworksubnet.html" title="'NetworkSubnet' - A network subnet is a logical subdivision of an IP network. [based on https://en.wikipedia.org/wiki/Subnetwork]">observable:NetworkSubnet</a></li>
                       
@@ -3032,77 +3038,77 @@
                       
                         <li><a href="class-observableonlineservice.html" title="'OnlineService' - An online service is a particular provision mechanism of information access, distribution or manipulation over the Internet.">observable:OnlineService</a></li>
                       
-                        <li><a href="class-observableoperatingsystem.html" title="'OperatingSystem' - An operating system is the software that manages computer hardware, software resources, and provides common services for computer programs. [based …">observable:OperatingSystem</a></li>
+                        <li><a href="class-observableoperatingsystem.html" title="'OperatingSystem' - An operating system is the software that manages computer hardware, software resources, and provides common services for computer programs. [based..">observable:OperatingSystem</a></li>
                       
-                        <li><a href="class-observablepaymentcard.html" title="'PaymentCard' - A payment card is a physical token that is part of a payment system issued by financial institutions, such as …">observable:PaymentCard</a></li>
+                        <li><a href="class-observablepaymentcard.html" title="'PaymentCard' - A payment card is a physical token that is part of a payment system issued by financial institutions, such as..">observable:PaymentCard</a></li>
                       
-                        <li><a href="class-observablepipe.html" title="'Pipe' - A pipe is a mechanism for one-way inter-process communication using message passing where data written by one process is buffered …">observable:Pipe</a></li>
+                        <li><a href="class-observablepipe.html" title="'Pipe' - A pipe is a mechanism for one-way inter-process communication using message passing where data written by one process is buffered..">observable:Pipe</a></li>
                       
                         <li><a href="class-observableprocess.html" title="'Process' - A process is an instance of a computer program executed on an operating system.">observable:Process</a></li>
                       
-                        <li><a href="class-observableprofile.html" title="'Profile' - A profile is an explicit digital representation of identity and characteristics of the owner of a single user account associated …">observable:Profile</a></li>
+                        <li><a href="class-observableprofile.html" title="'Profile' - A profile is an explicit digital representation of identity and characteristics of the owner of a single user account associated..">observable:Profile</a></li>
                       
                         <li><a href="class-observablesqliteblob.html" title="'SQLiteBlob' - An SQLite blob is a blob (binary large object) of data within an SQLite database. [based on https://en.wikipedia.org/wiki/SQLite]">observable:SQLiteBlob</a></li>
                       
-                        <li><a href="class-observablesemaphore.html" title="'Semaphore' - A semaphore is a variable or abstract data type used to control access to a common resource by multiple processes …">observable:Semaphore</a></li>
+                        <li><a href="class-observablesemaphore.html" title="'Semaphore' - A semaphore is a variable or abstract data type used to control access to a common resource by multiple processes..">observable:Semaphore</a></li>
                       
                         <li><a href="class-observableshoplisting.html" title="'ShopListing' - A shop listing is a listing of offered products on an online marketplace/shop.">observable:ShopListing</a></li>
                       
-                        <li><a href="class-observablesoftware.html" title="'Software' - Software is a definitely scoped instance of a collection of data or computer instructions that tell the computer how to …">observable:Software</a></li>
+                        <li><a href="class-observablesoftware.html" title="'Software' - Software is a definitely scoped instance of a collection of data or computer instructions that tell the computer how to..">observable:Software</a></li>
                       
-                        <li><a href="class-observablethread.html" title="'Thread' - A thread is the smallest sequence of programmed instructions that can be managed independently by a scheduler on a computer, …">observable:Thread</a></li>
+                        <li><a href="class-observablethread.html" title="'Thread' - A thread is the smallest sequence of programmed instructions that can be managed independently by a scheduler on a computer,..">observable:Thread</a></li>
                       
-                        <li><a href="class-observableurl.html" title="'URL' - A URL is a uniform resource locator (URL) acting as a resolvable address to a particular WWW (World Wide Web) …">observable:URL</a></li>
+                        <li><a href="class-observableurl.html" title="'URL' - A URL is a uniform resource locator (URL) acting as a resolvable address to a particular WWW (World Wide Web)..">observable:URL</a></li>
                       
                         <li><a href="class-observableurlhistory.html" title="'URLHistory' - A URL history characterizes the stored URL history for a particular web browser">observable:URLHistory</a></li>
                       
                         <li><a href="class-observableurlvisit.html" title="'URLVisit' - A URL visit characterizes the properties of a visit of a URL within a particular browser.">observable:URLVisit</a></li>
                       
-                        <li><a href="class-observableusersession.html" title="'UserSession' - A user session is a temporary and interactive information interchange between two or more communicating devices within the managed scope …">observable:UserSession</a></li>
+                        <li><a href="class-observableusersession.html" title="'UserSession' - A user session is a temporary and interactive information interchange between two or more communicating devices within the managed scope..">observable:UserSession</a></li>
                       
                         <li><a href="class-observablevolume.html" title="'Volume' - A volume is a single accessible storage area (volume) with a single file system. [based on https://en.wikipedia.org/wiki/Volume_(computing)]">observable:Volume</a></li>
                       
-                        <li><a href="class-observablewebpage.html" title="'WebPage' - A web page is a specific collection of information provided by a website and displayed to a user in a …">observable:WebPage</a></li>
+                        <li><a href="class-observablewebpage.html" title="'WebPage' - A web page is a specific collection of information provided by a website and displayed to a user in a..">observable:WebPage</a></li>
                       
                         <li><a href="class-observablewhois.html" title="'WhoIs' - WhoIs is a response record conformant to the WHOIS protocol standard (RFC 3912). [based on https://en.wikipedia.org/wiki/WHOIS]">observable:WhoIs</a></li>
                       
-                        <li><a href="class-observablewiki.html" title="'Wiki' - A wiki is an online hypertext publication collaboratively edited and managed by its own audience directly using a web browser. …">observable:Wiki</a></li>
+                        <li><a href="class-observablewiki.html" title="'Wiki' - A wiki is an online hypertext publication collaboratively edited and managed by its own audience directly using a web browser...">observable:Wiki</a></li>
                       
                         <li><a href="class-observablewikiarticle.html" title="'WikiArticle' - A wiki article is one or more pages in a wiki focused on characterizing a particular topic.">observable:WikiArticle</a></li>
                       
-                        <li><a href="class-observablewindowscomputerspecification.html" title="'WindowsComputerSpecification' - A Windows computer specification is the hardware ans software of a programmable electronic device that can store, retrieve, and process …">observable:WindowsComputerSpecification</a></li>
+                        <li><a href="class-observablewindowscomputerspecification.html" title="'WindowsComputerSpecification' - A Windows computer specification is the hardware ans software of a programmable electronic device that can store, retrieve, and process..">observable:WindowsComputerSpecification</a></li>
                       
-                        <li><a href="class-observablewindowscriticalsection.html" title="'WindowsCriticalSection' - A Windows critical section is a Windows object that provides synchronization similar to that provided by a mutex object, except …">observable:WindowsCriticalSection</a></li>
+                        <li><a href="class-observablewindowscriticalsection.html" title="'WindowsCriticalSection' - A Windows critical section is a Windows object that provides synchronization similar to that provided by a mutex object, except..">observable:WindowsCriticalSection</a></li>
                       
-                        <li><a href="class-observablewindowsevent.html" title="'WindowsEvent' - A Windows event is a notification record of an occurance of interest (system, security, application, etc.) on a Windows operating …">observable:WindowsEvent</a></li>
+                        <li><a href="class-observablewindowsevent.html" title="'WindowsEvent' - A Windows event is a notification record of an occurance of interest (system, security, application, etc.) on a Windows operating..">observable:WindowsEvent</a></li>
                       
-                        <li><a href="class-observablewindowsfilemapping.html" title="'WindowsFilemapping' - A Windows file mapping is the association of a file&#x27;s contents with a portion of the virtual address space of …">observable:WindowsFilemapping</a></li>
+                        <li><a href="class-observablewindowsfilemapping.html" title="'WindowsFilemapping' - A Windows file mapping is the association of a file&#39;s contents with a portion of the virtual address space of..">observable:WindowsFilemapping</a></li>
                       
-                        <li><a href="class-observablewindowshandle.html" title="'WindowsHandle' - A Windows handle is an abstract reference to a resource within the Windows operating system, such as a window, memory, …">observable:WindowsHandle</a></li>
+                        <li><a href="class-observablewindowshandle.html" title="'WindowsHandle' - A Windows handle is an abstract reference to a resource within the Windows operating system, such as a window, memory,..">observable:WindowsHandle</a></li>
                       
-                        <li><a href="class-observablewindowshook.html" title="'WindowsHook' - A Windows hook is a mechanism by which an application can intercept events, such as messages, mouse actions, and keystrokes …">observable:WindowsHook</a></li>
+                        <li><a href="class-observablewindowshook.html" title="'WindowsHook' - A Windows hook is a mechanism by which an application can intercept events, such as messages, mouse actions, and keystrokes..">observable:WindowsHook</a></li>
                       
-                        <li><a href="class-observablewindowsmailslot.html" title="'WindowsMailslot' - A Windows mailslot is is a pseudofile that resides in memory, and may be accessed using standard file functions. The …">observable:WindowsMailslot</a></li>
+                        <li><a href="class-observablewindowsmailslot.html" title="'WindowsMailslot' - A Windows mailslot is is a pseudofile that resides in memory, and may be accessed using standard file functions. The..">observable:WindowsMailslot</a></li>
                       
-                        <li><a href="class-observablewindowsnetworkshare.html" title="'WindowsNetworkShare' - A Windows network share is a Windows computer resource made available from one host to other hosts on a computer …">observable:WindowsNetworkShare</a></li>
+                        <li><a href="class-observablewindowsnetworkshare.html" title="'WindowsNetworkShare' - A Windows network share is a Windows computer resource made available from one host to other hosts on a computer..">observable:WindowsNetworkShare</a></li>
                       
                         <li><a href="class-observablewindowsprefetch.html" title="'WindowsPrefetch' - The Windows prefetch contains entries in a Windows prefetch file (used to speed up application startup starting with Windows XP).">observable:WindowsPrefetch</a></li>
                       
-                        <li><a href="class-observablewindowsregistryhive.html" title="'WindowsRegistryHive' - The Windows registry hive is a particular logical group of keys, subkeys, and values in a Windows registry (a hierarchical …">observable:WindowsRegistryHive</a></li>
+                        <li><a href="class-observablewindowsregistryhive.html" title="'WindowsRegistryHive' - The Windows registry hive is a particular logical group of keys, subkeys, and values in a Windows registry (a hierarchical..">observable:WindowsRegistryHive</a></li>
                       
-                        <li><a href="class-observablewindowsregistrykey.html" title="'WindowsRegistryKey' - A Windows registry key is a particular key within a Windows registry (a hierarchical database that stores low-level settings for …">observable:WindowsRegistryKey</a></li>
+                        <li><a href="class-observablewindowsregistrykey.html" title="'WindowsRegistryKey' - A Windows registry key is a particular key within a Windows registry (a hierarchical database that stores low-level settings for..">observable:WindowsRegistryKey</a></li>
                       
-                        <li><a href="class-observablewindowsservice.html" title="'WindowsService' - A Windows service is a specific Windows service (a computer program that operates in the background of a Windows operating …">observable:WindowsService</a></li>
+                        <li><a href="class-observablewindowsservice.html" title="'WindowsService' - A Windows service is a specific Windows service (a computer program that operates in the background of a Windows operating..">observable:WindowsService</a></li>
                       
-                        <li><a href="class-observablewindowssystemrestore.html" title="'WindowsSystemRestore' - A Windows system restore is a capture of a Windows computer&#x27;s state (including system files, installed applications, Windows Registry, and …">observable:WindowsSystemRestore</a></li>
+                        <li><a href="class-observablewindowssystemrestore.html" title="'WindowsSystemRestore' - A Windows system restore is a capture of a Windows computer&#39;s state (including system files, installed applications, Windows Registry, and..">observable:WindowsSystemRestore</a></li>
                       
-                        <li><a href="class-observablewindowstask.html" title="'WindowsTask' - A Windows task is a process that is scheduled to execute on a Windows operating system by the Windows Task …">observable:WindowsTask</a></li>
+                        <li><a href="class-observablewindowstask.html" title="'WindowsTask' - A Windows task is a process that is scheduled to execute on a Windows operating system by the Windows Task..">observable:WindowsTask</a></li>
                       
-                        <li><a href="class-observablewindowswaitabletime.html" title="'WindowsWaitableTime' - A Windows waitable timer is a synchronization object within the Windows operating system whose state is set to signaled when …">observable:WindowsWaitableTime</a></li>
+                        <li><a href="class-observablewindowswaitabletime.html" title="'WindowsWaitableTime' - A Windows waitable timer is a synchronization object within the Windows operating system whose state is set to signaled when..">observable:WindowsWaitableTime</a></li>
                       
                         <li><a href="class-observablex509certificate.html" title="'X509Certificate' - A X.509 certificate is a public key digital identity certificate conformant to the X.509 PKI (Public Key Infrastructure) standard.">observable:X509Certificate</a></li>
                       
-                        <li><a href="class-observablex509v3certificate.html" title="'X509V3Certificate' - An X.509 v3 certificate is a public key digital identity certificate conformant to the X.509 v3 PKI (Public Key Infrastructure) …">observable:X509V3Certificate</a></li>
+                        <li><a href="class-observablex509v3certificate.html" title="'X509V3Certificate' - An X.509 v3 certificate is a public key digital identity certificate conformant to the X.509 v3 PKI (Public Key Infrastructure)..">observable:X509V3Certificate</a></li>
                       
                       </ul>
                     
@@ -3294,7 +3300,7 @@
                     </td>
 
                     <td>     
-                      0
+                      
                     </td>
 
                     <td>     
@@ -3346,7 +3352,7 @@
                     </td>
 
                     <td>     
-                      0
+                      
                     </td>
 
                     <td>     
@@ -3410,7 +3416,7 @@
                     </td>
 
                     <td>     
-                      0
+                      
                     </td>
 
                     <td>     
@@ -3462,11 +3468,11 @@
                     </td>
 
                     <td>     
-                      0
+                      
                     </td>
 
                     <td>     
-                      *
+                      
                     </td>
 
                     <td>     
@@ -3518,7 +3524,7 @@
                     </td>
 
                     <td>     
-                      *
+                      
                     </td>
 
                     <td>     
@@ -3566,11 +3572,11 @@
                     </td>
 
                     <td>     
-                      0
+                      
                     </td>
 
                     <td>     
-                      *
+                      
                     </td>
 
                     <td>     
@@ -3618,7 +3624,7 @@
                     </td>
 
                     <td>     
-                      0
+                      
                     </td>
 
                     <td>     
@@ -3670,11 +3676,11 @@
                     </td>
 
                     <td>     
-                      0
+                      
                     </td>
 
                     <td>     
-                      *
+                      
                     </td>
 
                     <td>     
@@ -3722,7 +3728,7 @@
                     </td>
 
                     <td>     
-                      0
+                      
                     </td>
 
                     <td>     
@@ -3774,7 +3780,7 @@
                     </td>
 
                     <td>     
-                      0
+                      
                     </td>
 
                     <td>     
@@ -3826,11 +3832,11 @@
                     </td>
 
                     <td>     
-                      0
+                      
                     </td>
 
                     <td>     
-                      *
+                      
                     </td>
 
                     <td>     
@@ -3878,7 +3884,7 @@
                     </td>
 
                     <td>     
-                      0
+                      
                     </td>
 
                     <td>     
@@ -3930,11 +3936,11 @@
                     </td>
 
                     <td>     
-                      0
+                      
                     </td>
 
                     <td>     
-                      *
+                      
                     </td>
 
                     <td>     
@@ -3982,11 +3988,11 @@
                     </td>
 
                     <td>     
-                      0
+                      
                     </td>
 
                     <td>     
-                      *
+                      
                     </td>
 
                     <td>     
@@ -4030,28 +4036,28 @@
           </div>
           <div class="panel-body implementation-panel">
             
-              <div class="highlight"><pre><span></span><span class="k">@prefix</span><span class="w"> </span><span class="nn">core:</span><span class="w"> </span><span class="nv">&lt;https://ontology.unifiedcyberontology.org/uco/core/&gt;</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
-<span class="k">@prefix</span><span class="w"> </span><span class="nn">observable:</span><span class="w"> </span><span class="nv">&lt;https://ontology.unifiedcyberontology.org/uco/observable/&gt;</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
-<span class="k">@prefix</span><span class="w"> </span><span class="nn">owl:</span><span class="w"> </span><span class="nv">&lt;http://www.w3.org/2002/07/owl#&gt;</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
-<span class="k">@prefix</span><span class="w"> </span><span class="nn">rdfs:</span><span class="w"> </span><span class="nv">&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
-<span class="k">@prefix</span><span class="w"> </span><span class="nn">sh:</span><span class="w"> </span><span class="nv">&lt;http://www.w3.org/ns/shacl#&gt;</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
-<span class="k">@prefix</span><span class="w"> </span><span class="nn">xsd:</span><span class="w"> </span><span class="nv">&lt;http://www.w3.org/2001/XMLSchema#&gt;</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+              <div class="highlight"><pre><span></span><span class="k">@prefix</span><span class="w"> </span><span class="nn">core:</span><span class="w"> </span><span class="nv">&lt;https://ontology.unifiedcyberontology.org/uco/core/&gt;</span><span class="w"> </span><span class="p">.</span>
+<span class="k">@prefix</span><span class="w"> </span><span class="nn">observable:</span><span class="w"> </span><span class="nv">&lt;https://ontology.unifiedcyberontology.org/uco/observable/&gt;</span><span class="w"> </span><span class="p">.</span>
+<span class="k">@prefix</span><span class="w"> </span><span class="nn">owl:</span><span class="w"> </span><span class="nv">&lt;http://www.w3.org/2002/07/owl#&gt;</span><span class="w"> </span><span class="p">.</span>
+<span class="k">@prefix</span><span class="w"> </span><span class="nn">rdfs:</span><span class="w"> </span><span class="nv">&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</span><span class="w"> </span><span class="p">.</span>
+<span class="k">@prefix</span><span class="w"> </span><span class="nn">sh:</span><span class="w"> </span><span class="nv">&lt;http://www.w3.org/ns/shacl#&gt;</span><span class="w"> </span><span class="p">.</span>
+<span class="k">@prefix</span><span class="w"> </span><span class="nn">xsd:</span><span class="w"> </span><span class="nv">&lt;http://www.w3.org/2001/XMLSchema#&gt;</span><span class="w"> </span><span class="p">.</span>
 
-<span class="nn">observable:</span><span class="nt">ObservableObject</span><span class="w"> </span><span class="kt">a</span><span class="w"> </span><span class="nn">owl:</span><span class="nt">Class</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nn">sh:</span><span class="nt">NodeShape</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="nn">rdfs:</span><span class="nt">label</span><span class="w"> </span><span class="s">&quot;ObservableObject&quot;</span><span class="o">@</span><span class="ge">en</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="nn">rdfs:</span><span class="nt">comment</span><span class="w"> </span><span class="s">&quot;An observable object is a grouping of characteristics unique to a distinct article or unit within the digital domain.&quot;</span><span class="o">@</span><span class="ge">en</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="nn">rdfs:</span><span class="nt">subClassOf</span><span class="w"> </span><span class="nn">core:</span><span class="nt">Item</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nn">observable:</span><span class="nt">Observable</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="nn">sh:</span><span class="nt">property</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="nn">sh:</span><span class="nt">datatype</span><span class="w"> </span><span class="nn">xsd:</span><span class="nt">boolean</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
-<span class="w">            </span><span class="nn">sh:</span><span class="nt">maxCount</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
-<span class="w">            </span><span class="nn">sh:</span><span class="nt">nodeKind</span><span class="w"> </span><span class="nn">sh:</span><span class="nt">Literal</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
-<span class="w">            </span><span class="nn">sh:</span><span class="nt">path</span><span class="w"> </span><span class="nn">observable:</span><span class="nt">hasChanged</span><span class="w"> </span><span class="p">],</span><span class="w"></span>
-<span class="w">        </span><span class="p">[</span><span class="w"> </span><span class="nn">sh:</span><span class="nt">datatype</span><span class="w"> </span><span class="nn">xsd:</span><span class="nt">string</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
-<span class="w">            </span><span class="nn">sh:</span><span class="nt">maxCount</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
-<span class="w">            </span><span class="nn">sh:</span><span class="nt">nodeKind</span><span class="w"> </span><span class="nn">sh:</span><span class="nt">Literal</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
-<span class="w">            </span><span class="nn">sh:</span><span class="nt">path</span><span class="w"> </span><span class="nn">observable:</span><span class="nt">state</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="nn">sh:</span><span class="nt">targetClass</span><span class="w"> </span><span class="nn">observable:</span><span class="nt">ObservableObject</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+<span class="nn">observable</span><span class="p">:</span><span class="nt">ObservableObject</span> <span class="kt">a</span> <span class="nn">owl</span><span class="p">:</span><span class="nt">Class</span><span class="p">,</span>
+        <span class="nn">sh</span><span class="p">:</span><span class="nt">NodeShape</span> <span class="p">;</span>
+    <span class="nn">rdfs</span><span class="p">:</span><span class="nt">label</span> <span class="s">&quot;ObservableObject&quot;</span><span class="o">@</span><span class="ge">en</span> <span class="p">;</span>
+    <span class="nn">rdfs</span><span class="p">:</span><span class="nt">comment</span> <span class="s">&quot;An observable object is a grouping of characteristics unique to a distinct article or unit within the digital domain.&quot;</span><span class="o">@</span><span class="ge">en</span> <span class="p">;</span>
+    <span class="nn">rdfs</span><span class="p">:</span><span class="nt">subClassOf</span> <span class="nn">core</span><span class="p">:</span><span class="nt">Item</span><span class="p">,</span>
+        <span class="nn">observable</span><span class="p">:</span><span class="nt">Observable</span> <span class="p">;</span>
+    <span class="nn">sh</span><span class="p">:</span><span class="nt">property</span> <span class="p">[</span> <span class="nn">sh</span><span class="p">:</span><span class="nt">datatype</span> <span class="nn">xsd</span><span class="p">:</span><span class="nt">boolean</span> <span class="p">;</span>
+            <span class="nn">sh</span><span class="p">:</span><span class="nt">maxCount</span> <span class="mi">1</span> <span class="p">;</span>
+            <span class="nn">sh</span><span class="p">:</span><span class="nt">nodeKind</span> <span class="nn">sh</span><span class="p">:</span><span class="nt">Literal</span> <span class="p">;</span>
+            <span class="nn">sh</span><span class="p">:</span><span class="nt">path</span> <span class="nn">observable</span><span class="p">:</span><span class="nt">hasChanged</span> <span class="p">],</span>
+        <span class="p">[</span> <span class="nn">sh</span><span class="p">:</span><span class="nt">datatype</span> <span class="nn">xsd</span><span class="p">:</span><span class="nt">string</span> <span class="p">;</span>
+            <span class="nn">sh</span><span class="p">:</span><span class="nt">maxCount</span> <span class="mi">1</span> <span class="p">;</span>
+            <span class="nn">sh</span><span class="p">:</span><span class="nt">nodeKind</span> <span class="nn">sh</span><span class="p">:</span><span class="nt">Literal</span> <span class="p">;</span>
+            <span class="nn">sh</span><span class="p">:</span><span class="nt">path</span> <span class="nn">observable</span><span class="p">:</span><span class="nt">state</span> <span class="p">]</span> <span class="p">;</span>
+    <span class="nn">sh</span><span class="p">:</span><span class="nt">targetClass</span> <span class="nn">observable</span><span class="p">:</span><span class="nt">ObservableObject</span> <span class="p">.</span>
 </pre></div>
 
             
@@ -4081,7 +4087,7 @@
   <footer class="footer">
     <div class="container">
     
-      <p class="text-muted">Documentation automatically generated on 24th October 2022 with <a href="http://lambdamusic.github.io/Ontospy/">Ontospy</a> (v2.0.0-alpha)</p>
+      <p class="text-muted">Documentation automatically generated on Tue, 22 Nov 2022 19:12:50 with <a href="http://lambdamusic.github.io/Ontospy/">Ontospy</a> (v2.1.1)</p>
 
     
     </div>
