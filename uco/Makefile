@@ -11,11 +11,14 @@
 #
 # We would appreciate acknowledgement if the software is used.
 
-CURRENT_RELEASE := 0.9.1
-
 SHELL := /bin/bash
 
 top_srcdir := $(shell cd .. ; pwd)
+
+CURRENT_RELEASE ?=
+ifeq ($(CURRENT_RELEASE),)
+$(error CURRENT_RELEASE not defined; try running 'make' from top source directory ($(top_srcdir)))
+endif
 
 RDF_TOOLKT_JAR := $(top_srcdir)/dependencies/UCO/lib/rdf-toolkit.jar
 

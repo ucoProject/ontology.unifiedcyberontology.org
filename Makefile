@@ -11,6 +11,8 @@
 #
 # We would appreciate acknowledgement if the software is used.
 
+CURRENT_RELEASE := 0.9.1
+
 SHELL := /bin/bash
 
 # Use HOST_PREFIX to test the deployment at the specified host.
@@ -67,12 +69,14 @@ all-uco: \
   .venv.done.log \
   dependencies/UCO/tests/uco_monolithic.ttl
 	$(MAKE) \
-	  --directory uco
+	  --directory uco \
+	  CURRENT_RELEASE=$(CURRENT_RELEASE)
 
 check: \
   all-uco
 	$(MAKE) \
 	  --directory uco \
+	  CURRENT_RELEASE=$(CURRENT_RELEASE) \
 	  check
 
 # Test matrix:
@@ -185,6 +189,7 @@ check-service:
 clean:
 	@$(MAKE) \
 	  --directory uco \
+	  CURRENT_RELEASE=$(CURRENT_RELEASE) \
 	  clean
 	@rm -f .*.done.log
 	@test ! -r dependencies/UCO/README.md \
