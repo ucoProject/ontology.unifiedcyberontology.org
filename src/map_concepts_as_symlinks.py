@@ -84,7 +84,7 @@ def main() -> None:
 
             # determine path to symlink target (gendocs HTML file), relative to basename of URL path
             iri_parts = concept_iri.split('/')
-            gendocs_target = f"../documentation/{prefix}-{iri_parts[-2]}{iri_parts[-1].lower()}.html"
+            gendocs_target = f"../../documentation/{prefix}-{iri_parts[-2]}{iri_parts[-1].lower()}.html"
 
             # format gendoc -> symlink (src, dst) combos
             symlinks[gendocs_target] = url_path

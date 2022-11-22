@@ -11,6 +11,8 @@
 #
 # We would appreciate acknowledgement if the software is used.
 
+CURRENT_RELEASE := 0.9.1
+
 SHELL := /bin/bash
 
 # Use HOST_PREFIX to test the deployment at the specified host.
@@ -24,6 +26,19 @@ all: \
   all-uco \
   check-service
 
+.documentation.done.log: \
+  .venv.done.log \
+  dependencies/UCO/tests/uco_monolithic.ttl
+	rm -rf documentation
+	mkdir documentation
+	source venv/bin/activate \
+	  && ontospy gendocs \
+	    --outputpath $$PWD/documentation \
+	    --theme darkly \
+	    --title uco-$(CURRENT_RELEASE)-docs \
+	    --type 2 \
+	    dependencies/UCO/tests/uco_monolithic.ttl
+	touch $@
 
 # This target checks for a file's existence to confirm that the submodule
 # has been checked out at least once.  To simplify development work, a
@@ -64,15 +79,16 @@ all: \
 	touch $@
 
 all-uco: \
-  .venv.done.log \
-  dependencies/UCO/tests/uco_monolithic.ttl
+  .documentation.done.log
 	$(MAKE) \
-	  --directory uco
+	  --directory uco \
+	  CURRENT_RELEASE=$(CURRENT_RELEASE)
 
 check: \
   all-uco
 	$(MAKE) \
 	  --directory uco \
+	  CURRENT_RELEASE=$(CURRENT_RELEASE) \
 	  check
 
 # Test matrix:
@@ -169,22 +185,25 @@ check-service:
 	# Confirm documentation index is reachable.
 	wget \
 	  --output-document _$@ \
-	  $(HOST_PREFIX)/uco/documentation/
-	diff _$@ uco/documentation/index.html
+	  $(HOST_PREFIX)/documentation/
+	diff _$@ documentation/index.html
 	rm _$@
 	# Confirm HTML index for non-umbrella namespaces are redirected to umbrella documentation index.
 	wget \
 	  --header 'Accept: text/html' \
 	  --output-document _$@ \
 	  $(HOST_PREFIX)/uco/core/
-	diff _$@ uco/documentation/index.html
+	diff _$@ documentation/index.html
 	rm _$@
 	@echo >&2
 	@echo "INFO:Makefile:Service tests pass!" >&2
 
 clean:
+	@rm -rf \
+	  documentation
 	@$(MAKE) \
 	  --directory uco \
+	  CURRENT_RELEASE=$(CURRENT_RELEASE) \
 	  clean
 	@rm -f .*.done.log
 	@test ! -r dependencies/UCO/README.md \
