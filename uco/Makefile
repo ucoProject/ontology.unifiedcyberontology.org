@@ -59,23 +59,9 @@ all: \
 .PHONY: \
   clean-symlinking
 
-.documentation.done.log: \
-  $(top_srcdir)/.venv.done.log \
-  $(top_srcdir)/dependencies/UCO/tests/uco_monolithic.ttl
-	rm -rf documentation
-	mkdir documentation
-	source $(top_srcdir)/venv/bin/activate \
-	  && ontospy gendocs \
-	    --outputpath $$PWD/documentation \
-	    --theme darkly \
-	    --title uco-$(CURRENT_RELEASE)-docs \
-	    --type 2 \
-	    $(top_srcdir)/dependencies/UCO/tests/uco_monolithic.ttl
-	touch $@
-
 .%.symlinking.done.log: \
   %.ttl \
-	.documentation.done.log
+  $(top_srcdir)/.documentation.done.log
 		source $(top_srcdir)/venv/bin/activate \
 			&& python3 $(top_srcdir)/src/map_concepts_as_symlinks.py \
 				$<
@@ -134,8 +120,6 @@ clean: \
 	  *.rdf \
 	  *.ttl \
 	  .*.done.log
-	@rm -rf \
-	  documentation
 
 clean-symlinking:
 	@rm -f \
