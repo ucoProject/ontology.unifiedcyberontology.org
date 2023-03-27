@@ -1,0 +1,12 @@
+[Unit]
+Description=Flask based router for UCO Documentation
+After=multi-user.target
+
+[Service]
+User=ucodocs
+WorkingDirectory=/srv/http/ontology.unifiedcyberontology.org/router
+ExecStart=/srv/http/ontology.unifiedcyberontology.org/router/venv/bin/gunicorn --workers 4 --bind 0.0.0.0:5001 app:app
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
