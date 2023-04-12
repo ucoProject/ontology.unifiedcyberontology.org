@@ -22,70 +22,45 @@ endif
 
 RDF_TOOLKIT_JAR := $(top_srcdir)/dependencies/UCO/lib/rdf-toolkit.jar
 
-rdf_files := \
-  action.rdf \
-  core.rdf \
-  identity.rdf \
-  location.rdf \
-  marking.rdf \
-  observable.rdf \
-  pattern.rdf \
-  role.rdf \
-  time.rdf \
-  tool.rdf \
-  types.rdf \
-  uco.rdf \
-  victim.rdf \
-  vocabulary.rdf
+version_iri_files := \
+  action/$(CURRENT_RELEASE).rdf \
+  action/$(CURRENT_RELEASE).ttl \
+  core/$(CURRENT_RELEASE).rdf \
+  core/$(CURRENT_RELEASE).ttl \
+  identity/$(CURRENT_RELEASE).rdf \
+  identity/$(CURRENT_RELEASE).ttl \
+  location/$(CURRENT_RELEASE).rdf \
+  location/$(CURRENT_RELEASE).ttl \
+  marking/$(CURRENT_RELEASE).rdf \
+  marking/$(CURRENT_RELEASE).ttl \
+  observable/$(CURRENT_RELEASE).rdf \
+  observable/$(CURRENT_RELEASE).ttl \
+  pattern/$(CURRENT_RELEASE).rdf \
+  pattern/$(CURRENT_RELEASE).ttl \
+  role/$(CURRENT_RELEASE).rdf \
+  role/$(CURRENT_RELEASE).ttl \
+  time/$(CURRENT_RELEASE).rdf \
+  time/$(CURRENT_RELEASE).ttl \
+  tool/$(CURRENT_RELEASE).rdf \
+  tool/$(CURRENT_RELEASE).ttl \
+  types/$(CURRENT_RELEASE).rdf \
+  types/$(CURRENT_RELEASE).ttl \
+  uco/$(CURRENT_RELEASE).rdf \
+  uco/$(CURRENT_RELEASE).ttl \
+  victim/$(CURRENT_RELEASE).rdf \
+  victim/$(CURRENT_RELEASE).ttl \
+  vocabulary/$(CURRENT_RELEASE).rdf \
+  vocabulary/$(CURRENT_RELEASE).ttl
+
 
 all: \
-  $(rdf_files) \
-  .symlinking.done.log \
-  action.ttl \
-  core.ttl \
-  identity.ttl \
-  location.ttl \
-  marking.ttl \
-  observable.ttl \
-  pattern.ttl \
-  role.ttl \
-  time.ttl \
-  tool.ttl \
-  types.ttl \
-  uco.ttl \
-  victim.ttl \
-  vocabulary.ttl
-
-.PHONY: \
-  clean-symlinking
-
-.%.symlinking.done.log: \
-  %.ttl \
-  $(top_srcdir)/.documentation.done.log
-		source $(top_srcdir)/venv/bin/activate \
-			&& python3 $(top_srcdir)/src/map_concepts_as_symlinks.py \
-				$<
-
-.symlinking.done.log: \
-	.action.symlinking.done.log \
-	.core.symlinking.done.log \
-	.identity.symlinking.done.log \
-	.location.symlinking.done.log \
-	.marking.symlinking.done.log \
-	.observable.symlinking.done.log \
-	.pattern.symlinking.done.log \
-	.role.symlinking.done.log \
-	.time.symlinking.done.log \
-	.tool.symlinking.done.log \
-	.types.symlinking.done.log \
-	.uco.symlinking.done.log \
-	.victim.symlinking.done.log \
-	.vocabulary.symlinking.done.log
+  $(version_iri_files)
 
 action.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/action/action.ttl \
   $(RDF_TOOLKIT_JAR) \
   namespaces.sed
+	rm -f __$@ _$@
 	java -jar $(RDF_TOOLKIT_JAR) \
 	  --inline-blank-nodes \
 	  --source $< \
@@ -96,17 +71,28 @@ action.rdf: \
 	  -f namespaces.sed \
 	  __$@ \
 	  > _$@
+	xmllint \
+	  --noout \
+	  _$@
 	rm __$@
-	cp _$@ action/$(CURRENT_RELEASE).rdf
 	mv _$@ $@
 
 action.ttl: \
   $(top_srcdir)/dependencies/UCO/ontology/action/action.ttl
 	cp $< $@
-	cp $< action/$(CURRENT_RELEASE).ttl
+
+action/$(CURRENT_RELEASE).rdf: \
+  action.rdf
+	mkdir -p action
+	cp $< $@
+
+action/$(CURRENT_RELEASE).ttl: \
+  action.ttl
+	mkdir -p action
+	cp $< $@
 
 check: \
-  $(rdf_files)
+  $(version_iri_files)
 	# Test that generated RDF-XML is valid XML.
 	source $(top_srcdir)/venv/bin/activate \
 	  && rdfpipe \
@@ -114,26 +100,17 @@ check: \
 	    --no-out \
 	    action.rdf
 
-clean: \
-  clean-symlinking
+clean:
 	@rm -f \
 	  *.rdf \
 	  *.ttl \
 	  .*.done.log
 
-clean-symlinking:
-	@rm -f \
-	  .symlinking.done.log
-	@find \
-	  . \
-	  -name '*.html' \
-	  -type l \
-	  -exec rm '{}' \;
-
 core.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/core/core.ttl \
   $(RDF_TOOLKIT_JAR) \
   namespaces.sed
+	rm -f __$@ _$@
 	java -jar $(RDF_TOOLKIT_JAR) \
 	  --inline-blank-nodes \
 	  --source $< \
@@ -144,19 +121,31 @@ core.rdf: \
 	  -f namespaces.sed \
 	  __$@ \
 	  > _$@
+	xmllint \
+	  --noout \
+	  _$@
 	rm __$@
-	cp _$@ core/$(CURRENT_RELEASE).rdf
 	mv _$@ $@
 
 core.ttl: \
   $(top_srcdir)/dependencies/UCO/ontology/core/core.ttl
 	cp $< $@
-	cp $< core/$(CURRENT_RELEASE).ttl
+
+core/$(CURRENT_RELEASE).rdf: \
+  core.rdf
+	mkdir -p core
+	cp $< $@
+
+core/$(CURRENT_RELEASE).ttl: \
+  core.ttl
+	mkdir -p core
+	cp $< $@
 
 identity.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/identity/identity.ttl \
   $(RDF_TOOLKIT_JAR) \
   namespaces.sed
+	rm -f __$@ _$@
 	java -jar $(RDF_TOOLKIT_JAR) \
 	  --inline-blank-nodes \
 	  --source $< \
@@ -167,19 +156,31 @@ identity.rdf: \
 	  -f namespaces.sed \
 	  __$@ \
 	  > _$@
+	xmllint \
+	  --noout \
+	  _$@
 	rm __$@
-	cp _$@ identity/$(CURRENT_RELEASE).rdf
 	mv _$@ $@
 
 identity.ttl: \
   $(top_srcdir)/dependencies/UCO/ontology/identity/identity.ttl
 	cp $< $@
-	cp $< identity/$(CURRENT_RELEASE).ttl
+
+identity/$(CURRENT_RELEASE).rdf: \
+  identity.rdf
+	mkdir -p identity
+	cp $< $@
+
+identity/$(CURRENT_RELEASE).ttl: \
+  identity.ttl
+	mkdir -p identity
+	cp $< $@
 
 location.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/location/location.ttl \
   $(RDF_TOOLKIT_JAR) \
   namespaces.sed
+	rm -f __$@ _$@
 	java -jar $(RDF_TOOLKIT_JAR) \
 	  --inline-blank-nodes \
 	  --source $< \
@@ -190,19 +191,31 @@ location.rdf: \
 	  -f namespaces.sed \
 	  __$@ \
 	  > _$@
+	xmllint \
+	  --noout \
+	  _$@
 	rm __$@
-	cp _$@ location/$(CURRENT_RELEASE).rdf
 	mv _$@ $@
 
 location.ttl: \
   $(top_srcdir)/dependencies/UCO/ontology/location/location.ttl
 	cp $< $@
-	cp $< location/$(CURRENT_RELEASE).ttl
+
+location/$(CURRENT_RELEASE).rdf: \
+  location.rdf
+	mkdir -p location
+	cp $< $@
+
+location/$(CURRENT_RELEASE).ttl: \
+  location.ttl
+	mkdir -p location
+	cp $< $@
 
 marking.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/marking/marking.ttl \
   $(RDF_TOOLKIT_JAR) \
   namespaces.sed
+	rm -f __$@ _$@
 	java -jar $(RDF_TOOLKIT_JAR) \
 	  --inline-blank-nodes \
 	  --source $< \
@@ -213,19 +226,31 @@ marking.rdf: \
 	  -f namespaces.sed \
 	  __$@ \
 	  > _$@
+	xmllint \
+	  --noout \
+	  _$@
 	rm __$@
-	cp _$@ marking/$(CURRENT_RELEASE).rdf
 	mv _$@ $@
 
 marking.ttl: \
   $(top_srcdir)/dependencies/UCO/ontology/marking/marking.ttl
 	cp $< $@
-	cp $< marking/$(CURRENT_RELEASE).ttl
+
+marking/$(CURRENT_RELEASE).rdf: \
+  marking.rdf
+	mkdir -p marking
+	cp $< $@
+
+marking/$(CURRENT_RELEASE).ttl: \
+  marking.ttl
+	mkdir -p marking
+	cp $< $@
 
 observable.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/observable/observable.ttl \
   $(RDF_TOOLKIT_JAR) \
   namespaces.sed
+	rm -f __$@ _$@
 	java -jar $(RDF_TOOLKIT_JAR) \
 	  --inline-blank-nodes \
 	  --source $< \
@@ -236,19 +261,31 @@ observable.rdf: \
 	  -f namespaces.sed \
 	  __$@ \
 	  > _$@
+	xmllint \
+	  --noout \
+	  _$@
 	rm __$@
-	cp _$@ observable/$(CURRENT_RELEASE).rdf
 	mv _$@ $@
 
 observable.ttl: \
   $(top_srcdir)/dependencies/UCO/ontology/observable/observable.ttl
 	cp $< $@
-	cp $< observable/$(CURRENT_RELEASE).ttl
+
+observable/$(CURRENT_RELEASE).rdf: \
+  observable.rdf
+	mkdir -p observable
+	cp $< $@
+
+observable/$(CURRENT_RELEASE).ttl: \
+  observable.ttl
+	mkdir -p observable
+	cp $< $@
 
 pattern.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/pattern/pattern.ttl \
   $(RDF_TOOLKIT_JAR) \
   namespaces.sed
+	rm -f __$@ _$@
 	java -jar $(RDF_TOOLKIT_JAR) \
 	  --inline-blank-nodes \
 	  --source $< \
@@ -259,19 +296,31 @@ pattern.rdf: \
 	  -f namespaces.sed \
 	  __$@ \
 	  > _$@
+	xmllint \
+	  --noout \
+	  _$@
 	rm __$@
-	cp _$@ pattern/$(CURRENT_RELEASE).rdf
 	mv _$@ $@
 
 pattern.ttl: \
   $(top_srcdir)/dependencies/UCO/ontology/pattern/pattern.ttl
 	cp $< $@
-	cp $< pattern/$(CURRENT_RELEASE).ttl
+
+pattern/$(CURRENT_RELEASE).rdf: \
+  pattern.rdf
+	mkdir -p pattern
+	cp $< $@
+
+pattern/$(CURRENT_RELEASE).ttl: \
+  pattern.ttl
+	mkdir -p pattern
+	cp $< $@
 
 role.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/role/role.ttl \
   $(RDF_TOOLKIT_JAR) \
   namespaces.sed
+	rm -f __$@ _$@
 	java -jar $(RDF_TOOLKIT_JAR) \
 	  --inline-blank-nodes \
 	  --source $< \
@@ -282,19 +331,31 @@ role.rdf: \
 	  -f namespaces.sed \
 	  __$@ \
 	  > _$@
+	xmllint \
+	  --noout \
+	  _$@
 	rm __$@
-	cp _$@ role/$(CURRENT_RELEASE).rdf
 	mv _$@ $@
 
 role.ttl: \
   $(top_srcdir)/dependencies/UCO/ontology/role/role.ttl
 	cp $< $@
-	cp $< role/$(CURRENT_RELEASE).ttl
+
+role/$(CURRENT_RELEASE).rdf: \
+  role.rdf
+	mkdir -p role
+	cp $< $@
+
+role/$(CURRENT_RELEASE).ttl: \
+  role.ttl
+	mkdir -p role
+	cp $< $@
 
 time.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/time/time.ttl \
   $(RDF_TOOLKIT_JAR) \
   namespaces.sed
+	rm -f __$@ _$@
 	java -jar $(RDF_TOOLKIT_JAR) \
 	  --inline-blank-nodes \
 	  --source $< \
@@ -305,21 +366,32 @@ time.rdf: \
 	  -f namespaces.sed \
 	  __$@ \
 	  > _$@
+	xmllint \
+	  --noout \
+	  _$@
 	rm __$@
 	mkdir -p time
-	cp _$@ time/$(CURRENT_RELEASE).rdf
 	mv _$@ $@
 
 time.ttl: \
   $(top_srcdir)/dependencies/UCO/ontology/time/time.ttl
 	cp $< $@
+
+time/$(CURRENT_RELEASE).rdf: \
+  time.rdf
 	mkdir -p time
-	cp $< time/$(CURRENT_RELEASE).ttl
+	cp $< $@
+
+time/$(CURRENT_RELEASE).ttl: \
+  time.ttl
+	mkdir -p time
+	cp $< $@
 
 tool.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/tool/tool.ttl \
   $(RDF_TOOLKIT_JAR) \
   namespaces.sed
+	rm -f __$@ _$@
 	java -jar $(RDF_TOOLKIT_JAR) \
 	  --inline-blank-nodes \
 	  --source $< \
@@ -330,19 +402,31 @@ tool.rdf: \
 	  -f namespaces.sed \
 	  __$@ \
 	  > _$@
+	xmllint \
+	  --noout \
+	  _$@
 	rm __$@
-	cp _$@ tool/$(CURRENT_RELEASE).rdf
 	mv _$@ $@
 
 tool.ttl: \
   $(top_srcdir)/dependencies/UCO/ontology/tool/tool.ttl
 	cp $< $@
-	cp $< tool/$(CURRENT_RELEASE).ttl
+
+tool/$(CURRENT_RELEASE).rdf: \
+  tool.rdf
+	mkdir -p tool
+	cp $< $@
+
+tool/$(CURRENT_RELEASE).ttl: \
+  tool.ttl
+	mkdir -p tool
+	cp $< $@
 
 types.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/types/types.ttl \
   $(RDF_TOOLKIT_JAR) \
   namespaces.sed
+	rm -f __$@ _$@
 	java -jar $(RDF_TOOLKIT_JAR) \
 	  --inline-blank-nodes \
 	  --source $< \
@@ -353,19 +437,31 @@ types.rdf: \
 	  -f namespaces.sed \
 	  __$@ \
 	  > _$@
+	xmllint \
+	  --noout \
+	  _$@
 	rm __$@
-	cp _$@ types/$(CURRENT_RELEASE).rdf
 	mv _$@ $@
 
 types.ttl: \
   $(top_srcdir)/dependencies/UCO/ontology/types/types.ttl
 	cp $< $@
-	cp $< types/$(CURRENT_RELEASE).ttl
+
+types/$(CURRENT_RELEASE).rdf: \
+  types.rdf
+	mkdir -p types
+	cp $< $@
+
+types/$(CURRENT_RELEASE).ttl: \
+  types.ttl
+	mkdir -p types
+	cp $< $@
 
 uco.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/master/uco.ttl \
   $(RDF_TOOLKIT_JAR) \
   namespaces.sed
+	rm -f __$@ _$@
 	java -jar $(RDF_TOOLKIT_JAR) \
 	  --inline-blank-nodes \
 	  --source $< \
@@ -376,21 +472,32 @@ uco.rdf: \
 	  -f namespaces.sed \
 	  __$@ \
 	  > _$@
+	xmllint \
+	  --noout \
+	  _$@
 	rm __$@
 	mkdir -p uco
-	cp _$@ uco/$(CURRENT_RELEASE).rdf
 	mv _$@ $@
 
 uco.ttl: \
   $(top_srcdir)/dependencies/UCO/ontology/master/uco.ttl
 	cp $< $@
+
+uco/$(CURRENT_RELEASE).rdf: \
+  uco.rdf
 	mkdir -p uco
-	cp $< uco/$(CURRENT_RELEASE).ttl
+	cp $< $@
+
+uco/$(CURRENT_RELEASE).ttl: \
+  uco.ttl
+	mkdir -p uco
+	cp $< $@
 
 victim.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/victim/victim.ttl \
   $(RDF_TOOLKIT_JAR) \
   namespaces.sed
+	rm -f __$@ _$@
 	java -jar $(RDF_TOOLKIT_JAR) \
 	  --inline-blank-nodes \
 	  --source $< \
@@ -401,19 +508,31 @@ victim.rdf: \
 	  -f namespaces.sed \
 	  __$@ \
 	  > _$@
+	xmllint \
+	  --noout \
+	  _$@
 	rm __$@
-	cp _$@ victim/$(CURRENT_RELEASE).rdf
 	mv _$@ $@
 
 victim.ttl: \
   $(top_srcdir)/dependencies/UCO/ontology/victim/victim.ttl
 	cp $< $@
-	cp $< victim/$(CURRENT_RELEASE).ttl
+
+victim/$(CURRENT_RELEASE).rdf: \
+  victim.rdf
+	mkdir -p victim
+	cp $< $@
+
+victim/$(CURRENT_RELEASE).ttl: \
+  victim.ttl
+	mkdir -p victim
+	cp $< $@
 
 vocabulary.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/vocabulary/vocabulary.ttl \
   $(RDF_TOOLKIT_JAR) \
   namespaces.sed
+	rm -f __$@ _$@
 	java -jar $(RDF_TOOLKIT_JAR) \
 	  --inline-blank-nodes \
 	  --source $< \
@@ -424,13 +543,23 @@ vocabulary.rdf: \
 	  -f namespaces.sed \
 	  __$@ \
 	  > _$@
+	xmllint \
+	  --noout \
+	  _$@
 	rm __$@
 	mkdir -p vocabulary
-	cp _$@ vocabulary/$(CURRENT_RELEASE).rdf
 	mv _$@ $@
 
 vocabulary.ttl: \
   $(top_srcdir)/dependencies/UCO/ontology/vocabulary/vocabulary.ttl
 	cp $< $@
+
+vocabulary/$(CURRENT_RELEASE).rdf: \
+  vocabulary.rdf
 	mkdir -p vocabulary
-	cp $< vocabulary/$(CURRENT_RELEASE).ttl
+	cp $< $@
+
+vocabulary/$(CURRENT_RELEASE).ttl: \
+  vocabulary.ttl
+	mkdir -p vocabulary
+	cp $< $@
