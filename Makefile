@@ -28,6 +28,7 @@ all: \
   iri_mappings_to_ttl.json
 
 .PHONY: \
+  check-mypy \
   check-service
 
 .documentation.done.log: \
@@ -99,11 +100,20 @@ all: \
 	touch $@
 
 check: \
-  .uco.done.log
+  .uco.done.log \
+  check-mypy
 	$(MAKE) \
 	  CURRENT_RELEASE=$$(head -n1 current_ontology_version.txt) \
 	  --directory uco \
 	  check
+
+check-mypy: \
+  .venv.done.log
+	source venv/bin/activate \
+	  && mypy \
+	    --strict \
+	    router \
+	    src
 
 # Test matrix:
 # Concept broad type: ontology, class, or property
