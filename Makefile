@@ -29,6 +29,7 @@ all: \
 
 .PHONY: \
   check-mypy \
+  check-pytest \
   check-service
 
 .documentation.done.log: \
@@ -91,7 +92,8 @@ all: \
 
 check: \
   .uco.done.log \
-  check-mypy
+  check-mypy \
+  check-pytest
 	$(MAKE) \
 	  CURRENT_RELEASE=$$(head -n1 current_ontology_version.txt) \
 	  --directory uco \
@@ -103,113 +105,33 @@ check-mypy: \
 	  && mypy \
 	    --strict \
 	    router \
-	    src
+	    src \
+	    test_router.py
 
-# Test matrix:
-# Concept broad type: ontology, class, or property
-# "Accept" header: none specified, Turtle requested, or RDF requested
+check-pytest: \
+  .venv.done.log
+	source venv/bin/activate \
+	  && HOST_PREFIX="$(HOST_PREFIX)" \
+	    pytest test_router.py \
+	      --log-level=DEBUG
+
 check-service:
-	## Ontologies
 	wget \
 	  --output-document _$@ \
-	  $(HOST_PREFIX)/uco/vocabulary.ttl
-	diff _$@ uco/vocabulary.ttl
+	  $(HOST_PREFIX)/
 	rm _$@
-	wget \
-	  --output-document _$@ \
-	  $(HOST_PREFIX)/uco/vocabulary.rdf
-	diff _$@ uco/vocabulary.rdf
-	rm _$@
-	wget \
-	  --header 'Accept: text/turtle' \
-	  --output-document _$@ \
-	  $(HOST_PREFIX)/uco/vocabulary
-	diff _$@ uco/vocabulary.ttl
-	rm _$@
-	wget \
-	  --header 'Accept: text/turtle' \
-	  --output-document _$@ \
-	  $(HOST_PREFIX)/uco/vocabulary/0.9.1
-	diff _$@ uco/vocabulary/0.9.1.ttl
-	rm _$@
-	wget \
-	  --header 'Accept: application/rdf+xml' \
-	  --output-document _$@ \
-	  $(HOST_PREFIX)/uco/vocabulary
-	diff _$@ uco/vocabulary.rdf
-	rm _$@
-	wget \
-	  --header 'Accept: application/rdf+xml' \
-	  --output-document _$@ \
-	  $(HOST_PREFIX)/uco/vocabulary/0.9.1
-	diff _$@ uco/vocabulary/0.9.1.rdf
-	rm _$@
-#	## Classes
-#	wget \
-	  --output-document _$@ \
-	  $(HOST_PREFIX)/uco/core/UcoObject
-#	# NOTE - no comparison test done, default behavior just needs to not return a server error.
-#	rm _$@
-#	wget \
-	  --header 'Accept: text/html' \
-	  --output-document _$@ \
-	  $(HOST_PREFIX)/uco/core/UcoObject
-#	diff _$@ uco/core/UcoObject.html
-#	rm _$@
-#	#TODO - Turtle breakout needs to be written.
-#	wget \
-#	  --header 'Accept: text/turtle' \
-#	  --output-document _$@ \
-#	  $(HOST_PREFIX)/uco/core/UcoObject
-#	diff _$@ uco/core/UcoObject.ttl
-#	rm _$@
-#	#TODO - Turtle RDF-XML breakout needs to be written.
-#	wget \
-#	  --header 'Accept: application/rdf+xml' \
-#	  --output-document _$@ \
-#	  $(HOST_PREFIX)/uco/core/UcoObject
-#	diff _$@ uco/core/UcoObject.rdf
-#	rm _$@
-	## Properties
-#	wget \
-	  --output-document _$@ \
-	  $(HOST_PREFIX)/uco/core/hasFacet
-	# NOTE - no comparison test done, default behavior just needs to not return a server error.
-#	rm _$@
-#	wget \
-	  --header 'Accept: text/html' \
-	  --output-document _$@ \
-	  $(HOST_PREFIX)/uco/core/hasFacet
-#	diff _$@ uco/core/hasFacet.html
-#	rm _$@
-#	#TODO - Turtle breakout needs to be written.
-#	wget \
-#	  --header 'Accept: text/turtle' \
-#	  --output-document _$@ \
-#	  $(HOST_PREFIX)/uco/core/hasFacet
-#	diff _$@ uco/core/hasFacet.ttl
-#	rm _$@
-#	#TODO - Turtle RDF-XML breakout needs to be written.
-#	wget \
-#	  --header 'Accept: application/rdf+xml' \
-#	  --output-document _$@ \
-#	  $(HOST_PREFIX)/uco/core/hasFacet
-#	diff _$@ uco/core/hasFacet.rdf
-#	rm _$@
-	# Confirm documentation index is reachable.
 	wget \
 	  --output-document _$@ \
 	  $(HOST_PREFIX)/documentation/
-	diff _$@ documentation/index.html
 	rm _$@
-	# Confirm HTML index for non-umbrella namespaces are redirected to umbrella documentation index.
 	wget \
-	  --header 'Accept: text/html' \
 	  --output-document _$@ \
-	  $(HOST_PREFIX)/uco/core/
-	diff _$@ documentation/index.html
+	  $(HOST_PREFIX)/uco/action/0.9.1.rdf
 	rm _$@
-	@echo >&2
+	wget \
+	  --output-document _$@ \
+	  $(HOST_PREFIX)/uco/action/$$(head -n1 current_ontology_version.txt).rdf
+	rm _$@
 	@echo "INFO:Makefile:Service tests pass!" >&2
 
 clean:
