@@ -544,6 +544,7 @@ vocabulary.rdf: \
 	  __$@ \
 	  > _$@
 	xmllint \
+	  --huge \
 	  --noout \
 	  _$@
 	rm __$@
