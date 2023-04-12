@@ -28,6 +28,7 @@ from typing import Dict, Set
 
 import rdflib.plugins.sparql
 from rdflib import OWL, RDF, URIRef
+from rdflib.query import ResultRow
 
 CACHE_FILE = "../iri_mappings_to_html.json"
 
@@ -129,7 +130,7 @@ def main() -> None:
         ontology_concept_iri = triple[0].toPython()
         if not ontology_concept_iri.startswith(args.ontology_base):
             continue
-        ontology_url_path: str = ontology_concept_iri.split("ontology.org")[1]
+        ontology_url_path = ontology_concept_iri.split("ontology.org")[1]
         mappings[ontology_url_path + "/"] = "/documentation/index.html"
 
     # select class and property concepts from ontology -- dict(prefix : query)
@@ -169,6 +170,7 @@ WHERE {
         query = queries[prefix]
         select_query_object = rdflib.plugins.sparql.processor.prepareQuery(query, initNs=nsdict)
         for (row_no, row) in enumerate(graph.query(select_query_object)):
+            assert isinstance(row, ResultRow)
             if not isinstance(row[0], URIRef):
                 continue
             n_concept = row[0]
