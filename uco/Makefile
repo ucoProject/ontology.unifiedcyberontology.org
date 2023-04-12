@@ -17,7 +17,7 @@ top_srcdir := $(shell cd .. ; pwd)
 
 CURRENT_RELEASE ?=
 ifeq ($(CURRENT_RELEASE),)
-$(error CURRENT_RELEASE not defined; try running 'make' from top source directory ($(top_srcdir)))
+$(error CURRENT_RELEASE not defined - did you call 'make' from one directory up?)
 endif
 
 RDF_TOOLKT_JAR := $(top_srcdir)/dependencies/UCO/lib/rdf-toolkit.jar
