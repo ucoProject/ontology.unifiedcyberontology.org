@@ -20,7 +20,7 @@ ifeq ($(CURRENT_RELEASE),)
 $(error CURRENT_RELEASE not defined - did you call 'make' from one directory up?)
 endif
 
-RDF_TOOLKT_JAR := $(top_srcdir)/dependencies/UCO/lib/rdf-toolkit.jar
+RDF_TOOLKIT_JAR := $(top_srcdir)/dependencies/UCO/lib/rdf-toolkit.jar
 
 rdf_files := \
   action.rdf \
@@ -84,9 +84,9 @@ all: \
 
 action.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/action/action.ttl \
-  $(RDF_TOOLKT_JAR) \
+  $(RDF_TOOLKIT_JAR) \
   namespaces.sed
-	java -jar $(RDF_TOOLKT_JAR) \
+	java -jar $(RDF_TOOLKIT_JAR) \
 	  --inline-blank-nodes \
 	  --source $< \
 	  --source-format turtle \
@@ -132,9 +132,9 @@ clean-symlinking:
 
 core.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/core/core.ttl \
-  $(RDF_TOOLKT_JAR) \
+  $(RDF_TOOLKIT_JAR) \
   namespaces.sed
-	java -jar $(RDF_TOOLKT_JAR) \
+	java -jar $(RDF_TOOLKIT_JAR) \
 	  --inline-blank-nodes \
 	  --source $< \
 	  --source-format turtle \
@@ -155,9 +155,9 @@ core.ttl: \
 
 identity.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/identity/identity.ttl \
-  $(RDF_TOOLKT_JAR) \
+  $(RDF_TOOLKIT_JAR) \
   namespaces.sed
-	java -jar $(RDF_TOOLKT_JAR) \
+	java -jar $(RDF_TOOLKIT_JAR) \
 	  --inline-blank-nodes \
 	  --source $< \
 	  --source-format turtle \
@@ -178,9 +178,9 @@ identity.ttl: \
 
 location.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/location/location.ttl \
-  $(RDF_TOOLKT_JAR) \
+  $(RDF_TOOLKIT_JAR) \
   namespaces.sed
-	java -jar $(RDF_TOOLKT_JAR) \
+	java -jar $(RDF_TOOLKIT_JAR) \
 	  --inline-blank-nodes \
 	  --source $< \
 	  --source-format turtle \
@@ -201,9 +201,9 @@ location.ttl: \
 
 marking.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/marking/marking.ttl \
-  $(RDF_TOOLKT_JAR) \
+  $(RDF_TOOLKIT_JAR) \
   namespaces.sed
-	java -jar $(RDF_TOOLKT_JAR) \
+	java -jar $(RDF_TOOLKIT_JAR) \
 	  --inline-blank-nodes \
 	  --source $< \
 	  --source-format turtle \
@@ -224,9 +224,9 @@ marking.ttl: \
 
 observable.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/observable/observable.ttl \
-  $(RDF_TOOLKT_JAR) \
+  $(RDF_TOOLKIT_JAR) \
   namespaces.sed
-	java -jar $(RDF_TOOLKT_JAR) \
+	java -jar $(RDF_TOOLKIT_JAR) \
 	  --inline-blank-nodes \
 	  --source $< \
 	  --source-format turtle \
@@ -247,9 +247,9 @@ observable.ttl: \
 
 pattern.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/pattern/pattern.ttl \
-  $(RDF_TOOLKT_JAR) \
+  $(RDF_TOOLKIT_JAR) \
   namespaces.sed
-	java -jar $(RDF_TOOLKT_JAR) \
+	java -jar $(RDF_TOOLKIT_JAR) \
 	  --inline-blank-nodes \
 	  --source $< \
 	  --source-format turtle \
@@ -270,9 +270,9 @@ pattern.ttl: \
 
 role.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/role/role.ttl \
-  $(RDF_TOOLKT_JAR) \
+  $(RDF_TOOLKIT_JAR) \
   namespaces.sed
-	java -jar $(RDF_TOOLKT_JAR) \
+	java -jar $(RDF_TOOLKIT_JAR) \
 	  --inline-blank-nodes \
 	  --source $< \
 	  --source-format turtle \
@@ -293,9 +293,9 @@ role.ttl: \
 
 time.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/time/time.ttl \
-  $(RDF_TOOLKT_JAR) \
+  $(RDF_TOOLKIT_JAR) \
   namespaces.sed
-	java -jar $(RDF_TOOLKT_JAR) \
+	java -jar $(RDF_TOOLKIT_JAR) \
 	  --inline-blank-nodes \
 	  --source $< \
 	  --source-format turtle \
@@ -318,9 +318,9 @@ time.ttl: \
 
 tool.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/tool/tool.ttl \
-  $(RDF_TOOLKT_JAR) \
+  $(RDF_TOOLKIT_JAR) \
   namespaces.sed
-	java -jar $(RDF_TOOLKT_JAR) \
+	java -jar $(RDF_TOOLKIT_JAR) \
 	  --inline-blank-nodes \
 	  --source $< \
 	  --source-format turtle \
@@ -341,9 +341,9 @@ tool.ttl: \
 
 types.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/types/types.ttl \
-  $(RDF_TOOLKT_JAR) \
+  $(RDF_TOOLKIT_JAR) \
   namespaces.sed
-	java -jar $(RDF_TOOLKT_JAR) \
+	java -jar $(RDF_TOOLKIT_JAR) \
 	  --inline-blank-nodes \
 	  --source $< \
 	  --source-format turtle \
@@ -364,9 +364,9 @@ types.ttl: \
 
 uco.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/master/uco.ttl \
-  $(RDF_TOOLKT_JAR) \
+  $(RDF_TOOLKIT_JAR) \
   namespaces.sed
-	java -jar $(RDF_TOOLKT_JAR) \
+	java -jar $(RDF_TOOLKIT_JAR) \
 	  --inline-blank-nodes \
 	  --source $< \
 	  --source-format turtle \
@@ -389,9 +389,9 @@ uco.ttl: \
 
 victim.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/victim/victim.ttl \
-  $(RDF_TOOLKT_JAR) \
+  $(RDF_TOOLKIT_JAR) \
   namespaces.sed
-	java -jar $(RDF_TOOLKT_JAR) \
+	java -jar $(RDF_TOOLKIT_JAR) \
 	  --inline-blank-nodes \
 	  --source $< \
 	  --source-format turtle \
@@ -412,9 +412,9 @@ victim.ttl: \
 
 vocabulary.rdf: \
   $(top_srcdir)/dependencies/UCO/ontology/vocabulary/vocabulary.ttl \
-  $(RDF_TOOLKT_JAR) \
+  $(RDF_TOOLKIT_JAR) \
   namespaces.sed
-	java -jar $(RDF_TOOLKT_JAR) \
+	java -jar $(RDF_TOOLKIT_JAR) \
 	  --inline-blank-nodes \
 	  --source $< \
 	  --source-format turtle \
