@@ -1,3 +1,4 @@
 .*.done.log
 .DS_Store
+current_ontology_version.txt
 venv
