@@ -1,2 +1,3 @@
 mypy
+ontospy[FULL] < 3.0
 pytest-flask

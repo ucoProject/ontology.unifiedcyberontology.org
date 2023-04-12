@@ -58,8 +58,6 @@ all: \
 	  --directory dependencies/UCO \
 	  .git_submodule_init.done.log \
 	  .lib.done.log
-	test -r dependencies/Ontospy/README.md \
-	  || (git submodule init dependencies/Ontospy && git submodule update dependencies/Ontospy)
 	touch $@
 
 .uco.done.log: \
@@ -89,14 +87,6 @@ all: \
 	source venv/bin/activate \
 	  && pip install \
 	    --requirement requirements.txt
-	# TODO - Ontospy does not currently handle Django >= 4.
-	source venv/bin/activate \
-	  && pip install \
-	    django==3.2.9
-	source venv/bin/activate \
-	  && pip install \
-	    --editable \
-	    dependencies/Ontospy[FULL]
 	touch $@
 
 check: \
