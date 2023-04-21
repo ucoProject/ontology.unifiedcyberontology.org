@@ -141,7 +141,9 @@ clean:
 	  CURRENT_RELEASE=$$(head -n1 current_ontology_version.txt) \
 	  --directory uco \
 	  clean
-	@rm -f .*.done.log
+	@rm -f \
+	  .*.done.log \
+	  current_ontology_iris.txt
 	@test ! -r dependencies/UCO/README.md \
 	  || $(MAKE) \
 	    --directory dependencies/UCO \
@@ -150,6 +152,17 @@ clean:
 	@cd dependencies/UCO \
 	  && git checkout -- \
 	    tests/examples
+
+current_ontology_iris.txt: \
+  .venv.done.log \
+  dependencies/UCO/tests/uco_monolithic.ttl \
+  src/current_ontology_iris_txt.py
+	source venv/bin/activate \
+	  && python3 src/current_ontology_iris_txt.py \
+	    --ontology-base https://ontology.unifiedcyberontology.org \
+	    _$@ \
+	    dependencies/UCO/tests/uco_monolithic.ttl
+	mv _$@ $@
 
 current_ontology_version.txt: \
   .git_submodule_init.done.log \
@@ -207,4 +220,15 @@ iri_mappings_to_ttl.json: \
 	    _$@ \
 	    text/turtle \
 	    ontology_iris_archive.txt
+	mv _$@ $@
+
+# Accumulate all ontology and version IRIs.
+ontology_iris_archive.txt: \
+  current_ontology_iris.txt
+	cat $< > __$@
+	test ! -r $@ \
+	  || cat $@ >> __$@
+	LC_ALL=C sort __$@ \
+	  | uniq > _$@
+	rm __$@
 	mv _$@ $@
