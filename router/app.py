@@ -80,17 +80,17 @@ def router(target: str) -> BaseResponse:
             "text/turtle" if target_parts[1] == "ttl" else "application/rdf+xml"
         )
 
-    # check the headers for a request for RDF-XML content
+    # Direct first by Accepts: content negotiation
     if content_type == "application/rdf+xml":
+        # headers requested RDF-XML content
         if f"/{target}" in rdf:
             location = rdf[f"/{target}"]
             if file_request:
                 return send_file(".." + rdf[f"/{target}"], as_attachment=True)
 
             return _redirect_301(location)
-
-    # check the headers for a request for Turtle content
-    if content_type == "text/turtle":
+    elif content_type == "text/turtle":
+        # headers requested Turtle content
         if f"/{target}" in ttl:
             location = ttl[f"/{target}"]
             if file_request:
