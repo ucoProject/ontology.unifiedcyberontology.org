@@ -113,10 +113,10 @@ def test_status_200(
         ),
         (
             # Confirm higher-directory ontology versionIRI request is assumed to be RDF-XML request.
-            "/co/1.0.0",
+            "/co/1.1.0",
             None,
             None,
-            "/co/1.0.0.rdf",
+            "/co/1.1.0.rdf",
         ),
         (
             # Confirm non-umbrella ontology request is assumed to be RDF-XML request.
