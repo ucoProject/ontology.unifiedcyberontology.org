@@ -57,11 +57,8 @@ with (top_srcdir / "servable_ontology_files.json").open("r") as fp:
 def root() -> BaseResponse:
     """Routes the root '/' of the host to the index of the docs"""
 
-    # redirect when we find a match based on SSL
-    if request.is_secure:
-        return redirect(f"https://{request.host}/documentation/index.html", 301)
-    else:
-        return redirect(f"http://{request.host}/documentation/index.html", 301)
+    # redirect when we find a match, preserving scheme's SSL/TLS usage
+    return redirect(f"{request.scheme}://{request.host}/documentation/index.html", 301)
 
 
 @app.route("/<path:target>", methods=["GET"])
@@ -79,10 +76,7 @@ def router(target: str) -> BaseResponse:
     content_type: Optional[str] = request.headers.get("Accept")
 
     def _redirect_301(location: str) -> BaseResponse:
-        if request.is_secure:
-            return redirect(f"https://{request.host}{location}", 301)
-        else:
-            return redirect(f"http://{request.host}{location}", 301)
+        return redirect(f"{request.scheme}://{request.host}{location}", 301)
 
     # override content_type with extensions from the target for restful lookups
     if target.endswith(".ttl") or target.endswith(".rdf"):
