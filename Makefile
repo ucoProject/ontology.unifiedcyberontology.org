@@ -240,6 +240,9 @@ dependencies/UCO/ontology/uco/master/uco.ttl: \
 dependencies/UCO/tests/uco_monolithic.ttl: \
   dependencies/UCO/ontology/uco/master/uco.ttl
 	$(MAKE) \
+	  --directory dependencies/UCO \
+	  .venv.done.log
+	$(MAKE) \
 	  --directory dependencies/UCO/tests \
 	  uco_monolithic.ttl
 	# Guarantee file is built and timestamp is up to date.
