@@ -107,10 +107,13 @@ check-mypy: \
 	    --strict \
 	    router \
 	    src \
-	    test_router.py
+	    test_*.py
 
 check-pytest: \
   .venv.done.log
+	source venv/bin/activate \
+	  && pytest test_graph_files.py \
+	    --log-level=DEBUG
 	source venv/bin/activate \
 	  && HOST_PREFIX="$(HOST_PREFIX)" \
 	    pytest test_router.py \
