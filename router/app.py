@@ -57,8 +57,9 @@ with (top_srcdir / "servable_ontology_files.json").open("r") as fp:
 def root() -> BaseResponse:
     """Routes the root '/' of the host to the index of the docs"""
 
-    # redirect when we find a match, preserving scheme's SSL/TLS usage
-    return redirect(f"{request.scheme}://{request.host}/documentation/index.html", 301)
+    # redirect when we find a match, using only HTTPS scheme to avoid
+    # Flask+NGINX 80/443 redirect loop
+    return redirect(f"https://{request.host}/documentation/index.html", 301)
 
 
 @app.route("/<path:target>", methods=["GET"])
@@ -76,7 +77,8 @@ def router(target: str) -> BaseResponse:
     content_type: Optional[str] = request.headers.get("Accept")
 
     def _redirect_301(location: str) -> BaseResponse:
-        return redirect(f"{request.scheme}://{request.host}{location}", 301)
+        # Use only HTTPS scheme to avoid Flask+NGINX 80/443 redirect loop
+        return redirect(f"https://{request.host}{location}", 301)
 
     # override content_type with extensions from the target for restful lookups
     if target.endswith(".ttl") or target.endswith(".rdf"):
