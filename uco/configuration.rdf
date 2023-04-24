@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rdf:RDF
+	xmlns:configuration="https://ontology.unifiedcyberontology.org/uco/configuration/"
+	xmlns:core="https://ontology.unifiedcyberontology.org/uco/core/"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:sh="http://www.w3.org/ns/shacl#"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+	
+	<owl:Ontology rdf:about="https://ontology.unifiedcyberontology.org/uco/configuration">
+		<rdfs:label xml:lang="en">uco-configuration</rdfs:label>
+		<rdfs:comment xml:lang="en-US">This ontology defines classes and properties for characterizing configurations.</rdfs:comment>
+		<rdfs:seeAlso rdf:resource="https://github.com/ucoProject/UCO/issues/432"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/core/1.0.0"/>
+		<owl:ontologyIRI rdf:resource="https://ontology.unifiedcyberontology.org/uco/configuration"/>
+		<owl:versionIRI rdf:resource="https://ontology.unifiedcyberontology.org/uco/configuration/1.0.0"/>
+	</owl:Ontology>
+	
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/configuration/Configuration">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/core/UcoObject"/>
+		<rdfs:label xml:lang="en">Configuration</rdfs:label>
+		<rdfs:comment xml:lang="en">A configuration is a grouping of characteristics unique to a set of parameters or initial settings for the use of a tool, application, software, or other cyber object.</rdfs:comment>
+		<rdfs:seeAlso rdf:resource="https://github.com/ucoProject/UCO/issues/432"/>
+		<sh:property>
+			<rdf:Description>
+				<sh:class rdf:resource="https://ontology.unifiedcyberontology.org/uco/configuration/ConfigurationEntry"/>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#BlankNodeOrIRI"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/configuration/configurationEntry"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:class rdf:resource="https://ontology.unifiedcyberontology.org/uco/configuration/Dependency"/>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#BlankNodeOrIRI"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/configuration/dependencies"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/configuration/usageContextAssumptions"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/configuration/Configuration"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/configuration/ConfigurationEntry">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/core/UcoInherentCharacterizationThing"/>
+		<rdfs:label xml:lang="en">ConfigurationEntry</rdfs:label>
+		<rdfs:comment xml:lang="en">A configuration entry is a grouping of characteristics unique to a particular parameter or initial setting for the use of a tool, application, software, or other cyber object.</rdfs:comment>
+		<sh:property>
+			<rdf:Description>
+				<sh:class rdf:resource="https://ontology.unifiedcyberontology.org/uco/core/UcoObject"/>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#BlankNodeOrIRI"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/configuration/itemObject"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/configuration/itemDescription"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/configuration/itemName"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/configuration/itemType"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/configuration/itemValue"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/configuration/ConfigurationEntry"/>
+		<sh:xone rdf:parseType="Collection">
+			<rdf:Description>
+				<sh:property>
+					<rdf:Description>
+						<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:maxCount>
+						<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/configuration/itemObject"/>
+					</rdf:Description>
+				</sh:property>
+				<sh:property>
+					<rdf:Description>
+						<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:maxCount>
+						<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/configuration/itemValue"/>
+					</rdf:Description>
+				</sh:property>
+			</rdf:Description>
+			<rdf:Description>
+				<sh:property>
+					<rdf:Description>
+						<sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+						<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/configuration/itemObject"/>
+					</rdf:Description>
+				</sh:property>
+			</rdf:Description>
+			<rdf:Description>
+				<sh:property>
+					<rdf:Description>
+						<sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+						<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/configuration/itemValue"/>
+					</rdf:Description>
+				</sh:property>
+			</rdf:Description>
+		</sh:xone>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/configuration/Dependency">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/core/UcoInherentCharacterizationThing"/>
+		<rdfs:label xml:lang="en">Dependency</rdfs:label>
+		<rdfs:comment xml:lang="en">A dependency is a grouping of characteristics unique to something that a tool or other software relies on to function as intended.</rdfs:comment>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/configuration/dependencyDescription"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/configuration/dependencyType"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/configuration/Dependency"/>
+	</rdf:Description>
+	
+	<owl:ObjectProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/configuration/configurationEntry">
+		<rdfs:comment xml:lang="en">A single configuration setting entry item for a tool or other software.</rdfs:comment>
+		<rdfs:range rdf:resource="https://ontology.unifiedcyberontology.org/uco/configuration/ConfigurationEntry"/>
+		<rdfs:seeAlso rdf:resource="https://github.com/ucoProject/UCO/issues/432"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/configuration/dependencies">
+		<rdfs:label xml:lang="en">dependencies</rdfs:label>
+		<rdfs:comment xml:lang="en">The relevant configuration dependencies for a tool, application, software, or other cyber object.</rdfs:comment>
+		<rdfs:range rdf:resource="https://ontology.unifiedcyberontology.org/uco/configuration/Dependency"/>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/configuration/dependencyDescription">
+		<rdfs:label xml:lang="en">dependencyDescription</rdfs:label>
+		<rdfs:comment xml:lang="en">A description of a tool or other software dependency.</rdfs:comment>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/configuration/dependencyType">
+		<rdfs:label xml:lang="en">dependencyType</rdfs:label>
+		<rdfs:comment xml:lang="en">The type of a tool or other software dependency.</rdfs:comment>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/configuration/isConfigurationOf">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+		<rdfs:label xml:lang="en">isConfigurationOf</rdfs:label>
+		<rdfs:comment xml:lang="en">The object which has been configured to run in a more specified manner than another object.  This property is expected to have a more specific range when associated with a class, such as a configured Tool having this property have a range of a Tool.</rdfs:comment>
+		<rdfs:range rdf:resource="https://ontology.unifiedcyberontology.org/uco/core/UcoObject"/>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/configuration/itemDescription">
+		<rdfs:label xml:lang="en">itemDescription</rdfs:label>
+		<rdfs:comment xml:lang="en">A description of a configuration setting entry item.</rdfs:comment>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/configuration/itemName">
+		<rdfs:label xml:lang="en">itemName</rdfs:label>
+		<rdfs:comment xml:lang="en">The name of a configuration setting entry item.</rdfs:comment>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/configuration/itemObject">
+		<rdfs:comment xml:lang="en">The structured value of a configuration setting entry instance.</rdfs:comment>
+		<rdfs:range rdf:resource="https://ontology.unifiedcyberontology.org/uco/core/UcoObject"/>
+		<rdfs:seeAlso rdf:resource="https://github.com/ucoProject/UCO/issues/432"/>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/configuration/itemType">
+		<rdfs:label xml:lang="en">itemType</rdfs:label>
+		<rdfs:comment xml:lang="en">The type of a configuration setting entry item.</rdfs:comment>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/configuration/itemValue">
+		<rdfs:label xml:lang="en">itemValue</rdfs:label>
+		<rdfs:comment xml:lang="en">The value of a configuration setting entry instance.</rdfs:comment>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/configuration/usageContextAssumptions">
+		<rdfs:label xml:lang="en">usageContextAssumptions</rdfs:label>
+		<rdfs:comment xml:lang="en">Description of the various relevant usage context assumptions for a tool or other software .</rdfs:comment>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/configuration/usesConfiguration">
+		<rdfs:label xml:lang="en">usesConfiguration</rdfs:label>
+		<rdfs:comment xml:lang="en">A configuration used by an object.</rdfs:comment>
+		<rdfs:range rdf:resource="https://ontology.unifiedcyberontology.org/uco/configuration/Configuration"/>
+	</owl:ObjectProperty>
+
+</rdf:RDF>
