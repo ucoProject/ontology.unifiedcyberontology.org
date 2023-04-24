@@ -238,12 +238,10 @@ dependencies/UCO/ontology/uco/master/uco.ttl: \
 	test -r $@
 
 dependencies/UCO/tests/uco_monolithic.ttl: \
-  .git_submodule_init.done.log
+  dependencies/UCO/ontology/uco/master/uco.ttl
 	$(MAKE) \
 	  --directory dependencies/UCO/tests \
 	  uco_monolithic.ttl
-	# Clean up superfluous artifact.  TODO - This step can be removed after the 0.3.0 release of the referenced tool.
-	rm -rf dependencies/UCO/dependencies/UCO/dependencies/CASE-Utility-SHACL-Inheritance-Review/build
 	# Guarantee file is built and timestamp is up to date.
 	test -r $@
 	touch $@
