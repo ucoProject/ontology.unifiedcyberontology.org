@@ -2,6 +2,8 @@
 
 Previously, documentation for new releases of *CASE*/*UCO* would have to be manually built using gendocs/ontodocs, in order to deploy documentation via the project websites ([CASE](https://caseontology.org/)/[UCO](https://unifiedcyberontology.org)). With this repository, building the documentation and deploying it on the web will be a more automated process, and allow for local documentation to be built for necessary cases.
 
+For those interested in local documentation, the routing infrastructure currently assumes HTTP service (whether ontology documentation or machine-consummable RDF formats) will be done using HTTPS only.
+
 
 ## Directions for generating and deploying documentation for a new release
 
@@ -30,7 +32,9 @@ When a new ontology release is created, follow these steps:
 
 ## Directions for deployment of this repository as a documentation service
 
-For the deployment of the documentation, we assume this repository is cloned to a Linux server, becoming the directory `/srv/http/ontology.unifiedcyberontology.org/`. The nginx configuration file and ucodocs systemctl service file are pathed to this directory by default.
+For the deployment of the documentation, we assume this repository is cloned to a Linux server, becoming the directory `/srv/http/ontology.unifiedcyberontology.org/`. The nginx configuration file and `ucodocs` `systemctl` service file are pathed to this directory by default.
+
+Note that this service is only tested under the operational assumption that the documentation will be served over HTTPS.  All routing initiated over HTTP will be upgraded to HTTPS.  Please plan TLS certificates accordingly.
 
 
 ### Initial configuration

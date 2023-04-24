@@ -42,17 +42,19 @@ def debug_printlinks(symlinks: Dict[str, str]) -> None:
     for src, dst in symlinks.items():
         logging.debug(repr(src) + " -> " + repr(dst))
 
+
 def write_cache(mappings: Dict[str, str]) -> bool:
     """Writes a dictionary to a json file on as cache."""
 
     try:
-        with open(CACHE_FILE, 'w+') as wp:
+        with open(CACHE_FILE, "w+") as wp:
             json.dump(mappings, wp, indent=4, sort_keys=True)
-            print(f'Wrote cache to {CACHE_FILE}')
+            print(f"Wrote cache to {CACHE_FILE}")
         return True
     except Exception as e:
-        print(f'Failed to write cache file: {e}')
+        print(f"Failed to write cache file: {e}")
         return False
+
 
 def create_symlinks(top_srcdir: str, symlinks: Dict[str, str]) -> None:
     """Create symlinks based on generated gendoc -> web path."""
@@ -75,20 +77,29 @@ def create_symlinks(top_srcdir: str, symlinks: Dict[str, str]) -> None:
         try:
             os.symlink(src, concept_file_basename)
         except Exception as e:
-            print(f'there was an error {e}')
+            print(f"there was an error {e}")
         os.chdir(top_srcdir)
 
     # end method with resetting cwd
     os.chdir(_pre_cwd)
     logging.debug("os.getcwd() = %r.", os.getcwd())
 
+
 def main() -> None:
     # parse arguments for ontology file we are preparing links for
     parser = argparse.ArgumentParser()
-    parser.add_argument('--debug', action="store_true")
-    parser.add_argument('--ontology-base', default="https://ontology.unifiedcyberontology.org", help="Restrict mapped concepts to start with only this domain.")
-    parser.add_argument('inTtl', type=str, help='ttl file to build sym-links off of')
-    parser.add_argument('inTxt', type=str, help='txt file listing all ontology IRIs and version IRIs to expect')
+    parser.add_argument("--debug", action="store_true")
+    parser.add_argument(
+        "--ontology-base",
+        default="https://ontology.unifiedcyberontology.org",
+        help="Restrict mapped concepts to start with only this domain.",
+    )
+    parser.add_argument("inTtl", type=str, help="ttl file to build sym-links off of")
+    parser.add_argument(
+        "inTxt",
+        type=str,
+        help="txt file listing all ontology IRIs and version IRIs to expect",
+    )
     args = parser.parse_args()
 
     logging.basicConfig(level=logging.DEBUG if args.debug else logging.INFO)
@@ -98,7 +109,7 @@ def main() -> None:
     graph.parse(args.inTtl)
 
     # Inherit prefixes defined in input context dictionary.
-    nsdict = {k:v for (k,v) in graph.namespace_manager.namespaces()}
+    nsdict = {k: v for (k, v) in graph.namespace_manager.namespaces()}
 
     # hold gendoc location, associated to symlinked path -- dict(gendocs-path : symlink)
     mappings: Dict[str, str] = dict()
@@ -135,19 +146,25 @@ def main() -> None:
 
     # select class and property concepts from ontology -- dict(prefix : query)
     queries = dict()
-    queries["class"] = """\
+    queries[
+        "class"
+    ] = """\
 SELECT ?nConcept
 WHERE {
   ?nConcept a owl:Class .
 }"""
-    queries["prop"] = """\
+    queries[
+        "prop"
+    ] = """\
 SELECT ?nConcept
 WHERE {
   { ?nConcept a owl:DatatypeProperty . }
   UNION
   { ?nConcept a owl:ObjectProperty . }
 }"""
-    queries["shape"] = """\
+    queries[
+        "shape"
+    ] = """\
 SELECT ?nConcept
 WHERE {
   { ?nConcept a sh:NodeShape . }
@@ -162,14 +179,12 @@ WHERE {
     # generate paths for symlink src/dst locations
     tally = 0
     # Iterate over queries dictionary in this prefix order, in order to avoid conflicts between classes and node shapes.
-    for prefix in [
-        "class",
-        "prop",
-        "shape"
-    ]:
+    for prefix in ["class", "prop", "shape"]:
         query = queries[prefix]
-        select_query_object = rdflib.plugins.sparql.processor.prepareQuery(query, initNs=nsdict)
-        for (row_no, row) in enumerate(graph.query(select_query_object)):
+        select_query_object = rdflib.plugins.sparql.processor.prepareQuery(
+            query, initNs=nsdict
+        )
+        for row_no, row in enumerate(graph.query(select_query_object)):
             assert isinstance(row, ResultRow)
             if not isinstance(row[0], URIRef):
                 continue
@@ -182,7 +197,7 @@ WHERE {
             if n_concept in n_concepts_seen:
                 continue
             n_concepts_seen.add(n_concept)
-            
+
             tally = row_no + 1
 
             # determine URL path (file path, relative to service root within file system)
@@ -191,16 +206,21 @@ WHERE {
 
             # determine path to symlink target (gendocs HTML file), relative to basename of URL path
             iri_parts = concept_iri.split("/")
-            gendocs_target = f"/documentation/{prefix}-{iri_parts[-2]}{iri_parts[-1].lower()}.html"
+            gendocs_target = (
+                f"/documentation/{prefix}-{iri_parts[-2]}{iri_parts[-1].lower()}.html"
+            )
 
             # format mapping as absolute request path -> absolute path to documentation HTML;
             # "absolute" is relative to top_srcdir
             mappings[url_path] = gendocs_target
 
     if tally == 0:
-        logging.warning(f"Found neither classes nor properties in input graph-file %r." % args.inTtl)
+        logging.warning(
+            f"Found neither classes nor properties in input graph-file %r." % args.inTtl
+        )
 
     write_cache(mappings)
+
 
 if __name__ == "__main__":
     main()
