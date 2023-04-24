@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rdf:RDF
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:sh="http://www.w3.org/ns/shacl#"
+	xmlns:uco-owl="https://ontology.unifiedcyberontology.org/owl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+	
+	<owl:Ontology rdf:about="https://ontology.unifiedcyberontology.org/owl">
+		<rdfs:label xml:lang="en">uco-owl</rdfs:label>
+		<rdfs:comment xml:lang="en">This ontology defines SHACL shapes to perform conformance testing of OWL 2 DL.  Some of these shapes follow rules specified from the canonical, subtractive parsing process of Section 3 of the OWL 2 mapping to RDF.  From the last line of that document&apos;s Section 3, &apos;At the end of this process, the graph G MUST be empty,&apos; anything not strictly matching patterns specified in that section cause the input graph to be non-conformant with OWL 2 DL.</rdfs:comment>
+		<rdfs:seeAlso rdf:resource="https://www.w3.org/TR/2012/REC-owl2-mapping-to-rdf-20121211/#Mapping_from_RDF_Graphs_to_the_Structural_Specification"/>
+		<owl:ontologyIRI rdf:resource="https://ontology.unifiedcyberontology.org/owl"/>
+		<owl:versionIRI rdf:resource="https://ontology.unifiedcyberontology.org/owl/1.0.0"/>
+	</owl:Ontology>
+	
+	<sh:NodeShape rdf:about="https://ontology.unifiedcyberontology.org/owl/Axiom-shape">
+		<sh:sparql>
+			<sh:SPARQLConstraint>
+				<rdfs:comment xml:lang="en">This requirement is determined from review of the canonical parsing process in Section 3 of the OWL 2 mapping to RDF.  All references to owl:Axioms are identified as blank nodes.  Therefore, any non-blank node that is an owl:Axiom will not be mapped and consumed by the mapping process.</rdfs:comment>
+				<rdfs:seeAlso rdf:resource="https://www.w3.org/TR/2012/REC-owl2-mapping-to-rdf-20121211/#Mapping_from_RDF_Graphs_to_the_Structural_Specification"/>
+				<sh:message xml:lang="en">An owl:Axiom must be a blank node.</sh:message>
+				<sh:select>PREFIX owl: &lt;http://www.w3.org/2002/07/owl#&gt;
+			SELECT $this
+			WHERE {
+				$this a owl:Axiom .
+				FILTER isIRI($this)
+			}</sh:select>
+			</sh:SPARQLConstraint>
+		</sh:sparql>
+		<sh:targetClass rdf:resource="http://www.w3.org/2002/07/owl#Axiom"/>
+	</sh:NodeShape>
+	
+	<sh:NodeShape rdf:about="https://ontology.unifiedcyberontology.org/owl/DataOneOf-shape">
+		<sh:sparql>
+			<sh:SPARQLConstraint>
+				<rdfs:comment xml:lang="en">This requirement is determined from review of the canonical parsing process in Section 3.2.4, Table 12, row 4 of the OWL 2 mapping to RDF.  All datatypes using owl:oneOf must be blank nodes.  Any non-blank node will not be mapped and consumed by the mapping process.  See also DataOneOf in the OWL 2 Syntax document, especially with &apos;Show RDF in Examples&apos; turned on.</rdfs:comment>
+				<rdfs:seeAlso rdf:resource="https://www.w3.org/TR/owl2-mapping-to-rdf/#Parsing_of_Expressions"/>
+				<rdfs:seeAlso rdf:resource="https://www.w3.org/TR/owl2-syntax/#Enumeration_of_Literals"/>
+				<sh:message>For data ranges that are sets of literals, owl:oneOf must only be used on blank nodes.</sh:message>
+				<sh:select>PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+			SELECT $this
+			WHERE {
+				$this a rdfs:Datatype .
+				FILTER ( isIRI($this) )
+			}</sh:select>
+			</sh:SPARQLConstraint>
+		</sh:sparql>
+		<sh:targetSubjectsOf rdf:resource="http://www.w3.org/2002/07/owl#oneOf"/>
+	</sh:NodeShape>
+	
+	<sh:NodeShape rdf:about="https://ontology.unifiedcyberontology.org/owl/DatatypeProperty-shacl-constraints-shape">
+		<sh:sparql>
+			<sh:SPARQLConstraint>
+				<sh:message xml:lang="en">An OWL Datatype Property cannot use a SHACL ClassConstraintComponent.</sh:message>
+				<sh:select>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+				PREFIX sh: &lt;http://www.w3.org/ns/shacl#&gt;
+				SELECT $this
+				WHERE {
+					$value
+						sh:class ?nClass ;
+						sh:path / rdf:rest* / rdf:first? $this ;
+						.
+				}</sh:select>
+			</sh:SPARQLConstraint>
+		</sh:sparql>
+		<sh:sparql>
+			<sh:SPARQLConstraint>
+				<sh:message xml:lang="en">An OWL Datatype Property must not permit a non-Literal value via SHACL constraints.</sh:message>
+				<sh:select>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+				PREFIX sh: &lt;http://www.w3.org/ns/shacl#&gt;
+				SELECT $this
+				WHERE {
+					$value sh:path / rdf:rest* / rdf:first? $this .
+
+					{ $value sh:nodeKind sh:BlankNode . }
+					UNION
+					{ $value sh:nodeKind sh:BlankNodeOrIRI . }
+					UNION
+					{ $value sh:nodeKind sh:BlankNodeOrLiteral . }
+					UNION
+					{ $value sh:nodeKind sh:IRI . }
+					UNION
+					{ $value sh:nodeKind sh:IRIOrLiteral . }
+				}</sh:select>
+			</sh:SPARQLConstraint>
+		</sh:sparql>
+		<sh:targetClass rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+	</sh:NodeShape>
+	
+	<sh:NodeShape rdf:about="https://ontology.unifiedcyberontology.org/owl/Disjointedness-AP-DP-shape">
+		<sh:sparql>
+			<sh:SPARQLConstraint>
+				<rdfs:seeAlso rdf:resource="https://www.w3.org/TR/2012/REC-owl2-syntax-20121211/#Typing_Constraints_of_OWL_2_DL"/>
+				<sh:message xml:lang="en">An IRI may not be a member of both an owl:AnnotationProperty and owl:DatatypeProperty.</sh:message>
+				<sh:select>PREFIX owl: &lt;http://www.w3.org/2002/07/owl#&gt;
+			SELECT $this
+			WHERE {
+				$this a owl:DatatypeProperty ;
+			}</sh:select>
+			</sh:SPARQLConstraint>
+		</sh:sparql>
+		<sh:targetClass rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+	</sh:NodeShape>
+	
+	<sh:NodeShape rdf:about="https://ontology.unifiedcyberontology.org/owl/Disjointedness-AP-OP-shape">
+		<sh:sparql>
+			<sh:SPARQLConstraint>
+				<rdfs:seeAlso rdf:resource="https://www.w3.org/TR/2012/REC-owl2-syntax-20121211/#Typing_Constraints_of_OWL_2_DL"/>
+				<sh:message xml:lang="en">An IRI may not be a member of both an owl:AnnotationProperty and owl:ObjectProperty.</sh:message>
+				<sh:select>PREFIX owl: &lt;http://www.w3.org/2002/07/owl#&gt;
+			SELECT $this
+			WHERE {
+				$this a owl:ObjectProperty ;
+			}</sh:select>
+			</sh:SPARQLConstraint>
+		</sh:sparql>
+		<sh:targetClass rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+	</sh:NodeShape>
+	
+	<sh:NodeShape rdf:about="https://ontology.unifiedcyberontology.org/owl/Disjointedness-C-DT-shape">
+		<sh:sparql>
+			<sh:SPARQLConstraint>
+				<rdfs:seeAlso rdf:resource="https://www.w3.org/TR/2012/REC-owl2-syntax-20121211/#Typing_Constraints_of_OWL_2_DL"/>
+				<sh:message xml:lang="en">An IRI may not be a member of both an owl:Class and owl:Datatype.</sh:message>
+				<sh:select>PREFIX owl: &lt;http://www.w3.org/2002/07/owl#&gt;
+			SELECT $this
+			WHERE {
+				$this a owl:Datatype ;
+			}</sh:select>
+			</sh:SPARQLConstraint>
+		</sh:sparql>
+		<sh:targetClass rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+	</sh:NodeShape>
+	
+	<sh:NodeShape rdf:about="https://ontology.unifiedcyberontology.org/owl/Disjointedness-DP-OP-shape">
+		<sh:sparql>
+			<sh:SPARQLConstraint>
+				<rdfs:seeAlso rdf:resource="https://www.w3.org/TR/2012/REC-owl2-syntax-20121211/#Typing_Constraints_of_OWL_2_DL"/>
+				<sh:message xml:lang="en">An IRI may not be a member of both owl:DatatypeProperty and owl:ObjectProperty.</sh:message>
+				<sh:select>PREFIX owl: &lt;http://www.w3.org/2002/07/owl#&gt;
+			SELECT $this
+			WHERE {
+				$this a owl:ObjectProperty ;
+			}</sh:select>
+			</sh:SPARQLConstraint>
+		</sh:sparql>
+		<sh:targetClass rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+	</sh:NodeShape>
+	
+	<sh:NodeShape rdf:about="https://ontology.unifiedcyberontology.org/owl/List-shape">
+		<sh:property>
+			<sh:PropertyShape>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:path rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#first"/>
+			</sh:PropertyShape>
+		</sh:property>
+		<sh:sparql>
+			<sh:SPARQLConstraint>
+				<rdfs:comment xml:lang="en">This requirement is determined from review of the canonical parsing process in Section 3 of the OWL 2 mapping to RDF.  Table 5 removes any triple matching the pattern &apos;x a rdf:List`.  All other references throughout Section 3 to rdf:first are identified as blank nodes.  Therefore, any non-blank node that is an rdf:List will not be mapped and consumed by the mapping process, making the graph non-conformant with OWL 2 DL.</rdfs:comment>
+				<rdfs:seeAlso rdf:resource="https://www.w3.org/TR/2012/REC-owl2-mapping-to-rdf-20121211/#Mapping_from_RDF_Graphs_to_the_Structural_Specification"/>
+				<sh:message xml:lang="en">The subject of a triple with rdf:first as predicate must be a blank node.</sh:message>
+				<sh:select>SELECT $this
+			WHERE {
+				FILTER isIRI($this)
+			}</sh:select>
+			</sh:SPARQLConstraint>
+		</sh:sparql>
+		<sh:targetSubjectsOf rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#first"/>
+	</sh:NodeShape>
+	
+	<sh:NodeShape rdf:about="https://ontology.unifiedcyberontology.org/owl/ObjectProperty-shacl-constraints-shape">
+		<sh:sparql>
+			<sh:SPARQLConstraint>
+				<sh:message xml:lang="en">An OWL Object Property cannot use a SHACL DatatypeConstraintComponent.</sh:message>
+				<sh:select>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+				PREFIX sh: &lt;http://www.w3.org/ns/shacl#&gt;
+				SELECT $this
+				WHERE {
+					$value
+						sh:datatype ?nDatatype ;
+						sh:path / rdf:rest* / rdf:first? $this ;
+						.
+				}</sh:select>
+			</sh:SPARQLConstraint>
+		</sh:sparql>
+		<sh:sparql>
+			<sh:SPARQLConstraint>
+				<sh:message xml:lang="en">An OWL Object Property must not permit a Literal value via SHACL consraints.</sh:message>
+				<sh:select>PREFIX sh: &lt;http://www.w3.org/ns/shacl#&gt;
+				SELECT $this
+				WHERE {
+					$value sh:path / rdf:rest* / rdf:first? $this ;
+
+					{ $value sh:nodeKind sh:BlankNodeOrLiteral . }
+					UNION
+					{ $value sh:nodeKind sh:IRIOrLiteral . }
+					UNION
+					{ $value sh:nodeKind sh:Literal . }
+				}</sh:select>
+			</sh:SPARQLConstraint>
+		</sh:sparql>
+		<sh:targetClass rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+	</sh:NodeShape>
+	
+	<sh:PropertyShape rdf:about="https://ontology.unifiedcyberontology.org/owl/incompatibleWith-shape">
+		<rdfs:seeAlso rdf:resource="https://www.w3.org/TR/owl2-syntax/#Imports"/>
+		<sh:message xml:lang="en">&apos;The import closure of [ontology] O SHOULD NOT contain ontologies O_1 and O_2 such that ... O_1 contains an ontology annotation owl:incompatibleWith with the value equal to either the ontology IRI or the version IRI of O2.&apos;</sh:message>
+		<sh:path rdf:resource="http://www.w3.org/2002/07/owl#incompatibleWith"/>
+		<sh:severity rdf:resource="http://www.w3.org/ns/shacl#Warning"/>
+		<sh:sparql>
+			<sh:SPARQLConstraint>
+				<sh:select>PREFIX owl: &lt;http://www.w3.org/2002/07/owl#&gt;
+				SELECT $this ?value
+				WHERE {
+					$this
+						owl:imports ?value ;
+						owl:incompatibleWith ?value ;
+						.
+				}</sh:select>
+			</sh:SPARQLConstraint>
+		</sh:sparql>
+		<sh:sparql>
+			<sh:SPARQLConstraint>
+				<sh:select>PREFIX owl: &lt;http://www.w3.org/2002/07/owl#&gt;
+				SELECT $this ?value
+				WHERE {
+					$this owl:incompatibleWith ?value .
+
+					{ ?value a owl:Ontology . }
+					UNION
+					{ ?nOntology owl:ontologyIRI ?value . }
+					UNION
+					{ ?nOntology owl:versionIRI ?value . }
+				}</sh:select>
+			</sh:SPARQLConstraint>
+		</sh:sparql>
+		<sh:targetSubjectsOf rdf:resource="http://www.w3.org/2002/07/owl#incompatibleWith"/>
+	</sh:PropertyShape>
+	
+	<sh:PropertyShape rdf:about="https://ontology.unifiedcyberontology.org/owl/ontologyIRI-nodeKind-shape">
+		<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#IRI"/>
+		<sh:path rdf:resource="http://www.w3.org/2002/07/owl#ontologyIRI"/>
+		<sh:targetSubjectsOf rdf:resource="http://www.w3.org/2002/07/owl#ontologyIRI"/>
+	</sh:PropertyShape>
+	
+	<sh:NodeShape rdf:about="https://ontology.unifiedcyberontology.org/owl/ontologyIRI-ontology-uniqueness-shape">
+		<rdfs:seeAlso rdf:resource="https://www.w3.org/TR/owl2-syntax/#Ontology_IRI_and_Version_IRI"/>
+		<sh:message xml:lang="en">&apos;If an ontology has an ontology IRI but no version IRI, then a different ontology with the same ontology IRI but no version IRI SHOULD NOT exist.&apos;</sh:message>
+		<sh:severity rdf:resource="http://www.w3.org/ns/shacl#Warning"/>
+		<sh:sparql>
+			<sh:SPARQLConstraint>
+				<sh:select>PREFIX owl: &lt;http://www.w3.org/2002/07/owl#&gt;
+			SELECT $this ?value
+			WHERE {
+				$this owl:ontologyIRI ?nOntologyIRI .
+				FILTER NOT EXISTS {
+					$this owl:versionIRI ?nVersionIRI1 .
+				}
+				?value owl:ontologyIRI ?nOntologyIRI .
+				FILTER NOT EXISTS {
+					?value owl:versionIRI ?nVersionIRI2 .
+				}
+				FILTER ( $this != ?value )
+			}</sh:select>
+			</sh:SPARQLConstraint>
+		</sh:sparql>
+		<sh:targetSubjectsOf rdf:resource="http://www.w3.org/2002/07/owl#ontologyIRI"/>
+	</sh:NodeShape>
+	
+	<sh:PropertyShape rdf:about="https://ontology.unifiedcyberontology.org/owl/ontologyIRI-versionIRI-prerequisite-shape">
+		<rdfs:seeAlso rdf:resource="https://www.w3.org/TR/owl2-syntax/#Ontology_IRI_and_Version_IRI"/>
+		<sh:message xml:lang="en">&apos;An ontology without an ontology IRI MUST NOT contain a version IRI.&apos;</sh:message>
+		<sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+		<sh:path rdf:resource="http://www.w3.org/2002/07/owl#ontologyIRI"/>
+		<sh:targetSubjectsOf rdf:resource="http://www.w3.org/2002/07/owl#versionIRI"/>
+	</sh:PropertyShape>
+	
+	<sh:NodeShape rdf:about="https://ontology.unifiedcyberontology.org/owl/ontologyIRI-versionIRI-uniqueness-shape">
+		<rdfs:seeAlso rdf:resource="https://www.w3.org/TR/owl2-syntax/#Ontology_IRI_and_Version_IRI"/>
+		<sh:message xml:lang="en">&apos;If an ontology has both an ontology IRI and a version IRI, then a different ontology with the same ontology IRI and the same version IRI SHOULD NOT exist.&apos;</sh:message>
+		<sh:severity rdf:resource="http://www.w3.org/ns/shacl#Warning"/>
+		<sh:sparql>
+			<sh:SPARQLConstraint>
+				<sh:select>PREFIX owl: &lt;http://www.w3.org/2002/07/owl#&gt;
+			SELECT $this ?value
+			WHERE {
+				$this
+					owl:ontologyIRI ?nOntologyIRI ;
+					owl:versionIRI ?nVersionIRI ;
+					.
+				?value
+					owl:ontologyIRI ?nOntologyIRI ;
+					owl:versionIRI ?nVersionIRI ;
+					.
+				FILTER ( $this != ?value )
+			}</sh:select>
+			</sh:SPARQLConstraint>
+		</sh:sparql>
+		<sh:targetSubjectsOf rdf:resource="http://www.w3.org/2002/07/owl#ontologyIRI"/>
+	</sh:NodeShape>
+	
+	<sh:PropertyShape rdf:about="https://ontology.unifiedcyberontology.org/owl/versionIRI-multiversion-shape">
+		<rdfs:seeAlso rdf:resource="https://www.w3.org/TR/owl2-syntax/#Imports"/>
+		<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+		<sh:message xml:lang="en">&apos;The import closure of [ontology] O SHOULD NOT contain ontologies O_1 and O_2 such that O_1 and O_2 are different ontology versions from the same ontology series.&apos;</sh:message>
+		<sh:path rdf:resource="http://www.w3.org/2002/07/owl#versionIRI"/>
+		<sh:severity rdf:resource="http://www.w3.org/ns/shacl#Warning"/>
+		<sh:targetSubjectsOf rdf:resource="http://www.w3.org/2002/07/owl#versionIRI"/>
+	</sh:PropertyShape>
+	
+	<sh:PropertyShape rdf:about="https://ontology.unifiedcyberontology.org/owl/versionIRI-nodeKind-shape">
+		<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#IRI"/>
+		<sh:path rdf:resource="http://www.w3.org/2002/07/owl#versionIRI"/>
+		<sh:targetSubjectsOf rdf:resource="http://www.w3.org/2002/07/owl#versionIRI"/>
+	</sh:PropertyShape>
+
+</rdf:RDF>

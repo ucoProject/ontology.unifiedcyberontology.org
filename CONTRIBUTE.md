@@ -24,7 +24,7 @@ When a new ontology release is created, follow these steps:
 1. Update the ontology-tracking submodule pointer in this repository to point at the new release's commit.
 2. Run `make clean`.
 3. Run `make`.  (`make -j` will work.)
-4. Run `git add uco documentation`.  This will pick up all file deletions and new file creations.
+4. Run `git add co owl uco documentation`.  This will pick up all file deletions and new file creations.
 5. Run `git add` for the other refreshed text files in `${top_srcdir}`.
 6. Commit the changes.
 7. Push to GitHub.

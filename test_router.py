@@ -51,6 +51,7 @@ def app() -> flask.Flask:
         "expected_response_content_type",
     ],
     [
+        ("/co/1.0.0.rdf", None, "co/1.0.0.rdf", "application/rdf+xml"),
         ("/uco/vocabulary.rdf", None, "uco/vocabulary.rdf", "application/rdf+xml"),
         (
             "/uco/vocabulary.rdf",
@@ -102,6 +103,20 @@ def test_status_200(
             None,
             "Java/1.8.0_332",
             "/uco/uco.rdf",
+        ),
+        (
+            # Confirm higher-directory ontology request is assumed to be RDF-XML request.
+            "/co",
+            None,
+            None,
+            "/co.rdf",
+        ),
+        (
+            # Confirm higher-directory ontology versionIRI request is assumed to be RDF-XML request.
+            "/co/1.0.0",
+            None,
+            None,
+            "/co/1.0.0.rdf",
         ),
         (
             # Confirm non-umbrella ontology request is assumed to be RDF-XML request.

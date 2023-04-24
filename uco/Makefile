@@ -25,6 +25,9 @@ RDF_TOOLKIT_JAR := $(top_srcdir)/dependencies/UCO/lib/rdf-toolkit.jar
 version_iri_files := \
   action/$(CURRENT_RELEASE).rdf \
   action/$(CURRENT_RELEASE).ttl \
+  configuration/$(CURRENT_RELEASE).rdf \
+  configuration/$(CURRENT_RELEASE).ttl \
+  core/$(CURRENT_RELEASE).ttl \
   core/$(CURRENT_RELEASE).rdf \
   core/$(CURRENT_RELEASE).ttl \
   identity/$(CURRENT_RELEASE).rdf \
@@ -57,9 +60,9 @@ all: \
   $(version_iri_files)
 
 action.rdf: \
-  $(top_srcdir)/dependencies/UCO/ontology/action/action.ttl \
+  $(top_srcdir)/dependencies/UCO/ontology/uco/action/action.ttl \
   $(RDF_TOOLKIT_JAR) \
-  namespaces.sed
+  $(top_srcdir)/src/namespaces.sed
 	rm -f __$@ _$@
 	java -jar $(RDF_TOOLKIT_JAR) \
 	  --inline-blank-nodes \
@@ -68,7 +71,7 @@ action.rdf: \
 	  --target __$@ \
 	  --target-format rdf-xml
 	sed \
-	  -f namespaces.sed \
+	  -f $(top_srcdir)/src/namespaces.sed \
 	  __$@ \
 	  > _$@
 	xmllint \
@@ -78,7 +81,7 @@ action.rdf: \
 	mv _$@ $@
 
 action.ttl: \
-  $(top_srcdir)/dependencies/UCO/ontology/action/action.ttl
+  $(top_srcdir)/dependencies/UCO/ontology/uco/action/action.ttl
 	cp $< $@
 
 action/$(CURRENT_RELEASE).rdf: \
@@ -106,10 +109,41 @@ clean:
 	  *.ttl \
 	  .*.done.log
 
-core.rdf: \
-  $(top_srcdir)/dependencies/UCO/ontology/core/core.ttl \
+configuration.rdf: \
+  $(top_srcdir)/dependencies/UCO/ontology/uco/configuration/configuration.ttl \
   $(RDF_TOOLKIT_JAR) \
-  namespaces.sed
+  $(top_srcdir)/src/namespaces.sed
+	java -jar $(RDF_TOOLKIT_JAR) \
+	  --inline-blank-nodes \
+	  --source $< \
+	  --source-format turtle \
+	  --target __$@ \
+	  --target-format rdf-xml
+	sed \
+	  -f $(top_srcdir)/src/namespaces.sed \
+	  __$@ \
+	  > _$@
+	rm __$@
+	mv _$@ $@
+
+configuration.ttl: \
+  $(top_srcdir)/dependencies/UCO/ontology/uco/configuration/configuration.ttl
+	cp $< $@
+
+configuration/$(CURRENT_RELEASE).rdf: \
+  configuration.rdf
+	mkdir -p configuration
+	cp $< $@
+
+configuration/$(CURRENT_RELEASE).ttl: \
+  configuration.ttl
+	mkdir -p configuration
+	cp $< $@
+
+core.rdf: \
+  $(top_srcdir)/dependencies/UCO/ontology/uco/core/core.ttl \
+  $(RDF_TOOLKIT_JAR) \
+  $(top_srcdir)/src/namespaces.sed
 	rm -f __$@ _$@
 	java -jar $(RDF_TOOLKIT_JAR) \
 	  --inline-blank-nodes \
@@ -118,7 +152,7 @@ core.rdf: \
 	  --target __$@ \
 	  --target-format rdf-xml
 	sed \
-	  -f namespaces.sed \
+	  -f $(top_srcdir)/src/namespaces.sed \
 	  __$@ \
 	  > _$@
 	xmllint \
@@ -128,7 +162,7 @@ core.rdf: \
 	mv _$@ $@
 
 core.ttl: \
-  $(top_srcdir)/dependencies/UCO/ontology/core/core.ttl
+  $(top_srcdir)/dependencies/UCO/ontology/uco/core/core.ttl
 	cp $< $@
 
 core/$(CURRENT_RELEASE).rdf: \
@@ -142,9 +176,9 @@ core/$(CURRENT_RELEASE).ttl: \
 	cp $< $@
 
 identity.rdf: \
-  $(top_srcdir)/dependencies/UCO/ontology/identity/identity.ttl \
+  $(top_srcdir)/dependencies/UCO/ontology/uco/identity/identity.ttl \
   $(RDF_TOOLKIT_JAR) \
-  namespaces.sed
+  $(top_srcdir)/src/namespaces.sed
 	rm -f __$@ _$@
 	java -jar $(RDF_TOOLKIT_JAR) \
 	  --inline-blank-nodes \
@@ -153,7 +187,7 @@ identity.rdf: \
 	  --target __$@ \
 	  --target-format rdf-xml
 	sed \
-	  -f namespaces.sed \
+	  -f $(top_srcdir)/src/namespaces.sed \
 	  __$@ \
 	  > _$@
 	xmllint \
@@ -163,7 +197,7 @@ identity.rdf: \
 	mv _$@ $@
 
 identity.ttl: \
-  $(top_srcdir)/dependencies/UCO/ontology/identity/identity.ttl
+  $(top_srcdir)/dependencies/UCO/ontology/uco/identity/identity.ttl
 	cp $< $@
 
 identity/$(CURRENT_RELEASE).rdf: \
@@ -177,9 +211,9 @@ identity/$(CURRENT_RELEASE).ttl: \
 	cp $< $@
 
 location.rdf: \
-  $(top_srcdir)/dependencies/UCO/ontology/location/location.ttl \
+  $(top_srcdir)/dependencies/UCO/ontology/uco/location/location.ttl \
   $(RDF_TOOLKIT_JAR) \
-  namespaces.sed
+  $(top_srcdir)/src/namespaces.sed
 	rm -f __$@ _$@
 	java -jar $(RDF_TOOLKIT_JAR) \
 	  --inline-blank-nodes \
@@ -188,7 +222,7 @@ location.rdf: \
 	  --target __$@ \
 	  --target-format rdf-xml
 	sed \
-	  -f namespaces.sed \
+	  -f $(top_srcdir)/src/namespaces.sed \
 	  __$@ \
 	  > _$@
 	xmllint \
@@ -198,7 +232,7 @@ location.rdf: \
 	mv _$@ $@
 
 location.ttl: \
-  $(top_srcdir)/dependencies/UCO/ontology/location/location.ttl
+  $(top_srcdir)/dependencies/UCO/ontology/uco/location/location.ttl
 	cp $< $@
 
 location/$(CURRENT_RELEASE).rdf: \
@@ -212,9 +246,9 @@ location/$(CURRENT_RELEASE).ttl: \
 	cp $< $@
 
 marking.rdf: \
-  $(top_srcdir)/dependencies/UCO/ontology/marking/marking.ttl \
+  $(top_srcdir)/dependencies/UCO/ontology/uco/marking/marking.ttl \
   $(RDF_TOOLKIT_JAR) \
-  namespaces.sed
+  $(top_srcdir)/src/namespaces.sed
 	rm -f __$@ _$@
 	java -jar $(RDF_TOOLKIT_JAR) \
 	  --inline-blank-nodes \
@@ -223,7 +257,7 @@ marking.rdf: \
 	  --target __$@ \
 	  --target-format rdf-xml
 	sed \
-	  -f namespaces.sed \
+	  -f $(top_srcdir)/src/namespaces.sed \
 	  __$@ \
 	  > _$@
 	xmllint \
@@ -233,7 +267,7 @@ marking.rdf: \
 	mv _$@ $@
 
 marking.ttl: \
-  $(top_srcdir)/dependencies/UCO/ontology/marking/marking.ttl
+  $(top_srcdir)/dependencies/UCO/ontology/uco/marking/marking.ttl
 	cp $< $@
 
 marking/$(CURRENT_RELEASE).rdf: \
@@ -247,9 +281,9 @@ marking/$(CURRENT_RELEASE).ttl: \
 	cp $< $@
 
 observable.rdf: \
-  $(top_srcdir)/dependencies/UCO/ontology/observable/observable.ttl \
+  $(top_srcdir)/dependencies/UCO/ontology/uco/observable/observable.ttl \
   $(RDF_TOOLKIT_JAR) \
-  namespaces.sed
+  $(top_srcdir)/src/namespaces.sed
 	rm -f __$@ _$@
 	java -jar $(RDF_TOOLKIT_JAR) \
 	  --inline-blank-nodes \
@@ -258,7 +292,7 @@ observable.rdf: \
 	  --target __$@ \
 	  --target-format rdf-xml
 	sed \
-	  -f namespaces.sed \
+	  -f $(top_srcdir)/src/namespaces.sed \
 	  __$@ \
 	  > _$@
 	xmllint \
@@ -268,7 +302,7 @@ observable.rdf: \
 	mv _$@ $@
 
 observable.ttl: \
-  $(top_srcdir)/dependencies/UCO/ontology/observable/observable.ttl
+  $(top_srcdir)/dependencies/UCO/ontology/uco/observable/observable.ttl
 	cp $< $@
 
 observable/$(CURRENT_RELEASE).rdf: \
@@ -282,9 +316,9 @@ observable/$(CURRENT_RELEASE).ttl: \
 	cp $< $@
 
 pattern.rdf: \
-  $(top_srcdir)/dependencies/UCO/ontology/pattern/pattern.ttl \
+  $(top_srcdir)/dependencies/UCO/ontology/uco/pattern/pattern.ttl \
   $(RDF_TOOLKIT_JAR) \
-  namespaces.sed
+  $(top_srcdir)/src/namespaces.sed
 	rm -f __$@ _$@
 	java -jar $(RDF_TOOLKIT_JAR) \
 	  --inline-blank-nodes \
@@ -293,7 +327,7 @@ pattern.rdf: \
 	  --target __$@ \
 	  --target-format rdf-xml
 	sed \
-	  -f namespaces.sed \
+	  -f $(top_srcdir)/src/namespaces.sed \
 	  __$@ \
 	  > _$@
 	xmllint \
@@ -303,7 +337,7 @@ pattern.rdf: \
 	mv _$@ $@
 
 pattern.ttl: \
-  $(top_srcdir)/dependencies/UCO/ontology/pattern/pattern.ttl
+  $(top_srcdir)/dependencies/UCO/ontology/uco/pattern/pattern.ttl
 	cp $< $@
 
 pattern/$(CURRENT_RELEASE).rdf: \
@@ -317,9 +351,9 @@ pattern/$(CURRENT_RELEASE).ttl: \
 	cp $< $@
 
 role.rdf: \
-  $(top_srcdir)/dependencies/UCO/ontology/role/role.ttl \
+  $(top_srcdir)/dependencies/UCO/ontology/uco/role/role.ttl \
   $(RDF_TOOLKIT_JAR) \
-  namespaces.sed
+  $(top_srcdir)/src/namespaces.sed
 	rm -f __$@ _$@
 	java -jar $(RDF_TOOLKIT_JAR) \
 	  --inline-blank-nodes \
@@ -328,7 +362,7 @@ role.rdf: \
 	  --target __$@ \
 	  --target-format rdf-xml
 	sed \
-	  -f namespaces.sed \
+	  -f $(top_srcdir)/src/namespaces.sed \
 	  __$@ \
 	  > _$@
 	xmllint \
@@ -338,7 +372,7 @@ role.rdf: \
 	mv _$@ $@
 
 role.ttl: \
-  $(top_srcdir)/dependencies/UCO/ontology/role/role.ttl
+  $(top_srcdir)/dependencies/UCO/ontology/uco/role/role.ttl
 	cp $< $@
 
 role/$(CURRENT_RELEASE).rdf: \
@@ -352,9 +386,9 @@ role/$(CURRENT_RELEASE).ttl: \
 	cp $< $@
 
 time.rdf: \
-  $(top_srcdir)/dependencies/UCO/ontology/time/time.ttl \
+  $(top_srcdir)/dependencies/UCO/ontology/uco/time/time.ttl \
   $(RDF_TOOLKIT_JAR) \
-  namespaces.sed
+  $(top_srcdir)/src/namespaces.sed
 	rm -f __$@ _$@
 	java -jar $(RDF_TOOLKIT_JAR) \
 	  --inline-blank-nodes \
@@ -363,7 +397,7 @@ time.rdf: \
 	  --target __$@ \
 	  --target-format rdf-xml
 	sed \
-	  -f namespaces.sed \
+	  -f $(top_srcdir)/src/namespaces.sed \
 	  __$@ \
 	  > _$@
 	xmllint \
@@ -374,7 +408,7 @@ time.rdf: \
 	mv _$@ $@
 
 time.ttl: \
-  $(top_srcdir)/dependencies/UCO/ontology/time/time.ttl
+  $(top_srcdir)/dependencies/UCO/ontology/uco/time/time.ttl
 	cp $< $@
 
 time/$(CURRENT_RELEASE).rdf: \
@@ -388,9 +422,9 @@ time/$(CURRENT_RELEASE).ttl: \
 	cp $< $@
 
 tool.rdf: \
-  $(top_srcdir)/dependencies/UCO/ontology/tool/tool.ttl \
+  $(top_srcdir)/dependencies/UCO/ontology/uco/tool/tool.ttl \
   $(RDF_TOOLKIT_JAR) \
-  namespaces.sed
+  $(top_srcdir)/src/namespaces.sed
 	rm -f __$@ _$@
 	java -jar $(RDF_TOOLKIT_JAR) \
 	  --inline-blank-nodes \
@@ -399,7 +433,7 @@ tool.rdf: \
 	  --target __$@ \
 	  --target-format rdf-xml
 	sed \
-	  -f namespaces.sed \
+	  -f $(top_srcdir)/src/namespaces.sed \
 	  __$@ \
 	  > _$@
 	xmllint \
@@ -409,7 +443,7 @@ tool.rdf: \
 	mv _$@ $@
 
 tool.ttl: \
-  $(top_srcdir)/dependencies/UCO/ontology/tool/tool.ttl
+  $(top_srcdir)/dependencies/UCO/ontology/uco/tool/tool.ttl
 	cp $< $@
 
 tool/$(CURRENT_RELEASE).rdf: \
@@ -423,9 +457,9 @@ tool/$(CURRENT_RELEASE).ttl: \
 	cp $< $@
 
 types.rdf: \
-  $(top_srcdir)/dependencies/UCO/ontology/types/types.ttl \
+  $(top_srcdir)/dependencies/UCO/ontology/uco/types/types.ttl \
   $(RDF_TOOLKIT_JAR) \
-  namespaces.sed
+  $(top_srcdir)/src/namespaces.sed
 	rm -f __$@ _$@
 	java -jar $(RDF_TOOLKIT_JAR) \
 	  --inline-blank-nodes \
@@ -434,7 +468,7 @@ types.rdf: \
 	  --target __$@ \
 	  --target-format rdf-xml
 	sed \
-	  -f namespaces.sed \
+	  -f $(top_srcdir)/src/namespaces.sed \
 	  __$@ \
 	  > _$@
 	xmllint \
@@ -444,7 +478,7 @@ types.rdf: \
 	mv _$@ $@
 
 types.ttl: \
-  $(top_srcdir)/dependencies/UCO/ontology/types/types.ttl
+  $(top_srcdir)/dependencies/UCO/ontology/uco/types/types.ttl
 	cp $< $@
 
 types/$(CURRENT_RELEASE).rdf: \
@@ -458,9 +492,9 @@ types/$(CURRENT_RELEASE).ttl: \
 	cp $< $@
 
 uco.rdf: \
-  $(top_srcdir)/dependencies/UCO/ontology/master/uco.ttl \
+  $(top_srcdir)/dependencies/UCO/ontology/uco/master/uco.ttl \
   $(RDF_TOOLKIT_JAR) \
-  namespaces.sed
+  $(top_srcdir)/src/namespaces.sed
 	rm -f __$@ _$@
 	java -jar $(RDF_TOOLKIT_JAR) \
 	  --inline-blank-nodes \
@@ -469,7 +503,7 @@ uco.rdf: \
 	  --target __$@ \
 	  --target-format rdf-xml
 	sed \
-	  -f namespaces.sed \
+	  -f $(top_srcdir)/src/namespaces.sed \
 	  __$@ \
 	  > _$@
 	xmllint \
@@ -480,7 +514,7 @@ uco.rdf: \
 	mv _$@ $@
 
 uco.ttl: \
-  $(top_srcdir)/dependencies/UCO/ontology/master/uco.ttl
+  $(top_srcdir)/dependencies/UCO/ontology/uco/master/uco.ttl
 	cp $< $@
 
 uco/$(CURRENT_RELEASE).rdf: \
@@ -494,9 +528,9 @@ uco/$(CURRENT_RELEASE).ttl: \
 	cp $< $@
 
 victim.rdf: \
-  $(top_srcdir)/dependencies/UCO/ontology/victim/victim.ttl \
+  $(top_srcdir)/dependencies/UCO/ontology/uco/victim/victim.ttl \
   $(RDF_TOOLKIT_JAR) \
-  namespaces.sed
+  $(top_srcdir)/src/namespaces.sed
 	rm -f __$@ _$@
 	java -jar $(RDF_TOOLKIT_JAR) \
 	  --inline-blank-nodes \
@@ -505,7 +539,7 @@ victim.rdf: \
 	  --target __$@ \
 	  --target-format rdf-xml
 	sed \
-	  -f namespaces.sed \
+	  -f $(top_srcdir)/src/namespaces.sed \
 	  __$@ \
 	  > _$@
 	xmllint \
@@ -515,7 +549,7 @@ victim.rdf: \
 	mv _$@ $@
 
 victim.ttl: \
-  $(top_srcdir)/dependencies/UCO/ontology/victim/victim.ttl
+  $(top_srcdir)/dependencies/UCO/ontology/uco/victim/victim.ttl
 	cp $< $@
 
 victim/$(CURRENT_RELEASE).rdf: \
@@ -529,9 +563,9 @@ victim/$(CURRENT_RELEASE).ttl: \
 	cp $< $@
 
 vocabulary.rdf: \
-  $(top_srcdir)/dependencies/UCO/ontology/vocabulary/vocabulary.ttl \
+  $(top_srcdir)/dependencies/UCO/ontology/uco/vocabulary/vocabulary.ttl \
   $(RDF_TOOLKIT_JAR) \
-  namespaces.sed
+  $(top_srcdir)/src/namespaces.sed
 	rm -f __$@ _$@
 	java -jar $(RDF_TOOLKIT_JAR) \
 	  --inline-blank-nodes \
@@ -540,7 +574,7 @@ vocabulary.rdf: \
 	  --target __$@ \
 	  --target-format rdf-xml
 	sed \
-	  -f namespaces.sed \
+	  -f $(top_srcdir)/src/namespaces.sed \
 	  __$@ \
 	  > _$@
 	xmllint \
@@ -552,7 +586,7 @@ vocabulary.rdf: \
 	mv _$@ $@
 
 vocabulary.ttl: \
-  $(top_srcdir)/dependencies/UCO/ontology/vocabulary/vocabulary.ttl
+  $(top_srcdir)/dependencies/UCO/ontology/uco/vocabulary/vocabulary.ttl
 	cp $< $@
 
 vocabulary/$(CURRENT_RELEASE).rdf: \
