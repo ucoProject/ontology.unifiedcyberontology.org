@@ -25,6 +25,8 @@ RDF_TOOLKIT_JAR := $(top_srcdir)/dependencies/UCO/lib/rdf-toolkit.jar
 version_iri_files := \
   action/$(CURRENT_RELEASE).rdf \
   action/$(CURRENT_RELEASE).ttl \
+  analysis/$(CURRENT_RELEASE).rdf \
+  analysis/$(CURRENT_RELEASE).ttl \
   configuration/$(CURRENT_RELEASE).rdf \
   configuration/$(CURRENT_RELEASE).ttl \
   core/$(CURRENT_RELEASE).ttl \
@@ -54,7 +56,6 @@ version_iri_files := \
   victim/$(CURRENT_RELEASE).ttl \
   vocabulary/$(CURRENT_RELEASE).rdf \
   vocabulary/$(CURRENT_RELEASE).ttl
-
 
 all: \
   $(version_iri_files)
@@ -92,6 +93,41 @@ action/$(CURRENT_RELEASE).rdf: \
 action/$(CURRENT_RELEASE).ttl: \
   action.ttl
 	mkdir -p action
+	cp $< $@
+
+analysis.rdf: \
+  $(top_srcdir)/dependencies/UCO/ontology/uco/analysis/analysis.ttl \
+  $(RDF_TOOLKIT_JAR) \
+  $(top_srcdir)/src/namespaces.sed
+	rm -f __$@ _$@
+	java -jar $(RDF_TOOLKIT_JAR) \
+	  --inline-blank-nodes \
+	  --source $< \
+	  --source-format turtle \
+	  --target __$@ \
+	  --target-format rdf-xml
+	sed \
+	  -f $(top_srcdir)/src/namespaces.sed \
+	  __$@ \
+	  > _$@
+	xmllint \
+	  --noout \
+	  _$@
+	rm __$@
+	mv _$@ $@
+
+analysis.ttl: \
+  $(top_srcdir)/dependencies/UCO/ontology/uco/analysis/analysis.ttl
+	cp $< $@
+
+analysis/$(CURRENT_RELEASE).rdf: \
+  analysis.rdf
+	mkdir -p analysis
+	cp $< $@
+
+analysis/$(CURRENT_RELEASE).ttl: \
+  analysis.ttl
+	mkdir -p analysis
 	cp $< $@
 
 check: \
