@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rdf:RDF
+	xmlns:action="https://ontology.unifiedcyberontology.org/uco/action/"
+	xmlns:analysis="https://ontology.unifiedcyberontology.org/uco/analysis/"
+	xmlns:core="https://ontology.unifiedcyberontology.org/uco/core/"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:sh="http://www.w3.org/ns/shacl#"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+	
+	<owl:Ontology rdf:about="https://ontology.unifiedcyberontology.org/uco/analysis">
+		<rdfs:label xml:lang="en">uco-analysis</rdfs:label>
+		<rdfs:comment xml:lang="en-US">This ontology defines classes and properties for characterizing analytic actions and results.</rdfs:comment>
+		<rdfs:seeAlso rdf:resource="https://github.com/ucoProject/UCO/issues/400"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/action/1.1.0"/>
+		<owl:versionIRI rdf:resource="https://ontology.unifiedcyberontology.org/uco/analysis/1.1.0"/>
+	</owl:Ontology>
+	
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/analysis/Analysis">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/action/Action"/>
+		<rdfs:label xml:lang="en">Analysis</rdfs:label>
+		<rdfs:comment xml:lang="en">An analysis is an action of detailed examination of something in order to understand its nature, context or essential features.</rdfs:comment>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/action/Analysis"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/analysis/AnalyticResult">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/core/Assertion"/>
+		<rdfs:label xml:lang="en">AnalyticResult</rdfs:label>
+		<rdfs:comment xml:lang="en">An analytic result is a characterization of the understanding resulting from an analysis action.</rdfs:comment>
+		<sh:property>
+			<rdf:Description>
+				<sh:class rdf:resource="https://ontology.unifiedcyberontology.org/uco/analysis/Analysis"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#IRI"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/analysis/originatingAnalysis"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:class rdf:resource="https://ontology.unifiedcyberontology.org/uco/core/UcoObject"/>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#IRI"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/analysis/resultContent"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/analysis/AnalysicResult"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/analysis/AnalyticResultFacet">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/core/Facet"/>
+		<rdfs:label xml:lang="en">AnalyticResultFacet</rdfs:label>
+		<rdfs:comment xml:lang="en">An analytic result facet is a grouping of characteristics unique to the results of an analysis action.</rdfs:comment>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/analysis/AnalyticResultFacet"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/analysis/ArtifactClassification">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/core/UcoInherentCharacterizationThing"/>
+		<rdfs:label xml:lang="en">ArtifactClassification</rdfs:label>
+		<rdfs:comment xml:lang="en">An artifact classification is a single specific assertion that a particular class of a classification taxonomy applies to something.</rdfs:comment>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/analysis/classificationConfidence"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+				<sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/analysis/class"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/analysis/ArtifactClassification"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/analysis/ArtifactClassificationResultFacet">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/analysis/AnalyticResultFacet"/>
+		<rdfs:label xml:lang="en">ArtifactClassificationResultFacet</rdfs:label>
+		<rdfs:comment xml:lang="en">An artifact classification result facet is a grouping of characteristics unique to the results of an artifact classification analysis action.</rdfs:comment>
+		<sh:property>
+			<rdf:Description>
+				<sh:class rdf:resource="https://ontology.unifiedcyberontology.org/uco/analysis/ArtifactClassification"/>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#IRI"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/analysis/classification"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/analysis/ArtifactClassificationResultFacet"/>
+	</rdf:Description>
+	
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/analysis/class">
+		<rdfs:label xml:lang="en">class</rdfs:label>
+		<rdfs:comment xml:lang="en">A specific classification class.</rdfs:comment>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/analysis/classification">
+		<rdfs:label xml:lang="en">classification</rdfs:label>
+		<rdfs:comment xml:lang="en">An asserted classification of an analyzed artifact resulting from the analysis.</rdfs:comment>
+		<rdfs:range rdf:resource="https://ontology.unifiedcyberontology.org/uco/analysis/ArtifactClassification"/>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/analysis/classificationConfidence">
+		<rdfs:label xml:lang="en">classificationConfidence</rdfs:label>
+		<rdfs:comment xml:lang="en">The level of confidence that a classification assertion is correct.</rdfs:comment>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/analysis/originatingAnalysis">
+		<rdfs:label xml:lang="en">originatingAnalysis</rdfs:label>
+		<rdfs:comment xml:lang="en">The analysis action that resulted in an analytic result.</rdfs:comment>
+		<rdfs:range rdf:resource="https://ontology.unifiedcyberontology.org/uco/analysis/Analysis"/>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/analysis/resultContent">
+		<rdfs:label xml:lang="en">resultContent</rdfs:label>
+		<rdfs:comment xml:lang="en">Structured content expressing the results of an analysis action.</rdfs:comment>
+		<rdfs:range rdf:resource="https://ontology.unifiedcyberontology.org/uco/core/UcoObject"/>
+	</owl:ObjectProperty>
+
+</rdf:RDF>

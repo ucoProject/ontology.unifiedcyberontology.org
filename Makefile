@@ -127,7 +127,7 @@ check-mypy: \
 	    test_*.py
 
 check-pytest: \
-  .venv.done.log
+  ontology_iris_archive.txt
 	source venv/bin/activate \
 	  && pytest test_graph_files.py \
 	    --log-level=DEBUG
@@ -221,8 +221,8 @@ current_ontology_iris.txt: \
 	mv _$@ $@
 
 current_ontology_version.txt: \
-  .git_submodule_init.done.log \
   .venv.done.log \
+  dependencies/UCO/ontology/uco/master/uco.ttl \
   src/current_ontology_version.py
 	source venv/bin/activate \
 	  && python3 src/current_ontology_version.py \
@@ -232,13 +232,16 @@ current_ontology_version.txt: \
 	test -s _$@
 	mv _$@ $@
 
-dependencies/UCO/tests/uco_monolithic.ttl: \
+dependencies/UCO/ontology/uco/master/uco.ttl: \
   .git_submodule_init.done.log
+	touch -c $@
+	test -r $@
+
+dependencies/UCO/tests/uco_monolithic.ttl: \
+  dependencies/UCO/ontology/uco/master/uco.ttl
 	$(MAKE) \
 	  --directory dependencies/UCO/tests \
 	  uco_monolithic.ttl
-	# Clean up superfluous artifact.  TODO - This step can be removed after the 0.3.0 release of the referenced tool.
-	rm -rf dependencies/UCO/dependencies/UCO/dependencies/CASE-Utility-SHACL-Inheritance-Review/build
 	# Guarantee file is built and timestamp is up to date.
 	test -r $@
 	touch $@

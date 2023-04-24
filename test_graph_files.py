@@ -25,6 +25,25 @@ NS_OWL = OWL
 top_srcdir = Path(__file__).parent
 
 
+def test_import_tree() -> None:
+    """
+    This test confirms that all versionIRI files imported by uco.ttl are generated.
+
+    The code drift this addresses is that new namespace files need to have recipes manually added (copied & pasted) to ${top_srcdir}/uco/Makefile, and a substitution to ${top_srcdir}/src/namespaces.sed.
+    """
+    uco_root_graph = Graph()
+    uco_root_graph.parse(top_srcdir / "dependencies/UCO/ontology/uco/master/uco.ttl")
+    for triple in uco_root_graph.triples((None, NS_OWL.imports, None)):
+        assert isinstance(triple[2], URIRef)
+        n_imported_iri = triple[2]
+
+        relative_path_str = str(n_imported_iri).split(".org/")[1]
+        for extension in [".rdf", ".ttl"]:
+            version_iri_graph_path = top_srcdir / (relative_path_str + extension)
+            logging.debug("version_iri_graph_path = %s.", version_iri_graph_path)
+            assert version_iri_graph_path.exists()
+
+
 def test_version_iri_graph_files() -> None:
     """
     This test confirms that the generated versionIRI files correspond to their denoted versions.
