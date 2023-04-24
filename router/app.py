@@ -24,7 +24,7 @@ import pathlib
 from flask import Flask, request, redirect, abort, send_file
 from werkzeug.wrappers import Response as BaseResponse
 from datetime import datetime
-from typing import Optional
+from typing import Optional, Set
 import string
 import json
 
@@ -45,6 +45,13 @@ with (top_srcdir / "iri_mappings_to_rdf.json").open("r") as fp:
 with (top_srcdir / "iri_mappings_to_ttl.json").open("r") as fp:
     ttl = json.load(fp)
 
+# load expected files
+servable_ontology_files: Set[str] = set()
+with (top_srcdir / "servable_ontology_files.json").open("r") as fp:
+    _tmp = json.load(fp)
+    for servable_ontology_file in _tmp:
+        servable_ontology_files.add(servable_ontology_file)
+
 
 @app.route("/")
 def root() -> BaseResponse:
@@ -61,6 +68,13 @@ def root() -> BaseResponse:
 def router(target: str) -> BaseResponse:
     """Routes data through the file system to the appropriate documentation"""
 
+    target_path: str = f"/{target}"
+
+    # If requesting a listed file, immediately use send_file.
+    # If an unlisted file, the end of this function will 404.
+    if target_path in servable_ontology_files:
+        return send_file(".." + target_path, as_attachment=True)
+
     # content_type throughout this function will either be None, or will be spelled as an IANA media type.
     content_type: Optional[str] = request.headers.get("Accept")
 
@@ -71,38 +85,25 @@ def router(target: str) -> BaseResponse:
             return redirect(f"http://{request.host}{location}", 301)
 
     # override content_type with extensions from the target for restful lookups
-    file_request = False
     if target.endswith(".ttl") or target.endswith(".rdf"):
-        file_request = True
         target_parts = target.rsplit(".", 1)
         content_type = (
             "text/turtle" if target_parts[1] == "ttl" else "application/rdf+xml"
         )
 
-    target_path = f"/{target}"
-
-    # Direct first by Accepts: content negotiation
+    # Direct next by Accepts: content negotiation
     if content_type == "application/rdf+xml":
         # headers requested RDF-XML content
         if target_path in rdf:
-            location = rdf[target_path]
-            if file_request:
-                return send_file(".." + location, as_attachment=True)
-
-            return _redirect_301(location)
+            return _redirect_301(rdf[target_path])
     elif content_type == "text/turtle":
         # headers requested Turtle content
         if target_path in ttl:
-            location = ttl[target_path]
-            if file_request:
-                return send_file(".." + location, as_attachment=True)
-
-            return _redirect_301(location)
+            return _redirect_301(ttl[target_path])
     elif content_type == "text/html":
         # headers requested HTML content
         if target_path in html:
-            location = html[target_path]
-            return _redirect_301(location)
+            return _redirect_301(html[target_path])
 
     # Lacking a recognized content type request, try some known User-Agent patterns.
     user_agent: Optional[str] = request.headers.get("User-Agent")
@@ -110,20 +111,17 @@ def router(target: str) -> BaseResponse:
         # For agents presenting like browsers, serve HTML.
         if user_agent.startswith("Mozilla/"):
             if target_path in html:
-                location = html[target_path]
-                return _redirect_301(location)
+                return _redirect_301(html[target_path])
         # For all others, assume agent is ontology-specialized
         # software, or otherwise desiring machine-readable content.
         # Serve RDF-XML per minimal requirement "RDF/XML is the only
         # required exchange syntax for OWL"
         # ( https://www.w3.org/2007/OWL/wiki/XML_Serialization ).
         elif target_path in rdf:
-            location = rdf[target_path]
-            return _redirect_301(location)
+            return _redirect_301(rdf[target_path])
 
     # blanket check mappings for HTML
     if target_path in html:
-        location = html[target_path]
-        return _redirect_301(location)
+        return _redirect_301(html[target_path])
 
     abort(404)

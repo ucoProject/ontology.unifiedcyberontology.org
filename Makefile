@@ -25,7 +25,8 @@ HOST_PREFIX ?= http://localhost
 all: \
   iri_mappings_to_html.json \
   iri_mappings_to_rdf.json \
-  iri_mappings_to_ttl.json
+  iri_mappings_to_ttl.json \
+  servable_ontology_files.json
 
 .PHONY: \
   check-mypy \
@@ -231,4 +232,17 @@ ontology_iris_archive.txt: \
 	LC_ALL=C sort __$@ \
 	  | uniq > _$@
 	rm __$@
+	mv _$@ $@
+
+servable_ontology_files.json: \
+  .uco.done.log \
+  ontology_iris_archive.txt \
+  src/servable_ontology_files_json.py
+	rm -f _$@
+	source venv/bin/activate \
+	  && python3 src/servable_ontology_files_json.py \
+	    --ontology-base https://ontology.unifiedcyberontology.org \
+	    _$@ \
+	    $(top_srcdir) \
+	    ontology_iris_archive.txt
 	mv _$@ $@
