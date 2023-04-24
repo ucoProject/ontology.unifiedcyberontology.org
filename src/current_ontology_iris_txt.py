@@ -22,10 +22,14 @@ NS_RDF = RDF
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument('--debug', action="store_true")
-    parser.add_argument('--ontology-base', default="https://ontology.unifiedcyberontology.org", help="Restrict mapped concepts to start with only this domain.")
-    parser.add_argument('out_txt', type=str, help="Output file.")
-    parser.add_argument('in_ttl', type=str, help="Monolithic build of ontology.")
+    parser.add_argument("--debug", action="store_true")
+    parser.add_argument(
+        "--ontology-base",
+        default="https://ontology.unifiedcyberontology.org",
+        help="Restrict mapped concepts to start with only this domain.",
+    )
+    parser.add_argument("out_txt", type=str, help="Output file.")
+    parser.add_argument("in_ttl", type=str, help="Monolithic build of ontology.")
     args = parser.parse_args()
 
     graph = Graph()
