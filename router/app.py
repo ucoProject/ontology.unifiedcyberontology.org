@@ -75,7 +75,6 @@ def router(target: str) -> BaseResponse:
     if target.endswith(".ttl") or target.endswith(".rdf"):
         file_request = True
         target_parts = target.rsplit(".", 1)
-        target = target_parts[0]
         content_type = (
             "text/turtle" if target_parts[1] == "ttl" else "application/rdf+xml"
         )
