@@ -80,27 +80,29 @@ def router(target: str) -> BaseResponse:
             "text/turtle" if target_parts[1] == "ttl" else "application/rdf+xml"
         )
 
+    target_path = f"/{target}"
+
     # Direct first by Accepts: content negotiation
     if content_type == "application/rdf+xml":
         # headers requested RDF-XML content
-        if f"/{target}" in rdf:
-            location = rdf[f"/{target}"]
+        if target_path in rdf:
+            location = rdf[target_path]
             if file_request:
-                return send_file(".." + rdf[f"/{target}"], as_attachment=True)
+                return send_file(".." + location, as_attachment=True)
 
             return _redirect_301(location)
     elif content_type == "text/turtle":
         # headers requested Turtle content
-        if f"/{target}" in ttl:
-            location = ttl[f"/{target}"]
+        if target_path in ttl:
+            location = ttl[target_path]
             if file_request:
-                return send_file(".." + ttl[f"/{target}"], as_attachment=True)
+                return send_file(".." + location, as_attachment=True)
 
             return _redirect_301(location)
     elif content_type == "text/html":
         # headers requested HTML content
-        if f"/{target}" in html:
-            location = html[f"/{target}"]
+        if target_path in html:
+            location = html[target_path]
             return _redirect_301(location)
 
     # Lacking a recognized content type request, try some known User-Agent patterns.
@@ -108,21 +110,21 @@ def router(target: str) -> BaseResponse:
     if isinstance(user_agent, str):
         # For agents presenting like browsers, serve HTML.
         if user_agent.startswith("Mozilla/"):
-            if f"/{target}" in html:
-                location = html[f"/{target}"]
+            if target_path in html:
+                location = html[target_path]
                 return _redirect_301(location)
         # For all others, assume agent is ontology-specialized
         # software, or otherwise desiring machine-readable content.
         # Serve RDF-XML per minimal requirement "RDF/XML is the only
         # required exchange syntax for OWL"
         # ( https://www.w3.org/2007/OWL/wiki/XML_Serialization ).
-        elif f"/{target}" in rdf:
-            location = rdf[f"/{target}"]
+        elif target_path in rdf:
+            location = rdf[target_path]
             return _redirect_301(location)
 
     # blanket check mappings for HTML
-    if f"/{target}" in html:
-        location = html[f"/{target}"]
+    if target_path in html:
+        location = html[target_path]
         return _redirect_301(location)
 
     abort(404)
