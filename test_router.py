@@ -101,11 +101,11 @@ def test_status_200(
             "/uco/uco.rdf",
         ),
         (
-            # Confirm non-umbrella ontology request is redirected to umbrella documentation index in default case.
+            # Confirm non-umbrella ontology request is assumed to be RDF-XML request.
             "/uco/action",
             None,
             None,
-            "/documentation/index.html",
+            "/uco/action.rdf",
         ),
         (
             # Confirm non-umbrella ontology request is redirected to RDF-XML ontology file with org.semanticweb.owlapi behavior.
@@ -129,23 +129,29 @@ def test_status_200(
         ),
         (
             "/uco/action",
+            "text/html",
+            None,
+            "/documentation/index.html",
+        ),
+        (
+            "/uco/action",
             "text/turtle",
             None,
             "/uco/action.ttl",
         ),
         (
-            # Confirm HTML index for non-umbrella namespaces are redirected to umbrella documentation index.
+            # Confirm prefix IRI (/namespace IRI) redirects to umbrella documentation index.
             "/uco/action/",
             None,
             None,
             "/documentation/index.html",
         ),
         (
-            # Confirm HTML index for non-umbrella namespaces are redirected to umbrella documentation index.
+            # Confirm version IRI request is assumed to be RDF-XML request.
             "/uco/action/0.9.1",
             None,
             None,
-            "/documentation/index.html",
+            "/uco/action/0.9.1.rdf",
         ),
         (
             "/uco/action/0.9.1",
@@ -154,7 +160,7 @@ def test_status_200(
             "/uco/action/0.9.1.rdf",
         ),
         (
-            # Confirm HTML index for non-umbrella namespaces are redirected to umbrella documentation index.
+            # Confirm version IRI request as HTML is redirected to umbrella documentation index.
             "/uco/action/0.9.1",
             "text/html",
             None,

@@ -97,16 +97,29 @@ def router(target: str) -> BaseResponse:
                 return send_file(".." + ttl[f"/{target}"], as_attachment=True)
 
             return _redirect_301(location)
+    elif content_type == "text/html":
+        # headers requested HTML content
+        if f"/{target}" in html:
+            location = html[f"/{target}"]
+            return _redirect_301(location)
 
-    # lacking a specific content type request, try some known User-Agent patterns.
+    # Lacking a specific content type request, try some known User-Agent patterns.
     if content_type is None:
         user_agent: Optional[str] = request.headers.get("User-Agent")
         if isinstance(user_agent, str):
-            # for agents using Java org.semanticweb.owlapi, default to RDF-XML
-            if user_agent.startswith("Java/"):
-                if f"/{target}" in rdf:
-                    location = rdf[f"/{target}"]
+            # For agents presenting like browsers, serve HTML.
+            if user_agent.startswith("Mozilla/"):
+                if f"/{target}" in html:
+                    location = html[f"/{target}"]
                     return _redirect_301(location)
+            # For all others, assume agent is ontology-specialized
+            # software, or otherwise desiring machine-readable content.
+            # Serve RDF-XML per minimal requirement "RDF/XML is the only
+            # required exchange syntax for OWL"
+            # ( https://www.w3.org/2007/OWL/wiki/XML_Serialization ).
+            elif f"/{target}" in rdf:
+                location = rdf[f"/{target}"]
+                return _redirect_301(location)
 
     # blanket check mappings for HTML
     if f"/{target}" in html:
