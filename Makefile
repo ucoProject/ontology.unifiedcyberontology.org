@@ -22,6 +22,8 @@ top_srcdir := $(shell pwd)
 # Syntax note - there is no trailing slash.
 HOST_PREFIX ?= http://localhost
 
+RDF_TOOLKIT_JAR := $(top_srcdir)/dependencies/UCO/lib/rdf-toolkit.jar
+
 all: \
   iri_mappings_to_html.json \
   iri_mappings_to_rdf.json \
@@ -32,6 +34,16 @@ all: \
   check-mypy \
   check-pytest \
   check-service
+
+$(RDF_TOOLKIT_JAR): \
+  .git_submodule_init.done.log
+	touch -c $@
+	test -r $@
+
+.co.done.log: \
+  co.rdf \
+  co.ttl
+	touch $@
 
 .documentation.done.log: \
   current_ontology_version.txt \
@@ -62,9 +74,14 @@ all: \
 	  .lib.done.log
 	touch $@
 
+.owl.done.log: \
+  owl.rdf \
+  owl.ttl
+	touch $@
+
 .uco.done.log: \
-  current_ontology_version.txt \
-  dependencies/UCO/tests/uco_monolithic.ttl
+  .co.done.log \
+  .owl.done.log
 	$(MAKE) \
 	  CURRENT_RELEASE=$$(head -n1 current_ontology_version.txt) \
 	  --directory uco
@@ -157,6 +174,41 @@ clean:
 	  && git checkout -- \
 	    tests/examples
 
+co.rdf: \
+  co.ttl \
+  $(RDF_TOOLKIT_JAR) \
+  $(top_srcdir)/src/namespaces.sed
+	rm -f __$@ _$@
+	java -jar $(RDF_TOOLKIT_JAR) \
+	  --inline-blank-nodes \
+	  --source $< \
+	  --source-format turtle \
+	  --target __$@ \
+	  --target-format rdf-xml
+	sed \
+	  -f $(top_srcdir)/src/namespaces.sed \
+	  __$@ \
+	  > _$@
+	xmllint \
+	  --noout \
+	  _$@
+	rm __$@
+	mkdir -p co
+	cp \
+	  _$@ \
+	  co/$$(head -n1 current_ontology_version.txt).rdf
+	mv _$@ $@
+
+co.ttl: \
+  dependencies/UCO/ontology/co/co.ttl \
+  current_ontology_version.txt
+	cp $< _$@
+	mkdir -p co
+	cp \
+	  _$@ \
+	  co/$$(head -n1 current_ontology_version.txt).ttl
+	mv _$@ $@
+
 current_ontology_iris.txt: \
   .venv.done.log \
   dependencies/UCO/tests/uco_monolithic.ttl \
@@ -174,7 +226,7 @@ current_ontology_version.txt: \
   src/current_ontology_version.py
 	source venv/bin/activate \
 	  && python3 src/current_ontology_version.py \
-	    dependencies/UCO/ontology/master/uco.ttl \
+	    dependencies/UCO/ontology/uco/master/uco.ttl \
 	    https://ontology.unifiedcyberontology.org/uco/uco \
 	    > _$@
 	test -s _$@
@@ -235,6 +287,41 @@ ontology_iris_archive.txt: \
 	LC_ALL=C sort __$@ \
 	  | uniq > _$@
 	rm __$@
+	mv _$@ $@
+
+owl.rdf: \
+  owl.ttl \
+  $(RDF_TOOLKIT_JAR) \
+  $(top_srcdir)/src/namespaces.sed
+	rm -f __$@ _$@
+	java -jar $(RDF_TOOLKIT_JAR) \
+	  --inline-blank-nodes \
+	  --source $< \
+	  --source-format turtle \
+	  --target __$@ \
+	  --target-format rdf-xml
+	sed \
+	  -f $(top_srcdir)/src/namespaces.sed \
+	  __$@ \
+	  > _$@
+	xmllint \
+	  --noout \
+	  _$@
+	rm __$@
+	mkdir -p owl
+	cp \
+	  _$@ \
+	  owl/$$(head -n1 current_ontology_version.txt).rdf
+	mv _$@ $@
+
+owl.ttl: \
+  dependencies/UCO/ontology/owl/owl.ttl \
+  current_ontology_version.txt
+	cp $< _$@
+	mkdir -p owl
+	cp \
+	  _$@ \
+	  owl/$$(head -n1 current_ontology_version.txt).ttl
 	mv _$@ $@
 
 servable_ontology_files.json: \

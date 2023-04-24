@@ -15,6 +15,8 @@
 # be used but not defined in rdf-toolkit output.
 
 s_&action;_https://ontology.unifiedcyberontology.org/uco/action/_g
+s_&co;_http://purl.org/co/_g
+s_&configuration;_https://ontology.unifiedcyberontology.org/uco/configuration/_g
 s_&core;_https://ontology.unifiedcyberontology.org/uco/core/_g
 s_&identity;_https://ontology.unifiedcyberontology.org/uco/identity/_g
 s_&location;_https://ontology.unifiedcyberontology.org/uco/location/_g
@@ -29,6 +31,8 @@ s_&sh;_http://www.w3.org/ns/shacl#_g
 s_&time;_https://ontology.unifiedcyberontology.org/uco/time/_g
 s_&tool;_https://ontology.unifiedcyberontology.org/uco/tool/_g
 s_&types;_https://ontology.unifiedcyberontology.org/uco/types/_g
+s_&uco-co;_https://ontology.unifiedcyberontology.org/co/_g
+s_&uco-owl;_https://ontology.unifiedcyberontology.org/owl/_g
 s_&victim;_https://ontology.unifiedcyberontology.org/uco/victim/_g
 s_&vocabulary;_https://ontology.unifiedcyberontology.org/uco/vocabulary/_g
 s_&xsd;_http://www.w3.org/2001/XMLSchema#_g
