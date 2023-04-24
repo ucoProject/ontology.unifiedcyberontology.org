@@ -1,0 +1,3 @@
+mypy
+ontospy < 3.0
+pytest-flask

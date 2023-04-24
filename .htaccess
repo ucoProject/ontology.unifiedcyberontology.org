@@ -24,16 +24,16 @@ RewriteRule ^.gitignore$ - [R=403]
 RewriteRule ^Makefile$ - [R=403]
 
 # Redirect all assets that hit static
-RewriteRule ^static/(.*)$ uco/documentation/static/$1 [R=303,nc,L]
+RewriteRule ^static/(.*)$ documentation/static/$1 [R=303,nc,L]
 
 # Catch any non-rewritten investigations that aren't RESTful
 # ... a temp solution for when apache fails to follow symlinks
-RewriteRule ^uco/(?!documentation/)([a-z0-9_-]+)?/static/(.*)$ uco/documentation/static/$2 [R=303]
-RewriteRule ^uco/(?!documentation/)([a-z0-9_-]+)?/(.*)-(.*)$ uco/documentation/$2-$3 [R=303]
+RewriteRule ^(?!documentation/)([a-z0-9_-]+)?/static/(.*)$ documentation/static/$2 [R=303]
+RewriteRule ^(?!documentation/)([a-z0-9_-]+)?/(.*)-(.*)$ documentation/$2-$3 [R=303]
 
 # Catch all with a trailing slash.. send to the index of documentation
 RewriteCond %{REQUEST_URI} !\.html [NC]
-RewriteRule ^(.+)/$ %{DOCUMENT_ROOT}/uco/documentation/index.html [L,R=303]
+RewriteRule ^(.+)/$ %{DOCUMENT_ROOT}/documentation/index.html [L,R=303]
 
 # Rewrite rule 3.1: to serve Turtle content is requested
 RewriteCond %{REQUEST_URI} !\.ttl [NC]
@@ -42,18 +42,29 @@ RewriteRule ^uco/(.*)$ uco/$1.ttl [L,R=303]
 
 # Rewrite rule 3.2: to serve RDF content is requested
 RewriteCond %{REQUEST_URI} !\.rdf [NC]
-RewriteCond %{HTTP_ACCEPT} application/rdf\+xml
+RewriteCond %{HTTP_ACCEPT} application/rdf\+xml 
+RewriteRule ^uco/(.*)$ uco/$1.rdf [L,R=303]
+
+# Rewrite directly to the rdf when ^uco/<target> isn't docs
+RewriteCond %{REQUEST_URI} !^/documentation/static/ [NC]
+RewriteCond %{REQUEST_URI} !\.rdf [NC]
+RewriteCond %{REQUEST_URI} !\.ttl [NC]
+RewriteCond %{REQUEST_URI} !\.html [NC]
+RewriteCond %{HTTP_ACCEPT} text/html [OR]
+RewriteCond %{HTTP_ACCEPT} application/xhtml\+xml [OR]
 RewriteRule ^uco/(.*)$ uco/$1.rdf [L,R=303]
 
 # Rewrite rule: to serve HTML of some uco sub-dir
-RewriteCond %{REQUEST_URI} !^/uco/documentation/static/ [NC]
-RewriteCond %{REQUEST_URI} !\.html [NC]
+RewriteCond %{REQUEST_URI} !^/documentation/static/ [NC]
+RewriteCond %{REQUEST_URI} !\.* [NC]
 RewriteCond %{HTTP_ACCEPT} text/html [OR]
 RewriteCond %{HTTP_ACCEPT} application/xhtml\+xml [OR]
 RewriteRule ^uco/(.*)/(.*)$ uco/$1/$2.html [L,R=303]
 
 # Rewrite rule: serve based on user-agent
-RewriteCond %{REQUEST_URI} !^/uco/documentation/static/ [NC]
+RewriteCond %{REQUEST_URI} !^/documentation/static/ [NC]
+RewriteCond %{REQUEST_URI} !\.rdf [NC]
+RewriteCond %{REQUEST_URI} !\.ttl [NC]
 RewriteCond %{REQUEST_URI} !\.html [NC]
 RewriteCond %{HTTP_ACCEPT} text/html [OR]
 RewriteCond %{HTTP_ACCEPT} application/xhtml\+xml [OR]
@@ -67,4 +78,4 @@ RewriteCond %{HTTP_USER_AGENT} ^(.*)/(.*)$
 RewriteRule ^uco/(.*)/(.*)$ uco/$1/$2.rdf [L,R=303]
 
 # What if they just tried reaching the base website?
-RewriteRule ^/?$ %{DOCUMENT_ROOT}/uco/documentation/index.html [L,R=303]
+RewriteRule ^/?$ %{DOCUMENT_ROOT}/documentation/index.html [L,R=303]
