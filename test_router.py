@@ -32,6 +32,9 @@ def host_prefix() -> str:
         raise ValueError(
             "Unable to retrieve host prefix from process environment.  Please set the environment variable HOST_PREFIX before calling pytest."
         )
+    if _host_prefix.startswith("http://"):
+        logging.info("Host prefix updated to use https scheme.")
+        _host_prefix = _host_prefix.replace("http://", "https://")
     return _host_prefix
 
 
