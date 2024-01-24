@@ -172,6 +172,7 @@ clean:
 	@# Revert status of test files, to avoid UCO submodule irrelevantly reporting as dirty.
 	@cd dependencies/UCO \
 	  && git checkout -- \
+	    ontology \
 	    tests/examples
 
 co.rdf: \
