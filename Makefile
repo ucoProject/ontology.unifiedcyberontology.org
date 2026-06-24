@@ -49,7 +49,7 @@ $(RDF_TOOLKIT_JAR): \
 
 .documentation.done.log: \
   current_ontology_version.txt \
-  dependencies/UCO/tests/uco_monolithic.ttl
+  monolithic.ttl
 	rm -rf documentation
 	mkdir documentation
 	source venv/bin/activate \
@@ -58,7 +58,7 @@ $(RDF_TOOLKIT_JAR): \
 	    --theme darkly \
 	    --title uco-$$(head -n1 current_ontology_version.txt)-docs \
 	    --type 2 \
-	    $(top_srcdir)/dependencies/UCO/tests/uco_monolithic.ttl
+	    monolithic.ttl
 	touch $@
 
 # This target checks for a file's existence to confirm that the submodule
@@ -285,6 +285,17 @@ iri_mappings_to_ttl.json: \
 	    _$@ \
 	    text/turtle \
 	    ontology_iris_archive.txt
+	mv _$@ $@
+
+monolithic.ttl: \
+  dependencies/UCO/tests/examples/technique/technique_shapes_PASS.ttl \
+  dependencies/UCO/tests/examples/technique/technique_ontology_PASS.ttl \
+  dependencies/UCO/tests/uco_monolithic.ttl
+	source venv/bin/activate \
+	  && rdfpipe \
+	    --output-format turtle \
+	    $^ \
+	    > _$@
 	mv _$@ $@
 
 # Accumulate all ontology and version IRIs.
