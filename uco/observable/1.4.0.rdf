@@ -4511,7 +4511,7 @@
 		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
 		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
 		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/observable/ObservableObject"/>
-		<rdfs:label xml:lang="en">MessageTread</rdfs:label>
+		<rdfs:label xml:lang="en">MessageThread</rdfs:label>
 		<rdfs:comment xml:lang="en">A message thread is a running commentary of electronic messages pertaining to one topic or question.</rdfs:comment>
 		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/observable/MessageThread"/>
 	</rdf:Description>
@@ -11029,7 +11029,7 @@
 	
 	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/observable/bluetoothDeviceName">
 		<rdfs:label xml:lang="en">bluetoothDeviceName</rdfs:label>
-		<rdfs:comment xml:lang="en">Name configured withing Bluetooth settings on a device.</rdfs:comment>
+		<rdfs:comment xml:lang="en">Name configured within Bluetooth settings on a device.</rdfs:comment>
 		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
 	</owl:DatatypeProperty>
 	

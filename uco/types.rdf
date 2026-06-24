@@ -289,7 +289,7 @@
 		<rdfs:subClassOf rdf:resource="http://purl.org/co/Bag"/>
 		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/core/UcoThing"/>
 		<rdfs:label xml:lang="en">Thread</rdfs:label>
-		<rdfs:comment xml:lang="en">A semi-ordered array of items, that can be present in multiple copies.  Implemetation of a UCO Thread is similar to a Collections Ontology List, except a Thread may fork and merge - that is, one of its members may have two or more direct successors, and two or more direct predecessors.</rdfs:comment>
+		<rdfs:comment xml:lang="en">A semi-ordered array of items, that can be present in multiple copies.  Implementation of a UCO Thread is similar to a Collections Ontology List, except a Thread may fork and merge - that is, one of its members may have two or more direct successors, and two or more direct predecessors.</rdfs:comment>
 		<owl:disjointWith rdf:resource="http://purl.org/co/List"/>
 		<sh:property>
 			<rdf:Description>
