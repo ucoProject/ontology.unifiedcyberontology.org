@@ -18,6 +18,8 @@ SHELL := /bin/bash
 
 top_srcdir := $(shell pwd)
 
+PYTHON3 ?= python3.10
+
 # Use HOST_PREFIX to test the deployment at the specified host.
 # Syntax note - there is no trailing slash.
 HOST_PREFIX ?= http://localhost
@@ -92,7 +94,7 @@ $(RDF_TOOLKIT_JAR): \
   requirements.txt \
   router/requirements.txt
 	rm -rf venv
-	python3 -m venv \
+	$(PYTHON3) -m venv \
 	  venv
 	source venv/bin/activate \
 	  && pip install \
