@@ -9,9 +9,9 @@
 	
 	<owl:Ontology rdf:about="https://ontology.unifiedcyberontology.org/uco/vocabulary">
 		<rdfs:label xml:lang="en">uco-vocabularies</rdfs:label>
-		<owl:backwardCompatibleWith rdf:resource="https://ontology.unifiedcyberontology.org/uco/vocabulary/1.3.0"/>
-		<owl:priorVersion rdf:resource="https://ontology.unifiedcyberontology.org/uco/vocabulary/1.3.0"/>
-		<owl:versionIRI rdf:resource="https://ontology.unifiedcyberontology.org/uco/vocabulary/1.4.0"/>
+		<owl:backwardCompatibleWith rdf:resource="https://ontology.unifiedcyberontology.org/uco/vocabulary/1.4.0"/>
+		<owl:priorVersion rdf:resource="https://ontology.unifiedcyberontology.org/uco/vocabulary/1.4.0"/>
+		<owl:versionIRI rdf:resource="https://ontology.unifiedcyberontology.org/uco/vocabulary/1.5.0"/>
 	</owl:Ontology>
 	
 	<rdfs:Datatype rdf:about="https://ontology.unifiedcyberontology.org/uco/vocabulary/AccountTypeVocab">
