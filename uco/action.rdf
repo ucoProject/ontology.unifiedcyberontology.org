@@ -16,14 +16,14 @@
 	<owl:Ontology rdf:about="https://ontology.unifiedcyberontology.org/uco/action">
 		<rdfs:label xml:lang="en">uco-action</rdfs:label>
 		<rdfs:comment xml:lang="en-US">This ontology defines classes and properties for characterizing actions.</rdfs:comment>
-		<owl:backwardCompatibleWith rdf:resource="https://ontology.unifiedcyberontology.org/uco/action/1.3.0"/>
-		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/core/1.4.0"/>
-		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/location/1.4.0"/>
-		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/pattern/1.4.0"/>
-		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/1.4.0"/>
-		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/vocabulary/1.4.0"/>
-		<owl:priorVersion rdf:resource="https://ontology.unifiedcyberontology.org/uco/action/1.3.0"/>
-		<owl:versionIRI rdf:resource="https://ontology.unifiedcyberontology.org/uco/action/1.4.0"/>
+		<owl:backwardCompatibleWith rdf:resource="https://ontology.unifiedcyberontology.org/uco/action/1.4.0"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/core/1.5.0"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/location/1.5.0"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/pattern/1.5.0"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/1.5.0"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/vocabulary/1.5.0"/>
+		<owl:priorVersion rdf:resource="https://ontology.unifiedcyberontology.org/uco/action/1.4.0"/>
+		<owl:versionIRI rdf:resource="https://ontology.unifiedcyberontology.org/uco/action/1.5.0"/>
 	</owl:Ontology>
 	
 	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/action/Action">
@@ -414,6 +414,33 @@
 		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/action/ArrayOfAction"/>
 	</rdf:Description>
 	
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/action/Technique">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/core/UcoType"/>
+		<rdfs:label xml:lang="en">Technique</rdfs:label>
+		<rdfs:comment xml:lang="en">A technique is a class of actions joined by some common characteristics.  The class uco-action:Technique is a metaclass.  A Technique instance is an owl:Class that is a subclass of uco-action:Action.</rdfs:comment>
+		<sh:property>
+			<rdf:Description>
+				<rdfs:comment xml:lang="en">This property shape confirms an instance of Technique is a class that is an eventual subclass of Action.  The Action class itself is not a Technique.</rdfs:comment>
+				<sh:hasValue rdf:resource="https://ontology.unifiedcyberontology.org/uco/action/Action"/>
+				<sh:path>
+					<rdf:Description>
+						<sh:oneOrMorePath rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+					</rdf:Description>
+				</sh:path>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<rdfs:comment xml:lang="en">This shape will find violations after RDFS or OWL-RL inferencing, but might not find some violations without inferencing.</rdfs:comment>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/action/techniqueID"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/action/Technique"/>
+	</rdf:Description>
+	
 	<owl:ObjectProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/action/action">
 		<rdfs:label xml:lang="en">action</rdfs:label>
 		<rdfs:comment xml:lang="en">A characterization of a single action.</rdfs:comment>
@@ -555,6 +582,18 @@
 		<rdfs:comment xml:lang="en">References to other actions that make up part of a larger more complex action.</rdfs:comment>
 		<rdfs:range rdf:resource="https://ontology.unifiedcyberontology.org/uco/action/Action"/>
 	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/action/techniqueID">
+		<rdfs:label xml:lang="en">techniqueID</rdfs:label>
+		<rdfs:comment xml:lang="en">An identifier for a technique within some cataloguing system.  At the general level of UCO, techniqueID is left optional and minimally-described aside from needing to be Literal-valued.  Specializations of Technique should also consider specializing a corresponding subproperty of techniqueID to enable support of global review of technique identifiers.</rdfs:comment>
+		<rdfs:domain rdf:resource="https://ontology.unifiedcyberontology.org/uco/action/Technique"/>
+	</owl:DatatypeProperty>
+	
+	<sh:NodeShape rdf:about="https://ontology.unifiedcyberontology.org/uco/action/techniqueID-subjects-shape">
+		<rdfs:comment xml:lang="en">This shape enforces that action:techniqueID is only used on Techniques.</rdfs:comment>
+		<sh:class rdf:resource="https://ontology.unifiedcyberontology.org/uco/action/Technique"/>
+		<sh:targetSubjectsOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/action/techniqueID"/>
+	</sh:NodeShape>
 	
 	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/action/trend">
 		<rdfs:label xml:lang="en">trend</rdfs:label>

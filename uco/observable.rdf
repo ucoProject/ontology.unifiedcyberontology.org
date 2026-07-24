@@ -18,16 +18,16 @@
 	
 	<owl:Ontology rdf:about="https://ontology.unifiedcyberontology.org/uco/observable">
 		<rdfs:label xml:lang="en">uco-observable</rdfs:label>
-		<owl:backwardCompatibleWith rdf:resource="https://ontology.unifiedcyberontology.org/uco/observable/1.3.0"/>
-		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/action/1.4.0"/>
-		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/configuration/1.4.0"/>
-		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/core/1.4.0"/>
-		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/1.4.0"/>
-		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/location/1.4.0"/>
-		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/1.4.0"/>
-		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/vocabulary/1.4.0"/>
-		<owl:priorVersion rdf:resource="https://ontology.unifiedcyberontology.org/uco/observable/1.3.0"/>
-		<owl:versionIRI rdf:resource="https://ontology.unifiedcyberontology.org/uco/observable/1.4.0"/>
+		<owl:backwardCompatibleWith rdf:resource="https://ontology.unifiedcyberontology.org/uco/observable/1.4.0"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/action/1.5.0"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/configuration/1.5.0"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/core/1.5.0"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/1.5.0"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/location/1.5.0"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/1.5.0"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/vocabulary/1.5.0"/>
+		<owl:priorVersion rdf:resource="https://ontology.unifiedcyberontology.org/uco/observable/1.4.0"/>
+		<owl:versionIRI rdf:resource="https://ontology.unifiedcyberontology.org/uco/observable/1.5.0"/>
 	</owl:Ontology>
 	
 	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/observable/API">
@@ -4511,7 +4511,7 @@
 		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
 		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
 		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/observable/ObservableObject"/>
-		<rdfs:label xml:lang="en">MessageTread</rdfs:label>
+		<rdfs:label xml:lang="en">MessageThread</rdfs:label>
 		<rdfs:comment xml:lang="en">A message thread is a running commentary of electronic messages pertaining to one topic or question.</rdfs:comment>
 		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/observable/MessageThread"/>
 	</rdf:Description>
@@ -11029,7 +11029,7 @@
 	
 	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/observable/bluetoothDeviceName">
 		<rdfs:label xml:lang="en">bluetoothDeviceName</rdfs:label>
-		<rdfs:comment xml:lang="en">Name configured withing Bluetooth settings on a device.</rdfs:comment>
+		<rdfs:comment xml:lang="en">Name configured within Bluetooth settings on a device.</rdfs:comment>
 		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
 	</owl:DatatypeProperty>
 	

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rdf:RDF
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:sh="http://www.w3.org/ns/shacl#"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+	
+	<owl:Ontology rdf:about="https://ontology.unifiedcyberontology.org/uco/uco">
+		<rdfs:label xml:lang="en">uco-master</rdfs:label>
+		<owl:backwardCompatibleWith rdf:resource="https://ontology.unifiedcyberontology.org/uco/uco/1.4.0"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/co/1.5.0"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/owl/1.5.0"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/action/1.5.0"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/analysis/1.5.0"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/configuration/1.5.0"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/core/1.5.0"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/identity/1.5.0"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/location/1.5.0"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/marking/1.5.0"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/observable/1.5.0"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/pattern/1.5.0"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/role/1.5.0"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/time/1.5.0"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/tool/1.5.0"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/1.5.0"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/victim/1.5.0"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/vocabulary/1.5.0"/>
+		<owl:priorVersion rdf:resource="https://ontology.unifiedcyberontology.org/uco/uco/1.4.0"/>
+		<owl:versionIRI rdf:resource="https://ontology.unifiedcyberontology.org/uco/uco/1.5.0"/>
+		<owl:versionInfo>1.5.0</owl:versionInfo>
+	</owl:Ontology>
+
+</rdf:RDF>

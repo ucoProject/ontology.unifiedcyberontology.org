@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rdf:RDF
+	xmlns:co="http://purl.org/co/"
+	xmlns:core="https://ontology.unifiedcyberontology.org/uco/core/"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:sh="http://www.w3.org/ns/shacl#"
+	xmlns:types="https://ontology.unifiedcyberontology.org/uco/types/"
+	xmlns:uco-co="https://ontology.unifiedcyberontology.org/co/"
+	xmlns:vocabulary="https://ontology.unifiedcyberontology.org/uco/vocabulary/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+	
+	<owl:Ontology rdf:about="https://ontology.unifiedcyberontology.org/uco/types">
+		<rdfs:label xml:lang="en">uco-types</rdfs:label>
+		<owl:backwardCompatibleWith rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/1.4.0"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/co/1.5.0"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/core/1.5.0"/>
+		<owl:imports rdf:resource="https://ontology.unifiedcyberontology.org/uco/vocabulary/1.5.0"/>
+		<owl:priorVersion rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/1.4.0"/>
+		<owl:versionIRI rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/1.5.0"/>
+	</owl:Ontology>
+	
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/types/ControlledDictionary">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/Dictionary"/>
+		<rdfs:label xml:lang="en">ControlledDictionary</rdfs:label>
+		<rdfs:comment xml:lang="en">A controlled dictionary is a list of (term/key, value) pairs where each term/key exists no more than once and is constrained to an explicitly defined set of values.</rdfs:comment>
+		<sh:property>
+			<rdf:Description>
+				<sh:class rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/ControlledDictionaryEntry"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/entry"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/ControlledDictionary"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/types/ControlledDictionaryEntry">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/DictionaryEntry"/>
+		<rdfs:label xml:lang="en">ControlledDictionaryEntry</rdfs:label>
+		<rdfs:comment xml:lang="en">A controlled dictionary entry is a single (term/key, value) pair where the term/key is constrained to an explicitly defined set of values.</rdfs:comment>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/ControlledDictionaryEntry"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/types/Dictionary">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/core/UcoInherentCharacterizationThing"/>
+		<rdfs:label xml:lang="en">Dictionary</rdfs:label>
+		<rdfs:comment xml:lang="en">A dictionary is list of (term/key, value) pairs with each term/key having an expectation to exist no more than once.  types:Dictionary alone does not validate this expectation, but validation is available.  For use cases where this expectation must be validated, the subclass types:ProperDictionary should be used instead of types:Dictionary.  For instances where this expectation has been found to be violated, the subclass types:ImproperDictionary should be used instead of types:Dictionary.</rdfs:comment>
+		<sh:property>
+			<rdf:Description>
+				<sh:class rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/DictionaryEntry"/>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#IRI"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/entry"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/Dictionary"/>
+	</rdf:Description>
+	
+	<sh:NodeShape rdf:about="https://ontology.unifiedcyberontology.org/uco/types/Dictionary-keyUniqueness-shape">
+		<sh:description xml:lang="en">This shape is separated from the types:Dictionary class-shape in order to associate a warning-severity SPARQL-based shape.</sh:description>
+		<sh:severity rdf:resource="http://www.w3.org/ns/shacl#Warning"/>
+		<sh:sparql>
+			<sh:SPARQLConstraint>
+				<sh:message xml:lang="en">A key in a dictionary should appear no more than once.  The value literal does.  Please consider using the types:ImproperDictionary class and types:repeatsKey property.</sh:message>
+				<sh:select>PREFIX types: &lt;https://ontology.unifiedcyberontology.org/uco/types/&gt;
+			SELECT $this ?value
+			WHERE {
+				$this
+					types:entry/types:key ?value ;
+					.
+				FILTER NOT EXISTS {
+					$this
+						a types:ImproperDictionary ;
+						.
+				}
+				FILTER NOT EXISTS {
+					$this
+						a types:ProperDictionary ;
+						.
+				}
+			}
+			GROUP BY ?value
+			HAVING (COUNT(?value) &gt; 1)</sh:select>
+			</sh:SPARQLConstraint>
+		</sh:sparql>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/Dictionary"/>
+	</sh:NodeShape>
+	
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/types/DictionaryEntry">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/core/UcoInherentCharacterizationThing"/>
+		<rdfs:label xml:lang="en">DictionaryEntry</rdfs:label>
+		<rdfs:comment xml:lang="en">A dictionary entry is a single (term/key, value) pair.</rdfs:comment>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/key"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/value"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/DictionaryEntry"/>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/types/Hash">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/core/UcoInherentCharacterizationThing"/>
+		<rdfs:label xml:lang="en">Hash</rdfs:label>
+		<rdfs:comment xml:lang="en">A hash is a grouping of characteristics unique to the result of applying a mathematical algorithm that maps data of arbitrary size to a bit string (the &apos;hash&apos;) and is a one-way function, that is, a function which is practically infeasible to invert. This is commonly used for integrity checking of data. [based on https://en.wikipedia.org/wiki/Cryptographic_hash_function]</rdfs:comment>
+		<sh:property rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/Hash-hashMethod-in-shape"/>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#hexBinary"/>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/hashValue"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+				<sh:message>As of UCO 1.4.0, the datatype to use for types:hashMethod should be xsd:string.  Not using xsd:string will be an error in UCO 2.0.0.</sh:message>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/hashMethod"/>
+				<sh:severity rdf:resource="http://www.w3.org/ns/shacl#Warning"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:property>
+			<rdf:Description>
+				<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+				<sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/hashMethod"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/Hash"/>
+	</rdf:Description>
+	
+	<sh:PropertyShape rdf:about="https://ontology.unifiedcyberontology.org/uco/types/Hash-hashMethod-in-shape">
+		<sh:in>
+			<rdf:Description>
+				<rdf:first>MD5</rdf:first>
+				<rdf:rest>
+					<rdf:Description>
+						<rdf:first>MD6</rdf:first>
+						<rdf:rest>
+							<rdf:Description>
+								<rdf:first>SHA1</rdf:first>
+								<rdf:rest>
+									<rdf:Description>
+										<rdf:first>SHA224</rdf:first>
+										<rdf:rest>
+											<rdf:Description>
+												<rdf:first>SHA256</rdf:first>
+												<rdf:rest>
+													<rdf:Description>
+														<rdf:first>SHA3-224</rdf:first>
+														<rdf:rest>
+															<rdf:Description>
+																<rdf:first>SHA3-256</rdf:first>
+																<rdf:rest>
+																	<rdf:Description>
+																		<rdf:first>SHA3-384</rdf:first>
+																		<rdf:rest>
+																			<rdf:Description>
+																				<rdf:first>SHA3-512</rdf:first>
+																				<rdf:rest>
+																					<rdf:Description>
+																						<rdf:first>SHA384</rdf:first>
+																						<rdf:rest>
+																							<rdf:Description>
+																								<rdf:first>SHA512</rdf:first>
+																								<rdf:rest>
+																									<rdf:Description>
+																										<rdf:first>SSDEEP</rdf:first>
+																										<rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+																									</rdf:Description>
+																								</rdf:rest>
+																							</rdf:Description>
+																						</rdf:rest>
+																					</rdf:Description>
+																				</rdf:rest>
+																			</rdf:Description>
+																		</rdf:rest>
+																	</rdf:Description>
+																</rdf:rest>
+															</rdf:Description>
+														</rdf:rest>
+													</rdf:Description>
+												</rdf:rest>
+											</rdf:Description>
+										</rdf:rest>
+									</rdf:Description>
+								</rdf:rest>
+							</rdf:Description>
+						</rdf:rest>
+					</rdf:Description>
+				</rdf:rest>
+			</rdf:Description>
+		</sh:in>
+		<sh:message>Value is not member of the vocabulary HashNameVocab.</sh:message>
+		<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/hashMethod"/>
+		<sh:severity rdf:resource="http://www.w3.org/ns/shacl#Info"/>
+	</sh:PropertyShape>
+	
+	<rdfs:Datatype rdf:about="https://ontology.unifiedcyberontology.org/uco/types/Identifier">
+		<rdfs:comment xml:lang="en">An identifier is a string conformant to the specified UUID-based format for UCO object identifiers.</rdfs:comment>
+	</rdfs:Datatype>
+	
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/types/ImproperDictionary">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/Dictionary"/>
+		<rdfs:label xml:lang="en">ImproperDictionary</rdfs:label>
+		<owl:disjointWith rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/ProperDictionary"/>
+		<sh:property>
+			<rdf:Description>
+				<sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+				<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#Literal"/>
+				<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/repeatsKey"/>
+			</rdf:Description>
+		</sh:property>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/ImproperDictionary"/>
+	</rdf:Description>
+	
+	<sh:NodeShape rdf:about="https://ontology.unifiedcyberontology.org/uco/types/ImproperDictionary-disjointWith-ProperDictionary-shape">
+		<sh:message xml:lang="en">types:ImproperDictionary and types:ProperDictionary are disjoint classes.</sh:message>
+		<sh:not>
+			<sh:NodeShape>
+				<sh:class rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/ProperDictionary"/>
+			</sh:NodeShape>
+		</sh:not>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/ImproperDictionary"/>
+	</sh:NodeShape>
+	
+	<rdfs:Datatype rdf:about="https://ontology.unifiedcyberontology.org/uco/types/NativeFormatString">
+		<rdfs:comment xml:lang="en">Specifies data in its native format of some external language. The data may be encoded in Base64 per [RFC4648]. Data encoded in Base64 must be denoted as such using the encoded property.</rdfs:comment>
+	</rdfs:Datatype>
+	
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/types/ProperDictionary">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/Dictionary"/>
+		<rdfs:label xml:lang="en">ProperDictionary</rdfs:label>
+		<rdfs:comment xml:lang="en">A proper dictionary is list of (term/key, value) pairs with each term/key existing no more than once.</rdfs:comment>
+		<owl:disjointWith rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/ImproperDictionary"/>
+		<sh:sparql>
+			<sh:SPARQLConstraint>
+				<sh:message xml:lang="en">A key in a proper dictionary can appear no more than once.</sh:message>
+				<sh:select>PREFIX types: &lt;https://ontology.unifiedcyberontology.org/uco/types/&gt;
+			SELECT $this ?value
+			WHERE {
+				$this
+					types:entry/types:key ?value ;
+					.
+			}
+			GROUP BY ?value
+			HAVING (COUNT(?value) &gt; 1)</sh:select>
+			</sh:SPARQLConstraint>
+		</sh:sparql>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/ProperDictionary"/>
+	</rdf:Description>
+	
+	<rdfs:Datatype rdf:about="https://ontology.unifiedcyberontology.org/uco/types/StructuredText">
+		<rdfs:comment xml:lang="en">Expresses string-based data in some information structuring format (e.g., HTML5).</rdfs:comment>
+	</rdfs:Datatype>
+	
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/types/Thread">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="http://purl.org/co/Bag"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/core/UcoThing"/>
+		<rdfs:label xml:lang="en">Thread</rdfs:label>
+		<rdfs:comment xml:lang="en">A semi-ordered array of items, that can be present in multiple copies.  Implementation of a UCO Thread is similar to a Collections Ontology List, except a Thread may fork and merge - that is, one of its members may have two or more direct successors, and two or more direct predecessors.</rdfs:comment>
+		<owl:disjointWith rdf:resource="http://purl.org/co/List"/>
+		<sh:property>
+			<rdf:Description>
+				<sh:class rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/ThreadItem"/>
+				<sh:path rdf:resource="http://purl.org/co/item"/>
+			</rdf:Description>
+		</sh:property>
+	</rdf:Description>
+	
+	<sh:NodeShape rdf:about="https://ontology.unifiedcyberontology.org/uco/types/Thread-disjointWith-co-List-shape">
+		<sh:message xml:lang="en">types:Thread and co:List are disjoint classes.  Assigning both types to a single node will be an error in UCO 2.0.0.</sh:message>
+		<sh:not>
+			<sh:NodeShape>
+				<sh:class rdf:resource="http://purl.org/co/List"/>
+			</sh:NodeShape>
+		</sh:not>
+		<sh:severity rdf:resource="http://www.w3.org/ns/shacl#Warning"/>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/Thread"/>
+	</sh:NodeShape>
+	
+	<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/types/ThreadItem">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+		<rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+		<rdfs:subClassOf rdf:resource="http://purl.org/co/Item"/>
+		<rdfs:subClassOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/core/UcoThing"/>
+		<rdfs:label xml:lang="en">ThreadItem</rdfs:label>
+		<rdfs:comment xml:lang="en">A ThreadItem is a member of a thread.</rdfs:comment>
+		<owl:disjointWith rdf:resource="http://purl.org/co/ListItem"/>
+		<sh:property>
+			<rdf:Description>
+				<sh:class rdf:resource="https://ontology.unifiedcyberontology.org/uco/core/UcoObject"/>
+				<sh:path rdf:resource="http://purl.org/co/itemContent"/>
+			</rdf:Description>
+		</sh:property>
+	</rdf:Description>
+	
+	<sh:NodeShape rdf:about="https://ontology.unifiedcyberontology.org/uco/types/ThreadItem-disjointWith-co-ListItem-shape">
+		<sh:message xml:lang="en">types:ThreadItem and co:ListItem are disjoint classes.  Assigning both types to a single node will be an error in UCO 2.0.0.</sh:message>
+		<sh:not>
+			<sh:NodeShape>
+				<sh:class rdf:resource="http://purl.org/co/ListItem"/>
+			</sh:NodeShape>
+		</sh:not>
+		<sh:severity rdf:resource="http://www.w3.org/ns/shacl#Warning"/>
+		<sh:targetClass rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/ThreadItem"/>
+	</sh:NodeShape>
+	
+	<owl:ObjectProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/types/entry">
+		<rdfs:label xml:lang="en">entry</rdfs:label>
+		<rdfs:comment xml:lang="en">A dictionary entry.</rdfs:comment>
+		<rdfs:range rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/DictionaryEntry"/>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/types/hashMethod">
+		<rdfs:label xml:lang="en">hashMethod</rdfs:label>
+		<rdfs:comment xml:lang="en">A particular cryptographic hashing method (e.g., MD5).</rdfs:comment>
+		<rdfs:range>
+			<rdfs:Datatype>
+				<owl:unionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/vocabulary/HashNameVocab">
+					</rdf:Description>
+					<rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#string">
+					</rdf:Description>
+				</owl:unionOf>
+			</rdfs:Datatype>
+		</rdfs:range>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/types/hashValue">
+		<rdfs:label xml:lang="en">hashValue</rdfs:label>
+		<rdfs:comment xml:lang="en">A cryptographic hash value.</rdfs:comment>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#hexBinary"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/types/key">
+		<rdfs:label xml:lang="en">key</rdfs:label>
+		<rdfs:comment xml:lang="en">A key property of a single dictionary entry.</rdfs:comment>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+	</owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/types/repeatsKey">
+		<rdfs:label xml:lang="en">repeatsKey</rdfs:label>
+		<rdfs:comment xml:lang="en">A key found to be repeated in multiple dictionary entries within one dictionary.</rdfs:comment>
+		<rdfs:domain rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/ImproperDictionary"/>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+	</owl:DatatypeProperty>
+	
+	<sh:NodeShape rdf:about="https://ontology.unifiedcyberontology.org/uco/types/repeatsKey-subjects-shape">
+		<sh:class rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/ImproperDictionary"/>
+		<sh:targetSubjectsOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/repeatsKey"/>
+	</sh:NodeShape>
+	
+	<owl:ObjectProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/types/threadNextItem">
+		<rdfs:subPropertyOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/threadSuccessor"/>
+		<rdfs:label xml:lang="en">threadNextItem</rdfs:label>
+		<rdfs:comment xml:lang="en">The link to a next item in a thread.</rdfs:comment>
+		<rdfs:seeAlso rdf:resource="http://purl.org/co/nextItem"/>
+	</owl:ObjectProperty>
+	
+	<sh:PropertyShape rdf:about="https://ontology.unifiedcyberontology.org/uco/types/threadNextItem-subjects-shape">
+		<sh:class rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/ThreadItem"/>
+		<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#IRI"/>
+		<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/threadNextItem"/>
+		<sh:targetSubjectsOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/threadNextItem"/>
+	</sh:PropertyShape>
+	
+	<owl:ObjectProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/types/threadOriginItem">
+		<rdfs:subPropertyOf rdf:resource="http://purl.org/co/item"/>
+		<rdfs:label xml:lang="en">threadOriginItem</rdfs:label>
+		<rdfs:comment xml:lang="en">A link to an item of the thread known to have no predecessor.</rdfs:comment>
+		<rdfs:domain rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/Thread"/>
+		<rdfs:range>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/types/ThreadItem">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/threadPreviousItem"/>
+						<owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:cardinality>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</rdfs:range>
+		<rdfs:seeAlso rdf:resource="http://purl.org/co/firstItem"/>
+	</owl:ObjectProperty>
+	
+	<sh:PropertyShape rdf:about="https://ontology.unifiedcyberontology.org/uco/types/threadOriginItem-subjects-shape">
+		<sh:class rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/ThreadItem"/>
+		<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#IRI"/>
+		<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/threadOriginItem"/>
+		<sh:targetSubjectsOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/threadOriginItem"/>
+	</sh:PropertyShape>
+	
+	<sh:PropertyShape rdf:about="https://ontology.unifiedcyberontology.org/uco/types/threadOriginItem-subjects-threadPredecessor-shape">
+		<sh:description xml:lang="en">An origin item in a thread must not have a predecessor.</sh:description>
+		<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:maxCount>
+		<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#IRI"/>
+		<sh:path rdf:parseType="Collection">
+			<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/types/threadOriginItem">
+			</rdf:Description>
+			<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/types/threadPredecessor">
+			</rdf:Description>
+		</sh:path>
+		<sh:targetSubjectsOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/threadOriginItem"/>
+	</sh:PropertyShape>
+	
+	<sh:PropertyShape rdf:about="https://ontology.unifiedcyberontology.org/uco/types/threadOriginItem-subjects-threadPreviousItem-shape">
+		<sh:description xml:lang="en">An origin item in a thread must not have a previous item.</sh:description>
+		<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:maxCount>
+		<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#IRI"/>
+		<sh:path rdf:parseType="Collection">
+			<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/types/threadOriginItem">
+			</rdf:Description>
+			<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/types/threadPreviousItem">
+			</rdf:Description>
+		</sh:path>
+		<sh:targetSubjectsOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/threadOriginItem"/>
+	</sh:PropertyShape>
+	
+	<owl:ObjectProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/types/threadPredecessor">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+		<rdfs:label xml:lang="en">threadPredecessor</rdfs:label>
+		<rdfs:comment xml:lang="en">The link to the preceding item in a thread.</rdfs:comment>
+		<rdfs:domain rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/ThreadItem"/>
+		<rdfs:range rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/ThreadItem"/>
+		<rdfs:seeAlso rdf:resource="http://purl.org/co/precededBy"/>
+		<owl:inverseOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/threadSuccessor"/>
+	</owl:ObjectProperty>
+	
+	<sh:PropertyShape rdf:about="https://ontology.unifiedcyberontology.org/uco/types/threadPredecessor-subjects-shape">
+		<sh:class rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/ThreadItem"/>
+		<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#IRI"/>
+		<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/threadPredecessor"/>
+		<sh:targetSubjectsOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/threadPredecessor"/>
+	</sh:PropertyShape>
+	
+	<owl:ObjectProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/types/threadPreviousItem">
+		<rdfs:subPropertyOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/threadPredecessor"/>
+		<rdfs:label xml:lang="en">threadPreviousItem</rdfs:label>
+		<rdfs:comment xml:lang="en">A direct link to a previous item in a thread.</rdfs:comment>
+		<rdfs:seeAlso rdf:resource="http://purl.org/co/previousItem"/>
+		<owl:inverseOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/threadNextItem"/>
+	</owl:ObjectProperty>
+	
+	<sh:PropertyShape rdf:about="https://ontology.unifiedcyberontology.org/uco/types/threadPreviousItem-subjects-shape">
+		<sh:class rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/ThreadItem"/>
+		<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#IRI"/>
+		<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/threadPreviousItem"/>
+		<sh:targetSubjectsOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/threadPreviousItem"/>
+	</sh:PropertyShape>
+	
+	<owl:ObjectProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/types/threadSuccessor">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+		<rdfs:label xml:lang="en">threadSuccessor</rdfs:label>
+		<rdfs:comment xml:lang="en">A link to a following item in a thread.</rdfs:comment>
+		<rdfs:domain rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/ThreadItem"/>
+		<rdfs:range rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/ThreadItem"/>
+		<rdfs:seeAlso rdf:resource="http://purl.org/co/followedBy"/>
+	</owl:ObjectProperty>
+	
+	<sh:PropertyShape rdf:about="https://ontology.unifiedcyberontology.org/uco/types/threadSuccessor-subjects-shape">
+		<sh:class rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/ThreadItem"/>
+		<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#IRI"/>
+		<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/threadSuccessor"/>
+		<sh:targetSubjectsOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/threadSuccessor"/>
+	</sh:PropertyShape>
+	
+	<owl:ObjectProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/types/threadTerminalItem">
+		<rdfs:subPropertyOf rdf:resource="http://purl.org/co/item"/>
+		<rdfs:label xml:lang="en">threadTerminalItem</rdfs:label>
+		<rdfs:comment xml:lang="en">A link to an item of the thread known to have no successor.</rdfs:comment>
+		<rdfs:domain rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/Thread"/>
+		<rdfs:range>
+			<owl:Class>
+				<owl:intersectionOf rdf:parseType="Collection">
+					<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/types/ThreadItem">
+					</rdf:Description>
+					<owl:Restriction>
+						<owl:onProperty rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/threadNextItem"/>
+						<owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:cardinality>
+					</owl:Restriction>
+				</owl:intersectionOf>
+			</owl:Class>
+		</rdfs:range>
+		<rdfs:seeAlso rdf:resource="http://purl.org/co/lastItem"/>
+	</owl:ObjectProperty>
+	
+	<sh:PropertyShape rdf:about="https://ontology.unifiedcyberontology.org/uco/types/threadTerminalItem-subjects-shape">
+		<sh:class rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/ThreadItem"/>
+		<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#IRI"/>
+		<sh:path rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/threadTerminalItem"/>
+		<sh:targetSubjectsOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/threadTerminalItem"/>
+	</sh:PropertyShape>
+	
+	<sh:PropertyShape rdf:about="https://ontology.unifiedcyberontology.org/uco/types/threadTerminalItem-subjects-threadNextItem-shape">
+		<sh:description xml:lang="en">A terminal item in a thread must not have a next item.</sh:description>
+		<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:maxCount>
+		<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#IRI"/>
+		<sh:path rdf:parseType="Collection">
+			<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/types/threadTerminalItem">
+			</rdf:Description>
+			<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/types/threadNextItem">
+			</rdf:Description>
+		</sh:path>
+		<sh:targetSubjectsOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/threadTerminalItem"/>
+	</sh:PropertyShape>
+	
+	<sh:PropertyShape rdf:about="https://ontology.unifiedcyberontology.org/uco/types/threadTerminalItem-subjects-threadSuccessor-shape">
+		<sh:description xml:lang="en">A terminal item in a thread must not have a successor.</sh:description>
+		<sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</sh:maxCount>
+		<sh:nodeKind rdf:resource="http://www.w3.org/ns/shacl#IRI"/>
+		<sh:path rdf:parseType="Collection">
+			<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/types/threadTerminalItem">
+			</rdf:Description>
+			<rdf:Description rdf:about="https://ontology.unifiedcyberontology.org/uco/types/threadSuccessor">
+			</rdf:Description>
+		</sh:path>
+		<sh:targetSubjectsOf rdf:resource="https://ontology.unifiedcyberontology.org/uco/types/threadTerminalItem"/>
+	</sh:PropertyShape>
+	
+	<owl:DatatypeProperty rdf:about="https://ontology.unifiedcyberontology.org/uco/types/value">
+		<rdfs:label xml:lang="en">value</rdfs:label>
+		<rdfs:comment xml:lang="en">A specific property value.</rdfs:comment>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+	</owl:DatatypeProperty>
+
+</rdf:RDF>
