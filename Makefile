@@ -18,7 +18,7 @@ SHELL := /bin/bash
 
 top_srcdir := $(shell pwd)
 
-PYTHON3 ?= python3.10
+PYTHON3 ?= python3.14
 
 # Use HOST_PREFIX to test the deployment at the specified host.
 # Syntax note - there is no trailing slash.
