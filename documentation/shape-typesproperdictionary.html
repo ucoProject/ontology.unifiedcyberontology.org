@@ -3038,13 +3038,13 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
 <span class="nn">types</span><span class="p">:</span><span class="nt">ProperDictionary</span> <span class="kt">a</span> <span class="nn">owl</span><span class="p">:</span><span class="nt">Class</span><span class="p">,</span>
         <span class="nn">sh</span><span class="p">:</span><span class="nt">NodeShape</span> <span class="p">;</span>
-    <span class="nn">rdfs</span><span class="p">:</span><span class="nt">label</span> <span class="s">&quot;ProperDictionary&quot;</span><span class="o">@</span><span class="ge">en</span> <span class="p">;</span>
-    <span class="nn">rdfs</span><span class="p">:</span><span class="nt">comment</span> <span class="s">&quot;A proper dictionary is list of (term/key, value) pairs with each term/key existing no more than once.&quot;</span><span class="o">@</span><span class="ge">en</span> <span class="p">;</span>
+    <span class="nn">rdfs</span><span class="p">:</span><span class="nt">label</span> <span class="s">"ProperDictionary"</span><span class="o">@</span><span class="ge">en</span> <span class="p">;</span>
+    <span class="nn">rdfs</span><span class="p">:</span><span class="nt">comment</span> <span class="s">"A proper dictionary is list of (term/key, value) pairs with each term/key existing no more than once."</span><span class="o">@</span><span class="ge">en</span> <span class="p">;</span>
     <span class="nn">rdfs</span><span class="p">:</span><span class="nt">subClassOf</span> <span class="nn">types</span><span class="p">:</span><span class="nt">Dictionary</span> <span class="p">;</span>
     <span class="nn">owl</span><span class="p">:</span><span class="nt">disjointWith</span> <span class="nn">types</span><span class="p">:</span><span class="nt">ImproperDictionary</span> <span class="p">;</span>
     <span class="nn">sh</span><span class="p">:</span><span class="nt">sparql</span> <span class="p">[</span> <span class="kt">a</span> <span class="nn">sh</span><span class="p">:</span><span class="nt">SPARQLConstraint</span> <span class="p">;</span>
-            <span class="nn">sh</span><span class="p">:</span><span class="nt">message</span> <span class="s">&quot;A key in a proper dictionary can appear no more than once.&quot;</span><span class="o">@</span><span class="ge">en</span> <span class="p">;</span>
-            <span class="nn">sh</span><span class="p">:</span><span class="nt">select</span> <span class="s">&quot;&quot;&quot;</span>
+            <span class="nn">sh</span><span class="p">:</span><span class="nt">message</span> <span class="s">"A key in a proper dictionary can appear no more than once."</span><span class="o">@</span><span class="ge">en</span> <span class="p">;</span>
+            <span class="nn">sh</span><span class="p">:</span><span class="nt">select</span> <span class="s">"""</span>
 <span class="s">			PREFIX types: &lt;https://ontology.unifiedcyberontology.org/uco/types/&gt;</span>
 <span class="s">			SELECT $this ?value</span>
 <span class="s">			WHERE {</span>
@@ -3054,7 +3054,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="s">			}</span>
 <span class="s">			GROUP BY ?value</span>
 <span class="s">			HAVING (COUNT(?value) &gt; 1)</span>
-<span class="s">		&quot;&quot;&quot;</span> <span class="p">]</span> <span class="p">;</span>
+<span class="s">		"""</span> <span class="p">]</span> <span class="p">;</span>
     <span class="nn">sh</span><span class="p">:</span><span class="nt">targetClass</span> <span class="nn">types</span><span class="p">:</span><span class="nt">ProperDictionary</span> <span class="p">.</span>
 </pre></div>
 
@@ -3085,7 +3085,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
   <footer class="footer">
     <div class="container">
     
-      <p class="text-muted">Documentation automatically generated on Fri, 24 Jul 2026 16:18:11 with <a href="http://lambdamusic.github.io/Ontospy/">Ontospy</a> (v2.1.1)</p>
+      <p class="text-muted">Documentation automatically generated on Tue, 13 Oct 2026 18:42:00 with <a href="http://lambdamusic.github.io/Ontospy/">Ontospy</a> (v2.4)</p>
 
     
     </div>
@@ -3146,7 +3146,7 @@ $('#search-input-sidebar').keyup(function() {
 
     $(document).ready(function (){
       $('#sidebar-wrapper').animate({
-          scrollTop: $("#sd_2061").offset().top - 100
+          scrollTop: $("#sd_2231").offset().top - 100
       }, 100);
     });
 

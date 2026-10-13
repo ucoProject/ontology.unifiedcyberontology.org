@@ -3099,20 +3099,20 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
 <span class="nn">observable</span><span class="p">:</span><span class="nt">MessageThreadFacet</span> <span class="kt">a</span> <span class="nn">owl</span><span class="p">:</span><span class="nt">Class</span><span class="p">,</span>
         <span class="nn">sh</span><span class="p">:</span><span class="nt">NodeShape</span> <span class="p">;</span>
-    <span class="nn">rdfs</span><span class="p">:</span><span class="nt">label</span> <span class="s">&quot;MessageThreadFacet&quot;</span><span class="o">@</span><span class="ge">en</span> <span class="p">;</span>
-    <span class="nn">rdfs</span><span class="p">:</span><span class="nt">comment</span> <span class="s">&quot;A message thread facet is a grouping of characteristics unique to a running commentary of electronic messages pertaining to one topic or question.&quot;</span><span class="o">@</span><span class="ge">en</span> <span class="p">;</span>
+    <span class="nn">rdfs</span><span class="p">:</span><span class="nt">label</span> <span class="s">"MessageThreadFacet"</span><span class="o">@</span><span class="ge">en</span> <span class="p">;</span>
+    <span class="nn">rdfs</span><span class="p">:</span><span class="nt">comment</span> <span class="s">"A message thread facet is a grouping of characteristics unique to a running commentary of electronic messages pertaining to one topic or question."</span><span class="o">@</span><span class="ge">en</span> <span class="p">;</span>
     <span class="nn">rdfs</span><span class="p">:</span><span class="nt">subClassOf</span> <span class="nn">core</span><span class="p">:</span><span class="nt">Facet</span> <span class="p">;</span>
     <span class="nn">sh</span><span class="p">:</span><span class="nt">property</span> <span class="p">[</span> <span class="nn">sh</span><span class="p">:</span><span class="nt">class</span> <span class="nn">observable</span><span class="p">:</span><span class="nt">Message</span> <span class="p">;</span>
-            <span class="nn">sh</span><span class="p">:</span><span class="nt">description</span> <span class="s">&quot;The contents of ordered items in the Thread linked by messageThread must be Message objects.&quot;</span><span class="o">@</span><span class="ge">en</span> <span class="p">;</span>
+            <span class="nn">sh</span><span class="p">:</span><span class="nt">description</span> <span class="s">"The contents of ordered items in the Thread linked by messageThread must be Message objects."</span><span class="o">@</span><span class="ge">en</span> <span class="p">;</span>
             <span class="nn">sh</span><span class="p">:</span><span class="nt">path</span> <span class="p">(</span> <span class="nn">observable</span><span class="p">:</span><span class="nt">messageThread</span> <span class="nn">co</span><span class="p">:</span><span class="nt">item</span> <span class="nn">co</span><span class="p">:</span><span class="nt">itemContent</span> <span class="p">)</span> <span class="p">],</span>
         <span class="p">[</span> <span class="nn">sh</span><span class="p">:</span><span class="nt">class</span> <span class="nn">observable</span><span class="p">:</span><span class="nt">Message</span> <span class="p">;</span>
-            <span class="nn">sh</span><span class="p">:</span><span class="nt">description</span> <span class="s">&quot;The contents of origin items in the Thread linked by messageThread must be Message objects.&quot;</span><span class="o">@</span><span class="ge">en</span> <span class="p">;</span>
+            <span class="nn">sh</span><span class="p">:</span><span class="nt">description</span> <span class="s">"The contents of origin items in the Thread linked by messageThread must be Message objects."</span><span class="o">@</span><span class="ge">en</span> <span class="p">;</span>
             <span class="nn">sh</span><span class="p">:</span><span class="nt">path</span> <span class="p">(</span> <span class="nn">observable</span><span class="p">:</span><span class="nt">messageThread</span> <span class="nn">types</span><span class="p">:</span><span class="nt">threadOriginItem</span> <span class="nn">co</span><span class="p">:</span><span class="nt">itemContent</span> <span class="p">)</span> <span class="p">],</span>
         <span class="p">[</span> <span class="nn">sh</span><span class="p">:</span><span class="nt">class</span> <span class="nn">observable</span><span class="p">:</span><span class="nt">Message</span> <span class="p">;</span>
-            <span class="nn">sh</span><span class="p">:</span><span class="nt">description</span> <span class="s">&quot;The contents of terminal items in the Thread linked by messageThread must be Message objects.&quot;</span><span class="o">@</span><span class="ge">en</span> <span class="p">;</span>
+            <span class="nn">sh</span><span class="p">:</span><span class="nt">description</span> <span class="s">"The contents of terminal items in the Thread linked by messageThread must be Message objects."</span><span class="o">@</span><span class="ge">en</span> <span class="p">;</span>
             <span class="nn">sh</span><span class="p">:</span><span class="nt">path</span> <span class="p">(</span> <span class="nn">observable</span><span class="p">:</span><span class="nt">messageThread</span> <span class="nn">types</span><span class="p">:</span><span class="nt">threadTerminalItem</span> <span class="nn">co</span><span class="p">:</span><span class="nt">itemContent</span> <span class="p">)</span> <span class="p">],</span>
         <span class="p">[</span> <span class="nn">sh</span><span class="p">:</span><span class="nt">class</span> <span class="nn">observable</span><span class="p">:</span><span class="nt">Message</span> <span class="p">;</span>
-            <span class="nn">sh</span><span class="p">:</span><span class="nt">description</span> <span class="s">&quot;The contents of unordered items in the Thread linked by messageThread must be Message objects.&quot;</span><span class="o">@</span><span class="ge">en</span> <span class="p">;</span>
+            <span class="nn">sh</span><span class="p">:</span><span class="nt">description</span> <span class="s">"The contents of unordered items in the Thread linked by messageThread must be Message objects."</span><span class="o">@</span><span class="ge">en</span> <span class="p">;</span>
             <span class="nn">sh</span><span class="p">:</span><span class="nt">path</span> <span class="p">(</span> <span class="nn">observable</span><span class="p">:</span><span class="nt">messageThread</span> <span class="nn">co</span><span class="p">:</span><span class="nt">element</span> <span class="p">)</span> <span class="p">],</span>
         <span class="p">[</span> <span class="nn">sh</span><span class="p">:</span><span class="nt">class</span> <span class="nn">observable</span><span class="p">:</span><span class="nt">ObservableObject</span> <span class="p">;</span>
             <span class="nn">sh</span><span class="p">:</span><span class="nt">nodeKind</span> <span class="nn">sh</span><span class="p">:</span><span class="nt">IRI</span> <span class="p">;</span>
@@ -3155,7 +3155,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
   <footer class="footer">
     <div class="container">
     
-      <p class="text-muted">Documentation automatically generated on Fri, 24 Jul 2026 16:18:10 with <a href="http://lambdamusic.github.io/Ontospy/">Ontospy</a> (v2.1.1)</p>
+      <p class="text-muted">Documentation automatically generated on Tue, 13 Oct 2026 18:42:00 with <a href="http://lambdamusic.github.io/Ontospy/">Ontospy</a> (v2.4)</p>
 
     
     </div>
@@ -3216,7 +3216,7 @@ $('#search-input-sidebar').keyup(function() {
 
     $(document).ready(function (){
       $('#sidebar-wrapper').animate({
-          scrollTop: $("#sd_2103").offset().top - 100
+          scrollTop: $("#sd_2181").offset().top - 100
       }, 100);
     });
 
