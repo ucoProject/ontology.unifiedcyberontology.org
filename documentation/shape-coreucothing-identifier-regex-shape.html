@@ -2975,13 +2975,13 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="k">@prefix</span><span class="w"> </span><span class="nn">sh:</span><span class="w"> </span><span class="nv">&lt;http://www.w3.org/ns/shacl#&gt;</span><span class="w"> </span><span class="p">.</span>
 
 <span class="nn">core</span><span class="p">:</span><span class="nt">UcoThing-identifier-regex-shape</span> <span class="kt">a</span> <span class="nn">sh</span><span class="p">:</span><span class="nt">NodeShape</span> <span class="p">;</span>
-    <span class="nn">rdfs</span><span class="p">:</span><span class="nt">comment</span> <span class="s">&quot;This shape is given an independent IRI for applications that have sufficient controls in place to deactivate this advisory of node identification practice.&quot;</span><span class="o">@</span><span class="ge">en</span> <span class="p">;</span>
+    <span class="nn">rdfs</span><span class="p">:</span><span class="nt">comment</span> <span class="s">"This shape is given an independent IRI for applications that have sufficient controls in place to deactivate this advisory of node identification practice."</span><span class="o">@</span><span class="ge">en</span> <span class="p">;</span>
     <span class="nn">rdfs</span><span class="p">:</span><span class="nt">seeAlso</span> <span class="nn">sh</span><span class="p">:</span><span class="nt">deactivated</span> <span class="p">;</span>
     <span class="nn">sh</span><span class="p">:</span><span class="nt">severity</span> <span class="nn">sh</span><span class="p">:</span><span class="nt">Info</span> <span class="p">;</span>
     <span class="nn">sh</span><span class="p">:</span><span class="nt">sparql</span> <span class="p">[</span> <span class="kt">a</span> <span class="nn">sh</span><span class="p">:</span><span class="nt">SPARQLConstraint</span> <span class="p">;</span>
             <span class="nn">rdfs</span><span class="p">:</span><span class="nt">seeAlso</span> <span class="nv">&lt;https://datatracker.ietf.org/doc/html/rfc4122#section-4.1.3&gt;</span> <span class="p">;</span>
-            <span class="nn">sh</span><span class="p">:</span><span class="nt">message</span> <span class="s">&quot;UcoThings are suggested to end with a UUID.&quot;</span><span class="o">@</span><span class="ge">en</span> <span class="p">;</span>
-            <span class="nn">sh</span><span class="p">:</span><span class="nt">select</span> <span class="s">&quot;&quot;&quot;</span>
+            <span class="nn">sh</span><span class="p">:</span><span class="nt">message</span> <span class="s">"UcoThings are suggested to end with a UUID."</span><span class="o">@</span><span class="ge">en</span> <span class="p">;</span>
+            <span class="nn">sh</span><span class="p">:</span><span class="nt">select</span> <span class="s">"""</span>
 <span class="s">			PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</span>
 <span class="s">			PREFIX core: &lt;https://ontology.unifiedcyberontology.org/uco/core/&gt;</span>
 <span class="s">			SELECT $this</span>
@@ -2990,12 +2990,12 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="s">			        FILTER (</span>
 <span class="s">			                ! REGEX (</span>
 <span class="s">			                        STR($this),</span>
-<span class="s">			                        &quot;[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[0-9a-f]{4}-[0-9a-f]{12}$&quot;,</span>
-<span class="s">			                        &quot;i&quot;</span>
+<span class="s">			                        "[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[0-9a-f]{4}-[0-9a-f]{12}$",</span>
+<span class="s">			                        "i"</span>
 <span class="s">			                )</span>
 <span class="s">			        )</span>
 <span class="s">			}</span>
-<span class="s">		&quot;&quot;&quot;</span> <span class="p">]</span> <span class="p">;</span>
+<span class="s">		"""</span> <span class="p">]</span> <span class="p">;</span>
     <span class="nn">sh</span><span class="p">:</span><span class="nt">targetClass</span> <span class="nn">core</span><span class="p">:</span><span class="nt">UcoThing</span> <span class="p">.</span>
 </pre></div>
 
@@ -3026,7 +3026,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
   <footer class="footer">
     <div class="container">
     
-      <p class="text-muted">Documentation automatically generated on Fri, 24 Jul 2026 16:18:09 with <a href="http://lambdamusic.github.io/Ontospy/">Ontospy</a> (v2.1.1)</p>
+      <p class="text-muted">Documentation automatically generated on Tue, 13 Oct 2026 18:41:59 with <a href="http://lambdamusic.github.io/Ontospy/">Ontospy</a> (v2.4)</p>
 
     
     </div>
@@ -3087,7 +3087,7 @@ $('#search-input-sidebar').keyup(function() {
 
     $(document).ready(function (){
       $('#sidebar-wrapper').animate({
-          scrollTop: $("#sd_1892").offset().top - 100
+          scrollTop: $("#sd_1897").offset().top - 100
       }, 100);
     });
 

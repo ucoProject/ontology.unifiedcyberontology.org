@@ -2848,7 +2848,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
                 <ul>
                     
 
-                        <li><a href="entities-tree-properties.html">rdf:Property</a>
+                        <li><a href="entities-tree-properties.html">owl:DatatypeProperty</a>
 
                           <ul>
                             <li><a style="font-weight: bold;" title="'informalType' - Informal Type serves as a parent property for string-valued properties meant to describe a type without implementing a class design...">core:informalType</a>
@@ -2884,6 +2884,19 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
            </div>
             </div></div>
 
+            
+            <div class="row"><div class="col-md-12">
+               <div class="panel panel-default">
+             <div class="panel-heading">
+               <h3 class="panel-title">Type</h3>
+             </div>
+             <div class="panel-body">
+                 <code>owl:DatatypeProperty</code>
+             </div>
+           </div>
+            </div></div>
+            
+
 
 
             
@@ -2914,6 +2927,10 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
           </div>
            </div></div>
            
+
+    
+    
+
 
 
 
@@ -2954,6 +2971,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
                <tr>
                    <td>
                      
+                     
                          <a>owl:Thing</a> (inferred)
                      
                    </td>
@@ -2963,6 +2981,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
                     </td>
 
                     <td>
+                      
                       
                           <a>owl:Thing</a> (inferred)
                       
@@ -2988,8 +3007,8 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="k">@prefix</span><span class="w"> </span><span class="nn">rdfs:</span><span class="w"> </span><span class="nv">&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</span><span class="w"> </span><span class="p">.</span>
 
 <span class="nn">core</span><span class="p">:</span><span class="nt">informalType</span> <span class="kt">a</span> <span class="nn">owl</span><span class="p">:</span><span class="nt">DatatypeProperty</span> <span class="p">;</span>
-    <span class="nn">rdfs</span><span class="p">:</span><span class="nt">label</span> <span class="s">&quot;informalType&quot;</span><span class="o">@</span><span class="ge">en</span> <span class="p">;</span>
-    <span class="nn">rdfs</span><span class="p">:</span><span class="nt">comment</span> <span class="s">&quot;Informal Type serves as a parent property for string-valued properties meant to describe a type without implementing a class design.  This property hierarchy supports a balancing point between semantic specificity and operational agility.  The known benefits of describing types rather than implementing them include swift extensibility of some existing, or possibly non-existing, subclass hierarchy in UCO without requiring training in ontological development, taxonomic specification, or OWL, SHACL, or RDF maintenance logistics.  The known detractions of using string-literals for type descriptions include that used vocabularies may require careful maintenance among data-sharing parties; that vocabularies require independent logistics (external to UCO) for providing definitions (i.e., dictionary-style semantics) to string-literals chosen; and that string-literals cannot by themselves encode hierarchical structure or entailments, such as the informal device type string &#39;ExamplePhone 8 P4321&#39; entailing &#39;ExamplePhone 8&#39;, &#39;ExamplePhone&#39;, or &#39;ExamplePhone models discontinued in 2020&#39;.  Usage of Informal Type to house strings should be weighed against usage of classes when classes are available, and should periodically be reviewed for potential additions to UCO&#39;s class hierarchy or downstream extensions thereof.&quot;</span><span class="o">@</span><span class="ge">en</span> <span class="p">.</span>
+    <span class="nn">rdfs</span><span class="p">:</span><span class="nt">label</span> <span class="s">"informalType"</span><span class="o">@</span><span class="ge">en</span> <span class="p">;</span>
+    <span class="nn">rdfs</span><span class="p">:</span><span class="nt">comment</span> <span class="s">"Informal Type serves as a parent property for string-valued properties meant to describe a type without implementing a class design.  This property hierarchy supports a balancing point between semantic specificity and operational agility.  The known benefits of describing types rather than implementing them include swift extensibility of some existing, or possibly non-existing, subclass hierarchy in UCO without requiring training in ontological development, taxonomic specification, or OWL, SHACL, or RDF maintenance logistics.  The known detractions of using string-literals for type descriptions include that used vocabularies may require careful maintenance among data-sharing parties; that vocabularies require independent logistics (external to UCO) for providing definitions (i.e., dictionary-style semantics) to string-literals chosen; and that string-literals cannot by themselves encode hierarchical structure or entailments, such as the informal device type string 'ExamplePhone 8 P4321' entailing 'ExamplePhone 8', 'ExamplePhone', or 'ExamplePhone models discontinued in 2020'.  Usage of Informal Type to house strings should be weighed against usage of classes when classes are available, and should periodically be reviewed for potential additions to UCO's class hierarchy or downstream extensions thereof."</span><span class="o">@</span><span class="ge">en</span> <span class="p">.</span>
 </pre></div>
 
 
@@ -3028,7 +3047,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
   <footer class="footer">
     <div class="container">
     
-      <p class="text-muted">Documentation automatically generated on Fri, 24 Jul 2026 16:18:07 with <a href="http://lambdamusic.github.io/Ontospy/">Ontospy</a> (v2.1.1)</p>
+      <p class="text-muted">Documentation automatically generated on Tue, 13 Oct 2026 18:41:57 with <a href="http://lambdamusic.github.io/Ontospy/">Ontospy</a> (v2.4)</p>
 
     
     </div>

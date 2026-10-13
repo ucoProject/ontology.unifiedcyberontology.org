@@ -2937,9 +2937,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="k">@prefix</span><span class="w"> </span><span class="nn">xsd:</span><span class="w"> </span><span class="nv">&lt;http://www.w3.org/2001/XMLSchema#&gt;</span><span class="w"> </span><span class="p">.</span>
 
 <span class="nn">uco-owl</span><span class="p">:</span><span class="nt">Sequence-shape</span> <span class="kt">a</span> <span class="nn">sh</span><span class="p">:</span><span class="nt">NodeShape</span> <span class="p">;</span>
-    <span class="nn">rdfs</span><span class="p">:</span><span class="nt">comment</span> <span class="s">&quot;This shape intentionally has no target declaration.  It is instead intended to be incorporated using &#39;sh:node&#39;.&quot;</span><span class="o">@</span><span class="ge">en</span> <span class="p">;</span>
+    <span class="nn">rdfs</span><span class="p">:</span><span class="nt">comment</span> <span class="s">"This shape intentionally has no target declaration.  It is instead intended to be incorporated using 'sh:node'."</span><span class="o">@</span><span class="ge">en</span> <span class="p">;</span>
     <span class="nn">rdfs</span><span class="p">:</span><span class="nt">seeAlso</span> <span class="nv">&lt;https://www.w3.org/TR/2012/REC-owl2-mapping-to-rdf-20121211/#Mapping_from_RDF_Graphs_to_the_Structural_Specification&gt;</span> <span class="p">;</span>
-    <span class="nn">sh</span><span class="p">:</span><span class="nt">description</span> <span class="s">&quot;This shape is determined from review of the canonical parsing process in Section 3 of the OWL 2 mapping to RDF, particularly Tables 3 and 5.  Table 5 removes any triple matching the pattern &#39;x a rdf:List`.  All other references throughout Section 3 to rdf:first are in the context of mapping a Sequence in OWL structure translation, and are denoted as blank nodes, starting with Table 3.  A non-blank node that is an rdf:List and used with a sequence-valued property IRI in the OWL namespace will not be mapped and consumed by the mapping process, making the graph non-conformant with OWL 2 DL.  But a non-blank node that is an rdf:List can be used if not directly attached to a sequence-valued property IRI in the OWL namespace.&quot;</span><span class="o">@</span><span class="ge">en</span> <span class="p">;</span>
+    <span class="nn">sh</span><span class="p">:</span><span class="nt">description</span> <span class="s">"This shape is determined from review of the canonical parsing process in Section 3 of the OWL 2 mapping to RDF, particularly Tables 3 and 5.  Table 5 removes any triple matching the pattern 'x a rdf:List`.  All other references throughout Section 3 to rdf:first are in the context of mapping a Sequence in OWL structure translation, and are denoted as blank nodes, starting with Table 3.  A non-blank node that is an rdf:List and used with a sequence-valued property IRI in the OWL namespace will not be mapped and consumed by the mapping process, making the graph non-conformant with OWL 2 DL.  But a non-blank node that is an rdf:List can be used if not directly attached to a sequence-valued property IRI in the OWL namespace."</span><span class="o">@</span><span class="ge">en</span> <span class="p">;</span>
     <span class="nn">sh</span><span class="p">:</span><span class="nt">xone</span> <span class="p">(</span> <span class="p">[</span> <span class="kt">a</span> <span class="nn">sh</span><span class="p">:</span><span class="nt">NodeShape</span> <span class="p">;</span>
                 <span class="nn">sh</span><span class="p">:</span><span class="nt">hasValue</span> <span class="p">()</span> <span class="p">]</span> <span class="p">[</span> <span class="kt">a</span> <span class="nn">sh</span><span class="p">:</span><span class="nt">NodeShape</span> <span class="p">;</span>
                 <span class="nn">sh</span><span class="p">:</span><span class="nt">nodeKind</span> <span class="nn">sh</span><span class="p">:</span><span class="nt">BlankNode</span> <span class="p">;</span>
@@ -2981,7 +2981,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
   <footer class="footer">
     <div class="container">
     
-      <p class="text-muted">Documentation automatically generated on Fri, 24 Jul 2026 16:18:11 with <a href="http://lambdamusic.github.io/Ontospy/">Ontospy</a> (v2.1.1)</p>
+      <p class="text-muted">Documentation automatically generated on Tue, 13 Oct 2026 18:42:00 with <a href="http://lambdamusic.github.io/Ontospy/">Ontospy</a> (v2.4)</p>
 
     
     </div>
@@ -3042,7 +3042,7 @@ $('#search-input-sidebar').keyup(function() {
 
     $(document).ready(function (){
       $('#sidebar-wrapper').animate({
-          scrollTop: $("#sd_1886").offset().top - 100
+          scrollTop: $("#sd_2135").offset().top - 100
       }, 100);
     });
 

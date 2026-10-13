@@ -2937,18 +2937,18 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
 <span class="nn">uco-owl</span><span class="p">:</span><span class="nt">DataOneOf-shape</span> <span class="kt">a</span> <span class="nn">sh</span><span class="p">:</span><span class="nt">NodeShape</span> <span class="p">;</span>
     <span class="nn">sh</span><span class="p">:</span><span class="nt">sparql</span> <span class="p">[</span> <span class="kt">a</span> <span class="nn">sh</span><span class="p">:</span><span class="nt">SPARQLConstraint</span> <span class="p">;</span>
-            <span class="nn">rdfs</span><span class="p">:</span><span class="nt">comment</span> <span class="s">&quot;This requirement is determined from review of the canonical parsing process in Section 3.2.4, Table 12, row 4 of the OWL 2 mapping to RDF.  All datatypes using owl:oneOf must be blank nodes.  Any non-blank node will not be mapped and consumed by the mapping process.  See also DataOneOf in the OWL 2 Syntax document, especially with &#39;Show RDF in Examples&#39; turned on.&quot;</span><span class="o">@</span><span class="ge">en</span> <span class="p">;</span>
+            <span class="nn">rdfs</span><span class="p">:</span><span class="nt">comment</span> <span class="s">"This requirement is determined from review of the canonical parsing process in Section 3.2.4, Table 12, row 4 of the OWL 2 mapping to RDF.  All datatypes using owl:oneOf must be blank nodes.  Any non-blank node will not be mapped and consumed by the mapping process.  See also DataOneOf in the OWL 2 Syntax document, especially with 'Show RDF in Examples' turned on."</span><span class="o">@</span><span class="ge">en</span> <span class="p">;</span>
             <span class="nn">rdfs</span><span class="p">:</span><span class="nt">seeAlso</span> <span class="nv">&lt;https://www.w3.org/TR/owl2-mapping-to-rdf/#Parsing_of_Expressions&gt;</span><span class="p">,</span>
                 <span class="nv">&lt;https://www.w3.org/TR/owl2-syntax/#Enumeration_of_Literals&gt;</span> <span class="p">;</span>
-            <span class="nn">sh</span><span class="p">:</span><span class="nt">message</span> <span class="s">&quot;For data ranges that are sets of literals, owl:oneOf must only be used on blank nodes.&quot;</span> <span class="p">;</span>
-            <span class="nn">sh</span><span class="p">:</span><span class="nt">select</span> <span class="s">&quot;&quot;&quot;</span>
+            <span class="nn">sh</span><span class="p">:</span><span class="nt">message</span> <span class="s">"For data ranges that are sets of literals, owl:oneOf must only be used on blank nodes."</span> <span class="p">;</span>
+            <span class="nn">sh</span><span class="p">:</span><span class="nt">select</span> <span class="s">"""</span>
 <span class="s">			PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</span>
 <span class="s">			SELECT $this</span>
 <span class="s">			WHERE {</span>
 <span class="s">				$this a rdfs:Datatype .</span>
 <span class="s">				FILTER ( isIRI($this) )</span>
 <span class="s">			}</span>
-<span class="s">		&quot;&quot;&quot;</span> <span class="p">]</span> <span class="p">;</span>
+<span class="s">		"""</span> <span class="p">]</span> <span class="p">;</span>
     <span class="nn">sh</span><span class="p">:</span><span class="nt">targetSubjectsOf</span> <span class="nn">owl</span><span class="p">:</span><span class="nt">oneOf</span> <span class="p">.</span>
 </pre></div>
 
@@ -2979,7 +2979,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
   <footer class="footer">
     <div class="container">
     
-      <p class="text-muted">Documentation automatically generated on Fri, 24 Jul 2026 16:18:11 with <a href="http://lambdamusic.github.io/Ontospy/">Ontospy</a> (v2.1.1)</p>
+      <p class="text-muted">Documentation automatically generated on Tue, 13 Oct 2026 18:42:00 with <a href="http://lambdamusic.github.io/Ontospy/">Ontospy</a> (v2.4)</p>
 
     
     </div>
@@ -3040,7 +3040,7 @@ $('#search-input-sidebar').keyup(function() {
 
     $(document).ready(function (){
       $('#sidebar-wrapper').animate({
-          scrollTop: $("#sd_2011").offset().top - 100
+          scrollTop: $("#sd_1924").offset().top - 100
       }, 100);
     });
 
